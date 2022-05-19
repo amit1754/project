@@ -228,7 +228,7 @@ const adminUserChangePassword = async (req, res) => {
 			currentUser: { _id },
 			body: { oldPassword, newPassword },
 		} = req;
-
+		
 		let filter = { _id };
 		const { data } = await adminUserService.findAllQuery(filter);
 		if (data.length != 1) throw new Error(ADMINUSER.NOT_ADMINUSER);
@@ -249,7 +249,7 @@ const adminUserChangePassword = async (req, res) => {
 				updateObj,
 			);
 			if (passwordChange) {
-				await notification.createNotification('changePassword', data);
+			
 				res.status(SUCCESS).send({
 					success: true,
 					msg: ADMINUSER.PASSWORD_CHANGED,
@@ -262,6 +262,7 @@ const adminUserChangePassword = async (req, res) => {
 			throw new Error('Password is invalid');
 		}
 	} catch (error) {
+		console.log('error', error)
 		errorLogger(error.message, req.originalUrl, req.ip);
 		res.status(FAILED).json({
 			success: false,
