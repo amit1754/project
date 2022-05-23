@@ -248,8 +248,7 @@ const adminUserChangePassword = async (req, res) => {
 				updateObj,
 			);
 			if (passwordChange) {
-				await notification.createNotification('changePassword', data);
-				return res.status(SUCCESS).send({
+				res.status(SUCCESS).send({
 					success: true,
 					msg: ADMINUSER.PASSWORD_CHANGED,
 					data: [],
@@ -261,6 +260,7 @@ const adminUserChangePassword = async (req, res) => {
 			throw new Error('Password is invalid');
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
