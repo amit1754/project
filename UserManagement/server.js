@@ -26,7 +26,7 @@ const server = express();
 // })();
 
 console.log('process.env.PORT', process.env.PORT);
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const FILE_PATH = process.env.FILE_PATH || 'uploads';
 
@@ -58,14 +58,14 @@ const BASE_API_URL = `http://${HOST}:${PORT}/api/v1/`;
 const NETWORK_BASE_API_URL = `http://${ip.address()}:${PORT}/api/v1/`;
 
 server.use('/api/v1', routes);
-server.use('/**', (res) => {
+server.use('/**', (_req, res) => {
 	res.status(404).json({
 		success: false,
 		error: '404 Route not found',
 	});
 });
 
-server.listen(3000, () => {
+server.listen(PORT, () => {
 	console.info(cyanBright('API Running at'));
 	console.info(cyanBright(`${greenBright('\tLocalhost:')} ${BASE_API_URL}`));
 	console.info(cyanBright(`${greenBright('\tLAN:')} ${NETWORK_BASE_API_URL}`));

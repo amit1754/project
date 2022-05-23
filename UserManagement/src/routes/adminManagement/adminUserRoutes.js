@@ -11,10 +11,7 @@ router.post(
 	authMiddleware,
 	adminUserController.adminUserCreate,
 );
-router.post(
-	'/login',
-	adminUserController.adminUserLogin,
-);
+router.post('/login', adminUserController.adminUserLogin);
 
 router.get('/get', authMiddleware, adminUserController.adminUserList);
 router.put(
@@ -32,28 +29,13 @@ router.delete(
 
 router.put(
 	'/changePassword',
-<<<<<<< HEAD
-	validator.adminUserPasswordChangeValidation,
-=======
->>>>>>> c130023b755ddc2f4af041f0480531f4fef72003
 	authMiddleware,
 	adminUserController.adminUserChangePassword,
 );
 
-router.post(
-	'/forget-password',
-<<<<<<< HEAD
-	validator.forgetPasswordValidation,
-=======
->>>>>>> c130023b755ddc2f4af041f0480531f4fef72003
-	adminUserController.forgetPassword,
-);
+router.post('/forget-password', adminUserController.forgetPassword);
 router.put(
 	'/reset-password',
-<<<<<<< HEAD
-	validator.resetPasswordValidation,
-=======
->>>>>>> c130023b755ddc2f4af041f0480531f4fef72003
 	resetPasswordMiddleware,
 	adminUserController.resetPassword,
 );
