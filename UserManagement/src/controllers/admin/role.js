@@ -31,7 +31,7 @@ const createRole = async (req, res) => {
 		const saveResponse = await saveRole.save();
 
 		if (saveResponse) {
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: ROLE.CREATE_SUCCESS,
 				data: [],
@@ -41,7 +41,7 @@ const createRole = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -51,7 +51,7 @@ const getRole = async (req, res) => {
 	try {
 		const { data, totalCount } = await roleService.findAllQuery(req.query);
 		if (data) {
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: ROLE.GET_SUCCESS,
 				total: totalCount,
@@ -62,7 +62,7 @@ const getRole = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -89,10 +89,10 @@ const updateRole = async (req, res) => {
 			let update = { ...req.body };
 			const updateData = await roleService.updateOneQuery(filter, update);
 			if (updateData) {
-				res.status(SUCCESS).send({
+				return res.status(SUCCESS).send({
 					success: true,
 					msg: ROLE.UPDATE_SUCCESS,
-					data:updateData,
+					data: updateData,
 				});
 			} else {
 				throw new Error(ROLE.UPDATE_FAILED);
@@ -102,7 +102,7 @@ const updateRole = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -124,7 +124,7 @@ const deleteRole = async (req, res) => {
 		}
 		const data = await roleService.deleteOneQuery(id);
 		if (data) {
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: ROLE.DELETE_SUCCESS,
 				data: [],
@@ -134,7 +134,7 @@ const deleteRole = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});

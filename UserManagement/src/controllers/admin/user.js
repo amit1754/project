@@ -34,18 +34,17 @@ const adminUserCreate = async (req, res) => {
 		const adminUserSave = new adminUserDelete(insetObj);
 		const saveResponse = await adminUserSave.save();
 		if (saveResponse) {
-	
-		res.status(SUCCESS).send({
-			success: true,
-			msg: ADMINUSER.CREATE_SUCCESS,
-			data: [],
-		});
+			return res.status(SUCCESS).send({
+				success: true,
+				msg: ADMINUSER.CREATE_SUCCESS,
+				data: [],
+			});
 		} else {
 			throw new Error(ADMINUSER.CREATE_FAILED);
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -81,14 +80,14 @@ const adminUserLogin = async (req, res) => {
 			process.env.JWT_EXPIRY,
 		);
 
-		res.status(200).send({
+		return res.status(200).send({
 			success: true,
 			data: { ...checkExistingUser._doc, token },
 			msg: ` Login Successfully`,
 		});
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -99,7 +98,7 @@ const adminUserList = async (req, res) => {
 	try {
 		const { data, totalCount } = await adminUserService.findAllQuery(req.query);
 		if (data) {
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: ADMINUSER.GET_SUCCESS,
 				total: totalCount,
@@ -110,7 +109,7 @@ const adminUserList = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -137,7 +136,7 @@ const adminUserUpdate = async (req, res) => {
 				update,
 			);
 			if (!updateAdminUser) throw new Error(ADMINUSER.UPDATE_FAILED);
-			res.status(SUCCESS).json({
+			return res.status(SUCCESS).json({
 				success: true,
 				message: ADMINUSER.UPDATE_SUCCESS,
 				data: [],
@@ -145,7 +144,7 @@ const adminUserUpdate = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -173,7 +172,7 @@ const adminUserStatus = async (req, res) => {
 				update,
 			);
 			if (!updateAdminUser) throw new Error('status is not updated');
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: 'status update successfully',
 				data: [],
@@ -181,7 +180,7 @@ const adminUserStatus = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -208,7 +207,7 @@ const adminUserDelete = async (req, res) => {
 				update,
 			);
 			if (!updateAdminUser) throw new Error('status is not updated');
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: 'status update successfully',
 				data: [],
@@ -216,7 +215,7 @@ const adminUserDelete = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -250,7 +249,7 @@ const adminUserChangePassword = async (req, res) => {
 			);
 			if (passwordChange) {
 				await notification.createNotification('changePassword', data);
-				res.status(SUCCESS).send({
+				return res.status(SUCCESS).send({
 					success: true,
 					msg: ADMINUSER.PASSWORD_CHANGED,
 					data: [],
@@ -263,7 +262,7 @@ const adminUserChangePassword = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -278,9 +277,7 @@ const forgetPassword = async (req, res) => {
 		if (!checkExistingUser) {
 			throw new Error(ADMINUSER.USER_NOT_AVAILABLE);
 		} else {
-			
-		
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: 'Mail send successfully',
 				data: [],
@@ -288,7 +285,7 @@ const forgetPassword = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -313,7 +310,7 @@ const resetPassword = async (req, res) => {
 			update,
 		);
 		if (updateAdminUser) {
-			res.status(SUCCESS).json({
+			return res.status(SUCCESS).json({
 				success: false,
 				msg: error.message || FAILED_RESPONSE,
 			});
@@ -322,7 +319,7 @@ const resetPassword = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
