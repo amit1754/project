@@ -1,10 +1,14 @@
 import { set, connect, connection } from 'mongoose';
 require('dotenv').config({ path: 'src/config/.env' });
 import { redBright, greenBright, yellowBright } from 'chalk';
+import { ENV } from '../constants';
+const {
+	DATABASE: { MONGO_URI, MONGO_DB_NAME },
+} = ENV;
 
 // Database Name & URL
-export const CONNECTION_URL = process.env.MONGO_URI;
-export const DATABASE_NAME = process.env.MONGO_DB_NAME;
+export const CONNECTION_URL = MONGO_URI;
+export const DATABASE_NAME = MONGO_DB_NAME;
 
 const connectMongoDB = async () => {
 	try {

@@ -86,6 +86,7 @@ const adminUserLogin = async (req, res) => {
 			msg: ` Login Successfully`,
 		});
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,

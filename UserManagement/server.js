@@ -8,10 +8,15 @@ import serveIndex from 'serve-index';
 import { greenBright, cyanBright } from 'chalk';
 import './src/config/dbConnection';
 import routes from './src/routes';
+import { ENV } from './src/constants';
+
 // import roleSeed from './src/dbSeed/Role';
 // import userSeed from './src/dbSeed/Users';
 // import PermissionsSeed from './src/dbSeed/Permissions';
 require('dotenv').config({ path: 'src/config/.env' });
+const {
+	SERVER: { PORT },
+} = ENV;
 const server = express();
 
 // anonymous function for seed
@@ -21,12 +26,10 @@ const server = express();
 // 	// role for super user seed
 // 	await roleSeed();
 
-// 	// seed for super user
-// 	await await userSeed();
+// 	// // seed for super user
+// 	await userSeed();
 // })();
 
-console.log('process.env.PORT', process.env.PORT);
-const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const FILE_PATH = process.env.FILE_PATH || 'uploads';
 
@@ -61,11 +64,11 @@ server.use('/api/v1', routes);
 server.use('/**', (_req, res) => {
 	res.status(404).json({
 		success: false,
-		error: '404 Route not found',
+		message: 'Not Found' + _req.baseUrl,
 	});
 });
 
-server.listen(PORT, () => {
+server.listen(PORT || 3002, () => {
 	console.info(cyanBright('API Running at'));
 	console.info(cyanBright(`${greenBright('\tLocalhost:')} ${BASE_API_URL}`));
 	console.info(cyanBright(`${greenBright('\tLAN:')} ${NETWORK_BASE_API_URL}`));

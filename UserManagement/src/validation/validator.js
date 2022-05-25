@@ -61,6 +61,13 @@ function drCreateValidator(req, res, next) {
 	});
 	validateRequest(req, res, next, schema);
 }
+function VerifyDrValidator(req, res, next) {
+	const schema = Joi.object({
+		email: Joi.string().email().required(),
+		otp: Joi.number().required(),
+	});
+	validateRequest(req, res, next, schema);
+}
 export default {
 	permissionsValidator,
 	roleValidator,
@@ -70,4 +77,5 @@ export default {
 	forgetPasswordValidation,
 	resetPasswordValidation,
 	drCreateValidator,
+	VerifyDrValidator,
 };

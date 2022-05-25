@@ -1,12 +1,10 @@
 import sgMail from '@sendgrid/mail';
-sgMail.setApiKey(
-	'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',
-);
-// import { mailLoggerModel } from '../models';
-import { CONSTANTS } from '../constants';
+import { ENV } from '../constants';
 const {
-	MAIL_STATUS: { FAILED },
-} = CONSTANTS;
+	SENDGRID: { API_KEY },
+} = ENV;
+sgMail.setApiKey(API_KEY);
+// import { mailLoggerModel } from '../models';
 const sendMail = async (to, from, subject, html) => {
 	try {
 		const sendMailObj = {
