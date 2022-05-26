@@ -4,7 +4,7 @@ import { CONSTANTS } from '../../constants';
 import { errorLogger } from '../../utils';
 import { isValidObjectId } from 'mongoose';
 const {
-	RESPONSE_MESSAGE: { PERMISSIONS, FAILED_RESPONSE,INVALID_OBJECTID },
+	RESPONSE_MESSAGE: { PERMISSIONS, FAILED_RESPONSE, INVALID_OBJECTID },
 	STATUS_CODE: { SUCCESS, FAILED },
 } = CONSTANTS;
 
@@ -23,7 +23,7 @@ const createPermission = async (req, res) => {
 		if (saveResponse) {
 			const updateRole = await roleService.updatePermission(saveResponse._id);
 			if (updateRole) {
-				res.status(SUCCESS).send({
+				return res.status(SUCCESS).send({
 					success: true,
 					msg: PERMISSIONS.CREATE_SUCCESS,
 					data: [],
@@ -39,7 +39,7 @@ const createPermission = async (req, res) => {
 			error.message = PERMISSIONS.ALREADY_AVAILABLE;
 		}
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -52,7 +52,7 @@ const getPermission = async (req, res) => {
 			req.query,
 		);
 		if (data) {
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: PERMISSIONS.GET_SUCCESS,
 				total: totalCount,
@@ -63,7 +63,7 @@ const getPermission = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -82,17 +82,17 @@ const updatePermission = async (req, res) => {
 		if (data.length === 1) {
 			let update = { ...req.body };
 			const updateData = await permissionService.updateOneQuery(filter, update);
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: PERMISSIONS.UPDATE_SUCCESS,
-				data:updateData,
+				data: updateData,
 			});
 		} else {
 			throw new Error(PERMISSIONS.UPDATE_FAILED);
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -108,7 +108,7 @@ const deletePermission = async (req, res) => {
 		}
 		const data = await permissionService.deleteOneQuery(id);
 		if (data) {
-			res.status(SUCCESS).send({
+			return res.status(SUCCESS).send({
 				success: true,
 				msg: PERMISSIONS.DELETE_SUCCESS,
 				data: [],
@@ -118,7 +118,7 @@ const deletePermission = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
 		});

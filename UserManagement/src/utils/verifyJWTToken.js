@@ -1,10 +1,11 @@
 import { verify } from 'jsonwebtoken';
-require('dotenv').config({ path: 'src/config/.env' });
-
-const secret = process.env.JWT_ACCOUNT_ACTIVATION;
+import { ENV } from '../constants';
+const {
+	JWT: { ACCOUNT_ACTIVATION },
+} = ENV;
 
 const verifyJWTToken = (token) => {
-	const verifyToken = verify(token, secret);
+	const verifyToken = verify(token, ACCOUNT_ACTIVATION);
 	return verifyToken;
 };
 

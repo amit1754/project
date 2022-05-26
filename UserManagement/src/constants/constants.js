@@ -9,11 +9,19 @@ export default {
 		FAILED: 400,
 		UNAUTHORIZED: 401,
 	},
+	MAIL_SUBJECT: {
+		REGISTER_MAIL: 'Curific Application Registration',
+		FORGET_PASSWORD_EMAIL: 'Curific Application Forget Password',
+	},
+	MAIL_STATUS: {
+		SUCCESS: 'SUCCESS',
+		FAILED: 'FAILED',
+	},
 
 	RESPONSE_MESSAGE: {
 		INVALID_OBJECTID: 'ID IS INVALID',
 		FAILED_RESPONSE: 'failed',
-	
+
 		PERMISSIONS: {
 			CREATE_SUCCESS: 'Permissions created successfully',
 			CREATE_FAILED: 'Permissions creating failed',
@@ -63,6 +71,15 @@ export default {
 			USER_NOT_FOUND: 'No User Found With That Token',
 			SESSION_EXPIRY: 'Session ended',
 		},
-		
+		DR_USER: {
+			CREATE_SUCCESS: 'Doctor created successfully',
+			CREATE_FAILED: 'Doctor creating failed',
+			UPDATE_SUCCESS: 'Doctor update successfully',
+			UPDATE_FAILED: 'Doctor updating failed',
+			GET_SUCCESS: 'Doctor get successfully',
+			GET_FAILED: 'Doctor is not available',
+			DELETE_SUCCESS: 'Doctor delete successfully',
+			DELETE_FAILED: 'Doctor deletion failed',
+		},
 	},
 };

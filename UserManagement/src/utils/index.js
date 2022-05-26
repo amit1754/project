@@ -6,4 +6,5 @@ export { default as errorLogger } from './errorLogger';
 export { default as hashPassword } from './hashPassword';
 export { default as generatePassword } from './generatePassword';
 export { default as comparePassword } from './comparePassword';
-export { default as notification } from './notification';
+export { default as otpGenerator } from './otpGenerator';
+export { default as sendMail } from './sendMail';
