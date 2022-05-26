@@ -1,7 +1,7 @@
 import { drModel } from '../models';
 import { CONSTANTS, ENV } from '../constants';
 import { errorLogger, otpGenerator } from '../utils';
-import { sendMail } from '../utils';
+import { sendMail, hashPassword } from '../utils';
 const {
 	RESPONSE_MESSAGE: { DR_USER, FAILED_RESPONSE, INVALID_OBJECTID },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -12,12 +12,17 @@ const {
 const createDr = async (req, res) => {
 	try {
 		const createOtp = otpGenerator();
+		const { password } = req.body;
+		const { hashedPassword, salt } = hashPassword(password);
 		const insertObj = {
 			...req.body,
 			otp: createOtp,
+			password: hashedPassword,
+			salt,
 		};
 		const saveDr = new drModel(insertObj);
 		const saveResponse = await saveDr.save();
+
 		if (saveResponse) {
 			const html = `
 				Hello ${saveResponse?.name} ,
@@ -60,7 +65,7 @@ const verifyOtp = async (req, res) => {
 		const findDr = await drModel.findOne({ email, isEnabled: false });
 		if (findDr) {
 			if (findDr.otp === otp) {
-				const updateDr = await drModel.findOneAndUpdate(
+				await drModel.findOneAndUpdate(
 					{ email },
 					{ $set: { isEnabled: true } },
 					{ new: true },
@@ -137,9 +142,36 @@ const deleteDr = async (req, res) => {
 		});
 	}
 };
+const loginDr = async (req, res) => {
+	try {
+		const { email, password } = req.body;
+		const findDr = await drModel.findOne({ email, isEnabled: true });
+		if (findDr) {
+			if (findDr.password === password) {
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: DR_USER.LOGIN_SUCCESS,
+					data: [findDr],
+				});
+			} else {
+				throw new Error(DR_USER.LOGIN_FAILED);
+			}
+		} else {
+			throw new Error(DR_USER.LOGIN_FAILED);
+		}
+	} catch (error) {
+		errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
 
 export default {
 	createDr,
 	verifyOtp,
 	updateProfile,
+	deleteDr,
+	loginDr,
 };
