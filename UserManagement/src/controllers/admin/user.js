@@ -9,7 +9,7 @@ import {
 } from '../../utils';
 import { isValidObjectId } from 'mongoose';
 const {
-	RESPONSE_MESSAGE: { ADMINUSER, FAILED_RESPONSE, INVALID_OBJECTID },
+	RESPONSE_MESSAGE: { ADMIN_USER, FAILED_RESPONSE, INVALID_OBJECTID },
 	STATUS_CODE: { SUCCESS, FAILED },
 } = CONSTANTS;
 const adminUserCreate = async (req, res) => {
@@ -21,7 +21,7 @@ const adminUserCreate = async (req, res) => {
 			orQuery: true,
 		});
 		if (checkExistingUser) {
-			throw new Error(ADMINUSER.USER_AVAILABLE);
+			throw new Error(ADMIN_USER.USER_AVAILABLE);
 		}
 		const passwordGenerate = generatePassword();
 		const { hashedPassword, salt } = await hashPassword(passwordGenerate);
@@ -36,11 +36,11 @@ const adminUserCreate = async (req, res) => {
 		if (saveResponse) {
 			return res.status(SUCCESS).send({
 				success: true,
-				msg: ADMINUSER.CREATE_SUCCESS,
+				msg: ADMIN_USER.CREATE_SUCCESS,
 				data: [],
 			});
 		} else {
-			throw new Error(ADMINUSER.CREATE_FAILED);
+			throw new Error(ADMIN_USER.CREATE_FAILED);
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
@@ -60,14 +60,14 @@ const adminUserLogin = async (req, res) => {
 		});
 		// check user is exist or not
 		if (!checkExistingUser) {
-			throw new Error(ADMINUSER.NOT_ADMINUSER);
+			throw new Error(ADMIN_USER.NOT_ADMIN_USER);
 		}
 		// check user attribute
 		if (
 			checkExistingUser.isEnabled === false ||
 			checkExistingUser.deletedAt != null
 		) {
-			throw new Error(ADMINUSER.LOGIN_SUSPEND);
+			throw new Error(ADMIN_USER.LOGIN_SUSPEND);
 		}
 		const verifyPassword = await comparePassword(
 			password,
@@ -86,7 +86,6 @@ const adminUserLogin = async (req, res) => {
 			msg: ` Login Successfully`,
 		});
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -101,12 +100,12 @@ const adminUserList = async (req, res) => {
 		if (data) {
 			return res.status(SUCCESS).send({
 				success: true,
-				msg: ADMINUSER.GET_SUCCESS,
+				msg: ADMIN_USER.GET_SUCCESS,
 				total: totalCount,
 				data,
 			});
 		} else {
-			throw new Error(ADMINUSER.GET_FAILED);
+			throw new Error(ADMIN_USER.GET_FAILED);
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
@@ -126,7 +125,7 @@ const adminUserUpdate = async (req, res) => {
 		}
 		let filter = { _id: id };
 		const { data } = await adminUserService.findAllQuery(filter);
-		if (data.length != 1) throw new Error(ADMINUSER.NOT_ADMINUSER);
+		if (data.length != 1) throw new Error(ADMIN_USER.NOT_ADMIN_USER);
 
 		if (data[0].role.name === 'SUPER_USER') {
 			throw new Error('Super User cannot update');
@@ -136,10 +135,10 @@ const adminUserUpdate = async (req, res) => {
 				filter,
 				update,
 			);
-			if (!updateAdminUser) throw new Error(ADMINUSER.UPDATE_FAILED);
+			if (!updateAdminUser) throw new Error(ADMIN_USER.UPDATE_FAILED);
 			return res.status(SUCCESS).json({
 				success: true,
-				message: ADMINUSER.UPDATE_SUCCESS,
+				message: ADMIN_USER.UPDATE_SUCCESS,
 				data: [],
 			});
 		}
@@ -162,7 +161,7 @@ const adminUserStatus = async (req, res) => {
 		}
 		let filter = { _id: id };
 		const { data } = await adminUserService.findAllQuery(filter);
-		if (data.length != 1) throw new Error(ADMINUSER.NOT_ADMINUSER);
+		if (data.length != 1) throw new Error(ADMIN_USER.NOT_ADMIN_USER);
 
 		if (data[0].role.name === 'SUPER_USER') {
 			throw new Error('Super User cannot update');
@@ -197,7 +196,7 @@ const adminUserDelete = async (req, res) => {
 		}
 		let filter = { _id: id };
 		const { data } = await adminUserService.findAllQuery(filter);
-		if (data.length != 1) throw new Error(ADMINUSER.NOT_ADMINUSER);
+		if (data.length != 1) throw new Error(ADMIN_USER.NOT_ADMIN_USER);
 
 		if (data[0].role.name === 'SUPER_USER') {
 			throw new Error('Super User cannot update');
@@ -231,7 +230,7 @@ const adminUserChangePassword = async (req, res) => {
 
 		let filter = { _id };
 		const { data } = await adminUserService.findAllQuery(filter);
-		if (data.length != 1) throw new Error(ADMINUSER.NOT_ADMINUSER);
+		if (data.length != 1) throw new Error(ADMIN_USER.NOT_ADMIN_USER);
 
 		const comparePass = await comparePassword(
 			oldPassword,
@@ -251,17 +250,16 @@ const adminUserChangePassword = async (req, res) => {
 			if (passwordChange) {
 				res.status(SUCCESS).send({
 					success: true,
-					msg: ADMINUSER.PASSWORD_CHANGED,
+					msg: ADMIN_USER.PASSWORD_CHANGED,
 					data: [],
 				});
 			} else {
-				throw new Error(ADMINUSER.PASSWORD_NOT_CHANGED);
+				throw new Error(ADMIN_USER.PASSWORD_NOT_CHANGED);
 			}
 		} else {
 			throw new Error('Password is invalid');
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -276,7 +274,7 @@ const forgetPassword = async (req, res) => {
 			email,
 		});
 		if (!checkExistingUser) {
-			throw new Error(ADMINUSER.USER_NOT_AVAILABLE);
+			throw new Error(ADMIN_USER.USER_NOT_AVAILABLE);
 		} else {
 			return res.status(SUCCESS).send({
 				success: true,

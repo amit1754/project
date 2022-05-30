@@ -4,7 +4,6 @@ const {
 	SENDGRID: { API_KEY },
 } = ENV;
 sgMail.setApiKey(API_KEY);
-// import { mailLoggerModel } from '../models';
 const sendMail = async (to, from, subject, html) => {
 	try {
 		const sendMailObj = {
@@ -13,6 +12,7 @@ const sendMail = async (to, from, subject, html) => {
 			subject,
 			html,
 		};
+
 		const sendEmail = await sgMail.send(sendMailObj);
 
 		return sendEmail;

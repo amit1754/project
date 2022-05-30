@@ -23,6 +23,7 @@ function adminUserValidation(req, res, next) {
 		email: Joi.string().email().required(),
 		role: Joi.string().required(),
 		profileImage: Joi.string().optional(),
+		mobileNumber: Joi.string().required(),
 	});
 	validateRequest(req, res, next, schema);
 }
@@ -59,6 +60,7 @@ function drCreateValidator(req, res, next) {
 		email: Joi.string().email().required(),
 		mobileNumber: Joi.string().required(),
 		password: Joi.string().required(),
+		type: Joi.string().required(),
 	});
 	validateRequest(req, res, next, schema);
 }
@@ -66,6 +68,7 @@ function VerifyDrValidator(req, res, next) {
 	const schema = Joi.object({
 		email: Joi.string().email().required(),
 		otp: Joi.number().required(),
+		type: Joi.string().required(),
 	});
 	validateRequest(req, res, next, schema);
 }

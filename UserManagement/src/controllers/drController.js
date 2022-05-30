@@ -1,54 +1,68 @@
-import { drModel } from '../models';
-import { CONSTANTS, ENV } from '../constants';
-import { errorLogger, otpGenerator } from '../utils';
-import { sendMail, hashPassword } from '../utils';
+import { drModel, customerModel } from '../models';
+import { CONSTANTS } from '../constants';
+import { errorLogger, otpGenerator, SendEmail } from '../utils';
+import { hashPassword } from '../utils';
 const {
-	RESPONSE_MESSAGE: { DR_USER, FAILED_RESPONSE, INVALID_OBJECTID },
+	RESPONSE_MESSAGE: { DR_USER, FAILED_RESPONSE, CUSTOMER_MESSAGE },
 	STATUS_CODE: { SUCCESS, FAILED },
+	USER_TYPE: { CUSTOMER },
 } = CONSTANTS;
-const {
-	SENDGRID: { EMAIL },
-} = ENV;
+
 const createDr = async (req, res) => {
 	try {
 		const createOtp = otpGenerator();
-		const { password } = req.body;
-		const { hashedPassword, salt } = hashPassword(password);
+		const { email, password, type } = req.body;
+		const { hashedPassword, salt } = await hashPassword(password);
+
 		const insertObj = {
 			...req.body,
 			otp: createOtp,
 			password: hashedPassword,
-			salt,
+			salt: salt,
 		};
-		const saveDr = new drModel(insertObj);
-		const saveResponse = await saveDr.save();
 
-		if (saveResponse) {
-			const html = `
-				Hello ${saveResponse?.name} ,
-					Otp: ${createOtp}`;
-
-			// Send Confirm Account Email
-			const sendEmail = await sendMail(
-				req.body.email,
-				EMAIL,
-				'register with curific',
-				html,
-			);
-			console.log('sendEmail', sendEmail);
-			if (sendEmail[0].statusCode != 202) {
-				throw new Error('mail is not send');
+		if (type === CUSTOMER) {
+			const findCustomer = await customerModel.findOne({ email });
+			if (findCustomer) {
+				throw new Error(CUSTOMER_MESSAGE.USER_AVAILABLE);
+			} else {
+				const customer = new customerModel(insertObj);
+				const saveCustomer = await customer.save();
+				if (saveCustomer) {
+					await SendEmail.sendRegisterEmail(
+						email,
+						createOtp,
+						saveCustomer.name,
+					);
+					return res.status(SUCCESS).send({
+						success: true,
+						msg: CUSTOMER_MESSAGE.CREATE_SUCCESS,
+						data: [],
+					});
+				} else {
+					throw new Error(CUSTOMER_MESSAGE.CREATE_FAILED);
+				}
 			}
-			return res.status(SUCCESS).send({
-				success: true,
-				msg: DR_USER.CREATE_SUCCESS,
-				data: [],
-			});
 		} else {
-			throw new Error(DR_USER.CREATE_FAILED);
+			const saveDr = new drModel(insertObj);
+			const saveResponse = await saveDr.save();
+
+			if (saveResponse) {
+				await SendEmail.sendRegisterEmail(
+					insertObj.email,
+					createOtp,
+					saveResponse.name,
+				);
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: DR_USER.CREATE_SUCCESS,
+					data: [],
+				});
+			} else {
+				throw new Error(DR_USER.CREATE_FAILED);
+			}
 		}
 	} catch (error) {
-		console.log('error', error);
 		if (error.code === 11000) {
 			error.message = DR_USER.ALREADY_AVAILABLE;
 		}
@@ -61,27 +75,48 @@ const createDr = async (req, res) => {
 };
 const verifyOtp = async (req, res) => {
 	try {
-		const { otp, email } = req.body;
-		const findDr = await drModel.findOne({ email, isEnabled: false });
-		if (findDr) {
-			if (findDr.otp === otp) {
-				await drModel.findOneAndUpdate(
-					{ email },
-					{ $set: { isEnabled: true } },
-					{ new: true },
-				);
+		const { otp, email, type } = req.body;
+		console.log('type', type);
+		if (type === CUSTOMER) {
+			console.log('email, otp: Number(otp)', email, Number(otp));
+			const findAndVerify = await drModel.findOne(
+				{ email, otp: Number(otp) },
+				// { $set: { otp: '', isEnabled: true } },
+				// { new: true },
+			);
+			console.log('findAndVerify', findAndVerify);
+			if (findAndVerify) {
 				return res.status(SUCCESS).send({
 					success: true,
-					msg: DR_USER.VERIFY_SUCCESS,
+					msg: CUSTOMER_MESSAGE.VERIFY_SUCCESS,
 					data: [],
 				});
 			} else {
-				throw new Error(DR_USER.VERIFY_FAILED);
+				throw new Error(CUSTOMER_MESSAGE.VERIFY_FAILED);
 			}
 		} else {
-			throw new Error(DR_USER.VERIFY_FAILED);
+			const findDr = await drModel.findOne({ email, isEnabled: false });
+			if (findDr) {
+				if (findDr.otp === otp) {
+					await drModel.findOneAndUpdate(
+						{ email },
+						{ $set: { isEnabled: true } },
+						{ new: true },
+					);
+					return res.status(SUCCESS).send({
+						success: true,
+						msg: DR_USER.VERIFY_SUCCESS,
+						data: [],
+					});
+				} else {
+					throw new Error(DR_USER.VERIFY_FAILED);
+				}
+			} else {
+				throw new Error(DR_USER.VERIFY_FAILED);
+			}
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
