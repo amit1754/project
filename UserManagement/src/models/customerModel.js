@@ -24,6 +24,7 @@ const drModel = new Schema(
 		otp: {
 			type: Number,
 			required: true,
+			default: null,
 		},
 		gender: {
 			type: String,

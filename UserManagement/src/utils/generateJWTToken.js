@@ -1,10 +1,10 @@
 import { sign } from 'jsonwebtoken';
-require('dotenv').config({ path: 'src/config/.env' });
+import { ENV } from '../constants';
 
-const secret = process.env.JWT_ACCOUNT_ACTIVATION;
+const secret = ENV.JWT.SECRET;
 
-const generateJWTToken = (id, expiry) => {
-	const token = sign({ sub: id }, secret, { expiresIn: '7d' });
+const generateJWTToken = (id, type) => {
+	const token = sign({ sub: id, type }, secret, { expiresIn: '7d' });
 	return token;
 };
 

@@ -6,6 +6,5 @@ router.post('/create', validator.drCreateValidator, drController.createDr);
 router.post('/verify-otp', validator.VerifyDrValidator, drController.verifyOtp);
 router.post('/update', drController.updateProfile);
 router.post('/delete/:id', drController.deleteDr);
-router.post('/login', drController.loginDr);
 
 module.exports = router;

@@ -13,7 +13,7 @@ import { ENV } from './src/constants';
 // import roleSeed from './src/dbSeed/Role';
 // import userSeed from './src/dbSeed/Users';
 // import PermissionsSeed from './src/dbSeed/Permissions';
-require('dotenv').config({ path: 'src/config/.env' });
+
 const {
 	SERVER: { PORT },
 } = ENV;

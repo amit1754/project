@@ -82,6 +82,7 @@ export default {
 			LOGIN_SUSPEND: 'user is suspending',
 			PASSWORD_CHANGED: 'Password is changed successfully',
 			PASSWORD_NOT_CHANGED: 'Password is not changed',
+			VERIFY_OTP: 'Otp is send into email',
 		},
 		AUTH_MIDDLEWARE: {
 			UNAUTHORIZED: 'You can not access this resource',
@@ -100,6 +101,7 @@ export default {
 			GET_FAILED: 'Doctor is not available',
 			DELETE_SUCCESS: 'Doctor delete successfully',
 			DELETE_FAILED: 'Doctor deletion failed',
+			VERIFY_OTP: 'Otp is send into email',
 		},
 	},
 };
