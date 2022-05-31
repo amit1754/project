@@ -17,6 +17,10 @@ export default {
 		SUCCESS: 'SUCCESS',
 		FAILED: 'FAILED',
 	},
+	USER_TYPE: {
+		DR: 'DR',
+		CUSTOMER: 'CUSTOMER',
+	},
 
 	RESPONSE_MESSAGE: {
 		INVALID_OBJECTID: 'ID IS INVALID',
@@ -47,7 +51,7 @@ export default {
 			USER_AVAILABLE:
 				'Many user has available with this role. please remove user from the role and then after deletion',
 		},
-		ADMINUSER: {
+		ADMIN_USER: {
 			CREATE_SUCCESS: 'Admin user created successfully',
 			CREATE_FAILED: 'Admin user creating failed',
 			UPDATE_SUCCESS: 'Admin user update successfully',
@@ -56,12 +60,29 @@ export default {
 			GET_FAILED: 'Admin user is not available',
 			DELETE_SUCCESS: 'Admin user delete successfully',
 			DELETE_FAILED: 'Admin user deletion failed',
-			NOT_ADMINUSER: 'Admin user is not available',
-			USER_AVAILABLE: 'Admin user is already registered',
+			NOT_ADMIN_USER: 'Admin user is not available',
+			USER_AVAILABLE: ' User is already registered',
 			USER_NOT_AVAILABLE: 'Admin user is not available',
 			LOGIN_SUSPEND: 'user is suspending',
 			PASSWORD_CHANGED: 'Password is changed successfully',
 			PASSWORD_NOT_CHANGED: 'Password is not changed',
+		},
+		CUSTOMER_MESSAGE: {
+			CREATE_SUCCESS: 'User created successfully',
+			CREATE_FAILED: 'User creating failed',
+			UPDATE_SUCCESS: 'User update successfully',
+			UPDATE_FAILED: 'User updating failed',
+			GET_SUCCESS: 'User get successfully',
+			GET_FAILED: 'User is not available',
+			DELETE_SUCCESS: 'User delete successfully',
+			DELETE_FAILED: 'User deletion failed',
+			NOT_CUSTOMER_USER: 'User is not available',
+			USER_AVAILABLE: 'User is already registered',
+			USER_NOT_AVAILABLE: 'User is not available',
+			LOGIN_SUSPEND: 'user is suspending',
+			PASSWORD_CHANGED: 'Password is changed successfully',
+			PASSWORD_NOT_CHANGED: 'Password is not changed',
+			VERIFY_OTP: 'Otp is send into email',
 		},
 		AUTH_MIDDLEWARE: {
 			UNAUTHORIZED: 'You can not access this resource',
@@ -80,6 +101,7 @@ export default {
 			GET_FAILED: 'Doctor is not available',
 			DELETE_SUCCESS: 'Doctor delete successfully',
 			DELETE_FAILED: 'Doctor deletion failed',
+			VERIFY_OTP: 'Otp is send into email',
 		},
 	},
 };

@@ -5,6 +5,6 @@ const router = express.Router();
 router.post('/create', validator.drCreateValidator, drController.createDr);
 router.post('/verify-otp', validator.VerifyDrValidator, drController.verifyOtp);
 router.post('/update', drController.updateProfile);
-router.post('/login', drController.loginDr);
+router.post('/delete/:id', drController.deleteDr);
 
 module.exports = router;
