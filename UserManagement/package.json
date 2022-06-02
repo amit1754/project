@@ -34,6 +34,7 @@
 		"prettier": "^2.2.1"
 	},
 	"dependencies": {
+		"@material-ui/icons": "^4.11.3",
 		"@mongoosejs/double": "^0.2.0",
 		"aws-sdk": "^2.987.0",
 		"axios": "^0.21.1",
