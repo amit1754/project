@@ -23,7 +23,7 @@ function adminUserValidation(req, res, next) {
 		email: Joi.string().email().required(),
 		role: Joi.string().required(),
 		profileImage: Joi.string().optional(),
-		mobileNumber: Joi.string().required(),
+		mobileNumber: Joi.string().optional(),
 	});
 	validateRequest(req, res, next, schema);
 }
