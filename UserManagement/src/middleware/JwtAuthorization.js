@@ -14,7 +14,6 @@ const JwtAuthorization = async (req, res, next) => {
 				? authorization.slice(7, authorization.length)
 				: authorization;
 		const verifyToken = jwtVerify(token);
-		
 
 		if (!verifyToken) throw new Error(AUTH_MIDDLEWARE.TOKEN_INVALID);
 
@@ -24,15 +23,17 @@ const JwtAuthorization = async (req, res, next) => {
 			throw new Error(AUTH_MIDDLEWARE.SESSION_EXPIRY);
 		}
 		const { data } = await adminUserService.findAllQuery({
-			
 			_id: verifyToken.sub,
 		});
+
 		if (data.length == 1) {
 			const endpoint = req.route.path;
 			let splitBaseUrl = req.baseUrl.split('/');
 			const baseUrl = splitBaseUrl[splitBaseUrl.length - 1];
 			let urlPath = baseUrl + endpoint;
+			console.log('urlPath', urlPath);
 			const permissions = data[0]?.role?.permissions;
+			console.log('permissions', permissions);
 
 			const checkPermissions = permissions
 				.map((x) => x.path === urlPath)
@@ -41,7 +42,6 @@ const JwtAuthorization = async (req, res, next) => {
 			if (checkPermissions === -1) {
 				throw new Error(AUTH_MIDDLEWARE.UNAUTHORIZED);
 			} else {
-				
 				req.currentUser = data[0];
 				next();
 			}

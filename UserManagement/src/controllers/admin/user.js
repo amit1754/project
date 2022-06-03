@@ -1,11 +1,12 @@
 import { adminUserService } from '../../mongoServices';
+import { adminUserModel } from '../../models';
 import { CONSTANTS } from '../../constants';
 import {
 	errorLogger,
 	hashPassword,
 	comparePassword,
 	jwtGenerate,
-	notification,
+	generatePassword,
 } from '../../utils';
 import { isValidObjectId } from 'mongoose';
 const {
@@ -31,7 +32,7 @@ const adminUserCreate = async (req, res) => {
 			salt,
 		};
 
-		const adminUserSave = new adminUserDelete(insetObj);
+		const adminUserSave = new adminUserModel(insetObj);
 		const saveResponse = await adminUserSave.save();
 		if (saveResponse) {
 			return res.status(SUCCESS).send({
@@ -196,9 +197,11 @@ const adminUserDelete = async (req, res) => {
 		}
 		let filter = { _id: id };
 		const { data } = await adminUserService.findAllQuery(filter);
+		console.log('data', data);
 		if (data.length != 1) throw new Error(ADMIN_USER.NOT_ADMIN_USER);
+		console.log('data', data);
 
-		if (data[0].role.name === 'SUPER_USER') {
+		if (data[0].role === 'SUPER_USER') {
 			throw new Error('Super User cannot update');
 		} else {
 			let update = { deletedAt: new Date() };
@@ -209,11 +212,12 @@ const adminUserDelete = async (req, res) => {
 			if (!updateAdminUser) throw new Error('status is not updated');
 			return res.status(SUCCESS).send({
 				success: true,
-				msg: 'status update successfully',
+				msg: 'User delete  successfully',
 				data: [],
 			});
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,

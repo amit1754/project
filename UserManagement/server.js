@@ -8,7 +8,10 @@ import serveIndex from 'serve-index';
 import { greenBright, cyanBright } from 'chalk';
 import './src/config/dbConnection';
 import routes from './src/routes';
+import fs from 'fs';
 import { ENV } from './src/constants';
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 // import roleSeed from './src/dbSeed/Role';
 // import userSeed from './src/dbSeed/Users';
@@ -61,6 +64,7 @@ const BASE_API_URL = `http://${HOST}:${PORT}/api/v1/`;
 const NETWORK_BASE_API_URL = `http://${ip.address()}:${PORT}/api/v1/`;
 
 server.use('/api/v1', routes);
+server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 server.use('/**', (_req, res) => {
 	res.status(404).json({
 		success: false,
@@ -69,6 +73,7 @@ server.use('/**', (_req, res) => {
 });
 
 server.listen(PORT || 3002, () => {
+	3000;
 	console.info(cyanBright('API Running at'));
 	console.info(cyanBright(`${greenBright('\tLocalhost:')} ${BASE_API_URL}`));
 	console.info(cyanBright(`${greenBright('\tLAN:')} ${NETWORK_BASE_API_URL}`));

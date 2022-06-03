@@ -6,7 +6,7 @@ export default {
 	},
 	STATUS_CODE: {
 		SUCCESS: 200,
-		FAILED: 400,
+		FAILED: 500,
 		UNAUTHORIZED: 401,
 	},
 	MAIL_SUBJECT: {
