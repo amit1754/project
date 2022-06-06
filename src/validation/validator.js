@@ -72,6 +72,16 @@ function VerifyDrValidator(req, res, next) {
 	});
 	validateRequest(req, res, next, schema);
 }
+function specialityCreateValidator(req, res, next) {
+	const schema = Joi.object({
+		name: Joi.string().required(),
+		price: Joi.number().required(),
+		time: Joi.string().required(),
+		image: Joi.string().required(),
+	});
+	validateRequest(req, res, next, schema);
+}
+
 export default {
 	permissionsValidator,
 	roleValidator,
@@ -82,4 +92,5 @@ export default {
 	resetPasswordValidation,
 	drCreateValidator,
 	VerifyDrValidator,
+	specialityCreateValidator,
 };

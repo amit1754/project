@@ -103,5 +103,15 @@ export default {
 			DELETE_FAILED: 'Doctor deletion failed',
 			VERIFY_OTP: 'Otp is send into email',
 		},
+		SPECIALITY:{
+			CREATE_SUCCESS: 'Speciality created successfully',
+			CREATE_FAILED: 'Speciality creating failed',
+			UPDATE_SUCCESS: 'Speciality update successfully',
+			UPDATE_FAILED: 'Speciality updating failed',
+			GET_SUCCESS: 'Speciality get successfully',
+			GET_FAILED: 'Speciality is not available',
+			DELETE_SUCCESS: 'Speciality delete successfully',
+			DELETE_FAILED: 'Speciality deletion failed',
+		}
 	},
 };
