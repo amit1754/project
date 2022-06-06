@@ -2,23 +2,26 @@ import { adminUserModel } from '../../models';
 
 const userQuery = async (filter, projection) => {
 	let query = {
-		$or: [{ name: filter.name }, { email: filter.email }],
+		email: filter.email,
 	};
-	filter = filter && filter.orQuery ? query : filter;
+	filter = filter ? query : filter;
 	let isPopulate = filter.populate,
 		data;
 	delete filter.populate;
 	if (isPopulate) {
-		data = await adminUserModel.findOne(filter, projection).populate({
-			path: 'role',
-			select: 'isEnabled deletedAt permissions name',
-			populate: {
-				path: 'permissions',
-				select: 'displayName _id path',
-			},
-		});
+		data = await adminUserModel
+			.findOne(filter, projection)
+			.populate({
+				path: 'role',
+				select: 'isEnabled deletedAt permissions name',
+				populate: {
+					path: 'permissions',
+					select: 'displayName _id path',
+				},
+			})
+			.lean();
 	} else {
-		data = await adminUserModel.findOne(filter, projection);
+		data = await adminUserModel.findOne(filter, projection).lean();
 	}
 	return data;
 };

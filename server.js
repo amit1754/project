@@ -44,7 +44,7 @@ server.use(urlencoded({ extended: true }));
 /** CORS */
 
 var corsOptions = {
-	origin: 'http://localhost:3000',
+	origin: 'http://localhost:3090',
 };
 server.use(cors(corsOptions));
 /** API LOG */

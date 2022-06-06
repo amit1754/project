@@ -59,6 +59,7 @@ const adminUserLogin = async (req, res) => {
 			email,
 			populate: true,
 		});
+		console.log('checkExistingUser', checkExistingUser);
 		// check user is exist or not
 		if (!checkExistingUser) {
 			throw new Error(ADMIN_USER.NOT_ADMIN_USER);
@@ -76,14 +77,17 @@ const adminUserLogin = async (req, res) => {
 		);
 		if (!verifyPassword) throw new Error('Email or Password is incorrect');
 
-		const token = await jwtGenerate(
-			checkExistingUser?._id,
-			process.env.JWT_EXPIRY,
-		);
+		const token = jwtGenerate(checkExistingUser?._id, process.env.JWT_EXPIRY);
+		let data = {
+			name: checkExistingUser.name,
+			email: checkExistingUser.email,
+			profile: checkExistingUser.profile,
+			token,
+		};
 
 		return res.status(200).send({
 			success: true,
-			data: { ...checkExistingUser._doc, token },
+			data,
 			msg: ` Login Successfully`,
 		});
 	} catch (error) {
