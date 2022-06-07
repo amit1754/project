@@ -104,7 +104,7 @@ const deleteSpeciality = async (req, res) => {
 		let filter = { _id: id },
 			updateData = {
 				deletedAt: new Date(),
-				deletedBy: req.user._id,
+				// deletedBy: req.user._id,
 			};
 		const deleteSpeciality = await specialityService.updateOneQuery(
 			filter,
@@ -121,6 +121,7 @@ const deleteSpeciality = async (req, res) => {
 			throw new Error(SPECIALITY.DELETE_FAILED);
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -132,12 +133,13 @@ const deleteSpeciality = async (req, res) => {
 const listAllSpeciality = async (req, res) => {
 	try {
 		let filter = { _id: '' };
-		const listSpeciality = await specialityService.findAllQuery(filter);
-		if (listSpeciality) {
+		const { data, totalCount } = await specialityService.findAllQuery(filter);
+		if (data) {
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: SPECIALITY.LIST_SUCCESS,
-				data: listSpeciality,
+				data,
+				totalCount,
 			});
 		} else {
 			throw new Error(SPECIALITY.LIST_FAILED);

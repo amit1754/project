@@ -13,7 +13,7 @@ router.post(
 router.post('/update/:id', specialityController.updateSpeciality);
 router.delete(
 	'/delete/:id',
-	authMiddleware,
+
 	specialityController.deleteSpeciality,
 );
 router.get(
