@@ -5,7 +5,18 @@
         "Curific",
         "MWTSCQ",
         "sendgrid",
+        "Speciality",
         "updation",
         "Varibles"
-    ]
+    ],
+
+    "explorer.compactFolders": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true
+
 }

@@ -1805,6 +1805,224 @@
 				},
 				"deprecated": false
 			}
+		},
+		"/speciality/create": {
+			"post": {
+				"tags": ["Speciality"],
+				"summary": "speciality create",
+				"operationId": "specialitycreate",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/specialitycreaterequest"
+							},
+							"example": {
+								"name": "Back Pain",
+								"status": "Available",
+								"time": "9:00 AM to 5:00 PM",
+								"image": "data:image/jpeg;base64,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",
+								"price": 700
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m200"
+								},
+								"example": {
+									"success": true,
+									"msg": "Speciality created successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/speciality/update/{id}": {
+			"post": {
+				"tags": ["Speciality"],
+				"summary": "speciality update",
+				"operationId": "specialityupdate",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/specialityupdaterequest"
+							},
+							"example": {
+								"name": "Back Pain",
+								"status": "Available",
+								"time": "9:00 AM to 7:00 PM",
+								"price": 700,
+								"image": "src/images/Back-Pain.png"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m200"
+								},
+								"example": {
+									"success": true,
+									"msg": "Speciality update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/speciality/listAllSpeciality": {
+			"get": {
+				"tags": ["Speciality"],
+				"summary": "list All speciality",
+				"operationId": "listAllspeciality",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20022"
+								},
+								"example": {
+									"success": true,
+									"data": [
+										{
+											"image": "Back Pain.png",
+											"status": "Available",
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "629df3f75f1a1726a04ccf2f",
+											"name": "Back Pain",
+											"price": 700,
+											"time": "9:00 AM to 5:00 PM",
+											"createdAt": "2022-06-06T12:32:55.438Z",
+											"updatedAt": "2022-06-06T12:32:55.438Z",
+											"__v": 0
+										},
+										{
+											"image": "src/images/Back-Pain.png",
+											"status": "Available",
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "629df46550ac122970f4c206",
+											"name": "Back Pain",
+											"price": 700,
+											"time": "9:00 AM to 7:00 PM",
+											"createdAt": "2022-06-06T12:34:45.680Z",
+											"updatedAt": "2022-06-06T13:32:03.069Z",
+											"__v": 0
+										},
+										{
+											"image": "src/images/Back Pain.png",
+											"status": "Available",
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "629ef63c3a5de03f633096fc",
+											"name": "Back Pain",
+											"price": 700,
+											"time": "9:00 AM to 5:00 PM",
+											"createdAt": "2022-06-07T06:54:52.417Z",
+											"updatedAt": "2022-06-07T06:54:52.417Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 3
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/speciality/delete/{id}": {
+			"delete": {
+				"tags": ["Speciality"],
+				"summary": "delete speciality",
+				"operationId": "delete Speciality",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m200"
+								},
+								"example": {
+									"success": true,
+									"msg": "Speciality delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
 		}
 	},
 	"components": {
@@ -3896,6 +4114,231 @@
 					"email": "savaliyatushar2197@gmail.com",
 					"type": "DR",
 					"otp": 285303831
+				}
+			},
+			"specialitycreaterequest": {
+				"title": "specialitycreaterequest",
+				"required": ["name", "status", "time", "image", "price"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"time": {
+						"type": "string"
+					},
+					"image": {
+						"type": "string"
+					},
+					"price": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"name": "Back Pain",
+					"status": "Available",
+					"time": "9:00 AM to 5:00 PM",
+					"image": "data:image/jpeg;base64,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",
+					"price": 700
+				}
+			},
+			"specialityupdaterequest": {
+				"title": "specialityupdaterequest",
+				"required": ["name", "status", "time", "price", "image"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"time": {
+						"type": "string"
+					},
+					"price": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"image": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "Back Pain",
+					"status": "Available",
+					"time": "9:00 AM to 7:00 PM",
+					"price": 700,
+					"image": "src/images/Back-Pain.png"
+				}
+			},
+			"m20022": {
+				"title": "m20022",
+				"required": ["success", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data7"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"success": true,
+					"data": [
+						{
+							"image": "Back Pain.png",
+							"status": "Available",
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "629df3f75f1a1726a04ccf2f",
+							"name": "Back Pain",
+							"price": 700,
+							"time": "9:00 AM to 5:00 PM",
+							"createdAt": "2022-06-06T12:32:55.438Z",
+							"updatedAt": "2022-06-06T12:32:55.438Z",
+							"__v": 0
+						},
+						{
+							"image": "src/images/Back-Pain.png",
+							"status": "Available",
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "629df46550ac122970f4c206",
+							"name": "Back Pain",
+							"price": 700,
+							"time": "9:00 AM to 7:00 PM",
+							"createdAt": "2022-06-06T12:34:45.680Z",
+							"updatedAt": "2022-06-06T13:32:03.069Z",
+							"__v": 0
+						},
+						{
+							"image": "src/images/Back Pain.png",
+							"status": "Available",
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "629ef63c3a5de03f633096fc",
+							"name": "Back Pain",
+							"price": 700,
+							"time": "9:00 AM to 5:00 PM",
+							"createdAt": "2022-06-07T06:54:52.417Z",
+							"updatedAt": "2022-06-07T06:54:52.417Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 3
+				}
+			},
+			"Data7": {
+				"title": "Data7",
+				"required": [
+					"image",
+					"status",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"name",
+					"price",
+					"time",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"image": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"price": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"time": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"image": "Back Pain.png",
+					"status": "Available",
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "629df3f75f1a1726a04ccf2f",
+					"name": "Back Pain",
+					"price": 700,
+					"time": "9:00 AM to 5:00 PM",
+					"createdAt": "2022-06-06T12:32:55.438Z",
+					"updatedAt": "2022-06-06T12:32:55.438Z",
+					"__v": 0
+				}
+			},
+			"deletespecialityrequest": {
+				"title": "deletespecialityrequest",
+				"required": ["name", "status", "time", "price", "image"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"time": {
+						"type": "string"
+					},
+					"price": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"image": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "Back Pain",
+					"status": "Available",
+					"time": "9:00 AM to 7:00 PM",
+					"price": 700,
+					"image": "src/images/Back-Pain.png"
 				}
 			}
 		},
