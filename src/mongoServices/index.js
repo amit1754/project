@@ -3,3 +3,4 @@ export { default as roleService } from './adminManagement/roleService';
 export { default as adminUserService } from './adminManagement/userService';
 export { default as drService } from './drService';
 export { default as CustomerService } from './customerService';
+export { default as specialityService } from './specialityService';
