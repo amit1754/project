@@ -103,7 +103,7 @@ export default {
 			DELETE_FAILED: 'Doctor deletion failed',
 			VERIFY_OTP: 'Otp is send into email',
 		},
-		SPECIALITY:{
+		SPECIALITY: {
 			CREATE_SUCCESS: 'Speciality created successfully',
 			CREATE_FAILED: 'Speciality creating failed',
 			UPDATE_SUCCESS: 'Speciality update successfully',
@@ -112,6 +112,26 @@ export default {
 			GET_FAILED: 'Speciality is not available',
 			DELETE_SUCCESS: 'Speciality delete successfully',
 			DELETE_FAILED: 'Speciality deletion failed',
-		}
+		},
+		CONSULT: {
+			CREATE_SUCCESS: 'Consult created successfully',
+			CREATE_FAILED: 'Consult creating failed',
+			UPDATE_SUCCESS: 'Consult update successfully',
+			UPDATE_FAILED: 'Consult updating failed',
+			GET_SUCCESS: 'Consult get successfully',
+			GET_FAILED: 'Consult is not available',
+			DELETE_SUCCESS: 'Consult delete successfully',
+			DELETE_FAILED: 'Consult deletion failed',
+		},
+		LANGUAGE: {
+			CREATE_SUCCESS: 'Language created successfully',
+			CREATE_FAILED: 'Language creating failed',
+			UPDATE_SUCCESS: 'Language update successfully',
+			UPDATE_FAILED: 'Language updating failed',
+			GET_SUCCESS: 'Language get successfully',
+			GET_FAILED: 'Language is not available',
+			DELETE_SUCCESS: 'Language delete successfully',
+			DELETE_FAILED: 'Language deletion failed',
+		},
 	},
 };

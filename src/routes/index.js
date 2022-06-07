@@ -6,5 +6,6 @@ router.use('/role', require('./adminManagement/roleRoutes'));
 router.use('/admin-user', require('./adminManagement/adminUserRoutes'));
 router.use('/user', require('./userRoutes'));
 router.use('/speciality', require('./specialityRoutes'));
+router.use('/common', require('./commonRoutes'));
 
 module.exports = router;
