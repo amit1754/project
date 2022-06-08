@@ -133,5 +133,15 @@ export default {
 			DELETE_SUCCESS: 'Language delete successfully',
 			DELETE_FAILED: 'Language deletion failed',
 		},
+		NOTIFICTIONTYPE: {
+			CREATE_SUCCESS: 'Notification Type created successfully',
+			CREATE_FAILED: 'Notification Type creating failed',
+			UPDATE_SUCCESS: 'Notification Type update successfully',
+			UPDATE_FAILED: 'Notification Type updating failed',
+			GET_SUCCESS: 'Notification Type get successfully',
+			GET_FAILED: 'Notification Type is not available',
+			DELETE_SUCCESS: 'Notification Type delete successfully',
+			DELETE_FAILED: 'Notification Type deletion failed',
+		},
 	},
 };
