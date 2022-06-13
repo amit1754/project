@@ -82,6 +82,13 @@ function specialityCreateValidator(req, res, next) {
 	validateRequest(req, res, next, schema);
 }
 
+function notificationTypeCreate(req, res, next) {
+	const schema = Joi.object({
+		type: Joi.string().required(),
+		message: Joi.string().required(),
+	});
+	validateRequest(req, res, next, schema);
+}
 export default {
 	permissionsValidator,
 	roleValidator,
@@ -93,4 +100,5 @@ export default {
 	drCreateValidator,
 	VerifyDrValidator,
 	specialityCreateValidator,
+	notificationTypeCreate,
 };
