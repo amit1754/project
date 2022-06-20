@@ -3,7 +3,14 @@ import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
 import path from 'path';
 import fs from 'fs';
+const util = require('util');
+const unlinkFile = util.promisify(fs.unlink);
 import { specialityService } from '../mongoServices';
+import {
+	uploadFile,
+	getFileStream,
+	deleteFile,
+} from '../utils/uploadFileintoAws';
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, SPECIALITY },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -11,25 +18,16 @@ const {
 
 const createSpeciality = async (req, res) => {
 	try {
-		let { name, image, price, status, time } = req.body;
-
-		let data = image.replace(/^data:image\/\w+;base64,/, '');
-		let buf = new Buffer(data, 'base64');
-		let image_name = name + '.png';
-		const imagePath = path.join('src/images/', image_name);
-
-		await fs.writeFileSync(imagePath, buf, (err, result) => {
-			if (err) {
-				return console.log(err);
-			}
-		});
-
+		let { name, price, status, time } = req.body;
+		// uploading to AWS S3
+		const result = await uploadFile(req.file);
+		await unlinkFile(req.file.path);
 		let SpecialityObj = {
 			name: name,
 			price: price,
 			status: status,
 			time: time,
-			image: imagePath,
+			image: result.key,
 		};
 		const Speciality = new specialityModel(SpecialityObj);
 		const saveSpeciality = await Speciality.save();
@@ -37,7 +35,7 @@ const createSpeciality = async (req, res) => {
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: SPECIALITY.CREATE_SUCCESS,
-				data: [],
+				data: saveSpeciality,
 			});
 		} else {
 			throw new Error(SPECIALITY.CREATE_FAILED);
@@ -54,37 +52,33 @@ const createSpeciality = async (req, res) => {
 const updateSpeciality = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const { name, time, price, status, image } = req.body;
-		let img_result = image.startsWith('data:image');
-		if (img_result) {
-			let data = image.replace(/^data:image\/\w+;base64,/, '');
-			let buf = new Buffer(data, 'base64');
-			let image_name = name + '.png';
-			const imagePath = path.join('src/images/', image_name);
-			image = imagePath;
-			await fs.writeFileSync(imagePath, buf, (err, result) => {
-				if (err) {
-					return console.log(err);
-				}
-			});
+		const { name, time, price, status } = req.body;
+		let filter = { _id: id };
+		const { data, totalCount } = await specialityService.findAllQuery(filter);
+		if (!data) {
+			throw new Error(SPECIALITY.UPDATE_FAILED);
 		}
-
-		let filter = { _id: id },
-			updateData = {
-				name,
-				time,
-				price,
-				status,
-				image,
-			};
-
+		let result;
+		if (req.file) {
+			var img = data[0].image.split('/');
+			await deleteFile(img[1]);
+			result = await uploadFile(req.file);
+			await unlinkFile(req.file.path);
+		}
+		let image = result ? result.key : data[0].image;
+		var updateData = {
+			name,
+			time,
+			price,
+			status,
+			image,
+		};
 		const updateSp = await specialityService.updateOneQuery(filter, updateData);
-
 		if (updateSp) {
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: SPECIALITY.UPDATE_SUCCESS,
-				data: [],
+				data: updateSp,
 			});
 		} else {
 			throw new Error(SPECIALITY.UPDATE_FAILED);

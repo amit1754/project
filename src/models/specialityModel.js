@@ -1,27 +1,27 @@
 import { Schema, model, Types } from 'mongoose';
 
 const specialityModel = new Schema(
-    {
-        name:{
-            type:String,
-            required : true
-        },
-        image:{
-            type: String,
+	{
+		name: {
+			type: String,
+			required: true,
+		},
+		image: {
+			type: String,
 			default: null,
-        },
-        price:{
-            type:Number,
-        },
-        status:{
-            type: String,
-			enum: ['Available', 'NotAvailable'],
-			default: 'Available',
-        },
-        time:{
-            type: String
-        },
-        deletedAt: {
+		},
+		price: {
+			type: Number,
+		},
+		status: {
+			type: String,
+			enum: ['AVAILABLE', 'NOTAVAILABLE'],
+			default: 'AVAILABLE',
+		},
+		time: {
+			type: String,
+		},
+		deletedAt: {
 			type: Date,
 			default: null,
 		},
@@ -29,8 +29,8 @@ const specialityModel = new Schema(
 			type: Types.ObjectId,
 			default: null,
 		},
-    },
+	},
 	{ timestamps: true },
-)
+);
 
 module.exports = new model('dr_speciality', specialityModel);

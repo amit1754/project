@@ -2,15 +2,22 @@ import express from 'express';
 import { validator } from '../validation';
 import { specialityController } from '../controllers';
 import { authMiddleware } from '../middleware';
+import upload from '../utils/fileUpload';
+
 const router = express.Router();
 
 router.post(
 	'/create',
+	upload.single('image'),
 	validator.specialityCreateValidator,
 	specialityController.createSpeciality,
 );
 
-router.post('/update/:id', specialityController.updateSpeciality);
+router.post(
+	'/update/:id',
+	upload.single('image'),
+	specialityController.updateSpeciality,
+);
 router.delete(
 	'/delete/:id',
 

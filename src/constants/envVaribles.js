@@ -22,4 +22,10 @@ export default {
 		API_KEY:
 			'SG.GBWde9CwRHuk6dhzMWTSCQ.vuWUJAaa7VCgg9Ccr7fPg4d9HgBSWAVKQhdKj4e8WvM',
 	},
+	S3: {
+		BUCKET_NAME: 'curificapp/appointment_book',
+		ACCESS_KEY_ID: 'AKIAUBALB3TL2Z47CA4M',
+		AWS_SECRET_KEY: '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',
+		AWS_BUCKET_REGION: 'us-east-1',
+	},
 };
