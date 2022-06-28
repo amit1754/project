@@ -77,7 +77,7 @@ function specialityCreateValidator(req, res, next) {
 		name: Joi.string().required(),
 		price: Joi.number().required(),
 		time: Joi.string().required(),
-		image: Joi.string().required(),
+		// image: Joi.string().required(),
 	});
 	validateRequest(req, res, next, schema);
 }
