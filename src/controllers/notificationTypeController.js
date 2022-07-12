@@ -74,7 +74,6 @@ const deleteNotificationType = async (req, res) => {
 			throw new Error(NOTIFICTIONTYPE.DELETE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -101,7 +100,6 @@ const listAllNotificationType = async (req, res) => {
 			throw new Error(NOTIFICTIONTYPE.GET_FAILED);
 		}
 	} catch (error) {
-		console.log(error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,

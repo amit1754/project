@@ -8,3 +8,4 @@ export { default as specialityModel } from './specialityModel';
 export { default as consultModel } from './consultModel';
 export { default as languageModel } from './languageModel';
 export { default as notificationTypeModel } from './notificationTypeModel';
+export { default as deviceModel } from './deviceModel';

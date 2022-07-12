@@ -143,5 +143,16 @@ export default {
 			DELETE_SUCCESS: 'Notification Type delete successfully',
 			DELETE_FAILED: 'Notification Type deletion failed',
 		},
+		DEVICE: {
+			CREATE_SUCCESS: 'Device created successfully',
+			CREATE_FAILED: 'Device creating failed',
+			UPDATE_SUCCESS: 'Device update successfully',
+			UPDATE_FAILED: 'Device updating failed',
+			GET_SUCCESS: 'Device get successfully',
+			GET_FAILED: 'Device is not available',
+			DELETE_SUCCESS: 'Device delete successfully',
+			DELETE_FAILED: 'Device deletion failed',
+			DELETE_ALREADY_AVAILABLE: 'Device Already available',
+		},
 	},
 };

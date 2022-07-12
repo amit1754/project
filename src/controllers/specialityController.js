@@ -1,16 +1,11 @@
 import { specialityModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import path from 'path';
 import fs from 'fs';
+import { specialityService } from '../mongoServices';
+import { uploadFile, deleteFile } from '../utils/uploadFileIntoAws';
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
-import { specialityService } from '../mongoServices';
-import {
-	uploadFile,
-	getFileStream,
-	deleteFile,
-} from '../utils/uploadFileintoAws';
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, SPECIALITY },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -54,7 +49,7 @@ const updateSpeciality = async (req, res) => {
 		const { id } = req.params;
 		const { name, time, price, status } = req.body;
 		let filter = { _id: id };
-		const { data, totalCount } = await specialityService.findAllQuery(filter);
+		const { data } = await specialityService.findAllQuery(filter);
 		if (!data) {
 			throw new Error(SPECIALITY.UPDATE_FAILED);
 		}
@@ -98,12 +93,9 @@ const deleteSpeciality = async (req, res) => {
 		let filter = { _id: id },
 			updateData = {
 				deletedAt: new Date(),
-				// deletedBy: req.user._id,
+				deletedBy: req.currentUser._id,
 			};
-		const deleteSpeciality = await specialityService.updateOneQuery(
-			filter,
-			updateData,
-		);
+		await specialityService.updateOneQuery(filter, updateData);
 
 		if (deleteSpeciality) {
 			return res.status(SUCCESS).send({
@@ -139,7 +131,6 @@ const listAllSpeciality = async (req, res) => {
 			throw new Error(SPECIALITY.LIST_FAILED);
 		}
 	} catch (error) {
-		console.log(error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
