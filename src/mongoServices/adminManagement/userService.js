@@ -1,3 +1,5 @@
+import { Mongoose, Types } from 'mongoose';
+
 import { adminUserModel } from '../../models';
 
 const userQuery = async (filter, projection) => {
@@ -26,7 +28,7 @@ const userQuery = async (filter, projection) => {
 	return data;
 };
 
-const findAllQuery = async (query) => {
+const findAllQuery = async (query, userId) => {
 	let { search, _id, limit, page, sortField, sortValue, email } = query;
 	let sort = {};
 	let whereClause = { deletedAt: null };
@@ -47,6 +49,8 @@ const findAllQuery = async (query) => {
 	}
 	if (_id) {
 		whereClause = { ...whereClause, _id };
+	} else if (userId) {
+		whereClause = { ...whereClause, _id: Types.ObjectId(userId) };
 	}
 	if (email) {
 		whereClause = { ...whereClause, email };

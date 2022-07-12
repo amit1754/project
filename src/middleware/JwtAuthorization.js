@@ -31,9 +31,8 @@ const JwtAuthorization = async (req, res, next) => {
 			let splitBaseUrl = req.baseUrl.split('/');
 			const baseUrl = splitBaseUrl[splitBaseUrl.length - 1];
 			let urlPath = baseUrl + endpoint;
-			console.log('urlPath', urlPath);
+
 			const permissions = data[0]?.role?.permissions;
-			console.log('permissions', permissions);
 
 			const checkPermissions = permissions
 				.map((x) => x.path === urlPath)

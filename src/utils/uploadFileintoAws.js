@@ -45,7 +45,6 @@ async function deleteFile(filePath) {
 	try {
 		await s3.headObject(params).promise();
 		try {
-			await s3.deleteObject(params).promise();
 			console.log('file deleted Successfully');
 		} catch (err) {
 			console.log('ERROR in file Deleting : ' + JSON.stringify(err));

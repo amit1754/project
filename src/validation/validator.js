@@ -89,6 +89,18 @@ function notificationTypeCreate(req, res, next) {
 	});
 	validateRequest(req, res, next, schema);
 }
+
+function addDeviceValidatorData(req, res, next) {
+	const schema = Joi.object({
+		deviceId: Joi.string().required(),
+		deviceName: Joi.string().required(),
+		deviceType: Joi.string().required(),
+		deviceModal: Joi.string().required(),
+		treatment: Joi.string().required(),
+	});
+	validateRequest(req, res, next, schema);
+}
+
 export default {
 	permissionsValidator,
 	roleValidator,
@@ -101,4 +113,5 @@ export default {
 	VerifyDrValidator,
 	specialityCreateValidator,
 	notificationTypeCreate,
+	addDeviceValidatorData,
 };

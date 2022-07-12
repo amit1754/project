@@ -59,7 +59,6 @@ const adminUserLogin = async (req, res) => {
 			email,
 			populate: true,
 		});
-		console.log('checkExistingUser', checkExistingUser);
 		// check user is exist or not
 		if (!checkExistingUser) {
 			throw new Error(ADMIN_USER.NOT_ADMIN_USER);
@@ -82,6 +81,7 @@ const adminUserLogin = async (req, res) => {
 			name: checkExistingUser.name,
 			email: checkExistingUser.email,
 			profile: checkExistingUser.profile,
+			userId: checkExistingUser._id,
 			token,
 		};
 
@@ -101,7 +101,10 @@ const adminUserLogin = async (req, res) => {
 
 const adminUserList = async (req, res) => {
 	try {
-		const { data, totalCount } = await adminUserService.findAllQuery(req.query);
+		const { data, totalCount } = await adminUserService.findAllQuery(
+			req.query,
+			req.currentUser._id,
+		);
 		if (data) {
 			return res.status(SUCCESS).send({
 				success: true,
@@ -201,9 +204,7 @@ const adminUserDelete = async (req, res) => {
 		}
 		let filter = { _id: id };
 		const { data } = await adminUserService.findAllQuery(filter);
-		console.log('data', data);
 		if (data.length != 1) throw new Error(ADMIN_USER.NOT_ADMIN_USER);
-		console.log('data', data);
 
 		if (data[0].role === 'SUPER_USER') {
 			throw new Error('Super User cannot update');
@@ -221,7 +222,6 @@ const adminUserDelete = async (req, res) => {
 			});
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,

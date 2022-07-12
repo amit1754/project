@@ -26,7 +26,6 @@ const createDr = async (req, res) => {
 		if (type === CUSTOMER) {
 			const findCustomer = await customerModel.findOne({ email });
 			if (findCustomer !== null) {
-				console.log('findCustomer', findCustomer);
 				await SendEmail.sendRegisterEmail(email, createOtp, name);
 				return res.status(SUCCESS).send({
 					success: true,
@@ -136,7 +135,6 @@ const verifyOtp = async (req, res) => {
 			}
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
