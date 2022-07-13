@@ -36,6 +36,7 @@ const createSpeciality = async (req, res) => {
 			throw new Error(SPECIALITY.CREATE_FAILED);
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -55,13 +56,13 @@ const updateSpeciality = async (req, res) => {
 		}
 		let result;
 		if (req.file) {
-			var img = data[0].image.split('/');
+			let img = data[0].image.split('/');
 			await deleteFile(img[1]);
 			result = await uploadFile(req.file);
 			await unlinkFile(req.file.path);
 		}
 		let image = result ? result.key : data[0].image;
-		var updateData = {
+		let updateData = {
 			name,
 			time,
 			price,
@@ -118,8 +119,9 @@ const deleteSpeciality = async (req, res) => {
 
 const listAllSpeciality = async (req, res) => {
 	try {
-		let filter = { _id: '' };
-		const { data, totalCount } = await specialityService.findAllQuery(filter);
+		const { data, totalCount } = await specialityService.findAllQuery(
+			req.query,
+		);
 		if (data) {
 			return res.status(SUCCESS).send({
 				success: true,
