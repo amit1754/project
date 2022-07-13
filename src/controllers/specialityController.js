@@ -55,13 +55,13 @@ const updateSpeciality = async (req, res) => {
 		}
 		let result;
 		if (req.file) {
-			var img = data[0].image.split('/');
+			let img = data[0].image.split('/');
 			await deleteFile(img[1]);
 			result = await uploadFile(req.file);
 			await unlinkFile(req.file.path);
 		}
 		let image = result ? result.key : data[0].image;
-		var updateData = {
+		let updateData = {
 			name,
 			time,
 			price,
