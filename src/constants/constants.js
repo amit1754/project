@@ -163,6 +163,8 @@ export default {
 			GET_FAILED: 'Time Slot is not available',
 			DELETE_SUCCESS: 'Time Slot delete successfully',
 			DELETE_FAILED: 'Time Slot deletion failed',
+			ASSIGN_SUCCESS: 'Time Slot assign successfully',
+			ASSIGN_FAILED: 'Time Slot assign failed',
 		},
 	},
 };

@@ -35,6 +35,9 @@ const findAllQuery = async (query) => {
 };
 
 const updateOneQuery = async (filter, update, projection) => {
+	console.log('projection', projection);
+	console.log('update', update);
+	console.log('filter', filter);
 	let options = { new: true, fields: { ...projection } };
 
 	const data = await drModel.findOneAndUpdate(filter, update, options);

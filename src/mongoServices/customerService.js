@@ -33,7 +33,8 @@ const findAllQuery = async (query) => {
 const updateOneQuery = async (filter, update, projection) => {
 	let options = { new: true, fields: { ...projection } };
 
-	return await customerModel.findOneAndUpdate(filter, update, options);
+	const result = await customerModel.findOneAndUpdate(filter, update, options);
+	return result;
 };
 
 export default {

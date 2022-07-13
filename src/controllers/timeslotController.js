@@ -1,7 +1,7 @@
 import { timeSlotModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import { timeSlotService } from '../mongoServices';
+import { timeSlotService, drService } from '../mongoServices';
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, TIME_SLOT },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -110,10 +110,45 @@ const deleteTimeSlot = async (req, res) => {
 		});
 	}
 };
+const assignTimeSlot = async (req, res) => {
+	try {
+		let { timeSlot, drId } = req.body;
+		let filter = { _id: drId };
+		let { data } = await drService.findAllQuery(filter);
+
+		if (data) {
+			let update = {
+				timeSlot,
+			};
+			let projection = {};
+			let updateDr = await drService.updateOneQuery(filter, update, projection);
+			console.log('updateDr', updateDr);
+			if (updateDr) {
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: TIME_SLOT.ASSIGN_SUCCESS,
+					data: [],
+				});
+			} else {
+				throw new Error(TIME_SLOT.ASSIGN_FAILED);
+			}
+		} else {
+			throw new Error(TIME_SLOT.ASSIGN_FAILED);
+		}
+	} catch (error) {
+		console.log('error', error);
+		errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
 
 export default {
 	createTimeSlot,
 	getTimeSlots,
 	updateTimeSlot,
 	deleteTimeSlot,
+	assignTimeSlot,
 };
