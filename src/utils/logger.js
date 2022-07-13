@@ -1,8 +1,9 @@
 import winston from 'winston';
 import currentDate from './currentDate.js';
-
+import config from '../constants/envVaribles';
+const { SERVER } = config;
 const todayDate = currentDate.getDate(new Date());
-const LOGS_PATH = process.env.LOG_PATH;
+const LOGS_PATH = SERVER.LOG_PATH;
 
 const logger = {
 	infoLog: winston.createLogger({
