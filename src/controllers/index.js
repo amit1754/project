@@ -6,3 +6,4 @@ export { default as specialityController } from './specialityController';
 export { default as commonController } from './commonController';
 export { default as notificationTypeController } from './notificationTypeController';
 export { default as deviceController } from './deviceController';
+export { default as timeSlotController } from './timeslotController';
