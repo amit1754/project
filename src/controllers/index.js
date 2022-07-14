@@ -7,4 +7,4 @@ export { default as commonController } from './commonController';
 export { default as notificationTypeController } from './notificationTypeController';
 export { default as deviceController } from './deviceController';
 export { default as settingController } from './settingController';
-export { default as timeSlotController } from './timeslotController';
+export { default as timeSlotController } from './timeSlotController';
