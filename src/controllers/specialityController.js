@@ -3,7 +3,7 @@ import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
 import fs from 'fs';
 import { specialityService } from '../mongoServices';
-import { uploadFile, deleteFile } from '../utils/uploadFileIntoAws';
+import { uploadFile, deleteFile } from '../utils/uploadFileintoAws';
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 const {
