@@ -65,6 +65,14 @@ const drModel = new Schema(
 			type: String,
 			default: null,
 		},
+		timeSlot: {
+			type: [Types.ObjectId],
+			trim: true,
+			max: 255,
+			required: true,
+			default: null,
+			ref: 'timeSlotALL',
+		},
 		isEnabled: {
 			type: Boolean,
 			required: true,
@@ -81,5 +89,13 @@ const drModel = new Schema(
 	},
 	{ timestamps: true },
 );
+
+let autoPopulateLead = function (next) {
+	this.populate('timeSlot');
+
+	next();
+};
+
+drModel.pre('findOne', autoPopulateLead).pre('find', autoPopulateLead);
 
 module.exports = new model('dr_details', drModel);

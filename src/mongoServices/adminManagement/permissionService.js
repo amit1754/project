@@ -9,7 +9,7 @@ const findAllQuery = async (query) => {
 		};
 	} else {
 		sort = {
-			displayName: 1,
+			createdAt: 1,
 		};
 	}
 	if (search) {

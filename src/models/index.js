@@ -10,3 +10,4 @@ export { default as languageModel } from './languageModel';
 export { default as notificationTypeModel } from './notificationTypeModel';
 export { default as deviceModel } from './deviceModel';
 export { default as settingModel } from './settingModel';
+export { default as timeSlotModel } from './timeSlotModel';
