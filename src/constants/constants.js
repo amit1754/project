@@ -166,5 +166,15 @@ export default {
 			ASSIGN_SUCCESS: 'Time Slot assign successfully',
 			ASSIGN_FAILED: 'Time Slot assign failed',
 		},
+		PACKAGE: {
+			CREATE_SUCCESS: 'Package created successfully',
+			CREATE_FAILED: 'Package creating failed',
+			UPDATE_SUCCESS: 'Package update successfully',
+			UPDATE_FAILED: 'Package updating failed',
+			GET_SUCCESS: 'Package get successfully',
+			GET_FAILED: 'Package is not available',
+			DELETE_SUCCESS: 'Package delete successfully',
+			DELETE_FAILED: 'Package deletion failed',
+		},
 	},
 };
