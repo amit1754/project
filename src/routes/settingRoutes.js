@@ -3,9 +3,6 @@ import { settingController } from '../controllers';
 import { authMiddleware } from '../middleware';
 const router = express.Router();
 
-
-
-
 router.post('/add', authMiddleware, settingController.addSettings);
 
 router.delete(
@@ -16,6 +13,5 @@ router.delete(
 router.get('/getall', authMiddleware, settingController.getRequest);
 
 router.put('/update/:id', authMiddleware, settingController.updatekeyId);
-
 
 module.exports = router;
