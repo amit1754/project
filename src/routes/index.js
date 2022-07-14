@@ -9,6 +9,7 @@ router.use('/speciality', require('./specialityRoutes'));
 router.use('/common', require('./commonRoutes'));
 router.use('/notificationType', require('./notificationTypeRoutes'));
 router.use('/device', require('./deviceRoutes'));
-router.use('/setingManagement',require('./settingRoutes'));
+router.use('/settingManagement', require('./settingRoutes'));
+// router.use('/health', require('./healthRoutes'));
 
 module.exports = router;
