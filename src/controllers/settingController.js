@@ -1,11 +1,10 @@
-const Setting = require('../models/settingModel');
 import { settingService } from '../mongoServices';
+import { settingModel } from '../models';
 
-
-const settingManage = async (req, res) => {
+const addSettings = async (req, res) => {
 	try {
 		if (req.body) {
-			const Model = await new Setting(req.body);
+			const Model = await new settingModel(req.body);
 			const saveResponse = await Model.save();
 			if (saveResponse) {
 				res.status(200).json({
@@ -124,7 +123,7 @@ const updatekeyId = async (req, res) => {
 };
 
 export default {
-	settingManage,
+	addSettings,
 	deleteByID,
 	getRequest,
 	updatekeyId,

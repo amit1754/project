@@ -7,3 +7,4 @@ export { default as specialityService } from './specialityService';
 export { default as deviceService } from './deviceService';
 export { default as settingService } from './settingService';
 export { default as timeSlotService } from './timeSlotService';
+
