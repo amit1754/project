@@ -8,3 +8,4 @@ export { default as notificationTypeController } from './notificationTypeControl
 export { default as deviceController } from './deviceController';
 export { default as settingController } from './settingController';
 // export { default as healthController } from './healthController';
+export { default as timeSlotController } from './timeslotController';

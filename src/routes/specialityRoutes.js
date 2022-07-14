@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post(
 	'/create',
+	authMiddleware,
 	upload.single('image'),
 	validator.specialityCreateValidator,
 	specialityController.createSpeciality,
@@ -15,16 +16,14 @@ router.post(
 
 router.post(
 	'/update/:id',
+	authMiddleware,
 	upload.single('image'),
 	specialityController.updateSpeciality,
 );
 router.delete(
 	'/delete/:id',
-
+	authMiddleware,
 	specialityController.deleteSpeciality,
 );
-router.get(
-	'/listAllSpeciality/:id?/:search?/:limit?',
-	specialityController.listAllSpeciality,
-);
+router.get('/get', authMiddleware, specialityController.listAllSpeciality);
 module.exports = router;
