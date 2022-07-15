@@ -9,3 +9,4 @@ export { default as deviceController } from './deviceController';
 export { default as settingController } from './settingController';
 export { default as healthController } from './healthController';
 export { default as timeSlotController } from './timeSlotController';
+export { default as packageController } from './packageController';

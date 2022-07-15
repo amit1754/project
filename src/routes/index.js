@@ -13,5 +13,6 @@ router.use('/settingManagement', require('./settingRoutes'));
 router.use('/healthArticle', require('./healthRoutes'));
 router.use('/settings', require('./settingRoutes'));
 router.use('/timeSlot', require('./timeSlotRoute'));
+router.use('/package', require('./packageRoutes'));
 
 module.exports = router;

@@ -188,5 +188,15 @@ export default {
 			DELETE_FAILED: 'Setting deletion failed',
 			NAME_NOT_AVAILABLE: 'Setting name is already available',
 		},
+		PACKAGE: {
+			CREATE_SUCCESS: 'Package created successfully',
+			CREATE_FAILED: 'Package creating failed',
+			UPDATE_SUCCESS: 'Package update successfully',
+			UPDATE_FAILED: 'Package updating failed',
+			GET_SUCCESS: 'Package get successfully',
+			GET_FAILED: 'Package is not available',
+			DELETE_SUCCESS: 'Package delete successfully',
+			DELETE_FAILED: 'Package deletion failed',
+		},
 	},
 };

@@ -8,3 +8,4 @@ export { default as deviceService } from './deviceService';
 export { default as healthService } from './healthService';
 export { default as timeSlotService } from './timeSlotService';
 export { default as settingService } from './settingService';
+export { default as packagesService } from './packagesService';
