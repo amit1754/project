@@ -1,22 +1,13 @@
 import { Schema, model, Types } from 'mongoose';
-
-const settingModel = new Schema(
+const healthSchema = new Schema(
 	{
-		type: {
-			type: String,
-			enum: ['PRIVCYPOLICY', 'TERMSANDCONDITIONS', 'NULL'],
-			default: 'NULL',
-		},
-		content: {
+		profileImage: {
 			type: String,
 		},
-		filedName: {
+		title: {
 			type: String,
 		},
-		filedValue: {
-			type: String,
-		},
-		filedType: {
+		Description: {
 			type: String,
 		},
 		isEnabled: {
@@ -34,6 +25,6 @@ const settingModel = new Schema(
 		},
 	},
 	{ timestamps: true },
-);
 
-module.exports = new model('settingDetails', settingModel);
+);
+module.exports = new model('health', healthSchema);
