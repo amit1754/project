@@ -6,11 +6,24 @@ const router = express.Router();
 
 router.post(
 	'/create',
+	authMiddleware,
 	validator.notificationTypeCreate,
 	notificationTypeController.createNotificationType,
 );
-router.put('/update/:id', notificationTypeController.updateNotificationType);
-router.get('/list', notificationTypeController.listAllNotificationType);
-router.delete('/delete/:id', notificationTypeController.deleteNotificationType);
+router.put(
+	'/update/:id',
+	authMiddleware,
+	notificationTypeController.updateNotificationType,
+);
+router.get(
+	'/list',
+	authMiddleware,
+	notificationTypeController.listAllNotificationType,
+);
+router.delete(
+	'/delete/:id',
+	authMiddleware,
+	notificationTypeController.deleteNotificationType,
+);
 
 module.exports = router;

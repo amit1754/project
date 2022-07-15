@@ -1,4 +1,4 @@
-import { settingModel } from '../models';
+import { healthModel } from '../models';
 const findAllQuery = async (query) => {
 	let { search, _id, limit, page, sortField, sortValue } = query;
 	let sort = {};
@@ -21,20 +21,20 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	const data = await settingModel
+	const data = await healthModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
 		.limit(+limit || 20)
 		.sort(sort);
 
-	const totalCount = await settingModel.find(whereClause).countDocuments();
+	const totalCount = await healthModel.find(whereClause).countDocuments();
 	return { data, totalCount };
 };
 
 const updateOneQuery = async (filter, update, projection) => {
 	let options = { new: true, fields: { ...projection } };
 
-	const data = await settingModel.findOneAndUpdate(filter, update, options);
+	const data = await healthModel.findOneAndUpdate(filter, update, options);
 	return data;
 };
 

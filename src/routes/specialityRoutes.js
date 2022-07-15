@@ -2,14 +2,14 @@ import express from 'express';
 import { validator } from '../validation';
 import { specialityController } from '../controllers';
 import { authMiddleware } from '../middleware';
-import upload from '../utils/fileUpload';
+import { fileUpload } from '../utils';
 
 const router = express.Router();
 
 router.post(
 	'/create',
 	authMiddleware,
-	upload.single('image'),
+	fileUpload.upload.single('image'),
 	validator.specialityCreateValidator,
 	specialityController.createSpeciality,
 );
@@ -17,7 +17,7 @@ router.post(
 router.post(
 	'/update/:id',
 	authMiddleware,
-	upload.single('image'),
+	fileUpload.upload.single('image'),
 	specialityController.updateSpeciality,
 );
 router.delete(
