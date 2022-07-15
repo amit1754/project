@@ -1,12 +1,27 @@
 import express from 'express';
-import upload from '../utils/fileUpload';
+import { fileUpload } from '../utils';
 import { healthController } from '../controllers';
+import { authMiddleware } from '../middleware';
 
 const router = express.Router();
 
-router.post('/create', upload.single('profileImage'), healthController.create);
-router.delete('/delete/:id', healthController.deleteByID);
-router.get('/get', healthController.getData);
-router.put('/update/:id', upload.single('profileImage'), healthController.updateByid);
+router.post(
+	'/create',
+	authMiddleware,
+	fileUpload.upload.single('profileImage'),
+	healthController.createHealthArticle,
+);
+router.delete(
+	'/delete/:id',
+	authMiddleware,
+	healthController.deleteHealthArticle,
+);
+router.get('/get', authMiddleware, healthController.getHealthArticle);
+router.put(
+	'/update/:id',
+	authMiddleware,
+	fileUpload.upload.single('profileImage'),
+	healthController.updateHealthArticle,
+);
 
 module.exports = router;

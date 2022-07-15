@@ -5,7 +5,7 @@ const settingModel = new Schema(
 		type: {
 			type: String,
 			enum: ['PRIVCYPOLICY', 'TERMSANDCONDITIONS', 'NULL'],
-			default: null,
+			default: 'NULL',
 		},
 		content: {
 			type: String,

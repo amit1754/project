@@ -1,5 +1,11 @@
 import { settingService } from '../mongoServices';
 import { settingModel } from '../models';
+import { CONSTANTS } from '../constants';
+import { errorLogger } from '../utils';
+const {
+	RESPONSE_MESSAGE: { FAILED_RESPONSE, SETTING },
+	STATUS_CODE: { SUCCESS, FAILED },
+} = CONSTANTS;
 
 const addSettings = async (req, res) => {
 	try {
@@ -7,126 +13,89 @@ const addSettings = async (req, res) => {
 			const Model = await new settingModel(req.body);
 			const saveResponse = await Model.save();
 			if (saveResponse) {
-				res.status(200).json({
+				res.status(SUCCESS).json({
 					success: true,
-					message: 'add request..',
+					message: SETTING.CREATE_SUCCESS,
 					data: saveResponse,
 				});
 			} else {
-				throw new Error('Error...');
+				throw new Error(SETTING.CREATE_FAILED);
 			}
 		} else {
-			throw new Error('name is not provided');
+			throw new Error(SETTING.NAME_NOT_AVAILABLE);
 		}
 	} catch (error) {
-		console.log('error', error);
-		res.status(400).json({
+		errorLogger(error.message, req.originalUrl, req.ip);
+		res.status(FAILED).json({
 			success: false,
-			error: error.message || 'failed',
+			error: error.message || FAILED_RESPONSE,
 		});
 	}
 };
 
-const deleteByID = async (req, res) => {
-	try {
-		const { id } = req.params;
-		const response = await new settingService.removeSetting(id);
-			if (response) {
-				res.status(200).json({
-					success: true,
-					message: 'Delete user..',
-				});
-			} else {
-				throw new Error('Error...');
-			}
-	} catch (error) {
-		res.status(400).json({
-			success: false,
-			error: error.message || 'failed',
-		});
-	}
-};
-const getRequest = async (req, res) => {
-	try {
-		const { _id } = req.query;
-		var response;
-		if (_id) {
-			response = await Setting.find({
-				_id: _id,
-				$and: [{ _id: _id }, { isEnabled: true }],
-			});
-		} else {
-			response = await Setting.find({ isEnabled: true });
-		}
-		if (response) {
-			res.status(200).json({
-				success: true,
-				data: response,
-				message: response ? 'user found' : 'user not found',
-			});
-		} else {
-			throw new Error('user not found!');
-		}
-	} catch (error) {
-		res.status(400).json({
-			success: false,
-			error: error.message || 'failed',
-		});
-	}
-};
 const getSetting = async (req, res) => {
 	try {
-		const getSetting = await settingService.findAllQuery(req.query);
-		if (getSetting) {
-			return res.status(200).send({
-				success: true,
-				message: 'Data found...',
-				data: getSetting,
-			});
-		} else {
-			throw new Error(error.messageD);
-		}
+		const { data, totalCount } = await settingService.findAllQuery(req.query);
+		res.status(SUCCESS).send({
+			message: SETTING.GET_SUCCESS,
+			data,
+			totalCount,
+		});
 	} catch (error) {
-		return res.status(400).json({
-			success: false,
-			error: error.message || 'failed',
+		errorLogger(error.message, req.originalUrl, req.ip);
+		res.status(FAILED).send({
+			message: SETTING.GET_FAILED || FAILED_RESPONSE,
+			data: [],
 		});
 	}
 };
-
-const updatekeyId = async (req, res) => {
+const updatesettings = async (req, res) => {
+	try {
+		const filter = { _id: req.params.id };
+		const update = {
+			...req.body,
+		};
+		const projection = {};
+		await settingService.updateOneQuery(filter, update, projection);
+		res.status(SUCCESS).send({
+			success: true,
+			message: DEVICE.UPDATE_SUCCESS,
+			data: [],
+		});
+	} catch (error) {
+		errorLogger(error.message, req.originalUrl, req.ip);
+		res.status(FAILED).send({
+			success: false,
+			message: SETTING.UPDATE_FAILED || FAILED_RESPONSE,
+			data: [],
+		});
+	}
+};
+const deleteSetting = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const data = await settingService.findBy(id);
-		if (data) {
-			const response = settingService.updateOne(id, req.body);
-			response
-				.then((data) => {
-					res.status(200).json({
-						success: true,
-						data: data,
-						message: 'update successfully',
-					});
-				})
-				.catch((error) => {
-					throw new Error(error.message);
-				});
-		} else {
-			throw new Error('user not found!..');
-		}
+		const filter = { _id: id };
+		const update = { deletedAt: new Date(), deletedBy: req.currentUser._id };
+		const projection = {};
+		await settingService.updateOneQuery(filter, update, projection);
+		return res.status(SUCCESS).send({
+			success: true,
+			message: SETTING.DELETE_SUCCESS,
+			data: [],
+		});
 	} catch (error) {
-		res.status(400).json({
+		console.log('error', error);
+		errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(FAILED).send({
+			message: SETTING.DELETE_FAILED || FAILED_RESPONSE,
 			success: false,
-			error: error.message || 'failed',
 		});
 	}
 };
 
 export default {
 	addSettings,
-	deleteByID,
-	getRequest,
-	updatekeyId,
-	getSetting
-	
+	updatesettings,
+	deleteSetting,
+	getSetting,
 };

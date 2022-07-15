@@ -1,14 +1,15 @@
 import express, { json, urlencoded } from 'express';
-import cors from 'cors';
+
+// import cors from 'cors';
 import morgan from 'morgan';
-import helmet from 'helmet';
+// import helmet from 'helmet';
 import ip from 'ip';
 import compression from 'compression';
 import serveIndex from 'serve-index';
 import { greenBright, cyanBright } from 'chalk';
 import './src/config/dbConnection';
 import routes from './src/routes';
-import fs from 'fs';
+// import fs from 'fs';
 import { ENV } from './src/constants';
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
@@ -16,6 +17,12 @@ const swaggerDocument = require('./swagger.json');
 // import roleSeed from './src/dbSeed/Role';
 // import userSeed from './src/dbSeed/Users';
 // import PermissionsSeed from './src/dbSeed/Permissions';
+require('dotenv').config({ path: '.env' });
+let path = require('path');
+
+process.env.FILE =
+	path.join(__dirname, process.env.FILE_PATH) ||
+	path.join(__dirname, 'uploads');
 
 const {
 	SERVER: { PORT },
@@ -43,14 +50,14 @@ server.use(json());
 server.use(urlencoded({ extended: true }));
 /** CORS */
 
-var corsOptions = {
-	origin: 'http://localhost:3090',
-};
-server.use(cors(corsOptions));
+// let corsOptions = {
+// 	origin: 'http://localhost:3090',
+// };
+// server.use(cors(corsOptions));
 /** API LOG */
 server.use(morgan('dev'));
 /** XSS Attack Security */
-server.use(helmet());
+// server.use(helmet());
 /** Compress Requests */
 server.use(compression());
 /** File Upload Static */
@@ -73,7 +80,6 @@ server.use('/**', (_req, res) => {
 });
 
 server.listen(PORT || 3002, () => {
-	3000;
 	console.info(cyanBright('API Running at'));
 	console.info(cyanBright(`${greenBright('\tLocalhost:')} ${BASE_API_URL}`));
 	console.info(cyanBright(`${greenBright('\tLAN:')} ${NETWORK_BASE_API_URL}`));

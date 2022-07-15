@@ -9,3 +9,4 @@ export { default as comparePassword } from './comparePassword';
 export { default as otpGenerator } from './otpGenerator';
 export { default as sendMail } from './sendMail';
 export { default as SendEmail } from './sendEmail';
+export { default as fileUpload } from './fileUpload';

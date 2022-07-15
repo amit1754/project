@@ -4,6 +4,7 @@ export default {
 		PRODUCTION: false,
 		LOG_PATH: 'logs',
 		FRONTEND_URL: 'http://localhost:3000/',
+		FILE_PATH: 'public/uploads',
 	},
 	DATABASE: {
 		MONGO_URI:

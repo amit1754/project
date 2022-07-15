@@ -3,19 +3,9 @@ import { settingController } from '../controllers';
 import { authMiddleware } from '../middleware';
 const router = express.Router();
 
-
-
-
-router.post('/add', authMiddleware, settingController.addSettings);
-
-router.delete(
-	'/SettingDelete/:id',
-	authMiddleware,
-	settingController.deleteByID,
-);
-router.get('/getall', authMiddleware, settingController.getRequest);
-
-router.put('/update/:id', authMiddleware, settingController.updatekeyId);
-
+router.post('/create', authMiddleware, settingController.addSettings);
+router.get('/get', authMiddleware, settingController.getSetting);
+router.put('/update/:id', authMiddleware, settingController.updatesettings);
+router.delete('/delete/:id', authMiddleware, settingController.deleteSetting);
 
 module.exports = router;

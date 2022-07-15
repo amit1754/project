@@ -1,99 +1,131 @@
 import { healthModel } from '../models';
 import { healthService } from '../mongoServices';
-const create = async (req, res) => {
+import { CONSTANTS } from '../constants';
+import { errorLogger } from '../utils';
+import { fileUpload } from '../utils';
+
+const {
+	RESPONSE_MESSAGE: { HEALTH_ARTICLE, FAILED_RESPONSE },
+	STATUS_CODE: { SUCCESS, FAILED },
+} = CONSTANTS;
+const createHealthArticle = async (req, res) => {
 	try {
-		var payload = {
+		let payload = {
 			...req.body,
-			profileImage: req.file.path,
+			profileImage: req.file.filename,
 		};
 		const Model = new healthModel(payload);
 		const saveResponse = await Model.save();
 		if (saveResponse) {
-			res.status(200).json({
+			res.status(SUCCESS).json({
 				success: true,
-				message: 'user created ...',
-				data: saveResponse,
+				message: HEALTH_ARTICLE.CREATE_SUCCESS,
+				data: [],
 			});
 		}
 	} catch (error) {
 		console.log('error', error);
-		res.status(400).json({
+		errorLogger(error.message, req.originalUrl, req.ip);
+		res.status(FAILED).json({
 			success: false,
-			error: error.message || 'failed',
+			error: error.message || FAILED_RESPONSE,
 		});
 	}
 };
-const deleteByID = async (req, res) => {
+const getHealthArticle = async (req, res) => {
 	try {
-		const { id } = req.params;
-		const response = await new healthService.RemoveDetail(id);
-		if (response) {
-			res.status(200).json({
-				success: true,
-				message: 'Delete user..',
-				data: response
-
-			});
-		} else {
-			throw new Error('Error...');
-		}
-	} catch (error) {
-		res.status(400).json({
-			success: false,
-			error: error.message || 'failed',
-		});
-	}
-};
-const getData = async (req, res) => {
-	try {
-		const getData = await healthService.findAllQuery(req.query);
-		if (getData) {
-			return res.status(200).send({
-				success: true,
-				message: 'Data found...',
-				data: getData,
-			});
-		} else {
-			throw new Error(error.messageD);
-		}
-	} catch (error) {
-		return res.status(400).json({
-			success: false,
-			error: error.message || 'failed',
-		});
-	}
-};
-const updateByid = async (req, res) => {
-	try {
-		const { id } = req.params;
-		const data = await healthService.findby(id);
+		let { data, totalCount } = await healthService.findAllQuery(req.query);
 		if (data) {
-			const response = healthService.updateOne(id, req.body);
-			response
-			if (getData) {
-				return res.status(200).send({
+			res.status(SUCCESS).json({
+				success: true,
+				message: HEALTH_ARTICLE.GET_SUCCESS,
+				data,
+				totalCount,
+			});
+		} else {
+			throw new Error(HEALTH_ARTICLE.GET_FAILED);
+		}
+	} catch (error) {
+		errorLogger(error.message, req.originalUrl, req.ip);
+		console.log('error', error);
+		res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
+
+const deleteHealthArticle = async (req, res) => {
+	try {
+		const { id } = req.params;
+		let filter = { _id: id },
+			updateData = {
+				isEnabledL: false,
+				deletedAt: new Date(),
+				deletedBy: req.currentUser._id,
+			};
+		const response = await healthService.updateOne(filter, updateData);
+		if (response) {
+			res.status(SUCCESS).json({
+				success: true,
+				message: HEALTH_ARTICLE.DELETE_SUCCESS,
+				data: [],
+			});
+		} else {
+			throw new Error(HEALTH_ARTICLE.DELETE_FAILED);
+		}
+	} catch (error) {
+		console.log('error', error);
+		errorLogger(error.message, req.originalUrl, req.ip);
+		res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
+
+const updateHealthArticle = async (req, res) => {
+	try {
+		const { id } = req.params,
+			filter = { _id: id };
+
+		const { data } = await healthService.findAllQuery(filter);
+		if (data) {
+			let payload = {
+				...req.body,
+			};
+			if (req.file) {
+				fileUpload.removeFile(data[0].profileImage);
+
+				payload = {
+					profileImage: req.file.path,
+				};
+			}
+			const response = healthService.updateOneQuery(filter, payload);
+			if (response) {
+				res.status(SUCCESS).json({
 					success: true,
-					message: 'Data found...',
-					data: getData,
+					message: HEALTH_ARTICLE.UPDATE_SUCCESS,
+					data: [],
 				});
 			} else {
-				throw new Error(error.messageD);
+				throw new Error(HEALTH_ARTICLE.UPDATE_FAILED);
 			}
 		} else {
-			throw new Error('user not found!..');
+			throw new Error(HEALTH_ARTICLE.NOT_AVAILABLE);
 		}
 	} catch (error) {
-		res.status(400).json({
+		errorLogger(error.message, req.originalUrl, req.ip);
+		res.status(FAILED).json({
 			success: false,
-			error: error.message || 'failed',
+			error: error.message || FAILED_RESPONSE,
 		});
 	}
 };
 
-
 export default {
-	create,
-	deleteByID,
-	getData,
-	updateByid
+	createHealthArticle,
+	getHealthArticle,
+	deleteHealthArticle,
+	updateHealthArticle,
 };
