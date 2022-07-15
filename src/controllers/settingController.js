@@ -1,10 +1,10 @@
-const Setting = require('../models/settingModel');
 import { settingService } from '../mongoServices';
+import { settingModel } from '../models';
 
-const settingManage = async (req, res) => {
+const addSettings = async (req, res) => {
 	try {
 		if (req.body) {
-			const Model = await new Setting(req.body);
+			const Model = await new settingModel(req.body);
 			const saveResponse = await Model.save();
 			if (saveResponse) {
 				res.status(200).json({
@@ -30,17 +30,15 @@ const settingManage = async (req, res) => {
 const deleteByID = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const response = settingService.removeSetting(id);
-		response
-			.then((response) => {
+		const response = await new settingService.removeSetting(id);
+			if (response) {
 				res.status(200).json({
 					success: true,
-					message: 'delete user successfully',
+					message: 'Delete user..',
 				});
-			})
-			.catch((error) => {
-				throw new Error(error.message);
-			});
+			} else {
+				throw new Error('Error...');
+			}
 	} catch (error) {
 		res.status(400).json({
 			success: false,
@@ -76,10 +74,30 @@ const getRequest = async (req, res) => {
 		});
 	}
 };
-const updateByid = async (req, res) => {
+const getSetting = async (req, res) => {
+	try {
+		const getSetting = await settingService.findAllQuery(req.query);
+		if (getSetting) {
+			return res.status(200).send({
+				success: true,
+				message: 'Data found...',
+				data: getSetting,
+			});
+		} else {
+			throw new Error(error.messageD);
+		}
+	} catch (error) {
+		return res.status(400).json({
+			success: false,
+			error: error.message || 'failed',
+		});
+	}
+};
+
+const updatekeyId = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const data = await settingService.findby(id);
+		const data = await settingService.findBy(id);
 		if (data) {
 			const response = settingService.updateOne(id, req.body);
 			response
@@ -105,8 +123,10 @@ const updateByid = async (req, res) => {
 };
 
 export default {
-	settingManage,
+	addSettings,
 	deleteByID,
 	getRequest,
-	updateByid,
+	updatekeyId,
+	getSetting
+	
 };

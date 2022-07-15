@@ -3,7 +3,7 @@ import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
 import fs from 'fs';
 import { specialityService } from '../mongoServices';
-import { uploadFile, deleteFile } from '../utils/uploadFileIntoAws';
+import { uploadFile, deleteFile } from '../utils/uploadFileintoAws';
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 const {
@@ -36,6 +36,7 @@ const createSpeciality = async (req, res) => {
 			throw new Error(SPECIALITY.CREATE_FAILED);
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -118,8 +119,9 @@ const deleteSpeciality = async (req, res) => {
 
 const listAllSpeciality = async (req, res) => {
 	try {
-		let filter = { _id: '' };
-		const { data, totalCount } = await specialityService.findAllQuery(filter);
+		const { data, totalCount } = await specialityService.findAllQuery(
+			req.query,
+		);
 		if (data) {
 			return res.status(SUCCESS).send({
 				success: true,

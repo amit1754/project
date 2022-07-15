@@ -7,6 +7,6 @@ const router = express.Router();
 router.post('/create', upload.single('profileImage'), healthController.create);
 router.delete('/delete/:id', healthController.deleteByID);
 router.get('/get', healthController.getData);
-router.put('/update/:id', upload.single('profileImage'), healthController.update);
+router.put('/update/:id', upload.single('profileImage'), healthController.updateByid);
 
 module.exports = router;

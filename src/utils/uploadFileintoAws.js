@@ -19,6 +19,7 @@ const s3 = new S3({
 
 // UPLOAD FILE TO S3
 function uploadFile(file) {
+	console.log('file', file);
 	const fileStream = fs.createReadStream(file.path);
 
 	const uploadParams = {
@@ -41,7 +42,7 @@ function getFileStream(fileKey) {
 }
 //DELETE FILE FORM S3
 async function deleteFile(filePath) {
-	var params = { Bucket: bucketName, Key: filePath };
+	let params = { Bucket: bucketName, Key: filePath };
 	try {
 		await s3.headObject(params).promise();
 		try {

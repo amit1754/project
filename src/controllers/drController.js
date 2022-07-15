@@ -1,9 +1,7 @@
 import { drModel, customerModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger, otpGenerator, SendEmail, jwtGenerate } from '../utils';
-import { hashPassword } from '../utils';
 import { drService, CustomerService } from '../mongoServices';
-import customerService from '../mongoServices/customerService';
 const {
 	RESPONSE_MESSAGE: { DR_USER, FAILED_RESPONSE, CUSTOMER_MESSAGE },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -95,12 +93,14 @@ const verifyOtp = async (req, res) => {
 		const { otp, email, type } = req.body;
 
 		if (type === CUSTOMER) {
-			let filter = { email },
-				update = { otp: null, isEnabled: true };
-			const findAndVerify = await customerModel.findOneAndUpdate(
-				{ email, otp: Number(otp) },
-				{ $set: { otp: null, isEnabled: true } },
-				{ new: true },
+			let filter = { email, otp: Number(otp) },
+				update = { otp: null, isEnabled: true },
+				projection = {};
+
+			const findAndVerify = await CustomerService.updateOneQuery(
+				filter,
+				update,
+				projection,
 			);
 			if (findAndVerify) {
 				let token = jwtGenerate(findAndVerify._id, type);
@@ -178,11 +178,11 @@ const deleteDr = async (req, res) => {
 			updateData = {
 				isEnabledL: false,
 				deletedAt: new Date(),
-				deletedBy: req.userData.id,
+				deletedBy: req.cu,
 			};
-		const deleteDr = await drService.updateDr(filter, updateData);
+		const deleteDR = await drService.updateOneQuery(filter, updateData);
 
-		if (deleteDr) {
+		if (deleteDR) {
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: DR_USER.DELETE_SUCCESS,
@@ -192,6 +192,7 @@ const deleteDr = async (req, res) => {
 			throw new Error(DR_USER.DELETE_FAILED);
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -201,15 +202,16 @@ const deleteDr = async (req, res) => {
 };
 const listDr = async (req, res) => {
 	try {
-		const listDr = await drService.listDr();
-		if (listDr) {
+		const { data, totalCount } = await drService.findAllQuery(req.query);
+		if (data) {
 			return res.status(SUCCESS).send({
 				success: true,
-				msg: DR_USER.LIST_SUCCESS,
-				data: listDr,
+				msg: DR_USER.GET_SUCCESS,
+				data,
+				totalCount,
 			});
 		} else {
-			throw new Error(DR_USER.LIST_FAILED);
+			throw new Error(DR_USER.GET_FAILED);
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
@@ -221,12 +223,13 @@ const listDr = async (req, res) => {
 };
 const ListCustomer = async (req, res) => {
 	try {
-		const getCustomer = await CustomerService.findAllQuery(req.query);
-		if (getCustomer) {
+		const { data, totalCount } = await CustomerService.findAllQuery(req.query);
+		if (data) {
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: CUSTOMER_MESSAGE.GET_SUCCESS,
-				data: getCustomer,
+				data,
+				totalCount,
 			});
 		} else {
 			throw new Error(CUSTOMER_MESSAGE.GET_FAILED);
@@ -242,16 +245,16 @@ const ListCustomer = async (req, res) => {
 const updateCustomer = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const { name, email, mobile, address } = req.body;
+
 		let filter = { _id: id },
 			updateData = {
 				...req.body,
 			};
-		const updateCustomer = await CustomerService.updateCustomer(
+		const updateCustomerData = await CustomerService.updateCustomer(
 			filter,
 			updateData,
 		);
-		if (updateCustomer) {
+		if (updateCustomerData) {
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: CUSTOMER_MESSAGE.UPDATE_SUCCESS,
@@ -275,13 +278,13 @@ const deleteCustomer = async (req, res) => {
 			updateData = {
 				isEnabledL: false,
 				deletedAt: new Date(),
-				deletedBy: req.userData.id,
+				deletedBy: req.currentUser._Id,
 			};
-		const deleteCustomer = await CustomerService.updateCustomer(
+		const deleteCustomerData = await CustomerService.updateCustomer(
 			filter,
 			updateData,
 		);
-		if (deleteCustomer) {
+		if (deleteCustomerData) {
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: CUSTOMER_MESSAGE.DELETE_SUCCESS,

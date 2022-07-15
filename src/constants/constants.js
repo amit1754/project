@@ -154,5 +154,17 @@ export default {
 			DELETE_FAILED: 'Device deletion failed',
 			DELETE_ALREADY_AVAILABLE: 'Device Already available',
 		},
+		TIME_SLOT: {
+			CREATE_SUCCESS: 'Time Slot created successfully',
+			CREATE_FAILED: 'Time Slot creating failed',
+			UPDATE_SUCCESS: 'Time Slot update successfully',
+			UPDATE_FAILED: 'Time Slot updating failed',
+			GET_SUCCESS: 'Time Slot get successfully',
+			GET_FAILED: 'Time Slot is not available',
+			DELETE_SUCCESS: 'Time Slot delete successfully',
+			DELETE_FAILED: 'Time Slot deletion failed',
+			ASSIGN_SUCCESS: 'Time Slot assign successfully',
+			ASSIGN_FAILED: 'Time Slot assign failed',
+		},
 	},
 };

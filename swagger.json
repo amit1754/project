@@ -7,7 +7,7 @@
 	},
 	"servers": [
 		{
-			"url": "http://localhost:5001/api/v1/",
+			"url": "http://localhost:5001/api/v1",
 			"variables": {}
 		}
 	],
@@ -1804,6 +1804,872 @@
 					}
 				},
 				"deprecated": false
+			}
+		},
+		"/speciality/create": {
+			"post": {
+				"tags": ["Speciality"],
+				"summary": "speciality create",
+				"operationId": "specialitycreate",
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"encoding": {},
+							"schema": {
+								"required": ["name", "status", "time", "image", "price"],
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string",
+										"example": " Back Pain"
+									},
+									"status": {
+										"type": "string",
+										"example": "AVAILABLE"
+									},
+									"time": {
+										"type": "string",
+										"example": "9:00 AM to 5:00 PM"
+									},
+									"image": {
+										"type": "string"
+									},
+									"price": {
+										"type": "integer",
+										"format": "int32",
+										"example": 700
+									}
+								}
+							}
+						}
+					},
+					"required": false
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m200"
+								},
+								"example": {
+									"success": true,
+									"msg": "Speciality created successfully",
+									"data": {
+										"image": "appointment_book/1657696866655-image (4).png",
+										"status": "AVAILABLE",
+										"deletedAt": null,
+										"deletedBy": null,
+										"_id": "62ce726328b7481c283e1c77",
+										"name": " Back Pain",
+										"price": 700,
+										"time": "9:00 AM to 5:00 PM",
+										"createdAt": "2022-07-13T07:21:07.024Z",
+										"updatedAt": "2022-07-13T07:21:07.024Z",
+										"__v": 0
+									}
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/speciality/update/62b046d2d5debb823497dc1c": {
+			"post": {
+				"tags": ["Speciality"],
+				"summary": "speciality update",
+				"operationId": "specialityupdate",
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"encoding": {},
+							"schema": {
+								"required": ["name", "status", "time", "price", "image"],
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string",
+										"example": " Back Pain "
+									},
+									"status": {
+										"type": "string",
+										"example": "Available"
+									},
+									"time": {
+										"type": "string",
+										"example": "9:00 AM to 5:00 PM"
+									},
+									"price": {
+										"type": "integer",
+										"format": "int32",
+										"example": 700
+									},
+									"image": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"required": false
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m200"
+								},
+								"example": {
+									"success": true,
+									"msg": "Speciality update successfully",
+									"data": {
+										"image": "appointment_book/1657696907620-image (1).png",
+										"status": "Available",
+										"deletedAt": null,
+										"deletedBy": null,
+										"_id": "62ce726328b7481c283e1c77",
+										"name": " Back Pain ",
+										"price": 700,
+										"time": "9:00 AM to 5:00 PM",
+										"createdAt": "2022-07-13T07:21:07.024Z",
+										"updatedAt": "2022-07-13T07:21:48.467Z",
+										"__v": 0
+									}
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/speciality/listAllSpeciality": {
+			"get": {
+				"tags": ["Speciality"],
+				"summary": "list All speciality",
+				"operationId": "listAllspeciality",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2002"
+								},
+								"example": {
+									"success": true,
+									"data": [
+										{
+											"image": "appointment_book/1655721158301-img.png",
+											"status": "Available",
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62b046d2d5debb823497dc1c",
+											"name": " Back Pain ",
+											"price": 700,
+											"time": "9:00 AM to 5:00 PM",
+											"createdAt": "2022-06-20T10:07:15.090Z",
+											"updatedAt": "2022-06-20T10:32:39.125Z",
+											"__v": 0
+										},
+										{
+											"image": "appointment_book/1657696907620-image (1).png",
+											"status": "Available",
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62ce726328b7481c283e1c77",
+											"name": " Back Pain ",
+											"price": 700,
+											"time": "9:00 AM to 5:00 PM",
+											"createdAt": "2022-07-13T07:21:07.024Z",
+											"updatedAt": "2022-07-13T07:21:48.467Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 2
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/speciality/delete/629df3f75f1a1726a04ccf2f": {
+			"delete": {
+				"tags": ["Speciality"],
+				"summary": "delete speciality",
+				"operationId": "deletespeciality",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2003"
+								},
+								"example": {
+									"success": true,
+									"msg": "Speciality delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/common/createConsult": {
+			"post": {
+				"tags": ["common api"],
+				"summary": "Create Consult",
+				"operationId": "CreateConsult",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateConsultRequest"
+							},
+							"example": {
+								"name": "phone"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/common/createLanguage": {
+			"post": {
+				"tags": ["common api"],
+				"summary": "create language",
+				"operationId": "createlanguage",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/createlanguagerequest"
+							},
+							"example": {
+								"name": "gujarati"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/common/updateLanguage/": {
+			"post": {
+				"tags": ["common api"],
+				"summary": "Update Language",
+				"operationId": "UpdateLanguage",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateLanguageRequest"
+							},
+							"example": {
+								"name": "english"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/common/updateConsult/629f3dcfe4f78324f851d4bf": {
+			"post": {
+				"tags": ["common api"],
+				"summary": "Update Consult",
+				"operationId": "UpdateConsult",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateConsultRequest"
+							},
+							"example": {
+								"name": "text edit"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/common/getAllLanguage/629f4085f7718a4570d14cdf": {
+			"get": {
+				"tags": ["common api"],
+				"summary": "get All Language",
+				"operationId": "getAllLanguage",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/common/getAllConsult/629f3dcfe4f78324f851d4bf": {
+			"get": {
+				"tags": ["common api"],
+				"summary": "get All Consult",
+				"operationId": "getAllConsult",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/common/deleteLanguage/": {
+			"delete": {
+				"tags": ["common api"],
+				"summary": "delete language",
+				"operationId": "deletelanguage",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/common/deleteConsult/629f3dcfe4f78324f851d4bf": {
+			"delete": {
+				"tags": ["common api"],
+				"summary": "delete Consult",
+				"operationId": "deleteConsult",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/notificationType/create": {
+			"post": {
+				"tags": ["NotificationType"],
+				"summary": "create notification type",
+				"operationId": "createnotificationtype",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/createnotificationtyperequest"
+							},
+							"example": {
+								"type": "SMS",
+								"message": "Hello, This is gental reminder for you appointment"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/notificationType/update/62a0689fe4505b248c93cbb2": {
+			"put": {
+				"tags": ["NotificationType"],
+				"summary": "update notification type",
+				"operationId": "updatenotificationtype",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/updatenotificationtyperequest"
+							},
+							"example": {
+								"type": "SMS",
+								"message": "Hello, This is gental reminder for you appointment !"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/notificationType/list": {
+			"get": {
+				"tags": ["NotificationType"],
+				"summary": "update notification type Copy",
+				"operationId": "updatenotificationtypeCopy",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/device/create": {
+			"post": {
+				"tags": ["Device"],
+				"summary": "Add device",
+				"operationId": "Adddevice",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AdddeviceRequest"
+							},
+							"example": {
+								"deviceId": "aaaa",
+								"deviceName": "spring",
+								"deviceType": "aaa",
+								"deviceModal": "tm005a",
+								"treatment": "aaaa"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m500"
+								},
+								"example": {
+									"success": false,
+									"message": "Device Already available"
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/device/get": {
+			"get": {
+				"tags": ["Device"],
+				"summary": "Get devices",
+				"operationId": "Getdevices",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2005"
+								},
+								"example": {
+									"message": "Device get successfully",
+									"data": [
+										{
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62cd7a643ad98c1bb0ffd8e8",
+											"deviceId": "aaaa",
+											"deviceType": "aaa",
+											"deviceName": "spring",
+											"deviceModal": "tm005a",
+											"treatment": "aaaa",
+											"createdAt": "2022-07-12T13:43:00.881Z",
+											"updatedAt": "2022-07-12T13:43:00.881Z",
+											"__v": 0
+										},
+										{
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62ce7381e3b02d3b305c4caf",
+											"deviceId": "aaaaa",
+											"deviceType": "aaa",
+											"deviceName": "spring",
+											"deviceModal": "tm005a",
+											"treatment": "aaaa",
+											"createdAt": "2022-07-13T07:25:53.661Z",
+											"updatedAt": "2022-07-13T07:25:53.661Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 2
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/device/update/62cd729e79556f376cd5224c": {
+			"put": {
+				"tags": ["Device"],
+				"summary": "Update device",
+				"operationId": "Updatedevice",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdatedeviceRequest"
+							},
+							"example": {
+								"deviceName": "fddddff",
+								"deviceType": "aaa",
+								"deviceModal": "tm005a",
+								"treatment": "aaaa"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2004"
+								},
+								"example": {
+									"success": true,
+									"message": "Device update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/device/delete/62cd729e79556f376cd5224c": {
+			"delete": {
+				"tags": ["Device"],
+				"summary": "Delete Device",
+				"operationId": "DeleteDevice",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2004"
+								},
+								"example": {
+									"success": true,
+									"message": "Device delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/timeSlot/create": {
+			"post": {
+				"tags": ["Time Slot"],
+				"summary": "Create time Slot",
+				"operationId": "CreatetimeSlot",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreatetimeSlotRequest"
+							},
+							"example": {
+								"startTime": "10:00 A",
+								"endTime": "10:30 A"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2008"
+								},
+								"example": {
+									"success": true,
+									"msg": "Time Slot created successfully",
+									"data": {
+										"deletedAt": null,
+										"deletedBy": null,
+										"_id": "62ce6bee37e91b0a80fddb2b",
+										"startTime": "10:00 A",
+										"endTime": "10:30 A",
+										"createdAt": "2022-07-13T06:53:34.046Z",
+										"updatedAt": "2022-07-13T06:53:34.046Z",
+										"__v": 0
+									}
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/timeSlot/update/62ce6b4e887df22d203c5ff4": {
+			"put": {
+				"tags": ["Time Slot"],
+				"summary": "Update time Slot",
+				"operationId": "UpdatetimeSlot",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdatetimeSlotRequest"
+							},
+							"example": {
+								"startTime": "10:10 A",
+								"endTime": "10:30 A"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2003"
+								},
+								"example": {
+									"success": true,
+									"msg": "Time Slot update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/timeSlot/get": {
+			"get": {
+				"tags": ["Time Slot"],
+				"summary": "Get Time Slot",
+				"operationId": "GetTimeSlot",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20011"
+								},
+								"example": {
+									"success": true,
+									"msg": "Time Slot get successfully",
+									"data": [
+										{
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62ce6b4e887df22d203c5ff4",
+											"startTime": "10:00 A",
+											"endTime": "10:30 A",
+											"createdAt": "2022-07-13T06:50:54.541Z",
+											"updatedAt": "2022-07-13T06:50:54.541Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 1
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/timeSlot/delete/62ce6b4e887df22d203c5ff4": {
+			"delete": {
+				"tags": ["Time Slot"],
+				"summary": "Delete time Slot",
+				"operationId": "DeletetimeSlot",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2003"
+								},
+								"example": {
+									"success": true,
+									"msg": "Time Slot delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
 			}
 		}
 	},
@@ -4122,6 +4988,717 @@
 					"price": 700,
 					"image": "src/images/Back-Pain.png"
 				}
+			},
+			"m200": {
+				"title": "m200",
+				"required": ["success", "msg", "data"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/Data"
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Speciality created successfully",
+					"data": {
+						"image": "appointment_book/1657696866655-image (4).png",
+						"status": "AVAILABLE",
+						"deletedAt": null,
+						"deletedBy": null,
+						"_id": "62ce726328b7481c283e1c77",
+						"name": " Back Pain",
+						"price": 700,
+						"time": "9:00 AM to 5:00 PM",
+						"createdAt": "2022-07-13T07:21:07.024Z",
+						"updatedAt": "2022-07-13T07:21:07.024Z",
+						"__v": 0
+					}
+				}
+			},
+			"Data": {
+				"title": "Data",
+				"required": [
+					"image",
+					"status",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"name",
+					"price",
+					"time",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"image": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"price": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"time": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"image": "appointment_book/1657696866655-image (4).png",
+					"status": "AVAILABLE",
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62ce726328b7481c283e1c77",
+					"name": " Back Pain",
+					"price": 700,
+					"time": "9:00 AM to 5:00 PM",
+					"createdAt": "2022-07-13T07:21:07.024Z",
+					"updatedAt": "2022-07-13T07:21:07.024Z",
+					"__v": 0
+				}
+			},
+			"m2002": {
+				"title": "m2002",
+				"required": ["success", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"success": true,
+					"data": [
+						{
+							"image": "appointment_book/1655721158301-img.png",
+							"status": "Available",
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62b046d2d5debb823497dc1c",
+							"name": " Back Pain ",
+							"price": 700,
+							"time": "9:00 AM to 5:00 PM",
+							"createdAt": "2022-06-20T10:07:15.090Z",
+							"updatedAt": "2022-06-20T10:32:39.125Z",
+							"__v": 0
+						},
+						{
+							"image": "appointment_book/1657696907620-image (1).png",
+							"status": "Available",
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62ce726328b7481c283e1c77",
+							"name": " Back Pain ",
+							"price": 700,
+							"time": "9:00 AM to 5:00 PM",
+							"createdAt": "2022-07-13T07:21:07.024Z",
+							"updatedAt": "2022-07-13T07:21:48.467Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 2
+				}
+			},
+			"deletespecialityrequest": {
+				"title": "deletespecialityrequest",
+				"required": ["name", "status", "time", "price", "image"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string"
+					},
+					"time": {
+						"type": "string"
+					},
+					"price": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"image": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "Back Pain",
+					"status": "Available",
+					"time": "9:00 AM to 7:00 PM",
+					"price": 700,
+					"image": "src/images/Back-Pain.png"
+				}
+			},
+			"m2003": {
+				"title": "m2003",
+				"required": ["success", "msg", "data"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Speciality delete successfully",
+					"data": []
+				}
+			},
+			"CreateConsultRequest": {
+				"title": "CreateConsultRequest",
+				"required": ["name"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "phone"
+				}
+			},
+			"createlanguagerequest": {
+				"title": "createlanguagerequest",
+				"required": ["name"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "gujarati"
+				}
+			},
+			"UpdateLanguageRequest": {
+				"title": "UpdateLanguageRequest",
+				"required": ["name"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "english"
+				}
+			},
+			"UpdateConsultRequest": {
+				"title": "UpdateConsultRequest",
+				"required": ["name"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "text edit"
+				}
+			},
+			"createnotificationtyperequest": {
+				"title": "createnotificationtyperequest",
+				"required": ["type", "message"],
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"type": "SMS",
+					"message": "Hello, This is gental reminder for you appointment"
+				}
+			},
+			"updatenotificationtyperequest": {
+				"title": "updatenotificationtyperequest",
+				"required": ["type", "message"],
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"type": "SMS",
+					"message": "Hello, This is gental reminder for you appointment !"
+				}
+			},
+			"deletenotificationtyperequest": {
+				"title": "deletenotificationtyperequest",
+				"required": ["type", "message"],
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"type": "SMS",
+					"message": "Hello, This is gental reminder for you appointment !"
+				}
+			},
+			"AdddeviceRequest": {
+				"title": "AdddeviceRequest",
+				"required": [
+					"deviceId",
+					"deviceName",
+					"deviceType",
+					"deviceModal",
+					"treatment"
+				],
+				"type": "object",
+				"properties": {
+					"deviceId": {
+						"type": "string"
+					},
+					"deviceName": {
+						"type": "string"
+					},
+					"deviceType": {
+						"type": "string"
+					},
+					"deviceModal": {
+						"type": "string"
+					},
+					"treatment": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"deviceId": "aaaa",
+					"deviceName": "spring",
+					"deviceType": "aaa",
+					"deviceModal": "tm005a",
+					"treatment": "aaaa"
+				}
+			},
+			"m500": {
+				"title": "m500",
+				"required": ["success", "message"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"success": false,
+					"message": "Device Already available"
+				}
+			},
+			"m2004": {
+				"title": "m2004",
+				"required": ["success", "message", "data"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"success": true,
+					"message": "Device created successfully",
+					"data": []
+				}
+			},
+			"m2005": {
+				"title": "m2005",
+				"required": ["message", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data3"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"message": "Device get successfully",
+					"data": [
+						{
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62cd7a643ad98c1bb0ffd8e8",
+							"deviceId": "aaaa",
+							"deviceType": "aaa",
+							"deviceName": "spring",
+							"deviceModal": "tm005a",
+							"treatment": "aaaa",
+							"createdAt": "2022-07-12T13:43:00.881Z",
+							"updatedAt": "2022-07-12T13:43:00.881Z",
+							"__v": 0
+						},
+						{
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62ce7381e3b02d3b305c4caf",
+							"deviceId": "aaaaa",
+							"deviceType": "aaa",
+							"deviceName": "spring",
+							"deviceModal": "tm005a",
+							"treatment": "aaaa",
+							"createdAt": "2022-07-13T07:25:53.661Z",
+							"updatedAt": "2022-07-13T07:25:53.661Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 2
+				}
+			},
+			"Data3": {
+				"title": "Data3",
+				"required": [
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"deviceId",
+					"deviceType",
+					"deviceName",
+					"deviceModal",
+					"treatment",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"deviceId": {
+						"type": "string"
+					},
+					"deviceType": {
+						"type": "string"
+					},
+					"deviceName": {
+						"type": "string"
+					},
+					"deviceModal": {
+						"type": "string"
+					},
+					"treatment": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62cd7a643ad98c1bb0ffd8e8",
+					"deviceId": "aaaa",
+					"deviceType": "aaa",
+					"deviceName": "spring",
+					"deviceModal": "tm005a",
+					"treatment": "aaaa",
+					"createdAt": "2022-07-12T13:43:00.881Z",
+					"updatedAt": "2022-07-12T13:43:00.881Z",
+					"__v": 0
+				}
+			},
+			"UpdatedeviceRequest": {
+				"title": "UpdatedeviceRequest",
+				"required": ["deviceName", "deviceType", "deviceModal", "treatment"],
+				"type": "object",
+				"properties": {
+					"deviceName": {
+						"type": "string"
+					},
+					"deviceType": {
+						"type": "string"
+					},
+					"deviceModal": {
+						"type": "string"
+					},
+					"treatment": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"deviceName": "fddddff",
+					"deviceType": "aaa",
+					"deviceModal": "tm005a",
+					"treatment": "aaaa"
+				}
+			},
+			"CreatetimeSlotRequest": {
+				"title": "CreatetimeSlotRequest",
+				"required": ["startTime", "endTime"],
+				"type": "object",
+				"properties": {
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"startTime": "10:00 A",
+					"endTime": "10:30 A"
+				}
+			},
+			"m2008": {
+				"title": "m2008",
+				"required": ["success", "msg", "data"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/Data4"
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Time Slot created successfully",
+					"data": {
+						"deletedAt": null,
+						"deletedBy": null,
+						"_id": "62ce6bee37e91b0a80fddb2b",
+						"startTime": "10:00 A",
+						"endTime": "10:30 A",
+						"createdAt": "2022-07-13T06:53:34.046Z",
+						"updatedAt": "2022-07-13T06:53:34.046Z",
+						"__v": 0
+					}
+				}
+			},
+			"Data4": {
+				"title": "Data4",
+				"required": [
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"startTime",
+					"endTime",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62ce6bee37e91b0a80fddb2b",
+					"startTime": "10:00 A",
+					"endTime": "10:30 A",
+					"createdAt": "2022-07-13T06:53:34.046Z",
+					"updatedAt": "2022-07-13T06:53:34.046Z",
+					"__v": 0
+				}
+			},
+			"UpdatetimeSlotRequest": {
+				"title": "UpdatetimeSlotRequest",
+				"required": ["startTime", "endTime"],
+				"type": "object",
+				"properties": {
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"startTime": "10:10 A",
+					"endTime": "10:30 A"
+				}
+			},
+			"DeletetimeSlotRequest": {
+				"title": "DeletetimeSlotRequest",
+				"required": ["startTime", "endTime"],
+				"type": "object",
+				"properties": {
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"startTime": "10:00 A",
+					"endTime": "10:30 A"
+				}
+			},
+			"m20011": {
+				"title": "m20011",
+				"required": ["success", "msg", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data4"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Time Slot get successfully",
+					"data": [
+						{
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62ce6b4e887df22d203c5ff4",
+							"startTime": "10:00 A",
+							"endTime": "10:30 A",
+							"createdAt": "2022-07-13T06:50:54.541Z",
+							"updatedAt": "2022-07-13T06:50:54.541Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 1
+				}
 			}
 		},
 		"securitySchemes": {
@@ -4142,8 +5719,21 @@
 		{
 			"name": "Admin User"
 		},
+
 		{
-			"name": "User & Dr"
+			"name": "Speciality"
+		},
+		{
+			"name": "common api"
+		},
+		{
+			"name": "NotificationType"
+		},
+		{
+			"name": "Device"
+		},
+		{
+			"name": "Time Slot"
 		}
 	]
 }

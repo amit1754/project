@@ -1,8 +1,8 @@
-import { customerModel } from '../models';
+import { timeSlotModel } from '../models';
 const findAllQuery = async (query) => {
 	let { search, _id, limit, page, sortField, sortValue } = query;
 	let sort = {};
-	let whereClause = {};
+	let whereClause = { deletedAt: null };
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
@@ -21,20 +21,20 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	const data = await customerModel
+	const data = await timeSlotModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
 		.limit(+limit || 20)
 		.sort(sort);
-	const totalCount = await customerModel.find(whereClause).countDocuments();
+	const totalCount = await timeSlotModel.find(whereClause).countDocuments();
 	return { data, totalCount };
 };
 
 const updateOneQuery = async (filter, update, projection) => {
 	let options = { new: true, fields: { ...projection } };
 
-	const result = await customerModel.findOneAndUpdate(filter, update, options);
-	return result;
+	const data = await timeSlotModel.findOneAndUpdate(filter, update, options);
+	return data;
 };
 
 export default {

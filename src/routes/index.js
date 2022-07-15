@@ -11,5 +11,7 @@ router.use('/notificationType', require('./notificationTypeRoutes'));
 router.use('/device', require('./deviceRoutes'));
 router.use('/setingManagement', require('./settingRoutes'));
 router.use('/health', require('./healthRoutes'));
+router.use('/setting', require('./settingRoutes'));
+router.use('/timeSlot', require('./timeSlotRoute'));
 
 module.exports = router;
