@@ -1,6 +1,6 @@
 import express, { json, urlencoded } from 'express';
 
-// import cors from 'cors';
+import cors from 'cors';
 import morgan from 'morgan';
 // import helmet from 'helmet';
 import ip from 'ip';

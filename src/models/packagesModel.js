@@ -14,6 +14,11 @@ const packagesModel = new Schema(
 			trim: true,
 			required: true,
 		},
+		shortDescription: {
+			type: String,
+			trim: true,
+			required: true,
+		},
 		priceByMonth: {
 			type: Number,
 			required: true,
@@ -26,6 +31,10 @@ const packagesModel = new Schema(
 		deletedAt: {
 			type: Date,
 			default: null,
+		},
+		isDeleted: {
+			type: Boolean,
+			default: false,
 		},
 		deletedBy: {
 			type: Types.ObjectId,

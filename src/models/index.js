@@ -13,3 +13,4 @@ export { default as settingModel } from './settingModel';
 export { default as healthModel } from './healthModel';
 export { default as timeSlotModel } from './timeSlotModel';
 export { default as packagesModel } from './packagesModel';
+export { default as faqsModel } from './faqsModel';

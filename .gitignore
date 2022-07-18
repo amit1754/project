@@ -53,4 +53,6 @@ yarn.lock
 remaning.txt
 salon-super_admin-backend.postman_collection (2).json
 public/
+.vscode/
+.vscode/settings.json
 .vscode
