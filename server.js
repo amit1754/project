@@ -50,10 +50,10 @@ server.use(json());
 server.use(urlencoded({ extended: true }));
 /** CORS */
 
-// let corsOptions = {
-// 	origin: 'http://localhost:3090',
-// };
-// server.use(cors(corsOptions));
+let corsOptions = {
+	origin: '*',
+};
+server.use(cors(corsOptions));
 /** API LOG */
 server.use(morgan('dev'));
 /** XSS Attack Security */
