@@ -212,5 +212,15 @@ export default {
 			DELETE_SUCCESS: 'Faq delete successfully',
 			DELETE_FAILED: 'Faq deletion failed',
 		},
+		APPOINTMENT: {
+			CREATE_SUCCESS: 'Appointment created successfully',
+			CREATE_FAILED: 'Appointment creating failed',
+			UPDATE_SUCCESS: 'Appointment update successfully',
+			UPDATE_FAILED: 'Appointment updating failed',
+			GET_SUCCESS: 'Appointment get successfully',
+			GET_FAILED: 'Appointment is not available',
+			DELETE_SUCCESS: 'Appointment delete successfully',
+			DELETE_FAILED: 'Appointment deletion failed',
+		},
 	},
 };

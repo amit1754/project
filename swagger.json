@@ -1,7 +1,7 @@
 {
 	"openapi": "3.0.0",
 	"info": {
-		"title": "CurificBackend",
+		"title": "CurificBackend Copy",
 		"contact": {},
 		"version": "1.0"
 	},
@@ -26,8 +26,8 @@
 								"$ref": "#/components/schemas/PermissionsCreateRequest"
 							},
 							"example": {
-								"path": "admin-user/reset-password",
-								"displayName": "Reset Password"
+								"path": "employee-service/restore/:id",
+								"displayName": "restore sallone Employee  Service"
 							}
 						}
 					},
@@ -35,35 +35,8 @@
 				},
 				"responses": {
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "Permissions created successfully",
-									"data": []
-								}
-							}
-						}
-					},
-					"401": {
-						"description": "Unauthorized",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m4011"
-								},
-								"example": {
-									"success": false,
-									"message": "You can not access this resource"
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -82,157 +55,8 @@
 				"parameters": [],
 				"responses": {
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2001"
-								},
-								"example": {
-									"success": true,
-									"msg": "Permissions get successfully",
-									"total": 15,
-									"data": [
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d147b",
-											"path": "adminuser/create",
-											"displayName": "Admin User Create",
-											"createdAt": "2022-05-25T10:00:06.481Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1484",
-											"path": "adminuser/delete/:id",
-											"displayName": "Admin User Delete",
-											"createdAt": "2022-05-25T10:00:06.511Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1487",
-											"path": "adminuser/changePassword",
-											"displayName": "Admin User Delete",
-											"createdAt": "2022-05-25T10:00:06.520Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d148a",
-											"path": "adminuser/status",
-											"displayName": "Admin User Delete",
-											"createdAt": "2022-05-25T10:00:06.529Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d147e",
-											"path": "adminuser/get",
-											"displayName": "Admin User List",
-											"createdAt": "2022-05-25T10:00:06.491Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1481",
-											"path": "adminuser/update/:id",
-											"displayName": "Admin User update",
-											"createdAt": "2022-05-25T10:00:06.501Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "6299af0431284247c2de67eb",
-											"path": "employee-service/restore/:id",
-											"displayName": "Employee  Service",
-											"createdAt": "2022-06-03T06:49:40.296Z",
-											"updatedAt": "2022-06-03T06:49:40.296Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1462",
-											"path": "permissions/create",
-											"displayName": "Permission Create",
-											"createdAt": "2022-05-25T10:00:06.332Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d146c",
-											"path": "permissions/delete/:id",
-											"displayName": "Permission Delete",
-											"createdAt": "2022-05-25T10:00:06.431Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1466",
-											"path": "permissions/get",
-											"displayName": "Permission Lust",
-											"createdAt": "2022-05-25T10:00:06.382Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1469",
-											"path": "permissions/update/:id",
-											"displayName": "Permission update",
-											"createdAt": "2022-05-25T10:00:06.414Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d146f",
-											"path": "role/create",
-											"displayName": "Role Create",
-											"createdAt": "2022-05-25T10:00:06.440Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1478",
-											"path": "role/delete/:id",
-											"displayName": "Role Delete",
-											"createdAt": "2022-05-25T10:00:06.471Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1472",
-											"path": "role/get",
-											"displayName": "Role List",
-											"createdAt": "2022-05-25T10:00:06.451Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"_id": "628dfe26b34272ba6d1d1475",
-											"path": "role/update/:id",
-											"displayName": "Role update",
-											"createdAt": "2022-05-25T10:00:06.461Z",
-											"updatedAt": "2022-05-25T10:00:06.764Z",
-											"__v": 0
-										}
-									]
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -264,52 +88,18 @@
 								"$ref": "#/components/schemas/UpdatePermissionsRequest"
 							},
 							"example": {
-								"path": "adminuser/create",
-								"displayName": "Admin User Create"
+								"path": "website_header/get",
+								"createdBy": "6107cc835e94d0bc7dd9f1c2",
+								"displayName": "Get Header"
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "Permissions updation failed"
-								}
-							}
-						}
-					},
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2002"
-								},
-								"example": {
-									"success": true,
-									"msg": "Permissions update successfully",
-									"data": {
-										"createdBy": "628dfe26b34272ba6d1d1498",
-										"_id": "628dfe26b34272ba6d1d147b",
-										"path": "adminuser/create",
-										"displayName": "Admin User Create",
-										"createdAt": "2022-05-25T10:00:06.481Z",
-										"updatedAt": "2022-06-03T06:54:54.985Z",
-										"__v": 0
-									}
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -335,35 +125,8 @@
 				],
 				"responses": {
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "Permissions delete successfully",
-									"data": []
-								}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "Permissions deletion failed"
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -389,7 +152,7 @@
 							},
 							"example": {
 								"name": "EDITOR",
-								"permissions": ["628dfe26b34272ba6d1d1487"]
+								"permissions": ["6110d5db84d4803c28737723"]
 							}
 						}
 					},
@@ -397,35 +160,8 @@
 				},
 				"responses": {
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "Role created successfully",
-									"data": []
-								}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "some permission is not available"
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -441,302 +177,11 @@
 				"tags": ["Admin Role"],
 				"summary": "Get role",
 				"operationId": "Getrole",
-				"parameters": [
-					{
-						"name": "_id",
-						"in": "query",
-						"description": "",
-						"required": true,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"example": "628dfe26b34272ba6d1d148e"
-						}
-					}
-				],
+				"parameters": [],
 				"responses": {
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2005"
-								},
-								"example": {
-									"success": true,
-									"msg": "Role get successfully",
-									"total": 3,
-									"data": [
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"permissions": [
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d146f",
-													"path": "role/create",
-													"displayName": "Role Create",
-													"createdAt": "2022-05-25T10:00:06.440Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1472",
-													"path": "role/get",
-													"displayName": "Role List",
-													"createdAt": "2022-05-25T10:00:06.451Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1475",
-													"path": "role/update/:id",
-													"displayName": "Role update",
-													"createdAt": "2022-05-25T10:00:06.461Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1478",
-													"path": "role/delete/:id",
-													"displayName": "Role Delete",
-													"createdAt": "2022-05-25T10:00:06.471Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d147b",
-													"path": "adminuser/create",
-													"displayName": "Admin User Create",
-													"createdAt": "2022-05-25T10:00:06.481Z",
-													"updatedAt": "2022-06-03T06:54:54.985Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d147e",
-													"path": "adminuser/get",
-													"displayName": "Admin User List",
-													"createdAt": "2022-05-25T10:00:06.491Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1481",
-													"path": "adminuser/update/:id",
-													"displayName": "Admin User update",
-													"createdAt": "2022-05-25T10:00:06.501Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1484",
-													"path": "adminuser/delete/:id",
-													"displayName": "Admin User Delete",
-													"createdAt": "2022-05-25T10:00:06.511Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1487",
-													"path": "adminuser/changePassword",
-													"displayName": "Admin User Delete",
-													"createdAt": "2022-05-25T10:00:06.520Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d148a",
-													"path": "adminuser/status",
-													"displayName": "Admin User Delete",
-													"createdAt": "2022-05-25T10:00:06.529Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												}
-											],
-											"isEnabled": true,
-											"deletedAt": null,
-											"deletedBy": null,
-											"_id": "628dfe26b34272ba6d1d148e",
-											"name": "SUPER_USER",
-											"createdAt": "2022-05-25T10:00:06.565Z",
-											"updatedAt": "2022-06-03T06:49:40.313Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"permissions": [
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1462",
-													"path": "permissions/create",
-													"displayName": "Permission Create",
-													"createdAt": "2022-05-25T10:00:06.332Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1466",
-													"path": "permissions/get",
-													"displayName": "Permission Lust",
-													"createdAt": "2022-05-25T10:00:06.382Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1469",
-													"path": "permissions/update/:id",
-													"displayName": "Permission update",
-													"createdAt": "2022-05-25T10:00:06.414Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d146c",
-													"path": "permissions/delete/:id",
-													"displayName": "Permission Delete",
-													"createdAt": "2022-05-25T10:00:06.431Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d146f",
-													"path": "role/create",
-													"displayName": "Role Create",
-													"createdAt": "2022-05-25T10:00:06.440Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1472",
-													"path": "role/get",
-													"displayName": "Role List",
-													"createdAt": "2022-05-25T10:00:06.451Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1475",
-													"path": "role/update/:id",
-													"displayName": "Role update",
-													"createdAt": "2022-05-25T10:00:06.461Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1478",
-													"path": "role/delete/:id",
-													"displayName": "Role Delete",
-													"createdAt": "2022-05-25T10:00:06.471Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d147b",
-													"path": "adminuser/create",
-													"displayName": "Admin User Create",
-													"createdAt": "2022-05-25T10:00:06.481Z",
-													"updatedAt": "2022-06-03T06:54:54.985Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d147e",
-													"path": "adminuser/get",
-													"displayName": "Admin User List",
-													"createdAt": "2022-05-25T10:00:06.491Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1481",
-													"path": "adminuser/update/:id",
-													"displayName": "Admin User update",
-													"createdAt": "2022-05-25T10:00:06.501Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1484",
-													"path": "adminuser/delete/:id",
-													"displayName": "Admin User Delete",
-													"createdAt": "2022-05-25T10:00:06.511Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1487",
-													"path": "adminuser/changePassword",
-													"displayName": "Admin User Delete",
-													"createdAt": "2022-05-25T10:00:06.520Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												},
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d148a",
-													"path": "adminuser/status",
-													"displayName": "Admin User Delete",
-													"createdAt": "2022-05-25T10:00:06.529Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												}
-											],
-											"isEnabled": true,
-											"deletedAt": null,
-											"deletedBy": null,
-											"_id": "628dfe26b34272ba6d1d1492",
-											"name": "DEVELOPER",
-											"createdAt": "2022-05-25T10:00:06.582Z",
-											"updatedAt": "2022-06-03T06:49:40.329Z",
-											"__v": 0
-										},
-										{
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"permissions": [
-												{
-													"createdBy": "628dfe26b34272ba6d1d1498",
-													"_id": "628dfe26b34272ba6d1d1487",
-													"path": "adminuser/changePassword",
-													"displayName": "Admin User Delete",
-													"createdAt": "2022-05-25T10:00:06.520Z",
-													"updatedAt": "2022-05-25T10:00:06.764Z",
-													"__v": 0
-												}
-											],
-											"isEnabled": true,
-											"deletedAt": null,
-											"deletedBy": null,
-											"_id": "6299b17b3644eb4cf66f0f43",
-											"name": "EDITOR",
-											"createdAt": "2022-06-03T07:00:11.416Z",
-											"updatedAt": "2022-06-03T07:00:11.416Z",
-											"__v": 0
-										}
-									]
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -768,55 +213,77 @@
 								"$ref": "#/components/schemas/updateRoleRequest"
 							},
 							"example": {
-								"name": "temp",
-								"permissions": ["628dfe26b34272ba6d1d1487"]
+								"name": "SUPER_USER",
+								"createdBy": "6107cc835e94d0bc7dd9f1c2",
+								"permissions": [
+									"610d0b608308ca8cce20c41f",
+									"610d0b608308ca8cce20c420",
+									"610d0b608308ca8cce20c421",
+									"610d0b608308ca8cce20c422",
+									"610d0b608308ca8cce20c423",
+									"610d0b608308ca8cce20c424",
+									"610d0b608308ca8cce20c425",
+									"610d0b608308ca8cce20c426",
+									"610d0b608308ca8cce20c427",
+									"610d0b608308ca8cce20c428",
+									"610d0b608308ca8cce20c429",
+									"610d0b608308ca8cce20c42a",
+									"610d0b608308ca8cce20c42b",
+									"610d0b608308ca8cce20c42c",
+									"610d0b608308ca8cce20c42d",
+									"610d0b608308ca8cce20c42e",
+									"610d0b608308ca8cce20c42f",
+									"610d0b608308ca8cce20c430",
+									"610d0b608308ca8cce20c431",
+									"610d0b608308ca8cce20c432",
+									"610d0b608308ca8cce20c433",
+									"610d0b608308ca8cce20c434",
+									"610d0b608308ca8cce20c435",
+									"610d0b608308ca8cce20c436",
+									"610d0b608308ca8cce20c437",
+									"610d0b608308ca8cce20c438",
+									"610d0b608308ca8cce20c439",
+									"610d0b608308ca8cce20c43a",
+									"610d0b608308ca8cce20c43b",
+									"610d0b608308ca8cce20c43c",
+									"610d0b608308ca8cce20c43d",
+									"610d0b608308ca8cce20c43e",
+									"610d0b608308ca8cce20c43f",
+									"610d0b608308ca8cce20c440",
+									"610d0b608308ca8cce20c441",
+									"610d0b608308ca8cce20c442",
+									"610d0b608308ca8cce20c443",
+									"610d0b608308ca8cce20c444",
+									"610d0b608308ca8cce20c445",
+									"610d0b608308ca8cce20c446",
+									"610d0b608308ca8cce20c447",
+									"610d0b608308ca8cce20c448",
+									"610d0b618308ca8cce20c449",
+									"610d0b618308ca8cce20c44a",
+									"610d0b618308ca8cce20c44b",
+									"610d0b618308ca8cce20c44c",
+									"610d0b618308ca8cce20c44d",
+									"610d0b618308ca8cce20c44e",
+									"610d0b618308ca8cce20c44f",
+									"610d0b618308ca8cce20c450",
+									"610d0b618308ca8cce20c451",
+									"610d0b618308ca8cce20c452",
+									"610d0b618308ca8cce20c453",
+									"610d0b618308ca8cce20c454",
+									"610d0b618308ca8cce20c455",
+									"6110c1ed170cf61a4c8d3e47",
+									"6110d11772f7ae3890564085",
+									"6110d0b3449850384837abc4"
+								]
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "some permission is not available"
-								}
-							}
-						}
-					},
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2006"
-								},
-								"example": {
-									"success": true,
-									"msg": "Role update successfully",
-									"data": {
-										"createdBy": "628dfe26b34272ba6d1d1498",
-										"permissions": ["628dfe26b34272ba6d1d1487"],
-										"isEnabled": true,
-										"deletedAt": null,
-										"deletedBy": null,
-										"_id": "6299b17b3644eb4cf66f0f43",
-										"name": "temp",
-										"createdAt": "2022-06-03T07:00:11.416Z",
-										"updatedAt": "2022-06-03T07:04:00.268Z",
-										"__v": 0
-									}
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -842,35 +309,8 @@
 				],
 				"responses": {
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "Role delete successfully",
-									"data": []
-								}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "Role deletion failed"
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -897,58 +337,17 @@
 							"example": {
 								"name": "Tushar20",
 								"email": "tushar20@mailinator.com",
-								"role": "628dfe26b34272ba6d1d1492"
+								"role": "6110d7992b1f633dfe13b7a6",
+								"profileImage": "aaa"
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"401": {
-						"description": "Unauthorized",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m4011"
-								},
-								"example": {
-									"success": false,
-									"message": "You can not access this resource"
-								}
-							}
-						}
-					},
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "Admin user created successfully",
-									"data": []
-								}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": " User is already registered"
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -973,118 +372,17 @@
 								"$ref": "#/components/schemas/LoginAdminUserRequest"
 							},
 							"example": {
-								"email": "superUser#123@example.com",
-								"password": "superUser@123"
+								"email": "developer#123@example.com",
+								"password": "developer@123"
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2009"
-								},
-								"example": {
-									"success": true,
-									"data": {
-										"profileImage": null,
-										"firstLogin": false,
-										"createdBy": "628dfe26b34272ba6d1d1498",
-										"isEnabled": true,
-										"deletedAt": null,
-										"deletedBy": null,
-										"_id": "628dfe26b34272ba6d1d149a",
-										"role": {
-											"permissions": [
-												{
-													"_id": "628dfe26b34272ba6d1d146f",
-													"path": "role/create",
-													"displayName": "Role Create"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d1472",
-													"path": "role/get",
-													"displayName": "Role List"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d1475",
-													"path": "role/update/:id",
-													"displayName": "Role update"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d1478",
-													"path": "role/delete/:id",
-													"displayName": "Role Delete"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d147b",
-													"path": "adminuser/create",
-													"displayName": "Admin User Create"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d147e",
-													"path": "adminuser/get",
-													"displayName": "Admin User List"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d1481",
-													"path": "adminuser/update/:id",
-													"displayName": "Admin User update"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d1484",
-													"path": "adminuser/delete/:id",
-													"displayName": "Admin User Delete"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d1487",
-													"path": "adminuser/changePassword",
-													"displayName": "Admin User Delete"
-												},
-												{
-													"_id": "628dfe26b34272ba6d1d148a",
-													"path": "adminuser/status",
-													"displayName": "Admin User Delete"
-												}
-											],
-											"isEnabled": true,
-											"deletedAt": null,
-											"_id": "628dfe26b34272ba6d1d148e",
-											"name": "SUPER_USER"
-										},
-										"name": "superUser",
-										"email": "superUser#123@example.com",
-										"hashedPassword": "$2b$10$gSDqHyP0S/Irtbc8w057E.WCGKE9d67jbGSxm9f7hU.RuUGrHyBMi",
-										"salt": "$2b$10$gSDqHyP0S/Irtbc8w057E.",
-										"createdAt": "2022-05-25T10:00:06.747Z",
-										"updatedAt": "2022-05-25T10:00:06.768Z",
-										"__v": 0,
-										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjhkZmUyNmIzNDI3MmJhNmQxZDE0OWEiLCJ0eXBlIjoiJzdkJzsiLCJpYXQiOjE2NTQyNDAzNjAsImV4cCI6MTY1NDg0NTE2MH0.n5bda4UDxAY6FkNq0Is1hziAW1LHNhufDoL4oPD4DSE"
-									},
-									"msg": " Login Successfully"
-								}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "Email or Password is incorrect"
-								}
-							}
-						}
+						"headers": {}
 					}
 				},
 				"deprecated": false
@@ -1095,300 +393,11 @@
 				"tags": ["Admin User"],
 				"summary": "List Admin User",
 				"operationId": "ListAdminUser",
-				"parameters": [
-					{
-						"name": "_id",
-						"in": "query",
-						"description": "",
-						"required": true,
-						"style": "form",
-						"explode": true,
-						"schema": {
-							"type": "string",
-							"example": "610b7fc32edd0f4179782195"
-						}
-					}
-				],
+				"parameters": [],
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m20010"
-								},
-								"example": {
-									"success": true,
-									"msg": "Admin user get successfully",
-									"total": 3,
-									"data": [
-										{
-											"profileImage": null,
-											"firstLogin": false,
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"isEnabled": true,
-											"deletedAt": null,
-											"deletedBy": null,
-											"_id": "628dfe26b34272ba6d1d1498",
-											"role": {
-												"permissions": [
-													{
-														"_id": "628dfe26b34272ba6d1d1462",
-														"path": "permissions/create",
-														"displayName": "Permission Create"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1466",
-														"path": "permissions/get",
-														"displayName": "Permission Lust"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1469",
-														"path": "permissions/update/:id",
-														"displayName": "Permission update"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d146c",
-														"path": "permissions/delete/:id",
-														"displayName": "Permission Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d146f",
-														"path": "role/create",
-														"displayName": "Role Create"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1472",
-														"path": "role/get",
-														"displayName": "Role List"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1475",
-														"path": "role/update/:id",
-														"displayName": "Role update"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1478",
-														"path": "role/delete/:id",
-														"displayName": "Role Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d147b",
-														"path": "admin-user/create",
-														"displayName": "Admin User Create"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d147e",
-														"path": "admin-user/get",
-														"displayName": "Admin User List"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1481",
-														"path": "admin-user/update/:id",
-														"displayName": "Admin User update"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1484",
-														"path": "admin-user/delete/:id",
-														"displayName": "Admin User Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1487",
-														"path": "admin-user/changePassword",
-														"displayName": "Admin User Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d148a",
-														"path": "admin-user/status",
-														"displayName": "Admin User Delete"
-													}
-												],
-												"isEnabled": true,
-												"deletedAt": null,
-												"_id": "628dfe26b34272ba6d1d1492",
-												"name": "DEVELOPER"
-											},
-											"name": "Developer",
-											"email": "developer#123@example.com",
-											"hashedPassword": "$2b$10$jiLcnY9f4u7pwycS1TDKM.SOib246AF.iLPssGSL/Hr.8J0PP2Hj6",
-											"salt": "$2b$10$jiLcnY9f4u7pwycS1TDKM.",
-											"createdAt": "2022-05-25T10:00:06.733Z",
-											"updatedAt": "2022-05-25T10:00:06.768Z",
-											"__v": 0
-										},
-										{
-											"profileImage": null,
-											"firstLogin": false,
-											"createdBy": "628dfe26b34272ba6d1d1498",
-											"isEnabled": true,
-											"deletedAt": null,
-											"deletedBy": null,
-											"_id": "628dfe26b34272ba6d1d149a",
-											"role": {
-												"permissions": [
-													{
-														"_id": "628dfe26b34272ba6d1d146f",
-														"path": "role/create",
-														"displayName": "Role Create"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1472",
-														"path": "role/get",
-														"displayName": "Role List"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1475",
-														"path": "role/update/:id",
-														"displayName": "Role update"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1478",
-														"path": "role/delete/:id",
-														"displayName": "Role Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d147b",
-														"path": "admin-user/create",
-														"displayName": "Admin User Create"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d147e",
-														"path": "admin-user/get",
-														"displayName": "Admin User List"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1481",
-														"path": "admin-user/update/:id",
-														"displayName": "Admin User update"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1484",
-														"path": "admin-user/delete/:id",
-														"displayName": "Admin User Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1487",
-														"path": "admin-user/changePassword",
-														"displayName": "Admin User Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d148a",
-														"path": "admin-user/status",
-														"displayName": "Admin User Delete"
-													}
-												],
-												"isEnabled": true,
-												"deletedAt": null,
-												"_id": "628dfe26b34272ba6d1d148e",
-												"name": "SUPER_USER"
-											},
-											"name": "superUser",
-											"email": "superUser#123@example.com",
-											"hashedPassword": "$2b$10$gSDqHyP0S/Irtbc8w057E.WCGKE9d67jbGSxm9f7hU.RuUGrHyBMi",
-											"salt": "$2b$10$gSDqHyP0S/Irtbc8w057E.",
-											"createdAt": "2022-05-25T10:00:06.747Z",
-											"updatedAt": "2022-05-25T10:00:06.768Z",
-											"__v": 0
-										},
-										{
-											"profileImage": null,
-											"firstLogin": true,
-											"createdBy": null,
-											"isEnabled": true,
-											"deletedAt": null,
-											"deletedBy": null,
-											"_id": "6299b6f9e690096016a3541e",
-											"name": "Tushar20",
-											"email": "tushar20@mailinator.com",
-											"role": {
-												"permissions": [
-													{
-														"_id": "628dfe26b34272ba6d1d1462",
-														"path": "permissions/create",
-														"displayName": "Permission Create"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1466",
-														"path": "permissions/get",
-														"displayName": "Permission Lust"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1469",
-														"path": "permissions/update/:id",
-														"displayName": "Permission update"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d146c",
-														"path": "permissions/delete/:id",
-														"displayName": "Permission Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d146f",
-														"path": "role/create",
-														"displayName": "Role Create"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1472",
-														"path": "role/get",
-														"displayName": "Role List"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1475",
-														"path": "role/update/:id",
-														"displayName": "Role update"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1478",
-														"path": "role/delete/:id",
-														"displayName": "Role Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d147b",
-														"path": "admin-user/create",
-														"displayName": "Admin User Create"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d147e",
-														"path": "admin-user/get",
-														"displayName": "Admin User List"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1481",
-														"path": "admin-user/update/:id",
-														"displayName": "Admin User update"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1484",
-														"path": "admin-user/delete/:id",
-														"displayName": "Admin User Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d1487",
-														"path": "admin-user/changePassword",
-														"displayName": "Admin User Delete"
-													},
-													{
-														"_id": "628dfe26b34272ba6d1d148a",
-														"path": "admin-user/status",
-														"displayName": "Admin User Delete"
-													}
-												],
-												"isEnabled": true,
-												"deletedAt": null,
-												"_id": "628dfe26b34272ba6d1d1492",
-												"name": "DEVELOPER"
-											},
-											"hashedPassword": "$2b$10$I/xlrUvobiql8zt.9Bu.OOsR3PlkSNNR4r2psP903ldY2E/opAPhS",
-											"salt": "$2b$10$I/xlrUvobiql8zt.9Bu.OO",
-											"createdAt": "2022-06-03T07:23:37.953Z",
-											"updatedAt": "2022-06-03T07:23:37.953Z",
-											"__v": 0
-										}
-									]
-								}
-							}
-						}
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -1402,8 +411,8 @@
 		"/admin-user/status/{id}": {
 			"put": {
 				"tags": ["Admin User"],
-				"summary": "Update Admin User Status",
-				"operationId": "UpdateAdminUserStatus",
+				"summary": "Update Admin User",
+				"operationId": "UpdateAdminUser",
 				"parameters": [
 					{
 						"in": "path",
@@ -1413,36 +422,9 @@
 					}
 				],
 				"responses": {
-					"default": {
-						"description": "",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m4011"
-								},
-								"example": {
-									"success": false,
-									"message": "You can not access this resource"
-								}
-							}
-						}
-					},
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "status update successfully",
-									"data": []
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -1456,8 +438,8 @@
 		"/admin-user/update/{id}": {
 			"put": {
 				"tags": ["Admin User"],
-				"summary": "Update Admin User",
-				"operationId": "UpdateAdminUser",
+				"summary": "Update Status Admin User",
+				"operationId": "UpdateStatusAdminUser",
 				"parameters": [
 					{
 						"in": "path",
@@ -1471,49 +453,21 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/UpdateAdminUserRequest"
+								"$ref": "#/components/schemas/UpdateStatusAdminUserRequest"
 							},
 							"example": {
 								"name": "Tushar14",
 								"role": "610b763ec7b7c82dac1763b7",
-								"profileImage": "aaa",
-								"email": "abc@gmail.com"
+								"profileImage": "aaa"
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"default": {
-						"description": "",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "Admin user is not available"
-								}
-							}
-						}
-					},
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m20012"
-								},
-								"example": {
-									"success": true,
-									"message": "Admin user update successfully",
-									"data": []
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -1538,36 +492,9 @@
 					}
 				],
 				"responses": {
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "Admin user is not available"
-								}
-							}
-						}
-					},
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "User delete  successfully",
-									"data": []
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -1592,7 +519,7 @@
 								"$ref": "#/components/schemas/ChangePasswordAdminUserRequest"
 							},
 							"example": {
-								"oldPassword": "superUseraa@123",
+								"oldPassword": "superUser@123",
 								"newPassword": "superUser@123"
 							}
 						}
@@ -1601,35 +528,8 @@
 				},
 				"responses": {
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "Password is changed successfully",
-									"data": []
-								}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "Password is invalid"
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -1654,51 +554,59 @@
 								"$ref": "#/components/schemas/ForgetPasswordRequest"
 							},
 							"example": {
-								"email": "abc@gmail.com"
+								"email": "tushar18@mailinator.com"
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "Admin user is not available"
-								}
-							}
-						}
-					},
 					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "Mail send successfully",
-									"data": []
-								}
-							}
-						}
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false
 			}
 		},
+		"/admin-user/reset-password": {
+			"put": {
+				"tags": ["Admin User"],
+				"summary": "Reset Password",
+				"operationId": "ResetPassword",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ResetPasswordRequest"
+							},
+							"example": {
+								"email": "tushar18@mailinator.com",
+								"newPassword": "123456"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
 		"/user/create": {
 			"post": {
-				"tags": ["User & Dr"],
+				"tags": ["User"],
 				"summary": "Create Customer",
 				"operationId": "CreateCustomer",
 				"parameters": [],
@@ -1710,32 +618,20 @@
 								"$ref": "#/components/schemas/CreateCustomerRequest"
 							},
 							"example": {
-								"name": "tushar Savaliya",
-								"email": "savaliyatushar2197@gmail.com",
-								"mobileNumber": "+918980514085",
+								"name": "tanvi dadhaniya",
+								"email": "tanveedadhaneeya32@gmail.com",
+								"mobileNumber": "+919726201932",
 								"type": "CUSTOMER",
-								"password": "abc@123"
+								"password": "tanvi@123"
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m200"
-								},
-								"example": {
-									"success": true,
-									"msg": "Otp is send into email",
-									"data": []
-								}
-							}
-						}
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -1748,7 +644,7 @@
 		},
 		"/user/verify-otp": {
 			"post": {
-				"tags": ["User & Dr"],
+				"tags": ["User"],
 				"summary": "Verify Customer",
 				"operationId": "VerifyCustomer",
 				"parameters": [],
@@ -1762,48 +658,211 @@
 							"example": {
 								"email": "savaliyatushar2197@gmail.com",
 								"type": "CUSTOMER",
-								"otp": 663916817
+								"otp": 488694489
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/user/customer/list": {
+			"get": {
+				"tags": ["User"],
+				"summary": "Get user List",
+				"operationId": "GetuserList",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
 						"headers": {},
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m20017"
+									"$ref": "#/components/schemas/m200"
 								},
 								"example": {
 									"success": true,
-									"data": {
-										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Mjk5Y2I4MTA4YmFmYTc2ZTUyYzI5MTgiLCJ0eXBlIjoiQ1VTVE9NRVIiLCJpYXQiOjE2NTQyNDYzMTEsImV4cCI6MTY1NDg1MTExMX0.3oit4sASC1Ln4XquH3pm31c1P5HVR_9EcKMGU0W3LmE",
-										"type": "CUSTOMER"
-									}
-								}
-							}
-						}
-					},
-					"500": {
-						"description": "Internal Server Error",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m5001"
-								},
-								"example": {
-									"success": false,
-									"error": "failed"
+									"msg": "User get successfully",
+									"data": [
+										{
+											"email": "tanveedadhaneeya32@gmail.com",
+											"otp": 432007118,
+											"gender": "NULL",
+											"fireBaseToken": null,
+											"profileImage": null,
+											"password": "$2b$10$K0hhdmAe5AtLD0M0rpMxzOAY7mhq.61aJ7V9NKT6mf1k4ADVgb7Ca",
+											"salt": "$2b$10$K0hhdmAe5AtLD0M0rpMxzO",
+											"addedBy": null,
+											"isEnabled": false,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "629d9858326ee12ab8200d78",
+											"name": "tanvi dadhaniya",
+											"mobileNumber": "+919726201932",
+											"createdAt": "2022-06-06T06:02:00.207Z",
+											"updatedAt": "2022-06-06T06:02:00.207Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 1
 								}
 							}
 						}
 					}
 				},
 				"deprecated": false
+			}
+		},
+		"/timeSlot/assign": {
+			"put": {
+				"tags": ["Dr &customer"],
+				"summary": "Assign Time Slot",
+				"operationId": "AssignTimeSlot",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AssignTimeSlotRequest"
+							},
+							"example": {
+								"drId": "62ceb0fee87bb632e05ca33e",
+								"timeSlot": [
+									"62ce6b4e887df22d203c5ff4",
+									"62ceb08ae87bb632e05ca32f"
+								]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/AssignTimeSlot"
+								},
+								"example": {
+									"success": true,
+									"msg": "Time Slot assign successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/user/dr/list": {
+			"get": {
+				"tags": ["Dr &customer"],
+				"summary": "Get Dr. List",
+				"operationId": "GetDr.List",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2001"
+								},
+								"example": {
+									"success": true,
+									"msg": "Doctor get successfully",
+									"data": [
+										{
+											"email": "savaliyatushar2197@gmail.com",
+											"gender": "NULL",
+											"mainStream": null,
+											"specialization": null,
+											"fireBaseToken": null,
+											"profileImage": null,
+											"password": "$2b$10$E/FMUUWGJFTArw0gTa5iaOc1GYQhJ/79GYZNZYC8YhVlpkCqsSQ6q",
+											"salt": "$2b$10$E/FMUUWGJFTArw0gTa5iaO",
+											"addedBy": null,
+											"designation": null,
+											"timeSlot": [
+												"62ce6b4e887df22d203c5ff4",
+												"62ceb08ae87bb632e05ca32f"
+											],
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62ceb0fee87bb632e05ca33e",
+											"name": "tushar Savaliya",
+											"mobileNumber": "+918980514085",
+											"otp": 4550,
+											"createdAt": "2022-07-13T11:48:14.877Z",
+											"updatedAt": "2022-07-13T12:00:46.691Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 1
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/user/customer/delete/{id}": {
+			"delete": {
+				"tags": ["Dr &customer"],
+				"summary": "Delete Customer",
+				"operationId": "DeleteCustomer",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2002"
+								},
+								"example": {
+									"success": true,
+									"msg": "Doctor delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
 			}
 		},
 		"/speciality/create": {
@@ -1853,7 +912,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m200"
+									"$ref": "#/components/schemas/m2003"
 								},
 								"example": {
 									"success": true,
@@ -1884,12 +943,19 @@
 				]
 			}
 		},
-		"/speciality/update/62b046d2d5debb823497dc1c": {
+		"/speciality/update/{id}": {
 			"post": {
 				"tags": ["Speciality"],
 				"summary": "speciality update",
 				"operationId": "specialityupdate",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"requestBody": {
 					"content": {
 						"application/x-www-form-urlencoded": {
@@ -1931,7 +997,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m200"
+									"$ref": "#/components/schemas/m2003"
 								},
 								"example": {
 									"success": true,
@@ -1975,7 +1041,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m2002"
+									"$ref": "#/components/schemas/m2005"
 								},
 								"example": {
 									"success": true,
@@ -2021,12 +1087,19 @@
 				]
 			}
 		},
-		"/speciality/delete/629df3f75f1a1726a04ccf2f": {
+		"/speciality/delete/{id}": {
 			"delete": {
 				"tags": ["Speciality"],
 				"summary": "delete speciality",
 				"operationId": "deletespeciality",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -2034,7 +1107,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m2003"
+									"$ref": "#/components/schemas/m2002"
 								},
 								"example": {
 									"success": true,
@@ -2111,7 +1184,7 @@
 				"deprecated": false
 			}
 		},
-		"/common/updateLanguage/": {
+		"/common/updateLanguage": {
 			"post": {
 				"tags": ["common api"],
 				"summary": "Update Language",
@@ -2140,12 +1213,19 @@
 				"deprecated": false
 			}
 		},
-		"/common/updateConsult/629f3dcfe4f78324f851d4bf": {
+		"/common/updateConsult/{id}": {
 			"post": {
 				"tags": ["common api"],
 				"summary": "Update Consult",
 				"operationId": "UpdateConsult",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"requestBody": {
 					"description": "",
 					"content": {
@@ -2169,12 +1249,19 @@
 				"deprecated": false
 			}
 		},
-		"/common/getAllLanguage/629f4085f7718a4570d14cdf": {
+		"/common/getAllLanguage/{id}": {
 			"get": {
 				"tags": ["common api"],
 				"summary": "get All Language",
 				"operationId": "getAllLanguage",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "",
@@ -2184,12 +1271,19 @@
 				"deprecated": false
 			}
 		},
-		"/common/getAllConsult/629f3dcfe4f78324f851d4bf": {
+		"/common/getAllConsult/{id}": {
 			"get": {
 				"tags": ["common api"],
 				"summary": "get All Consult",
 				"operationId": "getAllConsult",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "",
@@ -2199,12 +1293,19 @@
 				"deprecated": false
 			}
 		},
-		"/common/deleteLanguage/": {
+		"/common/deleteLanguage/{id}": {
 			"delete": {
 				"tags": ["common api"],
 				"summary": "delete language",
 				"operationId": "deletelanguage",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "",
@@ -2214,12 +1315,19 @@
 				"deprecated": false
 			}
 		},
-		"/common/deleteConsult/629f3dcfe4f78324f851d4bf": {
+		"/common/deleteConsult/{id}": {
 			"delete": {
 				"tags": ["common api"],
 				"summary": "delete Consult",
 				"operationId": "deleteConsult",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "",
@@ -2259,12 +1367,19 @@
 				"deprecated": false
 			}
 		},
-		"/notificationType/update/62a0689fe4505b248c93cbb2": {
+		"/notificationType/update/{id}": {
 			"put": {
 				"tags": ["NotificationType"],
 				"summary": "update notification type",
 				"operationId": "updatenotificationtype",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"requestBody": {
 					"description": "",
 					"content": {
@@ -2280,6 +1395,28 @@
 					},
 					"required": true
 				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/notificationType/delete/{id}": {
+			"delete": {
+				"tags": ["NotificationType"],
+				"summary": "delete notification type",
+				"operationId": "deletenotificationtype",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "",
@@ -2366,7 +1503,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m2005"
+									"$ref": "#/components/schemas/m2008"
 								},
 								"example": {
 									"message": "Device get successfully",
@@ -2412,12 +1549,19 @@
 				]
 			}
 		},
-		"/device/update/62cd729e79556f376cd5224c": {
+		"/device/update/{id}": {
 			"put": {
 				"tags": ["Device"],
 				"summary": "Update device",
 				"operationId": "Updatedevice",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"requestBody": {
 					"description": "",
 					"content": {
@@ -2442,7 +1586,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m2004"
+									"$ref": "#/components/schemas/m2007"
 								},
 								"example": {
 									"success": true,
@@ -2461,12 +1605,19 @@
 				]
 			}
 		},
-		"/device/delete/62cd729e79556f376cd5224c": {
+		"/device/delete/{id}": {
 			"delete": {
 				"tags": ["Device"],
 				"summary": "Delete Device",
 				"operationId": "DeleteDevice",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -2474,7 +1625,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m2004"
+									"$ref": "#/components/schemas/m2007"
 								},
 								"example": {
 									"success": true,
@@ -2483,6 +1634,26 @@
 								}
 							}
 						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/dashboard": {
+			"get": {
+				"tags": ["Dashboard"],
+				"summary": "Get Dashboard",
+				"operationId": "GetDashboard",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
 					}
 				},
 				"deprecated": false,
@@ -2521,7 +1692,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m2008"
+									"$ref": "#/components/schemas/m20011"
 								},
 								"example": {
 									"success": true,
@@ -2549,12 +1720,19 @@
 				]
 			}
 		},
-		"/timeSlot/update/62ce6b4e887df22d203c5ff4": {
+		"/timeSlot/update/{id}": {
 			"put": {
 				"tags": ["Time Slot"],
 				"summary": "Update time Slot",
 				"operationId": "UpdatetimeSlot",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"requestBody": {
 					"description": "",
 					"content": {
@@ -2577,11 +1755,50 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m2003"
+									"$ref": "#/components/schemas/m2002"
 								},
 								"example": {
 									"success": true,
 									"msg": "Time Slot update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/timeSlot/delete/{id}": {
+			"delete": {
+				"tags": ["Time Slot"],
+				"summary": "Delete time Slot",
+				"operationId": "DeletetimeSlot",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2002"
+								},
+								"example": {
+									"success": true,
+									"msg": "Time Slot delete successfully",
 									"data": []
 								}
 							}
@@ -2609,7 +1826,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m20011"
+									"$ref": "#/components/schemas/m20014"
 								},
 								"example": {
 									"success": true,
@@ -2640,12 +1857,30 @@
 				]
 			}
 		},
-		"/timeSlot/delete/62ce6b4e887df22d203c5ff4": {
-			"delete": {
-				"tags": ["Time Slot"],
-				"summary": "Delete time Slot",
-				"operationId": "DeletetimeSlot",
+		"/package/create": {
+			"post": {
+				"tags": ["Package Management"],
+				"summary": "Create Package",
+				"operationId": "CreatePackage",
 				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreatePackageRequest"
+							},
+							"example": {
+								"name": "test package11",
+								"description": "description package",
+								"priceByMonth": 10,
+								"priceByYear": 100,
+								"shortDescription": "test"
+							}
+						}
+					},
+					"required": true
+				},
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -2653,11 +1888,11 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/m2003"
+									"$ref": "#/components/schemas/m2002"
 								},
 								"example": {
 									"success": true,
-									"msg": "Time Slot delete successfully",
+									"msg": "Package created successfully",
 									"data": []
 								}
 							}
@@ -2670,6 +1905,845 @@
 						"bearer": []
 					}
 				]
+			}
+		},
+		"/package/update/{id}": {
+			"put": {
+				"tags": ["Package Management"],
+				"summary": "Update Package",
+				"operationId": "UpdatePackage",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdatePackageRequest"
+							},
+							"example": {
+								"name": "test package",
+								"description": "description package",
+								"priceByMonth": 10,
+								"priceByYear": 100,
+								"shortDescription": "aaa"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2002"
+								},
+								"example": {
+									"success": true,
+									"msg": "Package update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/package/get": {
+			"get": {
+				"tags": ["Package Management"],
+				"summary": "Get Package Slot",
+				"operationId": "GetPackageSlot",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20018"
+								},
+								"example": {
+									"success": true,
+									"msg": "Package get successfully",
+									"data": [
+										{
+											"deletedAt": null,
+											"deletedBy": "628dfe26b34272ba6d1d1498",
+											"_id": "62d019b93f41638a7bc160d3",
+											"name": "test package1",
+											"description": "description package",
+											"priceByMonth": 10,
+											"priceByYear": 100,
+											"createdAt": "2022-07-14T13:27:21.870Z",
+											"updatedAt": "2022-07-14T13:34:41.536Z",
+											"__v": 0
+										},
+										{
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62d52ef706f372383b8a65fb",
+											"name": "test package",
+											"description": "description package",
+											"priceByMonth": 10,
+											"priceByYear": 100,
+											"shortDescription": "test",
+											"createdAt": "2022-07-18T09:59:19.109Z",
+											"updatedAt": "2022-07-18T09:59:19.109Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 2
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/healthArticle/create": {
+			"post": {
+				"tags": ["Health Article"],
+				"summary": "Add Health Article",
+				"operationId": "AddHealthArticle",
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"encoding": {},
+							"schema": {
+								"required": ["profileImage", "title", "description"],
+								"type": "object",
+								"properties": {
+									"profileImage": {
+										"type": "string"
+									},
+									"title": {
+										"type": "string",
+										"example": "Article 1"
+									},
+									"description": {
+										"type": "string",
+										"example": "Articla edescdsf"
+									}
+								}
+							}
+						}
+					},
+					"required": false
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2007"
+								},
+								"example": {
+									"success": true,
+									"message": "Health Article created successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/": {
+			"get": {
+				"tags": ["Health Article"],
+				"summary": "Get Health Article",
+				"operationId": "GetHealthArticle",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20020"
+								},
+								"example": {
+									"success": true,
+									"message": "Health Article get successfully",
+									"data": [
+										{
+											"isEnabled": false,
+											"deletedAt": "2022-07-15T09:00:28.916Z",
+											"deletedBy": "62d12c93870bde3630ace515",
+											"_id": "62d12c93870bde3630ace515",
+											"title": "test",
+											"Description": "tet@test.com",
+											"profileImage": "public\\images\\1657875603404-Screenshot (1).png",
+											"createdAt": "2022-07-15T09:00:03.503Z",
+											"updatedAt": "2022-07-15T09:00:28.918Z",
+											"__v": 0
+										},
+										{
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62d12cc2870bde3630ace519",
+											"title": "demo",
+											"Description": "demo",
+											"profileImage": "public\\images\\1657875650221-Screenshot (1).png",
+											"createdAt": "2022-07-15T09:00:50.251Z",
+											"updatedAt": "2022-07-15T09:12:45.962Z",
+											"__v": 0
+										},
+										{
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62d132fe17eb851838f4fc17",
+											"title": "demo123",
+											"Description": "demo",
+											"profileImage": "public\\images\\1657877616039-Screenshot (2).png",
+											"createdAt": "2022-07-15T09:27:26.378Z",
+											"updatedAt": "2022-07-15T09:33:38.056Z",
+											"__v": 0
+										},
+										{
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62d14cb3face546bf00cba57",
+											"title": "Article 1",
+											"profileImage": "public/images/1657883827871-image (1).png",
+											"createdAt": "2022-07-15T11:17:07.916Z",
+											"updatedAt": "2022-07-15T11:17:07.916Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 4
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/healthArticle/update/{id}": {
+			"put": {
+				"tags": ["Health Article"],
+				"summary": "Update Health Article",
+				"operationId": "UpdateHealthArticle",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"encoding": {},
+							"schema": {
+								"required": ["title", "description", "profileImage"],
+								"type": "object",
+								"properties": {
+									"title": {
+										"type": "string",
+										"example": "Article 1"
+									},
+									"description": {
+										"type": "string",
+										"example": "Articla edescdsf"
+									},
+									"profileImage": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"required": false
+				},
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2007"
+								},
+								"example": {
+									"success": true,
+									"message": "Health Article update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/healthArticle/delete/{id}": {
+			"delete": {
+				"tags": ["Health Article"],
+				"summary": "Delete Health Article",
+				"operationId": "DeleteHealthArticle",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2007"
+								},
+								"example": {
+									"success": true,
+									"message": "Health Article update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/settings/create": {
+			"post": {
+				"tags": ["Settings"],
+				"summary": "Add Settings",
+				"operationId": "AddSettings",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AddSettingsRequest"
+							},
+							"example": {
+								"filedName": "timeSlot",
+								"filedValue": 5,
+								"filedType": "number"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20023"
+								},
+								"example": {
+									"success": true,
+									"message": "Setting created successfully",
+									"data": {
+										"type": "NULL",
+										"isEnabled": true,
+										"deletedAt": null,
+										"deletedBy": null,
+										"_id": "62d1773e4875f5dbaf955c8d",
+										"filedName": "timeSlot",
+										"filedValue": "5",
+										"filedType": "number",
+										"createdAt": "2022-07-15T14:18:38.674Z",
+										"updatedAt": "2022-07-15T14:18:38.674Z",
+										"__v": 0
+									}
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/settings/get": {
+			"get": {
+				"tags": ["Settings"],
+				"summary": "Get All settings",
+				"operationId": "GetAllsettings",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20024"
+								},
+								"example": {
+									"message": "Setting get successfully",
+									"data": [
+										{
+											"type": "NULL",
+											"isEnabled": false,
+											"deletedAt": "2022-07-14T06:58:56.536Z",
+											"deletedBy": "62cea492266f8229a87aaaef",
+											"_id": "62cea492266f8229a87aaaef",
+											"content": "hellow world",
+											"filedName": "demoFiled",
+											"createdAt": "2022-07-13T10:55:14.379Z",
+											"updatedAt": "2022-07-14T06:58:56.537Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": false,
+											"deletedAt": "2022-07-14T06:59:10.983Z",
+											"deletedBy": "62cfbe03372c8e04b05d3006",
+											"_id": "62cfbe03372c8e04b05d3006",
+											"content": "test",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T06:56:03.914Z",
+											"updatedAt": "2022-07-14T06:59:10.984Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": false,
+											"deletedAt": "2022-07-14T06:57:55.418Z",
+											"deletedBy": "62cfbe40372c8e04b05d3008",
+											"_id": "62cfbe40372c8e04b05d3008",
+											"content": "test",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T06:57:04.532Z",
+											"updatedAt": "2022-07-14T06:57:55.427Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": false,
+											"deletedAt": "2022-07-14T07:09:23.967Z",
+											"deletedBy": "62cfc10e27a74f170c37bfae",
+											"_id": "62cfc10e27a74f170c37bfae",
+											"content": "test",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T07:09:02.363Z",
+											"updatedAt": "2022-07-14T07:09:23.973Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": false,
+											"deletedAt": "2022-07-14T07:10:42.422Z",
+											"deletedBy": "62cfc168c48275172c7207b3",
+											"_id": "62cfc168c48275172c7207b3",
+											"content": "test",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T07:10:32.628Z",
+											"updatedAt": "2022-07-14T07:10:42.432Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62cfc17dc48275172c7207b7",
+											"content": "test",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T07:10:53.505Z",
+											"updatedAt": "2022-07-14T07:10:53.505Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62cfd6e00771111b1c284316",
+											"content": "test",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T08:42:08.381Z",
+											"updatedAt": "2022-07-14T09:00:29.452Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62cfdb4565ec59260ca147d9",
+											"content": "test",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T09:00:54.016Z",
+											"updatedAt": "2022-07-14T09:00:54.016Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62cfdb5d65ec59260ca147db",
+											"content": "new",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T09:01:17.068Z",
+											"updatedAt": "2022-07-14T09:03:29.476Z",
+											"__v": 0
+										},
+										{
+											"type": "Null",
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62cfe087e72ce32be44ed065",
+											"content": "test",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T09:23:19.084Z",
+											"updatedAt": "2022-07-14T09:30:24.211Z",
+											"__v": 0
+										},
+										{
+											"type": "PRIVCYPOLICY",
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62cfe3c0cd5bfe20a8da72f6",
+											"content": "new",
+											"filedName": "dispalysetting",
+											"filedValue": "demo",
+											"filedType": "demo",
+											"createdAt": "2022-07-14T09:37:04.204Z",
+											"updatedAt": "2022-07-14T09:37:04.204Z",
+											"__v": 0
+										},
+										{
+											"type": "NULL",
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62d1773e4875f5dbaf955c8d",
+											"filedName": "timeSlot",
+											"filedValue": "5",
+											"filedType": "number",
+											"createdAt": "2022-07-15T14:18:38.674Z",
+											"updatedAt": "2022-07-15T14:18:38.674Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 12
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/settings/update/{id}": {
+			"put": {
+				"tags": ["Settings"],
+				"summary": "Update Sttings",
+				"operationId": "UpdateSttings",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateSttingsRequest"
+							},
+							"example": {
+								"filedName": "timeSlot",
+								"filedValue": 5,
+								"filedType": "number"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2007"
+								},
+								"example": {
+									"success": true,
+									"message": "Setting updating failed",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/settings/delete/{id}": {
+			"delete": {
+				"tags": ["Settings"],
+				"summary": "Delete Settings",
+				"operationId": "DeleteSettings",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2007"
+								},
+								"example": {
+									"success": true,
+									"message": "Setting delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/faq/create": {
+			"post": {
+				"tags": ["faqs"],
+				"summary": "add Faqs",
+				"operationId": "addFaqs",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"text/plain": {
+							"schema": {
+								"type": "object",
+								"example": {}
+							},
+							"example": {}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20027"
+								},
+								"example": {
+									"status": true,
+									"msg": "Faq get successfully",
+									"data": [
+										{
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62d529f6df9913195ce553fb",
+											"question": "test",
+											"answer": "test",
+											"createdAt": "2022-07-18T09:37:58.334Z",
+											"updatedAt": "2022-07-18T09:37:58.334Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 1
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			},
+			"put": {
+				"tags": ["faqs"],
+				"summary": "update Faqs",
+				"operationId": "updateFaqs",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20029"
+								},
+								"example": {
+									"status": true,
+									"msg": "Faq update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/faq/get": {
+			"get": {
+				"tags": ["faqs"],
+				"summary": "faqs",
+				"operationId": "faqs",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20027"
+								},
+								"example": {
+									"status": true,
+									"msg": "Faq get successfully",
+									"data": [
+										{
+											"isEnabled": true,
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62d529f6df9913195ce553fb",
+											"question": "test",
+											"answer": "test",
+											"createdAt": "2022-07-18T09:37:58.334Z",
+											"updatedAt": "2022-07-18T09:37:58.334Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 1
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/faq/delete/{id}": {
+			"delete": {
+				"tags": ["faqs"],
+				"summary": "Delete Faqs",
+				"operationId": "DeleteFaqs",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false
 			}
 		}
 	},
@@ -2688,371 +2762,29 @@
 					}
 				},
 				"example": {
-					"path": "admin-user/reset-password",
-					"displayName": "Reset Password"
-				}
-			},
-			"m200": {
-				"title": "m200",
-				"required": ["success", "msg", "data"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"msg": {
-						"type": "string"
-					},
-					"data": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						},
-						"description": ""
-					}
-				},
-				"example": {
-					"success": true,
-					"msg": "Permissions created successfully",
-					"data": []
-				}
-			},
-			"m4011": {
-				"title": "m4011",
-				"required": ["success", "message"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"message": {
-						"type": "string"
-					}
-				},
-				"example": {
-					"success": false,
-					"message": "You can not access this resource"
-				}
-			},
-			"m2001": {
-				"title": "m2001",
-				"required": ["success", "msg", "total", "data"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"msg": {
-						"type": "string"
-					},
-					"total": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"data": {
-						"type": "array",
-						"items": {
-							"$ref": "#/components/schemas/Datum"
-						},
-						"description": ""
-					}
-				},
-				"example": {
-					"success": true,
-					"msg": "Permissions get successfully",
-					"total": 15,
-					"data": [
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d147b",
-							"path": "adminuser/create",
-							"displayName": "Admin User Create",
-							"createdAt": "2022-05-25T10:00:06.481Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1484",
-							"path": "adminuser/delete/:id",
-							"displayName": "Admin User Delete",
-							"createdAt": "2022-05-25T10:00:06.511Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1487",
-							"path": "adminuser/changePassword",
-							"displayName": "Admin User Delete",
-							"createdAt": "2022-05-25T10:00:06.520Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d148a",
-							"path": "adminuser/status",
-							"displayName": "Admin User Delete",
-							"createdAt": "2022-05-25T10:00:06.529Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d147e",
-							"path": "adminuser/get",
-							"displayName": "Admin User List",
-							"createdAt": "2022-05-25T10:00:06.491Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1481",
-							"path": "adminuser/update/:id",
-							"displayName": "Admin User update",
-							"createdAt": "2022-05-25T10:00:06.501Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "6299af0431284247c2de67eb",
-							"path": "employee-service/restore/:id",
-							"displayName": "Employee  Service",
-							"createdAt": "2022-06-03T06:49:40.296Z",
-							"updatedAt": "2022-06-03T06:49:40.296Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1462",
-							"path": "permissions/create",
-							"displayName": "Permission Create",
-							"createdAt": "2022-05-25T10:00:06.332Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d146c",
-							"path": "permissions/delete/:id",
-							"displayName": "Permission Delete",
-							"createdAt": "2022-05-25T10:00:06.431Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1466",
-							"path": "permissions/get",
-							"displayName": "Permission Lust",
-							"createdAt": "2022-05-25T10:00:06.382Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1469",
-							"path": "permissions/update/:id",
-							"displayName": "Permission update",
-							"createdAt": "2022-05-25T10:00:06.414Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d146f",
-							"path": "role/create",
-							"displayName": "Role Create",
-							"createdAt": "2022-05-25T10:00:06.440Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1478",
-							"path": "role/delete/:id",
-							"displayName": "Role Delete",
-							"createdAt": "2022-05-25T10:00:06.471Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1472",
-							"path": "role/get",
-							"displayName": "Role List",
-							"createdAt": "2022-05-25T10:00:06.451Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1475",
-							"path": "role/update/:id",
-							"displayName": "Role update",
-							"createdAt": "2022-05-25T10:00:06.461Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						}
-					]
-				}
-			},
-			"Datum": {
-				"title": "Datum",
-				"required": [
-					"createdBy",
-					"_id",
-					"path",
-					"displayName",
-					"createdAt",
-					"updatedAt",
-					"__v"
-				],
-				"type": "object",
-				"properties": {
-					"createdBy": {
-						"type": "string"
-					},
-					"_id": {
-						"type": "string"
-					},
-					"path": {
-						"type": "string"
-					},
-					"displayName": {
-						"type": "string"
-					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
-					},
-					"__v": {
-						"type": "integer",
-						"format": "int32"
-					}
-				},
-				"example": {
-					"createdBy": "628dfe26b34272ba6d1d1498",
-					"_id": "628dfe26b34272ba6d1d147b",
-					"path": "adminuser/create",
-					"displayName": "Admin User Create",
-					"createdAt": "2022-05-25T10:00:06.481Z",
-					"updatedAt": "2022-05-25T10:00:06.764Z",
-					"__v": 0
+					"path": "employee-service/restore/:id",
+					"displayName": "restore sallone Employee  Service"
 				}
 			},
 			"UpdatePermissionsRequest": {
 				"title": "UpdatePermissionsRequest",
-				"required": ["path", "displayName"],
+				"required": ["path", "createdBy", "displayName"],
 				"type": "object",
 				"properties": {
 					"path": {
 						"type": "string"
 					},
-					"displayName": {
-						"type": "string"
-					}
-				},
-				"example": {
-					"path": "adminuser/create",
-					"displayName": "Admin User Create"
-				}
-			},
-			"m5001": {
-				"title": "m5001",
-				"required": ["success", "error"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"error": {
-						"type": "string"
-					}
-				},
-				"example": {
-					"success": false,
-					"error": "Permissions updation failed"
-				}
-			},
-			"m2002": {
-				"title": "m2002",
-				"required": ["success", "msg", "data"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"msg": {
-						"type": "string"
-					},
-					"data": {
-						"$ref": "#/components/schemas/Data"
-					}
-				},
-				"example": {
-					"success": true,
-					"msg": "Permissions update successfully",
-					"data": {
-						"createdBy": "628dfe26b34272ba6d1d1498",
-						"_id": "628dfe26b34272ba6d1d147b",
-						"path": "adminuser/create",
-						"displayName": "Admin User Create",
-						"createdAt": "2022-05-25T10:00:06.481Z",
-						"updatedAt": "2022-06-03T06:54:54.985Z",
-						"__v": 0
-					}
-				}
-			},
-			"Data": {
-				"title": "Data",
-				"required": [
-					"createdBy",
-					"_id",
-					"path",
-					"displayName",
-					"createdAt",
-					"updatedAt",
-					"__v"
-				],
-				"type": "object",
-				"properties": {
 					"createdBy": {
 						"type": "string"
 					},
-					"_id": {
-						"type": "string"
-					},
-					"path": {
-						"type": "string"
-					},
 					"displayName": {
 						"type": "string"
-					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
-					},
-					"__v": {
-						"type": "integer",
-						"format": "int32"
 					}
 				},
 				"example": {
-					"createdBy": "628dfe26b34272ba6d1d1498",
-					"_id": "628dfe26b34272ba6d1d147b",
-					"path": "adminuser/create",
-					"displayName": "Admin User Create",
-					"createdAt": "2022-05-25T10:00:06.481Z",
-					"updatedAt": "2022-06-03T06:54:54.985Z",
-					"__v": 0
+					"path": "website_header/get",
+					"createdBy": "6107cc835e94d0bc7dd9f1c2",
+					"displayName": "Get Header"
 				}
 			},
 			"CreateRoleRequest": {
@@ -3073,577 +2805,17 @@
 				},
 				"example": {
 					"name": "EDITOR",
-					"permissions": ["628dfe26b34272ba6d1d1487"]
-				}
-			},
-			"m2005": {
-				"title": "m2005",
-				"required": ["success", "msg", "total", "data"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"msg": {
-						"type": "string"
-					},
-					"total": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"data": {
-						"type": "array",
-						"items": {
-							"$ref": "#/components/schemas/Data1"
-						},
-						"description": ""
-					}
-				},
-				"example": {
-					"success": true,
-					"msg": "Role get successfully",
-					"total": 3,
-					"data": [
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"permissions": [
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d146f",
-									"path": "role/create",
-									"displayName": "Role Create",
-									"createdAt": "2022-05-25T10:00:06.440Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1472",
-									"path": "role/get",
-									"displayName": "Role List",
-									"createdAt": "2022-05-25T10:00:06.451Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1475",
-									"path": "role/update/:id",
-									"displayName": "Role update",
-									"createdAt": "2022-05-25T10:00:06.461Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1478",
-									"path": "role/delete/:id",
-									"displayName": "Role Delete",
-									"createdAt": "2022-05-25T10:00:06.471Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d147b",
-									"path": "adminuser/create",
-									"displayName": "Admin User Create",
-									"createdAt": "2022-05-25T10:00:06.481Z",
-									"updatedAt": "2022-06-03T06:54:54.985Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d147e",
-									"path": "adminuser/get",
-									"displayName": "Admin User List",
-									"createdAt": "2022-05-25T10:00:06.491Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1481",
-									"path": "adminuser/update/:id",
-									"displayName": "Admin User update",
-									"createdAt": "2022-05-25T10:00:06.501Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1484",
-									"path": "adminuser/delete/:id",
-									"displayName": "Admin User Delete",
-									"createdAt": "2022-05-25T10:00:06.511Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1487",
-									"path": "adminuser/changePassword",
-									"displayName": "Admin User Delete",
-									"createdAt": "2022-05-25T10:00:06.520Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d148a",
-									"path": "adminuser/status",
-									"displayName": "Admin User Delete",
-									"createdAt": "2022-05-25T10:00:06.529Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								}
-							],
-							"isEnabled": true,
-							"deletedAt": null,
-							"deletedBy": null,
-							"_id": "628dfe26b34272ba6d1d148e",
-							"name": "SUPER_USER",
-							"createdAt": "2022-05-25T10:00:06.565Z",
-							"updatedAt": "2022-06-03T06:49:40.313Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"permissions": [
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1462",
-									"path": "permissions/create",
-									"displayName": "Permission Create",
-									"createdAt": "2022-05-25T10:00:06.332Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1466",
-									"path": "permissions/get",
-									"displayName": "Permission Lust",
-									"createdAt": "2022-05-25T10:00:06.382Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1469",
-									"path": "permissions/update/:id",
-									"displayName": "Permission update",
-									"createdAt": "2022-05-25T10:00:06.414Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d146c",
-									"path": "permissions/delete/:id",
-									"displayName": "Permission Delete",
-									"createdAt": "2022-05-25T10:00:06.431Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d146f",
-									"path": "role/create",
-									"displayName": "Role Create",
-									"createdAt": "2022-05-25T10:00:06.440Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1472",
-									"path": "role/get",
-									"displayName": "Role List",
-									"createdAt": "2022-05-25T10:00:06.451Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1475",
-									"path": "role/update/:id",
-									"displayName": "Role update",
-									"createdAt": "2022-05-25T10:00:06.461Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1478",
-									"path": "role/delete/:id",
-									"displayName": "Role Delete",
-									"createdAt": "2022-05-25T10:00:06.471Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d147b",
-									"path": "adminuser/create",
-									"displayName": "Admin User Create",
-									"createdAt": "2022-05-25T10:00:06.481Z",
-									"updatedAt": "2022-06-03T06:54:54.985Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d147e",
-									"path": "adminuser/get",
-									"displayName": "Admin User List",
-									"createdAt": "2022-05-25T10:00:06.491Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1481",
-									"path": "adminuser/update/:id",
-									"displayName": "Admin User update",
-									"createdAt": "2022-05-25T10:00:06.501Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1484",
-									"path": "adminuser/delete/:id",
-									"displayName": "Admin User Delete",
-									"createdAt": "2022-05-25T10:00:06.511Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1487",
-									"path": "adminuser/changePassword",
-									"displayName": "Admin User Delete",
-									"createdAt": "2022-05-25T10:00:06.520Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								},
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d148a",
-									"path": "adminuser/status",
-									"displayName": "Admin User Delete",
-									"createdAt": "2022-05-25T10:00:06.529Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								}
-							],
-							"isEnabled": true,
-							"deletedAt": null,
-							"deletedBy": null,
-							"_id": "628dfe26b34272ba6d1d1492",
-							"name": "DEVELOPER",
-							"createdAt": "2022-05-25T10:00:06.582Z",
-							"updatedAt": "2022-06-03T06:49:40.329Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"permissions": [
-								{
-									"createdBy": "628dfe26b34272ba6d1d1498",
-									"_id": "628dfe26b34272ba6d1d1487",
-									"path": "adminuser/changePassword",
-									"displayName": "Admin User Delete",
-									"createdAt": "2022-05-25T10:00:06.520Z",
-									"updatedAt": "2022-05-25T10:00:06.764Z",
-									"__v": 0
-								}
-							],
-							"isEnabled": true,
-							"deletedAt": null,
-							"deletedBy": null,
-							"_id": "6299b17b3644eb4cf66f0f43",
-							"name": "EDITOR",
-							"createdAt": "2022-06-03T07:00:11.416Z",
-							"updatedAt": "2022-06-03T07:00:11.416Z",
-							"__v": 0
-						}
-					]
-				}
-			},
-			"Data1": {
-				"title": "Data1",
-				"required": [
-					"createdBy",
-					"permissions",
-					"isEnabled",
-					"deletedAt",
-					"deletedBy",
-					"_id",
-					"name",
-					"createdAt",
-					"updatedAt",
-					"__v"
-				],
-				"type": "object",
-				"properties": {
-					"createdBy": {
-						"type": "string"
-					},
-					"permissions": {
-						"type": "array",
-						"items": {
-							"$ref": "#/components/schemas/Permission"
-						},
-						"description": ""
-					},
-					"isEnabled": {
-						"type": "boolean"
-					},
-					"deletedAt": {
-						"type": "string",
-						"nullable": true
-					},
-					"deletedBy": {
-						"type": "string",
-						"nullable": true
-					},
-					"_id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
-					},
-					"__v": {
-						"type": "integer",
-						"format": "int32"
-					}
-				},
-				"example": {
-					"createdBy": "628dfe26b34272ba6d1d1498",
-					"permissions": [
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d146f",
-							"path": "role/create",
-							"displayName": "Role Create",
-							"createdAt": "2022-05-25T10:00:06.440Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1472",
-							"path": "role/get",
-							"displayName": "Role List",
-							"createdAt": "2022-05-25T10:00:06.451Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1475",
-							"path": "role/update/:id",
-							"displayName": "Role update",
-							"createdAt": "2022-05-25T10:00:06.461Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1478",
-							"path": "role/delete/:id",
-							"displayName": "Role Delete",
-							"createdAt": "2022-05-25T10:00:06.471Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d147b",
-							"path": "adminuser/create",
-							"displayName": "Admin User Create",
-							"createdAt": "2022-05-25T10:00:06.481Z",
-							"updatedAt": "2022-06-03T06:54:54.985Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d147e",
-							"path": "adminuser/get",
-							"displayName": "Admin User List",
-							"createdAt": "2022-05-25T10:00:06.491Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1481",
-							"path": "adminuser/update/:id",
-							"displayName": "Admin User update",
-							"createdAt": "2022-05-25T10:00:06.501Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1484",
-							"path": "adminuser/delete/:id",
-							"displayName": "Admin User Delete",
-							"createdAt": "2022-05-25T10:00:06.511Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d1487",
-							"path": "adminuser/changePassword",
-							"displayName": "Admin User Delete",
-							"createdAt": "2022-05-25T10:00:06.520Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						},
-						{
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"_id": "628dfe26b34272ba6d1d148a",
-							"path": "adminuser/status",
-							"displayName": "Admin User Delete",
-							"createdAt": "2022-05-25T10:00:06.529Z",
-							"updatedAt": "2022-05-25T10:00:06.764Z",
-							"__v": 0
-						}
-					],
-					"isEnabled": true,
-					"deletedAt": null,
-					"deletedBy": null,
-					"_id": "628dfe26b34272ba6d1d148e",
-					"name": "SUPER_USER",
-					"createdAt": "2022-05-25T10:00:06.565Z",
-					"updatedAt": "2022-06-03T06:49:40.313Z",
-					"__v": 0
-				}
-			},
-			"Permission": {
-				"title": "Permission",
-				"required": [
-					"createdBy",
-					"_id",
-					"path",
-					"displayName",
-					"createdAt",
-					"updatedAt",
-					"__v"
-				],
-				"type": "object",
-				"properties": {
-					"createdBy": {
-						"type": "string"
-					},
-					"_id": {
-						"type": "string"
-					},
-					"path": {
-						"type": "string"
-					},
-					"displayName": {
-						"type": "string"
-					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
-					},
-					"__v": {
-						"type": "integer",
-						"format": "int32"
-					}
-				},
-				"example": {
-					"createdBy": "628dfe26b34272ba6d1d1498",
-					"_id": "628dfe26b34272ba6d1d146f",
-					"path": "role/create",
-					"displayName": "Role Create",
-					"createdAt": "2022-05-25T10:00:06.440Z",
-					"updatedAt": "2022-05-25T10:00:06.764Z",
-					"__v": 0
+					"permissions": ["6110d5db84d4803c28737723"]
 				}
 			},
 			"updateRoleRequest": {
 				"title": "updateRoleRequest",
-				"required": ["name", "permissions"],
+				"required": ["name", "createdBy", "permissions"],
 				"type": "object",
 				"properties": {
 					"name": {
 						"type": "string"
 					},
-					"permissions": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						},
-						"description": ""
-					}
-				},
-				"example": {
-					"name": "temp",
-					"permissions": ["628dfe26b34272ba6d1d1487"]
-				}
-			},
-			"m2006": {
-				"title": "m2006",
-				"required": ["success", "msg", "data"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"msg": {
-						"type": "string"
-					},
-					"data": {
-						"$ref": "#/components/schemas/Data2"
-					}
-				},
-				"example": {
-					"success": true,
-					"msg": "Role update successfully",
-					"data": {
-						"createdBy": "628dfe26b34272ba6d1d1498",
-						"permissions": ["628dfe26b34272ba6d1d1487"],
-						"isEnabled": true,
-						"deletedAt": null,
-						"deletedBy": null,
-						"_id": "6299b17b3644eb4cf66f0f43",
-						"name": "temp",
-						"createdAt": "2022-06-03T07:00:11.416Z",
-						"updatedAt": "2022-06-03T07:04:00.268Z",
-						"__v": 0
-					}
-				}
-			},
-			"Data2": {
-				"title": "Data2",
-				"required": [
-					"createdBy",
-					"permissions",
-					"isEnabled",
-					"deletedAt",
-					"deletedBy",
-					"_id",
-					"name",
-					"createdAt",
-					"updatedAt",
-					"__v"
-				],
-				"type": "object",
-				"properties": {
 					"createdBy": {
 						"type": "string"
 					},
@@ -3653,51 +2825,76 @@
 							"type": "string"
 						},
 						"description": ""
-					},
-					"isEnabled": {
-						"type": "boolean"
-					},
-					"deletedAt": {
-						"type": "string",
-						"nullable": true
-					},
-					"deletedBy": {
-						"type": "string",
-						"nullable": true
-					},
-					"_id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
-					},
-					"__v": {
-						"type": "integer",
-						"format": "int32"
 					}
 				},
 				"example": {
-					"createdBy": "628dfe26b34272ba6d1d1498",
-					"permissions": ["628dfe26b34272ba6d1d1487"],
-					"isEnabled": true,
-					"deletedAt": null,
-					"deletedBy": null,
-					"_id": "6299b17b3644eb4cf66f0f43",
-					"name": "temp",
-					"createdAt": "2022-06-03T07:00:11.416Z",
-					"updatedAt": "2022-06-03T07:04:00.268Z",
-					"__v": 0
+					"name": "SUPER_USER",
+					"createdBy": "6107cc835e94d0bc7dd9f1c2",
+					"permissions": [
+						"610d0b608308ca8cce20c41f",
+						"610d0b608308ca8cce20c420",
+						"610d0b608308ca8cce20c421",
+						"610d0b608308ca8cce20c422",
+						"610d0b608308ca8cce20c423",
+						"610d0b608308ca8cce20c424",
+						"610d0b608308ca8cce20c425",
+						"610d0b608308ca8cce20c426",
+						"610d0b608308ca8cce20c427",
+						"610d0b608308ca8cce20c428",
+						"610d0b608308ca8cce20c429",
+						"610d0b608308ca8cce20c42a",
+						"610d0b608308ca8cce20c42b",
+						"610d0b608308ca8cce20c42c",
+						"610d0b608308ca8cce20c42d",
+						"610d0b608308ca8cce20c42e",
+						"610d0b608308ca8cce20c42f",
+						"610d0b608308ca8cce20c430",
+						"610d0b608308ca8cce20c431",
+						"610d0b608308ca8cce20c432",
+						"610d0b608308ca8cce20c433",
+						"610d0b608308ca8cce20c434",
+						"610d0b608308ca8cce20c435",
+						"610d0b608308ca8cce20c436",
+						"610d0b608308ca8cce20c437",
+						"610d0b608308ca8cce20c438",
+						"610d0b608308ca8cce20c439",
+						"610d0b608308ca8cce20c43a",
+						"610d0b608308ca8cce20c43b",
+						"610d0b608308ca8cce20c43c",
+						"610d0b608308ca8cce20c43d",
+						"610d0b608308ca8cce20c43e",
+						"610d0b608308ca8cce20c43f",
+						"610d0b608308ca8cce20c440",
+						"610d0b608308ca8cce20c441",
+						"610d0b608308ca8cce20c442",
+						"610d0b608308ca8cce20c443",
+						"610d0b608308ca8cce20c444",
+						"610d0b608308ca8cce20c445",
+						"610d0b608308ca8cce20c446",
+						"610d0b608308ca8cce20c447",
+						"610d0b608308ca8cce20c448",
+						"610d0b618308ca8cce20c449",
+						"610d0b618308ca8cce20c44a",
+						"610d0b618308ca8cce20c44b",
+						"610d0b618308ca8cce20c44c",
+						"610d0b618308ca8cce20c44d",
+						"610d0b618308ca8cce20c44e",
+						"610d0b618308ca8cce20c44f",
+						"610d0b618308ca8cce20c450",
+						"610d0b618308ca8cce20c451",
+						"610d0b618308ca8cce20c452",
+						"610d0b618308ca8cce20c453",
+						"610d0b618308ca8cce20c454",
+						"610d0b618308ca8cce20c455",
+						"6110c1ed170cf61a4c8d3e47",
+						"6110d11772f7ae3890564085",
+						"6110d0b3449850384837abc4"
+					]
 				}
 			},
 			"CreateAdminUserRequest": {
 				"title": "CreateAdminUserRequest",
-				"required": ["name", "email", "role"],
+				"required": ["name", "email", "role", "profileImage"],
 				"type": "object",
 				"properties": {
 					"name": {
@@ -3708,12 +2905,16 @@
 					},
 					"role": {
 						"type": "string"
+					},
+					"profileImage": {
+						"type": "string"
 					}
 				},
 				"example": {
 					"name": "Tushar20",
 					"email": "tushar20@mailinator.com",
-					"role": "628dfe26b34272ba6d1d1492"
+					"role": "6110d7992b1f633dfe13b7a6",
+					"profileImage": "aaa"
 				}
 			},
 			"LoginAdminUserRequest": {
@@ -3729,825 +2930,13 @@
 					}
 				},
 				"example": {
-					"email": "superUser#123@example.com",
-					"password": "superUser@123"
-				}
-			},
-			"m2009": {
-				"title": "m2009",
-				"required": ["success", "data", "msg"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"data": {
-						"$ref": "#/components/schemas/Data3"
-					},
-					"msg": {
-						"type": "string"
-					}
-				},
-				"example": {
-					"success": true,
-					"data": {
-						"profileImage": null,
-						"firstLogin": false,
-						"createdBy": "628dfe26b34272ba6d1d1498",
-						"isEnabled": true,
-						"deletedAt": null,
-						"deletedBy": null,
-						"_id": "628dfe26b34272ba6d1d149a",
-						"role": {
-							"permissions": [
-								{
-									"_id": "628dfe26b34272ba6d1d146f",
-									"path": "role/create",
-									"displayName": "Role Create"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d1472",
-									"path": "role/get",
-									"displayName": "Role List"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d1475",
-									"path": "role/update/:id",
-									"displayName": "Role update"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d1478",
-									"path": "role/delete/:id",
-									"displayName": "Role Delete"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d147b",
-									"path": "adminuser/create",
-									"displayName": "Admin User Create"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d147e",
-									"path": "adminuser/get",
-									"displayName": "Admin User List"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d1481",
-									"path": "adminuser/update/:id",
-									"displayName": "Admin User update"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d1484",
-									"path": "adminuser/delete/:id",
-									"displayName": "Admin User Delete"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d1487",
-									"path": "adminuser/changePassword",
-									"displayName": "Admin User Delete"
-								},
-								{
-									"_id": "628dfe26b34272ba6d1d148a",
-									"path": "adminuser/status",
-									"displayName": "Admin User Delete"
-								}
-							],
-							"isEnabled": true,
-							"deletedAt": null,
-							"_id": "628dfe26b34272ba6d1d148e",
-							"name": "SUPER_USER"
-						},
-						"name": "superUser",
-						"email": "superUser#123@example.com",
-						"hashedPassword": "$2b$10$gSDqHyP0S/Irtbc8w057E.WCGKE9d67jbGSxm9f7hU.RuUGrHyBMi",
-						"salt": "$2b$10$gSDqHyP0S/Irtbc8w057E.",
-						"createdAt": "2022-05-25T10:00:06.747Z",
-						"updatedAt": "2022-05-25T10:00:06.768Z",
-						"__v": 0,
-						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjhkZmUyNmIzNDI3MmJhNmQxZDE0OWEiLCJ0eXBlIjoiJzdkJzsiLCJpYXQiOjE2NTQyNDAzNjAsImV4cCI6MTY1NDg0NTE2MH0.n5bda4UDxAY6FkNq0Is1hziAW1LHNhufDoL4oPD4DSE"
-					},
-					"msg": " Login Successfully"
-				}
-			},
-			"Data3": {
-				"title": "Data3",
-				"required": [
-					"profileImage",
-					"firstLogin",
-					"createdBy",
-					"isEnabled",
-					"deletedAt",
-					"deletedBy",
-					"_id",
-					"role",
-					"name",
-					"email",
-					"hashedPassword",
-					"salt",
-					"createdAt",
-					"updatedAt",
-					"__v",
-					"token"
-				],
-				"type": "object",
-				"properties": {
-					"profileImage": {
-						"type": "string",
-						"nullable": true
-					},
-					"firstLogin": {
-						"type": "boolean"
-					},
-					"createdBy": {
-						"type": "string"
-					},
-					"isEnabled": {
-						"type": "boolean"
-					},
-					"deletedAt": {
-						"type": "string",
-						"nullable": true
-					},
-					"deletedBy": {
-						"type": "string",
-						"nullable": true
-					},
-					"_id": {
-						"type": "string"
-					},
-					"role": {
-						"$ref": "#/components/schemas/Role"
-					},
-					"name": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					},
-					"hashedPassword": {
-						"type": "string"
-					},
-					"salt": {
-						"type": "string"
-					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
-					},
-					"__v": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"token": {
-						"type": "string"
-					}
-				},
-				"example": {
-					"profileImage": null,
-					"firstLogin": false,
-					"createdBy": "628dfe26b34272ba6d1d1498",
-					"isEnabled": true,
-					"deletedAt": null,
-					"deletedBy": null,
-					"_id": "628dfe26b34272ba6d1d149a",
-					"role": {
-						"permissions": [
-							{
-								"_id": "628dfe26b34272ba6d1d146f",
-								"path": "role/create",
-								"displayName": "Role Create"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1472",
-								"path": "role/get",
-								"displayName": "Role List"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1475",
-								"path": "role/update/:id",
-								"displayName": "Role update"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1478",
-								"path": "role/delete/:id",
-								"displayName": "Role Delete"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d147b",
-								"path": "adminuser/create",
-								"displayName": "Admin User Create"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d147e",
-								"path": "adminuser/get",
-								"displayName": "Admin User List"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1481",
-								"path": "adminuser/update/:id",
-								"displayName": "Admin User update"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1484",
-								"path": "adminuser/delete/:id",
-								"displayName": "Admin User Delete"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1487",
-								"path": "adminuser/changePassword",
-								"displayName": "Admin User Delete"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d148a",
-								"path": "adminuser/status",
-								"displayName": "Admin User Delete"
-							}
-						],
-						"isEnabled": true,
-						"deletedAt": null,
-						"_id": "628dfe26b34272ba6d1d148e",
-						"name": "SUPER_USER"
-					},
-					"name": "superUser",
-					"email": "superUser#123@example.com",
-					"hashedPassword": "$2b$10$gSDqHyP0S/Irtbc8w057E.WCGKE9d67jbGSxm9f7hU.RuUGrHyBMi",
-					"salt": "$2b$10$gSDqHyP0S/Irtbc8w057E.",
-					"createdAt": "2022-05-25T10:00:06.747Z",
-					"updatedAt": "2022-05-25T10:00:06.768Z",
-					"__v": 0,
-					"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjhkZmUyNmIzNDI3MmJhNmQxZDE0OWEiLCJ0eXBlIjoiJzdkJzsiLCJpYXQiOjE2NTQyNDAzNjAsImV4cCI6MTY1NDg0NTE2MH0.n5bda4UDxAY6FkNq0Is1hziAW1LHNhufDoL4oPD4DSE"
-				}
-			},
-			"Role": {
-				"title": "Role",
-				"required": ["permissions", "isEnabled", "deletedAt", "_id", "name"],
-				"type": "object",
-				"properties": {
-					"permissions": {
-						"type": "array",
-						"items": {
-							"$ref": "#/components/schemas/Permission1"
-						},
-						"description": ""
-					},
-					"isEnabled": {
-						"type": "boolean"
-					},
-					"deletedAt": {
-						"type": "string",
-						"nullable": true
-					},
-					"_id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					}
-				},
-				"example": {
-					"permissions": [
-						{
-							"_id": "628dfe26b34272ba6d1d146f",
-							"path": "role/create",
-							"displayName": "Role Create"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d1472",
-							"path": "role/get",
-							"displayName": "Role List"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d1475",
-							"path": "role/update/:id",
-							"displayName": "Role update"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d1478",
-							"path": "role/delete/:id",
-							"displayName": "Role Delete"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d147b",
-							"path": "adminuser/create",
-							"displayName": "Admin User Create"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d147e",
-							"path": "adminuser/get",
-							"displayName": "Admin User List"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d1481",
-							"path": "adminuser/update/:id",
-							"displayName": "Admin User update"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d1484",
-							"path": "adminuser/delete/:id",
-							"displayName": "Admin User Delete"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d1487",
-							"path": "adminuser/changePassword",
-							"displayName": "Admin User Delete"
-						},
-						{
-							"_id": "628dfe26b34272ba6d1d148a",
-							"path": "adminuser/status",
-							"displayName": "Admin User Delete"
-						}
-					],
-					"isEnabled": true,
-					"deletedAt": null,
-					"_id": "628dfe26b34272ba6d1d148e",
-					"name": "SUPER_USER"
-				}
-			},
-			"Permission1": {
-				"title": "Permission1",
-				"required": ["_id", "path", "displayName"],
-				"type": "object",
-				"properties": {
-					"_id": {
-						"type": "string"
-					},
-					"path": {
-						"type": "string"
-					},
-					"displayName": {
-						"type": "string"
-					}
-				},
-				"example": {
-					"_id": "628dfe26b34272ba6d1d146f",
-					"path": "role/create",
-					"displayName": "Role Create"
-				}
-			},
-			"m20010": {
-				"title": "m20010",
-				"required": ["success", "msg", "total", "data"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"msg": {
-						"type": "string"
-					},
-					"total": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"data": {
-						"type": "array",
-						"items": {
-							"$ref": "#/components/schemas/Data4"
-						},
-						"description": ""
-					}
-				},
-				"example": {
-					"success": true,
-					"msg": "Admin user get successfully",
-					"total": 3,
-					"data": [
-						{
-							"profileImage": null,
-							"firstLogin": false,
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"isEnabled": true,
-							"deletedAt": null,
-							"deletedBy": null,
-							"_id": "628dfe26b34272ba6d1d1498",
-							"role": {
-								"permissions": [
-									{
-										"_id": "628dfe26b34272ba6d1d1462",
-										"path": "permissions/create",
-										"displayName": "Permission Create"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1466",
-										"path": "permissions/get",
-										"displayName": "Permission Lust"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1469",
-										"path": "permissions/update/:id",
-										"displayName": "Permission update"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d146c",
-										"path": "permissions/delete/:id",
-										"displayName": "Permission Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d146f",
-										"path": "role/create",
-										"displayName": "Role Create"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1472",
-										"path": "role/get",
-										"displayName": "Role List"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1475",
-										"path": "role/update/:id",
-										"displayName": "Role update"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1478",
-										"path": "role/delete/:id",
-										"displayName": "Role Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d147b",
-										"path": "admin-user/create",
-										"displayName": "Admin User Create"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d147e",
-										"path": "admin-user/get",
-										"displayName": "Admin User List"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1481",
-										"path": "admin-user/update/:id",
-										"displayName": "Admin User update"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1484",
-										"path": "admin-user/delete/:id",
-										"displayName": "Admin User Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1487",
-										"path": "admin-user/changePassword",
-										"displayName": "Admin User Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d148a",
-										"path": "admin-user/status",
-										"displayName": "Admin User Delete"
-									}
-								],
-								"isEnabled": true,
-								"deletedAt": null,
-								"_id": "628dfe26b34272ba6d1d1492",
-								"name": "DEVELOPER"
-							},
-							"name": "Developer",
-							"email": "developer#123@example.com",
-							"hashedPassword": "$2b$10$jiLcnY9f4u7pwycS1TDKM.SOib246AF.iLPssGSL/Hr.8J0PP2Hj6",
-							"salt": "$2b$10$jiLcnY9f4u7pwycS1TDKM.",
-							"createdAt": "2022-05-25T10:00:06.733Z",
-							"updatedAt": "2022-05-25T10:00:06.768Z",
-							"__v": 0
-						},
-						{
-							"profileImage": null,
-							"firstLogin": false,
-							"createdBy": "628dfe26b34272ba6d1d1498",
-							"isEnabled": true,
-							"deletedAt": null,
-							"deletedBy": null,
-							"_id": "628dfe26b34272ba6d1d149a",
-							"role": {
-								"permissions": [
-									{
-										"_id": "628dfe26b34272ba6d1d146f",
-										"path": "role/create",
-										"displayName": "Role Create"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1472",
-										"path": "role/get",
-										"displayName": "Role List"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1475",
-										"path": "role/update/:id",
-										"displayName": "Role update"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1478",
-										"path": "role/delete/:id",
-										"displayName": "Role Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d147b",
-										"path": "admin-user/create",
-										"displayName": "Admin User Create"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d147e",
-										"path": "admin-user/get",
-										"displayName": "Admin User List"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1481",
-										"path": "admin-user/update/:id",
-										"displayName": "Admin User update"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1484",
-										"path": "admin-user/delete/:id",
-										"displayName": "Admin User Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1487",
-										"path": "admin-user/changePassword",
-										"displayName": "Admin User Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d148a",
-										"path": "admin-user/status",
-										"displayName": "Admin User Delete"
-									}
-								],
-								"isEnabled": true,
-								"deletedAt": null,
-								"_id": "628dfe26b34272ba6d1d148e",
-								"name": "SUPER_USER"
-							},
-							"name": "superUser",
-							"email": "superUser#123@example.com",
-							"hashedPassword": "$2b$10$gSDqHyP0S/Irtbc8w057E.WCGKE9d67jbGSxm9f7hU.RuUGrHyBMi",
-							"salt": "$2b$10$gSDqHyP0S/Irtbc8w057E.",
-							"createdAt": "2022-05-25T10:00:06.747Z",
-							"updatedAt": "2022-05-25T10:00:06.768Z",
-							"__v": 0
-						},
-						{
-							"profileImage": null,
-							"firstLogin": true,
-							"createdBy": null,
-							"isEnabled": true,
-							"deletedAt": null,
-							"deletedBy": null,
-							"_id": "6299b6f9e690096016a3541e",
-							"name": "Tushar20",
-							"email": "tushar20@mailinator.com",
-							"role": {
-								"permissions": [
-									{
-										"_id": "628dfe26b34272ba6d1d1462",
-										"path": "permissions/create",
-										"displayName": "Permission Create"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1466",
-										"path": "permissions/get",
-										"displayName": "Permission Lust"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1469",
-										"path": "permissions/update/:id",
-										"displayName": "Permission update"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d146c",
-										"path": "permissions/delete/:id",
-										"displayName": "Permission Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d146f",
-										"path": "role/create",
-										"displayName": "Role Create"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1472",
-										"path": "role/get",
-										"displayName": "Role List"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1475",
-										"path": "role/update/:id",
-										"displayName": "Role update"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1478",
-										"path": "role/delete/:id",
-										"displayName": "Role Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d147b",
-										"path": "admin-user/create",
-										"displayName": "Admin User Create"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d147e",
-										"path": "admin-user/get",
-										"displayName": "Admin User List"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1481",
-										"path": "admin-user/update/:id",
-										"displayName": "Admin User update"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1484",
-										"path": "admin-user/delete/:id",
-										"displayName": "Admin User Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d1487",
-										"path": "admin-user/changePassword",
-										"displayName": "Admin User Delete"
-									},
-									{
-										"_id": "628dfe26b34272ba6d1d148a",
-										"path": "admin-user/status",
-										"displayName": "Admin User Delete"
-									}
-								],
-								"isEnabled": true,
-								"deletedAt": null,
-								"_id": "628dfe26b34272ba6d1d1492",
-								"name": "DEVELOPER"
-							},
-							"hashedPassword": "$2b$10$I/xlrUvobiql8zt.9Bu.OOsR3PlkSNNR4r2psP903ldY2E/opAPhS",
-							"salt": "$2b$10$I/xlrUvobiql8zt.9Bu.OO",
-							"createdAt": "2022-06-03T07:23:37.953Z",
-							"updatedAt": "2022-06-03T07:23:37.953Z",
-							"__v": 0
-						}
-					]
-				}
-			},
-			"Data4": {
-				"title": "Data4",
-				"required": [
-					"profileImage",
-					"firstLogin",
-					"createdBy",
-					"isEnabled",
-					"deletedAt",
-					"deletedBy",
-					"_id",
-					"role",
-					"name",
-					"email",
-					"hashedPassword",
-					"salt",
-					"createdAt",
-					"updatedAt",
-					"__v"
-				],
-				"type": "object",
-				"properties": {
-					"profileImage": {
-						"type": "string",
-						"nullable": true
-					},
-					"firstLogin": {
-						"type": "boolean"
-					},
-					"createdBy": {
-						"type": "string",
-						"nullable": true
-					},
-					"isEnabled": {
-						"type": "boolean"
-					},
-					"deletedAt": {
-						"type": "string",
-						"nullable": true
-					},
-					"deletedBy": {
-						"type": "string",
-						"nullable": true
-					},
-					"_id": {
-						"type": "string"
-					},
-					"role": {
-						"$ref": "#/components/schemas/Role"
-					},
-					"name": {
-						"type": "string"
-					},
-					"email": {
-						"type": "string"
-					},
-					"hashedPassword": {
-						"type": "string"
-					},
-					"salt": {
-						"type": "string"
-					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
-					},
-					"__v": {
-						"type": "integer",
-						"format": "int32"
-					}
-				},
-				"example": {
-					"profileImage": null,
-					"firstLogin": false,
-					"createdBy": "628dfe26b34272ba6d1d1498",
-					"isEnabled": true,
-					"deletedAt": null,
-					"deletedBy": null,
-					"_id": "628dfe26b34272ba6d1d1498",
-					"role": {
-						"permissions": [
-							{
-								"_id": "628dfe26b34272ba6d1d1462",
-								"path": "permissions/create",
-								"displayName": "Permission Create"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1466",
-								"path": "permissions/get",
-								"displayName": "Permission Lust"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1469",
-								"path": "permissions/update/:id",
-								"displayName": "Permission update"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d146c",
-								"path": "permissions/delete/:id",
-								"displayName": "Permission Delete"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d146f",
-								"path": "role/create",
-								"displayName": "Role Create"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1472",
-								"path": "role/get",
-								"displayName": "Role List"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1475",
-								"path": "role/update/:id",
-								"displayName": "Role update"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1478",
-								"path": "role/delete/:id",
-								"displayName": "Role Delete"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d147b",
-								"path": "admin-user/create",
-								"displayName": "Admin User Create"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d147e",
-								"path": "admin-user/get",
-								"displayName": "Admin User List"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1481",
-								"path": "admin-user/update/:id",
-								"displayName": "Admin User update"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1484",
-								"path": "admin-user/delete/:id",
-								"displayName": "Admin User Delete"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d1487",
-								"path": "admin-user/changePassword",
-								"displayName": "Admin User Delete"
-							},
-							{
-								"_id": "628dfe26b34272ba6d1d148a",
-								"path": "admin-user/status",
-								"displayName": "Admin User Delete"
-							}
-						],
-						"isEnabled": true,
-						"deletedAt": null,
-						"_id": "628dfe26b34272ba6d1d1492",
-						"name": "DEVELOPER"
-					},
-					"name": "Developer",
 					"email": "developer#123@example.com",
-					"hashedPassword": "$2b$10$jiLcnY9f4u7pwycS1TDKM.SOib246AF.iLPssGSL/Hr.8J0PP2Hj6",
-					"salt": "$2b$10$jiLcnY9f4u7pwycS1TDKM.",
-					"createdAt": "2022-05-25T10:00:06.733Z",
-					"updatedAt": "2022-05-25T10:00:06.768Z",
-					"__v": 0
+					"password": "developer@123"
 				}
 			},
-			"UpdateAdminUserRequest": {
-				"title": "UpdateAdminUserRequest",
-				"required": ["name", "role", "profileImage", "email"],
+			"UpdateStatusAdminUserRequest": {
+				"title": "UpdateStatusAdminUserRequest",
+				"required": ["name", "role", "profileImage"],
 				"type": "object",
 				"properties": {
 					"name": {
@@ -4557,42 +2946,13 @@
 						"type": "string"
 					},
 					"profileImage": {
-						"type": "string"
-					},
-					"email": {
 						"type": "string"
 					}
 				},
 				"example": {
 					"name": "Tushar14",
 					"role": "610b763ec7b7c82dac1763b7",
-					"profileImage": "aaa",
-					"email": "abc@gmail.com"
-				}
-			},
-			"m20012": {
-				"title": "m20012",
-				"required": ["success", "message", "data"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"message": {
-						"type": "string"
-					},
-					"data": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						},
-						"description": ""
-					}
-				},
-				"example": {
-					"success": true,
-					"message": "Admin user update successfully",
-					"data": []
+					"profileImage": "aaa"
 				}
 			},
 			"ChangePasswordAdminUserRequest": {
@@ -4608,7 +2968,7 @@
 					}
 				},
 				"example": {
-					"oldPassword": "superUseraa@123",
+					"oldPassword": "superUser@123",
 					"newPassword": "superUser@123"
 				}
 			},
@@ -4622,7 +2982,24 @@
 					}
 				},
 				"example": {
-					"email": "abc@gmail.com"
+					"email": "tushar18@mailinator.com"
+				}
+			},
+			"ResetPasswordRequest": {
+				"title": "ResetPasswordRequest",
+				"required": ["email", "newPassword"],
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"newPassword": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"email": "tushar18@mailinator.com",
+					"newPassword": "123456"
 				}
 			},
 			"CreateCustomerRequest": {
@@ -4647,11 +3024,11 @@
 					}
 				},
 				"example": {
-					"name": "tushar Savaliya",
-					"email": "savaliyatushar2197@gmail.com",
-					"mobileNumber": "+918980514085",
+					"name": "tanvi dadhaniya",
+					"email": "tanveedadhaneeya32@gmail.com",
+					"mobileNumber": "+919726201932",
 					"type": "CUSTOMER",
-					"password": "abc@123"
+					"password": "tanvi@123"
 				}
 			},
 			"VerifyCustomerRequest": {
@@ -4673,44 +3050,159 @@
 				"example": {
 					"email": "savaliyatushar2197@gmail.com",
 					"type": "CUSTOMER",
-					"otp": 663916817
+					"otp": 488694489
 				}
 			},
-			"m20017": {
-				"title": "m20017",
-				"required": ["success", "data"],
+			"m200": {
+				"title": "m200",
+				"required": ["success", "msg", "data", "totalCount"],
 				"type": "object",
 				"properties": {
 					"success": {
 						"type": "boolean"
 					},
+					"msg": {
+						"type": "string"
+					},
 					"data": {
-						"$ref": "#/components/schemas/Data5"
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Datum"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
 					}
 				},
 				"example": {
 					"success": true,
-					"data": {
-						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Mjk5Y2I4MTA4YmFmYTc2ZTUyYzI5MTgiLCJ0eXBlIjoiQ1VTVE9NRVIiLCJpYXQiOjE2NTQyNDYzMTEsImV4cCI6MTY1NDg1MTExMX0.3oit4sASC1Ln4XquH3pm31c1P5HVR_9EcKMGU0W3LmE",
-						"type": "CUSTOMER"
-					}
+					"msg": "User get successfully",
+					"data": [
+						{
+							"email": "tanveedadhaneeya32@gmail.com",
+							"otp": 432007118,
+							"gender": "NULL",
+							"fireBaseToken": null,
+							"profileImage": null,
+							"password": "$2b$10$K0hhdmAe5AtLD0M0rpMxzOAY7mhq.61aJ7V9NKT6mf1k4ADVgb7Ca",
+							"salt": "$2b$10$K0hhdmAe5AtLD0M0rpMxzO",
+							"addedBy": null,
+							"isEnabled": false,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "629d9858326ee12ab8200d78",
+							"name": "tanvi dadhaniya",
+							"mobileNumber": "+919726201932",
+							"createdAt": "2022-06-06T06:02:00.207Z",
+							"updatedAt": "2022-06-06T06:02:00.207Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 1
 				}
 			},
-			"Data5": {
-				"title": "Data5",
-				"required": ["token", "type"],
+			"Datum": {
+				"title": "Datum",
+				"required": [
+					"email",
+					"otp",
+					"gender",
+					"fireBaseToken",
+					"profileImage",
+					"password",
+					"salt",
+					"addedBy",
+					"isEnabled",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"name",
+					"mobileNumber",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
 				"type": "object",
 				"properties": {
-					"token": {
+					"email": {
 						"type": "string"
 					},
-					"type": {
+					"otp": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"gender": {
 						"type": "string"
+					},
+					"fireBaseToken": {
+						"type": "string",
+						"nullable": true
+					},
+					"profileImage": {
+						"type": "string",
+						"nullable": true
+					},
+					"password": {
+						"type": "string"
+					},
+					"salt": {
+						"type": "string"
+					},
+					"addedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"isEnabled": {
+						"type": "boolean"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"mobileNumber": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
 					}
 				},
 				"example": {
-					"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Mjk5Y2I4MTA4YmFmYTc2ZTUyYzI5MTgiLCJ0eXBlIjoiQ1VTVE9NRVIiLCJpYXQiOjE2NTQyNDYzMTEsImV4cCI6MTY1NDg1MTExMX0.3oit4sASC1Ln4XquH3pm31c1P5HVR_9EcKMGU0W3LmE",
-					"type": "CUSTOMER"
+					"email": "tanveedadhaneeya32@gmail.com",
+					"otp": 432007118,
+					"gender": "NULL",
+					"fireBaseToken": null,
+					"profileImage": null,
+					"password": "$2b$10$K0hhdmAe5AtLD0M0rpMxzOAY7mhq.61aJ7V9NKT6mf1k4ADVgb7Ca",
+					"salt": "$2b$10$K0hhdmAe5AtLD0M0rpMxzO",
+					"addedBy": null,
+					"isEnabled": false,
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "629d9858326ee12ab8200d78",
+					"name": "tanvi dadhaniya",
+					"mobileNumber": "+919726201932",
+					"createdAt": "2022-06-06T06:02:00.207Z",
+					"updatedAt": "2022-06-06T06:02:00.207Z",
+					"__v": 0
 				}
 			},
 			"Dr.CreateRequest": {
@@ -4761,81 +3253,70 @@
 				"example": {
 					"email": "savaliyatushar2197@gmail.com",
 					"type": "DR",
-					"otp": 285303831
+					"otp": 88569596
 				}
 			},
-			"specialitycreaterequest": {
-				"title": "specialitycreaterequest",
-				"required": ["name", "status", "time", "image", "price"],
+			"AssignTimeSlotRequest": {
+				"title": "AssignTimeSlotRequest",
+				"required": ["drId", "timeSlot"],
 				"type": "object",
 				"properties": {
-					"name": {
+					"drId": {
 						"type": "string"
 					},
-					"status": {
-						"type": "string"
-					},
-					"time": {
-						"type": "string"
-					},
-					"image": {
-						"type": "string"
-					},
-					"price": {
-						"type": "integer",
-						"format": "int32"
+					"timeSlot": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
 					}
 				},
 				"example": {
-					"name": "Back Pain",
-					"status": "Available",
-					"time": "9:00 AM to 5:00 PM",
-					"image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRUVEhIYGBgYEhkYEhgYERgYGBgYGBgZGRgYGBgcIS4lHB4rIRgYJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QHRIRHz0kJCE2ND8/Oj81NDE4MTs0MUA9Nj89Pzw2OD48ND80QD8/NDQ0ND4xPzQ9Pz80QDE0NDE0Mf/AABEIAKQBNAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAADBAACBQEGB//EAEMQAAIBAgQDBAgDBQUIAwAAAAECAAMRBBIhMQVBUWFxgZEGEyIyobHB0UJSYnKCkuHwI6Ky0vEUM0RTVIOTsxYkNP/EABoBAQADAQEBAAAAAAAAAAAAAAABAgMEBQb/xAAgEQEBAQADAAICAwAAAAAAAAAAAQIDESESMQRxE0FR/9oADAMBAAIRAxEAPwDFAlgJAJYCBAIRROAS4EDqrCqJRBCqIFgIRRKqIRRAIohFEqgh1WBFEMiziLGKVItsLwKqs76xBuyj94fKPUuGk+9r2cv5wlTBgDRR5QMlsemy+0e4geZh6dMMLu1+gA0EiYUEnTnHaWF0tAzmwCPyA8oq/BF17N5s1cOV1G8tgHDKwYWIOvb0geQxPBrHMunWerw2By00PVQT4iB4iBkcgcie6bmFs1GkRzpIfNRA8/UpqxykbxfF8My3IEdx9Aq4fobmMtVV1BHMQPMPgTbaFw2GqLoKlx0YXH3no8NSVtOkI/Dlgedr0nAvdf4T95nHFW0ZfEfYz1r4LlMLHcNsSRAT0IuDcdfoekA6zlJ2R/gQRoR0I5zQxOEunrUHsXswvfITt+6eXl0uGQ6xd1jjrF3WAm4gmEYcQLwBGUMIZRoFJJJIHJJ2SBJJ20kDWAllEqJcCBYSwE4BLqIF1EKglFEIogXUQqiUUQqCAVRCqsthqDObKL/Tvmvh+GZbFxm7OX84CFCnc/OatJ8tgABCkoumW3hBVXUi4IgN0KwNxzGvhGFykTGwtb+1QfmuvmDb5TSWkRe0DlXCDcf1eUVLTq1CDqYdUuICzNfS0DiUsDbSMlLH+XOL4pwbgQPPYiqbPfbKflpPUcDH/wBbDg/8in/gE8zxCkQj2/KZ63hSWoUR0o0/8AgLYyhmBmTSw5W45X0no3SJYmlAzcO5Vr9s03xAttFUobmEtoYHaeKDG1pHwge5tEfde4m3w6oHRWHVge9WKn5QMDG8FU8ojSNXD5lyiojAh0bS4O4DDUGe2NK8Vr4QHlA+e1KYJ9m++ito/wBm8PIRSos9fxPhYYH2RPN4hMpy1LleTj31/wAw7D8IGU4i7iP4rDlbG4Kn3XHuns7D2HWItAAZRoRoNoFJJJIEnZySB2dnJIGwolxKCXEC4lllRCLAukKog0hVgEQTV4Zw1n9ptE6827vvGuD8CLWeqLL+FTuf2ug7J6UUwBYACAnSoqgsqgCSriMokxT2vMjFYvQwCYrHA6GYteuQbofCJYvFEHQxYYi+sDc4Ris1emraH1i2/ruvPdGlPlv+1BHpVb+5URm/ZDDN8Lz6tRqXAgZmMw2htF+G4nUo+/Ltm86AiYPEcIVIddwbwHa6Wv3TzgrWr5Dz2npKrjLc9J46pUvjKSjm3yBMDS4nhwEcn8p+Rm/hUy06Y6U0HkoEz+J0LqF6kDzM1K5svhA663EUdbm0Pg3zL8IVkAN4CwoaRaqgWPVKwmRj68BDGVgL2hvRHFFkq32Fc5fFEY/EmZeJDMLLudBL+jGBxNA1BVp2R3z02DA7qq6gG490bwPao86ReK0njKOIC+IoXE87xXhtwdJ6w2i9fDhoHzN81IsuUMjaOh2YfMHoRqInjMIMvrKZLJezX95Cdg9uXRtj2HSey41wjMCQJ49ar0HPkwIurKd1dToQdrQMtxBNNviXD1KDEUL+rJC1Evc0nOyk80P4W8Dra+MwgDnJciVgckknYEtOzk7A2BLiUEuIFlhBBiXEAyz1/o9wOwWrWGp1poeXRmHXs5d+2R6LcOFardxdEAZh1N/ZXxIJ8O2fQ0TmYCz6amIYnFgc4Ti2KC+yDqdp5rEVG/EYBsXj9xeYOMxe+sX4niCL2v2/yiGBwNWuGZbKAbAsSAT4AwLvUvLYXCvUOWmpY8zyHaTsJqYD0bAINWpm/SoIB7ydSPKenw1JUAVFCgbACwgZHDvRWmLNiP7Q/kPuDvH4/HTsnrMI+X2dgNu7l9vCL0xLvoydoYeVrfMwNAVJVxm3g1l7wlmcVqWWyzzPCqZbFo7cr/KepxtK95nUcOEYHneR2mZa+JAut+sviX08IrUfOy28YyRe0dp+K+ESyztVpYm0DVeO0dFqj2mZi2vG8S8znNzJR0Z4RhczgmelqU5i8E96ehdYQyqtO20B60iP1lmbiFgN065jCvMOjXYNaxYW2HXrNSjVJ/CR32+hgFq0w288vx/gwILAa909ReCxChhY+ED5nhaxoFnVcye5iqLe6yNpcfpPXdTaJcYwIpOCjZqTrnoPbdCbZW/WpupHZfmJt8fwRR89Ma2II5EHQgjpAYDC+uwuITlTVsRR6o9PStT7mSxHcOkDzBnDLkThECkktOQJOySQNZZcQSy4MAollgwZdTA996BoPVOefrde4Itvm09HXrhQZ4H0U40uHZ1qXyPY3AvlYc7dCD8BPQNxFKjXpsGHZ9RygDahndnY3J0HYOgmTxHB3vv2azfRgdpx6QMD59iuE5r6ee0BwzHPhvYK5qd/d2KnmV+x+E9nxDDWR28PMgTzeJwn5hA3+H4tKq5qbXHMbEHow5TSpCfOkd6L56bWI8iOhHMT2HBuOpVsr2R/yk+yx/ST8jr3wPQ0xO4wWVW/K4v3H2fqJKcDx2pkw7t0an/7UgP0zpCRTB1LqD2RjNIXmQqwmZiTbWaNZ5mY19JW10Y4+xMK/PrNFG0mHQexE0leV7aXhNO8VqvI76RapU0k/JS8YOJfSJiXqvKKdR3y0rHWem9wSlzm44iHCUsBNGpLMqRrCZ2IWaGIcDTn0i6rzMIBw2GA7+cZC2nbiCqVgDaBZntFKtWSvigBtMTF8RIueXfAZxOHz6Tz/Dq64ccQJ2/2eydM9TMijxvfuU9JTE+kJW+QeJ59w3PynnMTi2cFTsXzt+prZVJ7ACQByzN1gKmVnTJA5JJJAkkkkDUBnQZQGdEAoMuDBKZcQDKYam5BBUkEbEGxi6GGSBu4PjrrYOA4/hPmNPhNOnxhH6r3zyiGMIYHpatUMpW4s3+omXiaXI/6wNOoRz8xf57Qx9r+RI+EDHxmCvqJnthezSeiq026N/Dm+UTqsv4r36Zd/hAFgeJ4ihbI+ZfyP7S9w5r4ETS4n6SithqtN6bI5VShU5kJV1bsK+7298z1pBgfZIHb9oxh+EEi7AgX0NupsABzJOgEDf8ARXiK1aKkNe3strsRuD0M22aeewvAfUAVKGj2/tNbo5vsw/EBsDvba01sJi1qKdMrLpUQ7qfqDyPPvuBXXjfj61V6rTLxT6x+u0yK25Mw1p6nBx9qGpYx6nW0mJXqxyjU0mc07NcHjQ9ZF6tWDzwWIeWmnPvhCqVLmLtigGGvOUrPpK4bg5qr6yqSlPla6s47G/CvaNTytuds3t5/PJn7ez4JxVHU5WzFDZgutja9idhH6mId/wBI6DfzmLwU00QJTAC5QyADl7p79V36nthsbxRKehIHeQPnNXDb20AgE4zAb7Tz1X0ipfiq5e7X4iCbFq+qJWe+xIyr35nsIQ18RxOmv4gT36TGxPH0W9mLH9IvAVEe2qog7SXbyFh8TEK6gdv7VreCjSBTEcVqPr7ifmbU+C85lYrEkk2ZiO23yGg+PfDYlydzeIVDABUMAxhHMEYFZJCZLwJeScvOXgdvJOSQNIS4MEsuDAuJcGDEusAyGGQxdTCqYB1MYQxZTDIYDdMxqmYmhjNMwHabRoIraMAe8XidMxqk0DrcLTemMp3sLa9xO0YwqXsSbkblj7S30Nh5679sJSadqIL5hv379YDyHS23ZEcXg8zBqfsuBow0Pd2jsNxC032uZd0ze6+U9bAwmXr2M2qagAFRBfa6HQ69Da3xiGJYDe471I+O00uI0K4GYVUax0DU2HmVbbwiGMr1yv8AaUraWJQ5hp01BI7QJlrjld3B+XyZ88v78Y1Zr6ggjqDeNUn0HdMzGODUZ/cDBRlylRcX1N9yfpNKgLqLdJyWdasfQZ3N8c0KakC1Qk5QLk7AbzUGGpqiszZnZbhVBNuyy63+s5iS/serTIBYnMwU7e7bceU3xxW+15f5H5+c25zO7FcNwwe9WFwPdS4Iv1br3fOU4hxAtdW6aAdDoDLeu1u9TM/JEGij9o8u2wmNxEAOWZjdtF12OnLrpOiSSdR4+963r5VKHESiIPylwGvtrYr5wWCwlXFYhULbXLvlByILXOU6XJIA7e4weCpBm10Xv7r76dNTzI5A29d6IUQtF6gN/W1CVaxAyJ7KZb/hvnI5+1rc3MlQ3h+EUKQGSmC3N2AZyet7adwsIPEvHK7zKxLwEcU0ycS8dxNSZWIeAnXaI1DGazRNzAE5gyZZjKEwOGckvOXgSScvJA7JOSQNAS4ggZcGAUGWEGDLiAVYVDArCoYBlMMhgFMIhgOUzGEMUpmMoYDlNo3TaIoYzTaBoU2jKm/fyiFNowjdNxtAJg2ZlDMAMxNrHmGI8LgXt2w1Z8n+8p5l5kAG3bYa/CGwpGQLbrp4weJzAAAZlO+vtL3dRI7XufO4RxTI4UU6lg1irAhlF9iOo7jOYmnUCAComgHvIT2cmEpV4aqC9FlsWLMjrmQljdjbdGJ1uOepBg/ZchKlPIWUlPaJVwtibHQgjQ2I22vY2i66XxxzV6l6rC4yHFKoxKEM2Vjrmy3ynIuoJB7vhHuD0kUAOGYBNAN79smLw6KLAaXvbt698awQKrdNDa23KYavy1L/AI9Ti4rx8Gsy+0ShiqpchaYQG9gzC/YbC8z+IIFJetVuRtkFsoJF7XvOvhXd1UVGzMbCxCg2G5vfkInj8LSpOPXEvcXIZiV3t117pvnXf08vfDcfd9v9AUccpumEoZzf23Y5rd7MdD2Xi2Lw9Uuq6Fm6anb5COHFO1lo0wiDnlygi1rWm1wTCFSGbU9ZPakxfu+PH8cWp684QLkUJTvci9RXvlvbZb5r9Tflv9NRFpoiJoqKFHcBaJ8R4KjYmnimF2SjkAtpmVmZGPW2dreEvWqyVariakycTUjGIqzJxFSEAYl5m13hq9SI1ngAqtFHMLUaLO0DjGDJkYyhMC15y8reS8C8recvJeBeSUvJA0AZ0GUBlgYBAYQGBBlwYBlMKsCphVMAyGGQwCmEQwGkMZQxNDGEaA4jQ6NE1aGR4D6PGUeII8pjuIrQQ1HFwrLpexN2AIHba58IHqMNSIUQuWYWE9NsCwGaqUNtnpP81BHxja+leAP/ABaeOYfAiR0vNG8Rhw3vDx5juMSfD6g2uVBCk8r6G3b2/czj+lOAv/8ArT+99oI+k+A/6un/AHvtK2Ns7kvZerh/a1jVGnYaTPrelGAO2KT+F/8ALK4f0pwJ/wCKUd6uvzUSnwb/AM/n2drUdb7W1BBsR3ERWrw9fetqdbnU+Zkq+keCO2LpfxgfOQ8fwZAtjKP/AJk+8tMqa5pXaeGtvNTAKARMg8Zw3LE0j/3U+8D/APJsMh/36eDg/K8tIw1rt7PGJmpsRuBmHhv8LzzFWvKv6f4UIVRmdspACoQtyObNYW7rzOavcA9RLMqLXqzMr1IStUiFZ4QHWeJVHl6rxV2gUdoBzLOYFjA4xlSZxjKkwL3kvB3kvAvmnbyl528C15JW8kB4S6mDBlgYBQZYQYMsDAMsKpgFMKpgHBhEMCphFMBpDDK0VQwytAaRoZHiitCK0BxHmN6XYkikigaNU9pr7ZQSABzvr5ds00eeZ9LMYGZaYtZBmbX8TDQHp7Ov70Dz7MOzvtbyvBuB0sOftH7y3hb4ad8G632v5wOsRz/x6QTBdNfjIySuXtt5D5wOPa+4/i7e6Vci57AOZ7D9ZHH6jf8Ad+2kpY33Ow5wO5vl+b6TgPZ/ek5ak+crY9T5wOjX8J8CPvLpb8nm/wBpTUHU+JtCJiSNoDuEJB0svdvv1ntsNWuifsgeWn0nhMPX6+YnquH1roOzfxJMDQqVIlVeXqPFHeAOo8Wdpao0XdoEZoNmnHaDJgdJlbzhM4TAteS8pedvAuJ2UBnQYFpJy8kB4SwnZIFhLickgEWGWSSARYRZJIBlhUkkgFWXWSSAVZ8/xLlqtYnc1ql/Bio+AEkkCtvnKn6fSSSAO+0Ex/rxnJIHR9frBvy8ZJIA2nDJJA6PrONuf65ySQCUnOmvOei4Q511/D9ZJIGk8VeSSArUgGkkgCaDMkkCpnJJIEnRJJAsJ2ckgdnJJIH/2Q==",
-					"price": 700
+					"drId": "62ceb0fee87bb632e05ca33e",
+					"timeSlot": ["62ce6b4e887df22d203c5ff4", "62ceb08ae87bb632e05ca32f"]
 				}
 			},
-			"specialityupdaterequest": {
-				"title": "specialityupdaterequest",
-				"required": ["name", "status", "time", "price", "image"],
-				"type": "object",
-				"properties": {
-					"name": {
-						"type": "string"
-					},
-					"status": {
-						"type": "string"
-					},
-					"time": {
-						"type": "string"
-					},
-					"price": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"image": {
-						"type": "string"
-					}
-				},
-				"example": {
-					"name": "Back Pain",
-					"status": "Available",
-					"time": "9:00 AM to 7:00 PM",
-					"price": 700,
-					"image": "src/images/Back-Pain.png"
-				}
-			},
-			"m20022": {
-				"title": "m20022",
-				"required": ["success", "data", "totalCount"],
+			"AssignTimeSlot": {
+				"title": "AssignTimeSlot",
+				"required": ["success", "msg", "data"],
 				"type": "object",
 				"properties": {
 					"success": {
 						"type": "boolean"
 					},
+					"msg": {
+						"type": "string"
+					},
 					"data": {
 						"type": "array",
 						"items": {
-							"$ref": "#/components/schemas/Data7"
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Time Slot assign successfully",
+					"data": []
+				}
+			},
+			"m2001": {
+				"title": "m2001",
+				"required": ["success", "msg", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Datum1"
 						},
 						"description": ""
 					},
@@ -4846,72 +3327,110 @@
 				},
 				"example": {
 					"success": true,
+					"msg": "Doctor get successfully",
 					"data": [
 						{
-							"image": "Back Pain.png",
-							"status": "Available",
+							"email": "savaliyatushar2197@gmail.com",
+							"gender": "NULL",
+							"mainStream": null,
+							"specialization": null,
+							"fireBaseToken": null,
+							"profileImage": null,
+							"password": "$2b$10$E/FMUUWGJFTArw0gTa5iaOc1GYQhJ/79GYZNZYC8YhVlpkCqsSQ6q",
+							"salt": "$2b$10$E/FMUUWGJFTArw0gTa5iaO",
+							"addedBy": null,
+							"designation": null,
+							"timeSlot": [
+								"62ce6b4e887df22d203c5ff4",
+								"62ceb08ae87bb632e05ca32f"
+							],
+							"isEnabled": true,
 							"deletedAt": null,
 							"deletedBy": null,
-							"_id": "629df3f75f1a1726a04ccf2f",
-							"name": "Back Pain",
-							"price": 700,
-							"time": "9:00 AM to 5:00 PM",
-							"createdAt": "2022-06-06T12:32:55.438Z",
-							"updatedAt": "2022-06-06T12:32:55.438Z",
-							"__v": 0
-						},
-						{
-							"image": "src/images/Back-Pain.png",
-							"status": "Available",
-							"deletedAt": null,
-							"deletedBy": null,
-							"_id": "629df46550ac122970f4c206",
-							"name": "Back Pain",
-							"price": 700,
-							"time": "9:00 AM to 7:00 PM",
-							"createdAt": "2022-06-06T12:34:45.680Z",
-							"updatedAt": "2022-06-06T13:32:03.069Z",
-							"__v": 0
-						},
-						{
-							"image": "src/images/Back Pain.png",
-							"status": "Available",
-							"deletedAt": null,
-							"deletedBy": null,
-							"_id": "629ef63c3a5de03f633096fc",
-							"name": "Back Pain",
-							"price": 700,
-							"time": "9:00 AM to 5:00 PM",
-							"createdAt": "2022-06-07T06:54:52.417Z",
-							"updatedAt": "2022-06-07T06:54:52.417Z",
+							"_id": "62ceb0fee87bb632e05ca33e",
+							"name": "tushar Savaliya",
+							"mobileNumber": "+918980514085",
+							"otp": 4550,
+							"createdAt": "2022-07-13T11:48:14.877Z",
+							"updatedAt": "2022-07-13T12:00:46.691Z",
 							"__v": 0
 						}
 					],
-					"totalCount": 3
+					"totalCount": 1
 				}
 			},
-			"Data7": {
-				"title": "Data7",
+			"Datum1": {
+				"title": "Datum1",
 				"required": [
-					"image",
-					"status",
+					"email",
+					"gender",
+					"mainStream",
+					"specialization",
+					"fireBaseToken",
+					"profileImage",
+					"password",
+					"salt",
+					"addedBy",
+					"designation",
+					"timeSlot",
+					"isEnabled",
 					"deletedAt",
 					"deletedBy",
 					"_id",
 					"name",
-					"price",
-					"time",
+					"mobileNumber",
+					"otp",
 					"createdAt",
 					"updatedAt",
 					"__v"
 				],
 				"type": "object",
 				"properties": {
-					"image": {
+					"email": {
 						"type": "string"
 					},
-					"status": {
+					"gender": {
 						"type": "string"
+					},
+					"mainStream": {
+						"type": "string",
+						"nullable": true
+					},
+					"specialization": {
+						"type": "string",
+						"nullable": true
+					},
+					"fireBaseToken": {
+						"type": "string",
+						"nullable": true
+					},
+					"profileImage": {
+						"type": "string",
+						"nullable": true
+					},
+					"password": {
+						"type": "string"
+					},
+					"salt": {
+						"type": "string"
+					},
+					"addedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"designation": {
+						"type": "string",
+						"nullable": true
+					},
+					"timeSlot": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					},
+					"isEnabled": {
+						"type": "boolean"
 					},
 					"deletedAt": {
 						"type": "string",
@@ -4927,12 +3446,12 @@
 					"name": {
 						"type": "string"
 					},
-					"price": {
+					"mobileNumber": {
+						"type": "string"
+					},
+					"otp": {
 						"type": "integer",
 						"format": "int32"
-					},
-					"time": {
-						"type": "string"
 					},
 					"createdAt": {
 						"type": "string"
@@ -4946,51 +3465,56 @@
 					}
 				},
 				"example": {
-					"image": "Back Pain.png",
-					"status": "Available",
+					"email": "savaliyatushar2197@gmail.com",
+					"gender": "NULL",
+					"mainStream": null,
+					"specialization": null,
+					"fireBaseToken": null,
+					"profileImage": null,
+					"password": "$2b$10$E/FMUUWGJFTArw0gTa5iaOc1GYQhJ/79GYZNZYC8YhVlpkCqsSQ6q",
+					"salt": "$2b$10$E/FMUUWGJFTArw0gTa5iaO",
+					"addedBy": null,
+					"designation": null,
+					"timeSlot": ["62ce6b4e887df22d203c5ff4", "62ceb08ae87bb632e05ca32f"],
+					"isEnabled": true,
 					"deletedAt": null,
 					"deletedBy": null,
-					"_id": "629df3f75f1a1726a04ccf2f",
-					"name": "Back Pain",
-					"price": 700,
-					"time": "9:00 AM to 5:00 PM",
-					"createdAt": "2022-06-06T12:32:55.438Z",
-					"updatedAt": "2022-06-06T12:32:55.438Z",
+					"_id": "62ceb0fee87bb632e05ca33e",
+					"name": "tushar Savaliya",
+					"mobileNumber": "+918980514085",
+					"otp": 4550,
+					"createdAt": "2022-07-13T11:48:14.877Z",
+					"updatedAt": "2022-07-13T12:00:46.691Z",
 					"__v": 0
 				}
 			},
-			"deletespecialityrequest": {
-				"title": "deletespecialityrequest",
-				"required": ["name", "status", "time", "price", "image"],
+			"m2002": {
+				"title": "m2002",
+				"required": ["success", "msg", "data"],
 				"type": "object",
 				"properties": {
-					"name": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
 						"type": "string"
 					},
-					"status": {
-						"type": "string"
-					},
-					"time": {
-						"type": "string"
-					},
-					"price": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"image": {
-						"type": "string"
+					"data": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
 					}
 				},
 				"example": {
-					"name": "Back Pain",
-					"status": "Available",
-					"time": "9:00 AM to 7:00 PM",
-					"price": 700,
-					"image": "src/images/Back-Pain.png"
+					"success": true,
+					"msg": "Doctor delete successfully",
+					"data": []
 				}
 			},
-			"m200": {
-				"title": "m200",
+			"m2003": {
+				"title": "m2003",
 				"required": ["success", "msg", "data"],
 				"type": "object",
 				"properties": {
@@ -5091,8 +3615,8 @@
 					"__v": 0
 				}
 			},
-			"m2002": {
-				"title": "m2002",
+			"m2005": {
+				"title": "m2005",
 				"required": ["success", "data", "totalCount"],
 				"type": "object",
 				"properties": {
@@ -5172,31 +3696,6 @@
 					"time": "9:00 AM to 7:00 PM",
 					"price": 700,
 					"image": "src/images/Back-Pain.png"
-				}
-			},
-			"m2003": {
-				"title": "m2003",
-				"required": ["success", "msg", "data"],
-				"type": "object",
-				"properties": {
-					"success": {
-						"type": "boolean"
-					},
-					"msg": {
-						"type": "string"
-					},
-					"data": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						},
-						"description": ""
-					}
-				},
-				"example": {
-					"success": true,
-					"msg": "Speciality delete successfully",
-					"data": []
 				}
 			},
 			"CreateConsultRequest": {
@@ -5354,8 +3853,8 @@
 					"message": "Device Already available"
 				}
 			},
-			"m2004": {
-				"title": "m2004",
+			"m2007": {
+				"title": "m2007",
 				"required": ["success", "message", "data"],
 				"type": "object",
 				"properties": {
@@ -5379,8 +3878,8 @@
 					"data": []
 				}
 			},
-			"m2005": {
-				"title": "m2005",
+			"m2008": {
+				"title": "m2008",
 				"required": ["message", "data", "totalCount"],
 				"type": "object",
 				"properties": {
@@ -5542,8 +4041,8 @@
 					"endTime": "10:30 A"
 				}
 			},
-			"m2008": {
-				"title": "m2008",
+			"m20011": {
+				"title": "m20011",
 				"required": ["success", "msg", "data"],
 				"type": "object",
 				"properties": {
@@ -5659,8 +4158,8 @@
 					"endTime": "10:30 A"
 				}
 			},
-			"m20011": {
-				"title": "m20011",
+			"m20014": {
+				"title": "m20014",
 				"required": ["success", "msg", "data", "totalCount"],
 				"type": "object",
 				"properties": {
@@ -5699,6 +4198,874 @@
 					],
 					"totalCount": 1
 				}
+			},
+			"CreatePackageRequest": {
+				"title": "CreatePackageRequest",
+				"required": [
+					"name",
+					"description",
+					"priceByMonth",
+					"priceByYear",
+					"shortDescription"
+				],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"priceByMonth": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"priceByYear": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"shortDescription": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "test package11",
+					"description": "description package",
+					"priceByMonth": 10,
+					"priceByYear": 100,
+					"shortDescription": "test"
+				}
+			},
+			"UpdatePackageRequest": {
+				"title": "UpdatePackageRequest",
+				"required": [
+					"name",
+					"description",
+					"priceByMonth",
+					"priceByYear",
+					"shortDescription"
+				],
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"priceByMonth": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"priceByYear": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"shortDescription": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"name": "test package",
+					"description": "description package",
+					"priceByMonth": 10,
+					"priceByYear": 100,
+					"shortDescription": "aaa"
+				}
+			},
+			"m20018": {
+				"title": "m20018",
+				"required": ["success", "msg", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data6"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Package get successfully",
+					"data": [
+						{
+							"deletedAt": null,
+							"deletedBy": "628dfe26b34272ba6d1d1498",
+							"_id": "62d019b93f41638a7bc160d3",
+							"name": "test package1",
+							"description": "description package",
+							"priceByMonth": 10,
+							"priceByYear": 100,
+							"createdAt": "2022-07-14T13:27:21.870Z",
+							"updatedAt": "2022-07-14T13:34:41.536Z",
+							"__v": 0
+						},
+						{
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62d52ef706f372383b8a65fb",
+							"name": "test package",
+							"description": "description package",
+							"priceByMonth": 10,
+							"priceByYear": 100,
+							"shortDescription": "test",
+							"createdAt": "2022-07-18T09:59:19.109Z",
+							"updatedAt": "2022-07-18T09:59:19.109Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 2
+				}
+			},
+			"Data6": {
+				"title": "Data6",
+				"required": [
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"name",
+					"description",
+					"priceByMonth",
+					"priceByYear",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"priceByMonth": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"priceByYear": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"shortDescription": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"deletedAt": null,
+					"deletedBy": "628dfe26b34272ba6d1d1498",
+					"_id": "62d019b93f41638a7bc160d3",
+					"name": "test package1",
+					"description": "description package",
+					"priceByMonth": 10,
+					"priceByYear": 100,
+					"createdAt": "2022-07-14T13:27:21.870Z",
+					"updatedAt": "2022-07-14T13:34:41.536Z",
+					"__v": 0
+				}
+			},
+			"m20020": {
+				"title": "m20020",
+				"required": ["success", "message", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data7"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"success": true,
+					"message": "Health Article get successfully",
+					"data": [
+						{
+							"isEnabled": false,
+							"deletedAt": "2022-07-15T09:00:28.916Z",
+							"deletedBy": "62d12c93870bde3630ace515",
+							"_id": "62d12c93870bde3630ace515",
+							"title": "test",
+							"Description": "tet@test.com",
+							"profileImage": "public\\images\\1657875603404-Screenshot (1).png",
+							"createdAt": "2022-07-15T09:00:03.503Z",
+							"updatedAt": "2022-07-15T09:00:28.918Z",
+							"__v": 0
+						},
+						{
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62d12cc2870bde3630ace519",
+							"title": "demo",
+							"Description": "demo",
+							"profileImage": "public\\images\\1657875650221-Screenshot (1).png",
+							"createdAt": "2022-07-15T09:00:50.251Z",
+							"updatedAt": "2022-07-15T09:12:45.962Z",
+							"__v": 0
+						},
+						{
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62d132fe17eb851838f4fc17",
+							"title": "demo123",
+							"Description": "demo",
+							"profileImage": "public\\images\\1657877616039-Screenshot (2).png",
+							"createdAt": "2022-07-15T09:27:26.378Z",
+							"updatedAt": "2022-07-15T09:33:38.056Z",
+							"__v": 0
+						},
+						{
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62d14cb3face546bf00cba57",
+							"title": "Article 1",
+							"profileImage": "public/images/1657883827871-image (1).png",
+							"createdAt": "2022-07-15T11:17:07.916Z",
+							"updatedAt": "2022-07-15T11:17:07.916Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 4
+				}
+			},
+			"Data7": {
+				"title": "Data7",
+				"required": [
+					"isEnabled",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"title",
+					"profileImage",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"isEnabled": {
+						"type": "boolean"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"Description": {
+						"type": "string"
+					},
+					"profileImage": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"isEnabled": false,
+					"deletedAt": "2022-07-15T09:00:28.916Z",
+					"deletedBy": "62d12c93870bde3630ace515",
+					"_id": "62d12c93870bde3630ace515",
+					"title": "test",
+					"Description": "tet@test.com",
+					"profileImage": "public\\images\\1657875603404-Screenshot (1).png",
+					"createdAt": "2022-07-15T09:00:03.503Z",
+					"updatedAt": "2022-07-15T09:00:28.918Z",
+					"__v": 0
+				}
+			},
+			"AddSettingsRequest": {
+				"title": "AddSettingsRequest",
+				"required": ["filedName", "filedValue", "filedType"],
+				"type": "object",
+				"properties": {
+					"filedName": {
+						"type": "string"
+					},
+					"filedValue": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"filedType": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"filedName": "timeSlot",
+					"filedValue": 5,
+					"filedType": "number"
+				}
+			},
+			"m20023": {
+				"title": "m20023",
+				"required": ["success", "message", "data"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/Data8"
+					}
+				},
+				"example": {
+					"success": true,
+					"message": "Setting created successfully",
+					"data": {
+						"type": "NULL",
+						"isEnabled": true,
+						"deletedAt": null,
+						"deletedBy": null,
+						"_id": "62d1773e4875f5dbaf955c8d",
+						"filedName": "timeSlot",
+						"filedValue": "5",
+						"filedType": "number",
+						"createdAt": "2022-07-15T14:18:38.674Z",
+						"updatedAt": "2022-07-15T14:18:38.674Z",
+						"__v": 0
+					}
+				}
+			},
+			"Data8": {
+				"title": "Data8",
+				"required": [
+					"type",
+					"isEnabled",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"filedName",
+					"filedValue",
+					"filedType",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"isEnabled": {
+						"type": "boolean"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"filedName": {
+						"type": "string"
+					},
+					"filedValue": {
+						"type": "string"
+					},
+					"filedType": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"type": "NULL",
+					"isEnabled": true,
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62d1773e4875f5dbaf955c8d",
+					"filedName": "timeSlot",
+					"filedValue": "5",
+					"filedType": "number",
+					"createdAt": "2022-07-15T14:18:38.674Z",
+					"updatedAt": "2022-07-15T14:18:38.674Z",
+					"__v": 0
+				}
+			},
+			"m20024": {
+				"title": "m20024",
+				"required": ["message", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data9"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"message": "Setting get successfully",
+					"data": [
+						{
+							"type": "NULL",
+							"isEnabled": false,
+							"deletedAt": "2022-07-14T06:58:56.536Z",
+							"deletedBy": "62cea492266f8229a87aaaef",
+							"_id": "62cea492266f8229a87aaaef",
+							"content": "hellow world",
+							"filedName": "demoFiled",
+							"createdAt": "2022-07-13T10:55:14.379Z",
+							"updatedAt": "2022-07-14T06:58:56.537Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": false,
+							"deletedAt": "2022-07-14T06:59:10.983Z",
+							"deletedBy": "62cfbe03372c8e04b05d3006",
+							"_id": "62cfbe03372c8e04b05d3006",
+							"content": "test",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T06:56:03.914Z",
+							"updatedAt": "2022-07-14T06:59:10.984Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": false,
+							"deletedAt": "2022-07-14T06:57:55.418Z",
+							"deletedBy": "62cfbe40372c8e04b05d3008",
+							"_id": "62cfbe40372c8e04b05d3008",
+							"content": "test",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T06:57:04.532Z",
+							"updatedAt": "2022-07-14T06:57:55.427Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": false,
+							"deletedAt": "2022-07-14T07:09:23.967Z",
+							"deletedBy": "62cfc10e27a74f170c37bfae",
+							"_id": "62cfc10e27a74f170c37bfae",
+							"content": "test",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T07:09:02.363Z",
+							"updatedAt": "2022-07-14T07:09:23.973Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": false,
+							"deletedAt": "2022-07-14T07:10:42.422Z",
+							"deletedBy": "62cfc168c48275172c7207b3",
+							"_id": "62cfc168c48275172c7207b3",
+							"content": "test",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T07:10:32.628Z",
+							"updatedAt": "2022-07-14T07:10:42.432Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62cfc17dc48275172c7207b7",
+							"content": "test",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T07:10:53.505Z",
+							"updatedAt": "2022-07-14T07:10:53.505Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62cfd6e00771111b1c284316",
+							"content": "test",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T08:42:08.381Z",
+							"updatedAt": "2022-07-14T09:00:29.452Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62cfdb4565ec59260ca147d9",
+							"content": "test",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T09:00:54.016Z",
+							"updatedAt": "2022-07-14T09:00:54.016Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62cfdb5d65ec59260ca147db",
+							"content": "new",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T09:01:17.068Z",
+							"updatedAt": "2022-07-14T09:03:29.476Z",
+							"__v": 0
+						},
+						{
+							"type": "Null",
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62cfe087e72ce32be44ed065",
+							"content": "test",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T09:23:19.084Z",
+							"updatedAt": "2022-07-14T09:30:24.211Z",
+							"__v": 0
+						},
+						{
+							"type": "PRIVCYPOLICY",
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62cfe3c0cd5bfe20a8da72f6",
+							"content": "new",
+							"filedName": "dispalysetting",
+							"filedValue": "demo",
+							"filedType": "demo",
+							"createdAt": "2022-07-14T09:37:04.204Z",
+							"updatedAt": "2022-07-14T09:37:04.204Z",
+							"__v": 0
+						},
+						{
+							"type": "NULL",
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62d1773e4875f5dbaf955c8d",
+							"filedName": "timeSlot",
+							"filedValue": "5",
+							"filedType": "number",
+							"createdAt": "2022-07-15T14:18:38.674Z",
+							"updatedAt": "2022-07-15T14:18:38.674Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 12
+				}
+			},
+			"Data9": {
+				"title": "Data9",
+				"required": [
+					"type",
+					"isEnabled",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"filedName",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"isEnabled": {
+						"type": "boolean"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					},
+					"filedName": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"filedValue": {
+						"type": "string"
+					},
+					"filedType": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"type": "NULL",
+					"isEnabled": false,
+					"deletedAt": "2022-07-14T06:58:56.536Z",
+					"deletedBy": "62cea492266f8229a87aaaef",
+					"_id": "62cea492266f8229a87aaaef",
+					"content": "hellow world",
+					"filedName": "demoFiled",
+					"createdAt": "2022-07-13T10:55:14.379Z",
+					"updatedAt": "2022-07-14T06:58:56.537Z",
+					"__v": 0
+				}
+			},
+			"UpdateSttingsRequest": {
+				"title": "UpdateSttingsRequest",
+				"required": ["filedName", "filedValue", "filedType"],
+				"type": "object",
+				"properties": {
+					"filedName": {
+						"type": "string"
+					},
+					"filedValue": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"filedType": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"filedName": "timeSlot",
+					"filedValue": 5,
+					"filedType": "number"
+				}
+			},
+			"m20027": {
+				"title": "m20027",
+				"required": ["status", "msg", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data10"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"status": true,
+					"msg": "Faq get successfully",
+					"data": [
+						{
+							"isEnabled": true,
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62d529f6df9913195ce553fb",
+							"question": "test",
+							"answer": "test",
+							"createdAt": "2022-07-18T09:37:58.334Z",
+							"updatedAt": "2022-07-18T09:37:58.334Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 1
+				}
+			},
+			"Data10": {
+				"title": "Data10",
+				"required": [
+					"isEnabled",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"question",
+					"answer",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"isEnabled": {
+						"type": "boolean"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"question": {
+						"type": "string"
+					},
+					"answer": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"isEnabled": true,
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62d529f6df9913195ce553fb",
+					"question": "test",
+					"answer": "test",
+					"createdAt": "2022-07-18T09:37:58.334Z",
+					"updatedAt": "2022-07-18T09:37:58.334Z",
+					"__v": 0
+				}
+			},
+			"m20029": {
+				"title": "m20029",
+				"required": ["status", "msg", "data"],
+				"type": "object",
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"status": true,
+					"msg": "Faq update successfully",
+					"data": []
+				}
 			}
 		},
 		"securitySchemes": {
@@ -5719,7 +5086,12 @@
 		{
 			"name": "Admin User"
 		},
-
+		{
+			"name": "User"
+		},
+		{
+			"name": "Dr &customer"
+		},
 		{
 			"name": "Speciality"
 		},
@@ -5733,7 +5105,22 @@
 			"name": "Device"
 		},
 		{
+			"name": "Dashboard"
+		},
+		{
 			"name": "Time Slot"
+		},
+		{
+			"name": "Package Management"
+		},
+		{
+			"name": "Health Article"
+		},
+		{
+			"name": "Settings"
+		},
+		{
+			"name": "faqs"
 		}
 	]
 }
