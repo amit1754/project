@@ -10,3 +10,5 @@ export { default as settingController } from './settingController';
 export { default as healthController } from './healthController';
 export { default as timeSlotController } from './timeSlotController';
 export { default as packageController } from './packageController';
+export { default as dashBoardController } from './dashboardController';
+export { default as faqsController } from './faqsController';

@@ -23,11 +23,14 @@ const createPackage = async (req, res) => {
 		} else {
 			throw new Error(PACKAGE.PACKAGE_CREATE_FAILED);
 		}
-	} catch (err) {
+	} catch (error) {
+		if (error.code === 11000) {
+			error.message = PACKAGE.PACKAGE_ALREADY_EXISTS;
+		}
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).send({
 			success: false,
-			msg: err.message || FAILED_RESPONSE,
+			msg: error.message || FAILED_RESPONSE,
 			data: [],
 		});
 	}
@@ -92,6 +95,7 @@ const deletePackage = async (req, res) => {
 		const update = {
 			isDeleted: true,
 			deletedBy: req.currentUser._id,
+			deletedAt: new Date(),
 		};
 		const projection = {};
 		const deletePackageResponse = await packagesService.updateOneQuery(

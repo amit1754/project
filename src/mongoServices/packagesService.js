@@ -2,7 +2,7 @@ import { packagesModel } from '../models';
 const findAllQuery = async (query) => {
 	let { search, _id, limit, page, sortField, sortValue } = query;
 	let sort = {};
-	let whereClause = {};
+	let whereClause = { isDeleted: false };
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,

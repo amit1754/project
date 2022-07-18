@@ -197,6 +197,20 @@ export default {
 			GET_FAILED: 'Package is not available',
 			DELETE_SUCCESS: 'Package delete successfully',
 			DELETE_FAILED: 'Package deletion failed',
+			PACKAGE_ALREADY_EXISTS: 'Package  already exists',
+		},
+		DASHBOARD: {
+			GET_SUCCESS: 'data get successfully',
+		},
+		FAQS: {
+			CREATE_SUCCESS: 'Faq created successfully',
+			CREATE_FAILED: 'Faq creating failed',
+			UPDATE_SUCCESS: 'Faq update successfully',
+			UPDATE_FAILED: 'Faq updating failed',
+			GET_SUCCESS: 'Faq get successfully',
+			GET_FAILED: 'Faq is not available',
+			DELETE_SUCCESS: 'Faq delete successfully',
+			DELETE_FAILED: 'Faq deletion failed',
 		},
 	},
 };

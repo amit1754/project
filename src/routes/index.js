@@ -14,5 +14,7 @@ router.use('/healthArticle', require('./healthRoutes'));
 router.use('/settings', require('./settingRoutes'));
 router.use('/timeSlot', require('./timeSlotRoute'));
 router.use('/package', require('./packageRoutes'));
+router.use('/dashboard', require('./dashboardRoutes'));
+router.use('/faq', require('./faqRoute'));
 
 module.exports = router;

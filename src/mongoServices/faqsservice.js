@@ -1,8 +1,8 @@
-import { healthModel } from '../models';
+import { faqsModel } from '../models';
 const findAllQuery = async (query) => {
 	let { search, _id, limit, page, sortField, sortValue } = query;
 	let sort = {};
-	let whereClause = {};
+	let whereClause = { isEnabled: true };
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
@@ -21,20 +21,20 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	const data = await healthModel
+	const data = await faqsModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
 		.limit(+limit || 20)
 		.sort(sort);
 
-	const totalCount = await healthModel.find(whereClause).countDocuments();
+	const totalCount = await faqsModel.find(whereClause).countDocuments();
 	return { data, totalCount };
 };
 
 const updateOneQuery = async (filter, update, projection) => {
 	let options = { new: true, fields: { ...projection } };
 
-	const data = await healthModel.findOneAndUpdate(filter, update, options);
+	const data = await faqsModel.findOneAndUpdate(filter, update, options);
 	return data;
 };
 

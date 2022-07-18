@@ -1,6 +1,12 @@
 import { drModel, customerModel } from '../models';
 import { CONSTANTS } from '../constants';
-import { errorLogger, otpGenerator, SendEmail, jwtGenerate } from '../utils';
+import {
+	errorLogger,
+	otpGenerator,
+	SendEmail,
+	jwtGenerate,
+	hashPassword,
+} from '../utils';
 import { drService, CustomerService } from '../mongoServices';
 const {
 	RESPONSE_MESSAGE: { DR_USER, FAILED_RESPONSE, CUSTOMER_MESSAGE },
@@ -8,11 +14,12 @@ const {
 	USER_TYPE: { CUSTOMER },
 } = CONSTANTS;
 
+require('dotenv').config({ path: '.env' });
 const createDr = async (req, res) => {
 	try {
 		const createOtp = otpGenerator();
-		const { email, password, type, name } = req.body;
-		const { hashedPassword, salt } = await hashPassword(password);
+		const { email, type, name } = req.body;
+		const { hashedPassword, salt } = await hashPassword(process.env.PASS);
 
 		const insertObj = {
 			...req.body,
