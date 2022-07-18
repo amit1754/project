@@ -59,7 +59,6 @@ function drCreateValidator(req, res, next) {
 		name: Joi.string().required(),
 		email: Joi.string().email().required(),
 		mobileNumber: Joi.string().required(),
-		password: Joi.string().required(),
 		type: Joi.string().required(),
 	});
 	validateRequest(req, res, next, schema);

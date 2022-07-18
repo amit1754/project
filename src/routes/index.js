@@ -16,5 +16,6 @@ router.use('/timeSlot', require('./timeSlotRoute'));
 router.use('/package', require('./packageRoutes'));
 router.use('/dashboard', require('./dashboardRoutes'));
 router.use('/faq', require('./faqRoute'));
+router.use('/appointment', require('./appointmentRoute'));
 
 module.exports = router;
