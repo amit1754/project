@@ -1,7 +1,7 @@
 import { healthModel } from '../models';
 import { healthService } from '../mongoServices';
 import { CONSTANTS } from '../constants';
-import { errorLogger } from '../utils';
+import { errorLogger, fileUpload } from '../utils';
 
 const {
 	RESPONSE_MESSAGE: { HEALTH_ARTICLE, FAILED_RESPONSE },

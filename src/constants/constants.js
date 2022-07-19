@@ -83,6 +83,7 @@ export default {
 			PASSWORD_CHANGED: 'Password is changed successfully',
 			PASSWORD_NOT_CHANGED: 'Password is not changed',
 			VERIFY_OTP: 'Otp is send into email',
+			VERIFY_FAILED: 'otp is wrong',
 		},
 		AUTH_MIDDLEWARE: {
 			UNAUTHORIZED: 'You can not access this resource',
