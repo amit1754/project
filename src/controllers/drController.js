@@ -27,10 +27,15 @@ const createDr = async (req, res) => {
 			password: hashedPassword,
 			salt: salt,
 		};
+		console.log('insertObj', insertObj);
 
 		if (type === CUSTOMER) {
 			const findCustomer = await customerModel.findOne({ email });
 			if (findCustomer !== null) {
+				await customerModel.findOneAndUpdate(
+					{ email },
+					{ $set: { otp: createOtp } },
+				);
 				await SendEmail.sendRegisterEmail(email, createOtp, name);
 				return res.status(SUCCESS).send({
 					success: true,
@@ -105,12 +110,14 @@ const verifyOtp = async (req, res) => {
 			let filter = { email, otp: Number(otp) },
 				update = { otp: null, isEnabled: true },
 				projection = {};
+			console.log('filter', filter);
 
 			const findAndVerify = await CustomerService.updateOneQuery(
 				filter,
 				update,
 				projection,
 			);
+			console.log('findAndVerify', findAndVerify);
 			if (findAndVerify) {
 				let token = jwtGenerate(findAndVerify._id, type);
 				return res.status(SUCCESS).send({
@@ -144,6 +151,7 @@ const verifyOtp = async (req, res) => {
 			}
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
