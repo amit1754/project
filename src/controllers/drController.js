@@ -36,6 +36,7 @@ const createDr = async (req, res) => {
 					success: true,
 					msg: CUSTOMER_MESSAGE.VERIFY_OTP,
 					data: [],
+					createOtp,
 				});
 			} else {
 				const customer = new customerModel(insertObj);
@@ -67,6 +68,7 @@ const createDr = async (req, res) => {
 						success: true,
 						msg: DR_USER.VERIFY_OTP,
 						data: [],
+						createOtp,
 					});
 				} else {
 					throw new Error(DR_USER.CREATE_FAILED);
