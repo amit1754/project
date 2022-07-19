@@ -39,7 +39,7 @@ const createAppointment = async (req, res) => {
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: APPOINTMENT.CREATE_SUCCESS,
-				data: [savePayload],
+				data: [],
 			});
 		} else {
 			throw new Error(APPOINTMENT.CREATE_FAILED);

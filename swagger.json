@@ -3645,10 +3645,7 @@
 					"salt": {
 						"type": "string"
 					},
-					"addedBy": {
-						"type": "string",
-						"nullable": true
-					},
+
 					"designation": {
 						"type": "string",
 						"nullable": true
@@ -3663,14 +3660,6 @@
 					"isEnabled": {
 						"type": "boolean"
 					},
-					"deletedAt": {
-						"type": "string",
-						"nullable": true
-					},
-					"deletedBy": {
-						"type": "string",
-						"nullable": true
-					},
 					"_id": {
 						"type": "string"
 					},
@@ -3684,11 +3673,9 @@
 						"type": "integer",
 						"format": "int32"
 					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
+					"addedBy": {
+						"type": "string",
+						"nullable": true
 					},
 					"__v": {
 						"type": "integer",
@@ -3752,7 +3739,7 @@
 					"success": {
 						"type": "boolean"
 					},
-					"msg": {
+					"updatedAt": {
 						"type": "string"
 					},
 					"data": {
@@ -4782,6 +4769,10 @@
 					},
 					"filedType": {
 						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
 					}
 				},
 				"example": {
@@ -4795,9 +4786,6 @@
 				"required": ["success", "message", "data"],
 				"type": "object",
 				"properties": {
-					"success": {
-						"type": "boolean"
-					},
 					"message": {
 						"type": "string"
 					},
@@ -5357,7 +5345,7 @@
 				"required": ["success", "message", "data", "totalCount"],
 				"type": "object",
 				"properties": {
-					"success": {
+					"status": {
 						"type": "boolean"
 					},
 					"message": {
@@ -5369,10 +5357,6 @@
 							"$ref": "#/components/schemas/Data12"
 						},
 						"description": ""
-					},
-					"totalCount": {
-						"type": "integer",
-						"format": "int32"
 					}
 				},
 				"example": {
