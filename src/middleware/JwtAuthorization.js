@@ -1,7 +1,7 @@
 import { adminUserService } from '../mongoServices';
 import { CONSTANTS } from '../constants';
 import { errorLogger, jwtVerify } from '../utils';
-import e from 'express';
+
 const {
 	RESPONSE_MESSAGE: { AUTH_MIDDLEWARE },
 	STATUS_CODE: { UNAUTHORIZED },
