@@ -16,7 +16,7 @@ router.delete(
 	authMiddleware,
 	healthController.deleteHealthArticle,
 );
-router.get('/get', authMiddleware, healthController.getHealthArticle);
+router.get('/get', healthController.getHealthArticle);
 router.put(
 	'/update/:id',
 	authMiddleware,

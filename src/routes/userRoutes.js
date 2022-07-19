@@ -3,6 +3,7 @@ import { validator } from '../validation';
 import { drController } from '../controllers';
 import { authMiddleware } from '../middleware';
 const router = express.Router();
+
 router.post('/create', validator.drCreateValidator, drController.createDr);
 router.post('/verify-otp', validator.VerifyDrValidator, drController.verifyOtp);
 router.post('/update', drController.updateProfile);

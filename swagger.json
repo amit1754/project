@@ -27,7 +27,7 @@
 							},
 							"example": {
 								"path": "employee-service/restore/:id",
-								"displayName": "restore sallone Employee  Service"
+								"displayName": "restore  Employee  Service"
 							}
 						}
 					},
@@ -618,7 +618,7 @@
 								"$ref": "#/components/schemas/CreateCustomerRequest"
 							},
 							"example": {
-								"name": "tanvi dadhaniya",
+								"name": "tanvi ",
 								"email": "tanveedadhaneeya32@gmail.com",
 								"mobileNumber": "+919726201932",
 								"type": "CUSTOMER",
@@ -705,7 +705,7 @@
 											"deletedAt": null,
 											"deletedBy": null,
 											"_id": "629d9858326ee12ab8200d78",
-											"name": "tanvi dadhaniya",
+											"name": "tanvi ",
 											"mobileNumber": "+919726201932",
 											"createdAt": "2022-06-06T06:02:00.207Z",
 											"updatedAt": "2022-06-06T06:02:00.207Z",
@@ -2023,6 +2023,45 @@
 				]
 			}
 		},
+		"/package/delete/{id}": {
+			"delete": {
+				"tags": ["Package Management"],
+				"summary": "delete package",
+				"operationId": "deletepackage",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20023"
+								},
+								"example": {
+									"success": true,
+									"msg": "Package delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
 		"/healthArticle/create": {
 			"post": {
 				"tags": ["Health Article"],
@@ -2038,7 +2077,7 @@
 								"type": "object",
 								"properties": {
 									"profileImage": {
-										"type": "string"
+										"type": "file"
 									},
 									"title": {
 										"type": "string",
@@ -2046,7 +2085,7 @@
 									},
 									"description": {
 										"type": "string",
-										"example": "Articla edescdsf"
+										"example": "Article edescdsf"
 									}
 								}
 							}
@@ -2080,7 +2119,7 @@
 				]
 			}
 		},
-		"/": {
+		"/healthArticle/get": {
 			"get": {
 				"tags": ["Health Article"],
 				"summary": "Get Health Article",
@@ -2183,10 +2222,10 @@
 									},
 									"description": {
 										"type": "string",
-										"example": "Articla edescdsf"
+										"example": "Article 1"
 									},
 									"profileImage": {
-										"type": "string"
+										"type": "file"
 									}
 								}
 							}
@@ -2745,6 +2784,198 @@
 				},
 				"deprecated": false
 			}
+		},
+		"/appointment/create": {
+			"post": {
+				"tags": ["Appointment"],
+				"summary": "Appointment Create",
+				"operationId": "AppointmentCreate",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AppointmentCreateRequest"
+							},
+							"example": {
+								"date": "07-18-2022",
+								"startTime": "8:00 A",
+								"endTime": "8:30 A",
+								"pain": ["62b046d2d5debb823497dc1c"]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/appointment/get": {
+			"get": {
+				"tags": ["Appointment"],
+				"summary": "Get Appointment",
+				"operationId": "GetAppointment",
+				"parameters": [],
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20031"
+								},
+								"example": {
+									"success": true,
+									"message": "Appointment get successfully",
+									"data": [
+										{
+											"symptoms": ["62b046d2d5debb823497dc1c"],
+											"isActive": true,
+											"drId": null,
+											"consultModel": "VIDEO",
+											"prescription": null,
+											"notes": null,
+											"deletedAt": null,
+											"deletedBy": null,
+											"isDeleted": false,
+											"_id": "62d65ebdf511bf5509c3b62c",
+											"date": "2022-07-19T02:30:00.000Z",
+											"startTime": "8:00 AM",
+											"endTime": "8:30 AM",
+											"patientId": "62d51064f411fb5f8a3c4716",
+											"price": 700,
+											"createdAt": "2022-07-19T07:35:25.733Z",
+											"updatedAt": "2022-07-19T07:35:25.733Z",
+											"__v": 0
+										},
+										{
+											"symptoms": ["62b046d2d5debb823497dc1c"],
+											"isActive": true,
+											"drId": null,
+											"consultModel": "VIDEO",
+											"prescription": null,
+											"notes": null,
+											"deletedAt": null,
+											"deletedBy": null,
+											"isDeleted": false,
+											"_id": "62d668a1f511bf5509c3b632",
+											"date": "2023-07-19T18:30:00.000Z",
+											"startTime": "8:00 A",
+											"endTime": "8:30 A",
+											"patientId": "62d51064f411fb5f8a3c4716",
+											"price": 700,
+											"createdAt": "2022-07-19T08:17:37.343Z",
+											"updatedAt": "2022-07-19T08:18:14.205Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 2
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/appointment/update/{id}": {
+			"put": {
+				"tags": ["Appointment"],
+				"summary": "Appointment Update",
+				"operationId": "AppointmentUpdate",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AppointmentUpdateRequest"
+							},
+							"example": {
+								"date": "08-18-2022",
+								"startTime": "8:00 A",
+								"endTime": "8:30 A",
+								"pain": ["62b046d2d5debb823497dc1c"]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20032"
+								},
+								"example": {
+									"date": "08-18-2022",
+									"startTime": "8:00 A",
+									"endTime": "8:30 A",
+									"pain": ["62b046d2d5debb823497dc1c"]
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/appointment/delete/{id}": {
+			"delete": {
+				"tags": ["Appointment"],
+				"summary": "Appointment Delete",
+				"operationId": "AppointmentDelete",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2002"
+								},
+								"example": {
+									"success": true,
+									"msg": "Appointment delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
 		}
 	},
 	"components": {
@@ -3024,7 +3255,7 @@
 					}
 				},
 				"example": {
-					"name": "tanvi dadhaniya",
+					"name": "tanvi ",
 					"email": "tanveedadhaneeya32@gmail.com",
 					"mobileNumber": "+919726201932",
 					"type": "CUSTOMER",
@@ -3093,7 +3324,7 @@
 							"deletedAt": null,
 							"deletedBy": null,
 							"_id": "629d9858326ee12ab8200d78",
-							"name": "tanvi dadhaniya",
+							"name": "tanvi",
 							"mobileNumber": "+919726201932",
 							"createdAt": "2022-06-06T06:02:00.207Z",
 							"updatedAt": "2022-06-06T06:02:00.207Z",
@@ -3198,7 +3429,7 @@
 					"deletedAt": null,
 					"deletedBy": null,
 					"_id": "629d9858326ee12ab8200d78",
-					"name": "tanvi dadhaniya",
+					"name": "tanvi ",
 					"mobileNumber": "+919726201932",
 					"createdAt": "2022-06-06T06:02:00.207Z",
 					"updatedAt": "2022-06-06T06:02:00.207Z",
@@ -3414,10 +3645,7 @@
 					"salt": {
 						"type": "string"
 					},
-					"addedBy": {
-						"type": "string",
-						"nullable": true
-					},
+
 					"designation": {
 						"type": "string",
 						"nullable": true
@@ -3432,14 +3660,6 @@
 					"isEnabled": {
 						"type": "boolean"
 					},
-					"deletedAt": {
-						"type": "string",
-						"nullable": true
-					},
-					"deletedBy": {
-						"type": "string",
-						"nullable": true
-					},
 					"_id": {
 						"type": "string"
 					},
@@ -3453,11 +3673,9 @@
 						"type": "integer",
 						"format": "int32"
 					},
-					"createdAt": {
-						"type": "string"
-					},
-					"updatedAt": {
-						"type": "string"
+					"addedBy": {
+						"type": "string",
+						"nullable": true
 					},
 					"__v": {
 						"type": "integer",
@@ -3521,7 +3739,7 @@
 					"success": {
 						"type": "boolean"
 					},
-					"msg": {
+					"updatedAt": {
 						"type": "string"
 					},
 					"data": {
@@ -3669,7 +3887,7 @@
 				}
 			},
 			"deletespecialityrequest": {
-				"title": "deletespecialityrequest",
+				"title": "deletespeciality request",
 				"required": ["name", "status", "time", "price", "image"],
 				"type": "object",
 				"properties": {
@@ -4551,6 +4769,10 @@
 					},
 					"filedType": {
 						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
 					}
 				},
 				"example": {
@@ -4564,9 +4786,6 @@
 				"required": ["success", "message", "data"],
 				"type": "object",
 				"properties": {
-					"success": {
-						"type": "boolean"
-					},
 					"message": {
 						"type": "string"
 					},
@@ -4689,7 +4908,7 @@
 							"deletedAt": "2022-07-14T06:58:56.536Z",
 							"deletedBy": "62cea492266f8229a87aaaef",
 							"_id": "62cea492266f8229a87aaaef",
-							"content": "hellow world",
+							"content": "hello world",
 							"filedName": "demoFiled",
 							"createdAt": "2022-07-13T10:55:14.379Z",
 							"updatedAt": "2022-07-14T06:58:56.537Z",
@@ -5066,6 +5285,185 @@
 					"msg": "Faq update successfully",
 					"data": []
 				}
+			},
+			"m200231": {
+				"title": "m2002",
+				"required": ["success", "msg", "data"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Doctor delete successfully",
+					"data": []
+				}
+			},
+			"AppointmentCreateRequest": {
+				"title": "AppointmentCreateRequest",
+				"required": ["date", "startTime", "endTime", "pain"],
+				"type": "object",
+				"properties": {
+					"date": {
+						"type": "string"
+					},
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					},
+					"pain": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"date": "07-18-2022",
+					"startTime": "8:00 A",
+					"endTime": "8:30 A",
+					"pain": ["62b046d2d5debb823497dc1c"]
+				}
+			},
+			"m20031": {
+				"title": "m20031",
+				"required": ["success", "message", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data12"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"success": true,
+					"message": "Appointment get successfully",
+					"data": [
+						{
+							"symptoms": ["62b046d2d5debb823497dc1c"],
+							"isActive": true,
+							"drId": null,
+							"consultModel": "VIDEO",
+							"prescription": null,
+							"notes": null,
+							"deletedAt": null,
+							"deletedBy": null,
+							"isDeleted": false,
+							"_id": "62d65ebdf511bf5509c3b62c",
+							"date": "2022-07-19T02:30:00.000Z",
+							"startTime": "8:00 AM",
+							"endTime": "8:30 AM",
+							"patientId": "62d51064f411fb5f8a3c4716",
+							"price": 700,
+							"createdAt": "2022-07-19T07:35:25.733Z",
+							"updatedAt": "2022-07-19T07:35:25.733Z",
+							"__v": 0
+						},
+						{
+							"symptoms": ["62b046d2d5debb823497dc1c"],
+							"isActive": true,
+							"drId": null,
+							"consultModel": "VIDEO",
+							"prescription": null,
+							"notes": null,
+							"deletedAt": null,
+							"deletedBy": null,
+							"isDeleted": false,
+							"_id": "62d668a1f511bf5509c3b632",
+							"date": "2023-07-19T18:30:00.000Z",
+							"startTime": "8:00 A",
+							"endTime": "8:30 A",
+							"patientId": "62d51064f411fb5f8a3c4716",
+							"price": 700,
+							"createdAt": "2022-07-19T08:17:37.343Z",
+							"updatedAt": "2022-07-19T08:18:14.205Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 2
+				}
+			},
+			"AppointmentUpdateRequest": {
+				"title": "AppointmentUpdateRequest",
+				"required": ["date", "startTime", "endTime", "pain"],
+				"type": "object",
+				"properties": {
+					"date": {
+						"type": "string"
+					},
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					},
+					"pain": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"date": "08-18-2022",
+					"startTime": "8:00 A",
+					"endTime": "8:30 A",
+					"pain": ["62b046d2d5debb823497dc1c"]
+				}
+			},
+			"m20032": {
+				"title": "m20032",
+				"required": ["date", "startTime", "endTime", "pain"],
+				"type": "object",
+				"properties": {
+					"date": {
+						"type": "string"
+					},
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					},
+					"pain": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"date": "08-18-2022",
+					"startTime": "8:00 A",
+					"endTime": "8:30 A",
+					"pain": ["62b046d2d5debb823497dc1c"]
+				}
 			}
 		},
 		"securitySchemes": {
@@ -5121,6 +5519,9 @@
 		},
 		{
 			"name": "faqs"
+		},
+		{
+			"name": "Appointment"
 		}
 	]
 }
