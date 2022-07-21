@@ -26,6 +26,6 @@ router.delete(
 	specialityController.deleteSpeciality,
 );
 router.get('/get', specialityController.listAllSpeciality);
-router.put('/assign', specialityController.assignSpeciality);
+router.put('/assignSpeciality', specialityController.assignSpeciality);
 
 module.exports = router;

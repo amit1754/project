@@ -95,6 +95,7 @@ const drModel = new Schema(
 
 let autoPopulateLead = function (next) {
 	this.populate('timeSlot');
+	this.populate('specialization');
 
 	next();
 };
