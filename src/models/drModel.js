@@ -36,9 +36,12 @@ const drModel = new Schema(
 			default: null,
 		},
 		specialization: {
-			type: String,
+			type: [Types.ObjectId],
+			trim: true,
 			max: 255,
+			required: true,
 			default: null,
+			ref: 'dr_speciality',
 		},
 		fireBaseToken: {
 			type: String,

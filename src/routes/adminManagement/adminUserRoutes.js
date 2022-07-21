@@ -2,12 +2,14 @@ import express from 'express';
 import { validator } from '../../validation';
 import { authMiddleware, resetPasswordMiddleware } from '../../middleware';
 import { adminUserController } from '../../controllers';
+import { fileUpload } from '../../utils';
 const router = express.Router();
 
 // call_back CRUD Routes
 router.post(
 	'/create',
 	validator.adminUserValidation,
+	fileUpload.upload.single('profileImage'),
 	authMiddleware,
 	adminUserController.adminUserCreate,
 );
@@ -17,7 +19,9 @@ router.get('/get', authMiddleware, adminUserController.adminUserList);
 router.put(
 	'/update/:id',
 	validator.adminUserValidation,
+	fileUpload.upload.single('profileImage'),
 	authMiddleware,
+
 	adminUserController.adminUserUpdate,
 );
 router.put('/status/:id', authMiddleware, adminUserController.adminUserStatus);

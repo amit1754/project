@@ -33,7 +33,6 @@ const JwtCustomerAuthorization = async (req, res, next) => {
 			throw new Error(AUTH_MIDDLEWARE.UNAUTHORIZED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res
 			.status(UNAUTHORIZED)

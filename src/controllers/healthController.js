@@ -23,7 +23,6 @@ const createHealthArticle = async (req, res) => {
 			});
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		res.status(FAILED).json({
 			success: false,
@@ -46,7 +45,7 @@ const getHealthArticle = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		console.log('error', error);
+
 		res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
@@ -74,7 +73,6 @@ const deleteHealthArticle = async (req, res) => {
 			throw new Error(HEALTH_ARTICLE.DELETE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		res.status(FAILED).json({
 			success: false,

@@ -29,7 +29,6 @@ const getDashboard = async (req, res) => {
 			},
 		});
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).send({
 			msg: error.message || FAILED_RESPONSE,

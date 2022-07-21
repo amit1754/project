@@ -36,7 +36,6 @@ const createSpeciality = async (req, res) => {
 			throw new Error(SPECIALITY.CREATE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -108,7 +107,6 @@ const deleteSpeciality = async (req, res) => {
 			throw new Error(SPECIALITY.DELETE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -140,9 +138,32 @@ const listAllSpeciality = async (req, res) => {
 		});
 	}
 };
+
+const assignSpeciality = (req, res) => {
+	try {
+		const { id } = req.params;
+		let filter = { _id: id };
+		const { data } = specialityService.findAllQuery(filter);
+		if (!data) {
+			throw new Error(SPECIALITY.ASSIGN_FAILED);
+		}
+		return res.status(SUCCESS).send({
+			success: true,
+			msg: SPECIALITY.ASSIGN_SUCCESS,
+			data,
+		});
+	} catch (error) {
+		errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
 export default {
 	createSpeciality,
 	updateSpeciality,
 	deleteSpeciality,
 	listAllSpeciality,
+	assignSpeciality,
 };

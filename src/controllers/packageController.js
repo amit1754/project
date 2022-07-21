@@ -49,7 +49,6 @@ const getPackage = async (req, res) => {
 			throw new Error(PACKAGE.GET_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).send({
 			success: false,

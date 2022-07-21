@@ -17,5 +17,6 @@ router.use('/package', require('./packageRoutes'));
 router.use('/dashboard', require('./dashboardRoutes'));
 router.use('/faq', require('./faqRoute'));
 router.use('/appointment', require('./appointmentRoute'));
+router.use('/payment', require('./paymentRoute'));
 
 module.exports = router;

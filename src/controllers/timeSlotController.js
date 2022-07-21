@@ -9,10 +9,11 @@ const {
 
 const createTimeSlot = async (req, res) => {
 	try {
-		let { startTime, endTime } = req.body;
+		let { startTime, endTime, type } = req.body;
 		let TimeSlotObj = {
 			startTime,
 			endTime,
+			type,
 		};
 		const TimeSlot = new timeSlotModel(TimeSlotObj);
 		const saveTimeSlot = await TimeSlot.save();
@@ -136,7 +137,6 @@ const assignTimeSlot = async (req, res) => {
 			throw new Error(TIME_SLOT.ASSIGN_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
