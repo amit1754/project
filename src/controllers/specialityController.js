@@ -2,8 +2,9 @@ import { specialityModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
 import fs from 'fs';
-import { specialityService } from '../mongoServices';
+import { specialityService, drService } from '../mongoServices';
 import { uploadFile, deleteFile } from '../utils/uploadFileintoAws';
+
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 const {
@@ -139,19 +140,31 @@ const listAllSpeciality = async (req, res) => {
 	}
 };
 
-const assignSpeciality = (req, res) => {
+const assignSpeciality = async (req, res) => {
 	try {
-		const { id } = req.params;
-		let filter = { _id: id };
-		const { data } = specialityService.findAllQuery(filter);
-		if (!data) {
+		let { specialization, drId } = req.body;
+		let filter = { _id: drId };
+		let { data } = await drService.findAllQuery(filter);
+
+		if (data) {
+			let update = {
+				specialization,
+			};
+			let projection = {};
+			let updateDr = await drService.updateOneQuery(filter, update, projection);
+			console.log('updateDr', updateDr);
+			if (updateDr) {
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: SPECIALITY.ASSIGN_SUCCESS,
+					data: [updateDr],
+				});
+			} else {
+				throw new Error(SPECIALITY.ASSIGN_FAILED);
+			}
+		} else {
 			throw new Error(SPECIALITY.ASSIGN_FAILED);
 		}
-		return res.status(SUCCESS).send({
-			success: true,
-			msg: SPECIALITY.ASSIGN_SUCCESS,
-			data,
-		});
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
@@ -160,6 +173,7 @@ const assignSpeciality = (req, res) => {
 		});
 	}
 };
+
 export default {
 	createSpeciality,
 	updateSpeciality,

@@ -25,5 +25,7 @@ router.delete(
 	authMiddleware,
 	specialityController.deleteSpeciality,
 );
-router.get('/get', authMiddleware, specialityController.listAllSpeciality);
+router.get('/get', specialityController.listAllSpeciality);
+router.put('/assign', specialityController.assignSpeciality);
+
 module.exports = router;
