@@ -146,18 +146,17 @@ const assignSpeciality = async (req, res) => {
 		let filter = { _id: drId };
 		let { data } = await drService.findAllQuery(filter);
 
-		if (data) {
+		if (data.length !== 0) {
 			let update = {
 				specialization,
 			};
 			let projection = {};
 			let updateDr = await drService.updateOneQuery(filter, update, projection);
-			console.log('updateDr', updateDr);
 			if (updateDr) {
 				return res.status(SUCCESS).send({
 					success: true,
 					msg: SPECIALITY.ASSIGN_SUCCESS,
-					data: [updateDr],
+					data: [],
 				});
 			} else {
 				throw new Error(SPECIALITY.ASSIGN_FAILED);
