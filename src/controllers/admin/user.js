@@ -16,7 +16,7 @@ const {
 } = CONSTANTS;
 const adminUserCreate = async (req, res) => {
 	try {
-		const { email, name } = req.body;
+		const { email, name, profileImage } = req.body;
 		const checkExistingUser = await adminUserService.userQuery({
 			email,
 			name,
@@ -32,7 +32,7 @@ const adminUserCreate = async (req, res) => {
 			hashedPassword,
 			salt,
 			isEnabled: true,
-			profileImage: req.file.path,
+			profileImage,
 		};
 
 		const adminUserSave = new adminUserModel(insetObj);

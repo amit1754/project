@@ -1,5 +1,5 @@
 import multer from 'multer';
-import { unlinkSync } from 'fs';
+import fs, { unlinkSync } from 'fs';
 
 require('dotenv').config({ path: '.env' });
 
@@ -20,12 +20,15 @@ const removeFile = (file) => {
 // configure multer storage
 const storage = multer.diskStorage({
 	destination: (_req, _file, cb) => {
-		cb(null, `${process.env.FILE}/`);
+		let path = `${process.env.FILE}/${_req.query.field}/`;
+		fs.mkdirSync(path, { recursive: true });
+		cb(null, path);
 	},
 	filename: (_req, file, cb) => {
 		let filename = file.originalname;
+		let fileExt = filename.split('.').pop();
 
-		cb(null, Date.now() + '_' + filename);
+		cb(null, Date.now() + '.' + fileExt);
 	},
 });
 
