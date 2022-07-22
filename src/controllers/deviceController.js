@@ -101,7 +101,6 @@ const deleteDevice = async (req, res) => {
 			data: [],
 		});
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).send({
 			message: error.message || FAILED_RESPONSE,

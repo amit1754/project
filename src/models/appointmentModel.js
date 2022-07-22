@@ -51,6 +51,10 @@ const consultModel = new Schema(
 			type: String,
 			default: null,
 		},
+		isSchedule: {
+			type: Boolean,
+			default: false,
+		},
 		deletedAt: {
 			type: Date,
 			default: null,

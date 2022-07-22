@@ -10,6 +10,11 @@ const timeSlotALL = new Schema(
 			type: String,
 			required: true,
 		},
+		type: {
+			type: String,
+			enum: ['MORNING', 'EVENING'],
+			default: 'MORNING',
+		},
 		deletedAt: {
 			type: Date,
 			default: null,

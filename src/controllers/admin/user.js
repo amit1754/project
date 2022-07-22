@@ -7,6 +7,7 @@ import {
 	comparePassword,
 	jwtGenerate,
 	generatePassword,
+	fileUpload,
 } from '../../utils';
 import { isValidObjectId } from 'mongoose';
 const {
@@ -15,7 +16,7 @@ const {
 } = CONSTANTS;
 const adminUserCreate = async (req, res) => {
 	try {
-		const { email, name } = req.body;
+		const { email, name, profileImage } = req.body;
 		const checkExistingUser = await adminUserService.userQuery({
 			email,
 			name,
@@ -30,6 +31,8 @@ const adminUserCreate = async (req, res) => {
 			...req.body,
 			hashedPassword,
 			salt,
+			isEnabled: true,
+			profileImage,
 		};
 
 		const adminUserSave = new adminUserModel(insetObj);
@@ -135,9 +138,15 @@ const adminUserUpdate = async (req, res) => {
 		const { data } = await adminUserService.findAllQuery(filter);
 		if (data.length != 1) throw new Error(ADMIN_USER.NOT_ADMIN_USER);
 
-		if (data[0].role.name === 'SUPER_USER') {
+		if (
+			data[0].role.name === 'SUPER_USER' ||
+			data[0].role.name === 'DEVELOPER'
+		) {
 			throw new Error('Super User cannot update');
 		} else {
+			if (data[0].profileImage) {
+				await fileUpload.removeFile(data[0].profileImage);
+			}
 			let update = { ...req.body };
 			const updateAdminUser = await adminUserService.updateOneQuery(
 				filter,

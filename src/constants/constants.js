@@ -113,6 +113,8 @@ export default {
 			GET_FAILED: 'Speciality is not available',
 			DELETE_SUCCESS: 'Speciality delete successfully',
 			DELETE_FAILED: 'Speciality deletion failed',
+			ASSIGN_SUCCESS: 'Speciality assign successfully',
+			ASSIGN_FAILED: 'Speciality assign failed',
 		},
 		CONSULT: {
 			CREATE_SUCCESS: 'Consult created successfully',

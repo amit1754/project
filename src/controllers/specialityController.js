@@ -2,8 +2,9 @@ import { specialityModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
 import fs from 'fs';
-import { specialityService } from '../mongoServices';
+import { specialityService, drService } from '../mongoServices';
 import { uploadFile, deleteFile } from '../utils/uploadFileintoAws';
+
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 const {
@@ -36,7 +37,6 @@ const createSpeciality = async (req, res) => {
 			throw new Error(SPECIALITY.CREATE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -108,7 +108,6 @@ const deleteSpeciality = async (req, res) => {
 			throw new Error(SPECIALITY.DELETE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -140,9 +139,44 @@ const listAllSpeciality = async (req, res) => {
 		});
 	}
 };
+
+const assignSpeciality = async (req, res) => {
+	try {
+		let { specialization, drId } = req.body;
+		let filter = { _id: drId };
+		let { data } = await drService.findAllQuery(filter);
+
+		if (data.length !== 0) {
+			let update = {
+				specialization,
+			};
+			let projection = {};
+			let updateDr = await drService.updateOneQuery(filter, update, projection);
+			if (updateDr) {
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: SPECIALITY.ASSIGN_SUCCESS,
+					data: [],
+				});
+			} else {
+				throw new Error(SPECIALITY.ASSIGN_FAILED);
+			}
+		} else {
+			throw new Error(SPECIALITY.ASSIGN_FAILED);
+		}
+	} catch (error) {
+		errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
+
 export default {
 	createSpeciality,
 	updateSpeciality,
 	deleteSpeciality,
 	listAllSpeciality,
+	assignSpeciality,
 };

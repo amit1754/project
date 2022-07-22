@@ -29,4 +29,8 @@ export default {
 		AWS_SECRET_KEY: 'hWHl5p7thGZFFwhzhYye5Y94HEChaIjYfip/TqVv',
 		AWS_BUCKET_REGION: 'us-east-1',
 	},
+	ROZOR_PAY: {
+		key: 'rzp_test_iOVnJNIrKGFV76',
+		secrate: 'SIvHrU3AXtO3SMN7J1fmd6sE',
+	},
 };

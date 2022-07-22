@@ -31,6 +31,11 @@ const drModel = new Schema(
 			enum: ['MALE', 'FEMALE', 'NULL'],
 			default: 'NULL',
 		},
+		loginType: {
+			type: String,
+			enum: ['SOCIAL', 'EMAIL'],
+			default: 'EMAIL',
+		},
 
 		fireBaseToken: {
 			type: String,

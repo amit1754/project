@@ -17,5 +17,8 @@ router.use('/package', require('./packageRoutes'));
 router.use('/dashboard', require('./dashboardRoutes'));
 router.use('/faq', require('./faqRoute'));
 router.use('/appointment', require('./appointmentRoute'));
+router.use('/payment', require('./paymentRoute'));
+router.use('/image', require('./uploadRoutes'));
+router.use('/scheduleAppointment', require('./scheduleAppointment'));
 
 module.exports = router;

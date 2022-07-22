@@ -84,7 +84,6 @@ const deleteSetting = async (req, res) => {
 			data: [],
 		});
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).send({
 			message: SETTING.DELETE_FAILED || FAILED_RESPONSE,

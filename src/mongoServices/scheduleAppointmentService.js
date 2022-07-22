@@ -1,9 +1,8 @@
-import { drModel } from '../models';
+import { scheduleAppointmentModel } from '../models';
 const findAllQuery = async (query) => {
-	let { search, _id, limit, page, sortField, sortValue, specialization } =
-		query;
+	let { search, _id, limit, page, sortField, sortValue, date } = query;
 	let sort = {};
-	let whereClause = {};
+	let whereClause = { isDeleted: false };
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
@@ -22,27 +21,29 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	if (specialization) {
-		whereClause = { ...whereClause, specialization };
+	if (date) {
+		whereClause = { ...whereClause, date };
 	}
 	console.log('whereClause', whereClause);
-	const data = await drModel
+	const data = await scheduleAppointmentModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
 		.limit(+limit || 20)
 		.sort(sort);
-
-	const totalCount = await drModel.find(whereClause).countDocuments();
+	const totalCount = await scheduleAppointmentModel
+		.find(whereClause)
+		.countDocuments();
 	return { data, totalCount };
 };
 
 const updateOneQuery = async (filter, update, projection) => {
-	console.log('projection', projection);
-	console.log('update', update);
-	console.log('filter', filter);
 	let options = { new: true, fields: { ...projection } };
 
-	const data = await drModel.findOneAndUpdate(filter, update, options);
+	const data = await scheduleAppointmentModel.findOneAndUpdate(
+		filter,
+		update,
+		options,
+	);
 	return data;
 };
 

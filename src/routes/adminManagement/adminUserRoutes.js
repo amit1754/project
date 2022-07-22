@@ -18,6 +18,7 @@ router.put(
 	'/update/:id',
 	validator.adminUserValidation,
 	authMiddleware,
+
 	adminUserController.adminUserUpdate,
 );
 router.put('/status/:id', authMiddleware, adminUserController.adminUserStatus);

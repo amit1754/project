@@ -45,7 +45,6 @@ const createAppointment = async (req, res) => {
 			throw new Error(APPOINTMENT.CREATE_FAILED);
 		}
 	} catch (err) {
-		console.log('err', err);
 		errorLogger(err.message, req.originalUrl, req.ip);
 		return res.status(FAILED).send({
 			error: err.message || FAILED_RESPONSE,
