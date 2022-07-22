@@ -10,7 +10,7 @@ const scheduleAppointment = new Schema(
 			type: Types.ObjectId,
 			ref: 'dr_details',
 		},
-		customerId: {
+		patientId: {
 			type: Types.ObjectId,
 			ref: 'customer_details',
 		},
@@ -41,5 +41,15 @@ const scheduleAppointment = new Schema(
 	},
 	{ timestamps: true },
 );
+let autoPopulateLead = function (next) {
+	this.populate('appointmentId');
+	this.populate('drId');
+	this.populate('patientId');
 
+	next();
+};
+
+scheduleAppointment
+	.pre('findOne', autoPopulateLead)
+	.pre('find', autoPopulateLead);
 module.exports = new model('scheduleAppointment', scheduleAppointment);

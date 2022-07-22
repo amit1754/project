@@ -27,6 +27,10 @@ const packagesModel = new Schema(
 			type: Number,
 			required: true,
 		},
+		image: {
+			type: String,
+			default: null,
+		},
 
 		deletedAt: {
 			type: Date,
