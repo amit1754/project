@@ -15,3 +15,4 @@ export { default as timeSlotModel } from './timeSlotModel';
 export { default as packagesModel } from './packagesModel';
 export { default as faqsModel } from './faqsModel';
 export { default as appointmentModel } from './appointmentModel';
+export { default as scheduleAppointmentModel } from './scheduleAppointmentModel';

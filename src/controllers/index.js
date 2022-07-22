@@ -14,3 +14,4 @@ export { default as dashBoardController } from './dashboardController';
 export { default as faqsController } from './faqsController';
 export { default as appointmentController } from './appointmentController';
 export { default as paymentController } from './paymentController';
+export { default as scheduleAppointmentController } from './scheduleAppointmentController';

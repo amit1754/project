@@ -1,6 +1,7 @@
 import { appointmentModel } from '../models';
+
 const findAllQuery = async (query) => {
-	let { search, _id, limit, page, sortField, sortValue } = query;
+	let { search, _id, limit, page, sortField, sortValue, isSchedule } = query;
 	let sort = {};
 	let whereClause = { deletedAt: null };
 	if (sortField) {
@@ -21,17 +22,18 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	console.log('whereClause', whereClause);
+	if (isSchedule) {
+		whereClause = { ...whereClause, isSchedule };
+	}
 	const data = await appointmentModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
 		.limit(+limit || 20)
-		.sort(sort)
-		.populate({
-			path: 'permissions',
-			model: 'admin_Permissions',
-		});
+		.sort(sort);
+
 	const totalCount = await appointmentModel.find(whereClause).countDocuments();
+
+	console.log('totalCount', totalCount);
 	return { data, totalCount };
 };
 

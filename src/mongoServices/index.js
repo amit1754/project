@@ -11,3 +11,4 @@ export { default as settingService } from './settingService';
 export { default as packagesService } from './packagesService';
 export { default as faqService } from './faqsService';
 export { default as appointmentService } from './appointmentService';
+export { default as scheduleAppointmentService } from './scheduleAppointmentService';
