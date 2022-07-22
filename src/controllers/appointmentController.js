@@ -67,7 +67,7 @@ const getAppointment = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-
+		console.log('error', error);
 		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
@@ -128,6 +128,7 @@ const deleteAppointment = async (req, res) => {
 			throw new Error(APPOINTMENT.DELETE_FAILED);
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
