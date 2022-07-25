@@ -19,11 +19,11 @@ const drModel = new Schema(
 		mobileNumber: {
 			type: String,
 			max: 255,
-			required: true,
+			default: null,
 		},
 		otp: {
 			type: Number,
-			required: true,
+
 			default: null,
 		},
 		gender: {
@@ -36,7 +36,10 @@ const drModel = new Schema(
 			enum: ['SOCIAL', 'EMAIL'],
 			default: 'EMAIL',
 		},
-
+		isFirstTime: {
+			type: Boolean,
+			default: true,
+		},
 		fireBaseToken: {
 			type: String,
 			default: null,

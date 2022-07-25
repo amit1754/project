@@ -12,7 +12,6 @@ const sendRegisterEmail = async (email, otp, name) => {
 
 	// Send Confirm Account Email
 	const sendEmail = await sendMail(email, EMAIL, 'register with curific', html);
-	console.log('sendEmail', sendEmail);
 
 	if (sendEmail[0].statusCode != 202) {
 		throw new Error('mail is not send');

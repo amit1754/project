@@ -2,13 +2,6 @@ import { Schema, model, Types } from 'mongoose';
 
 const consultModel = new Schema(
 	{
-		symptoms: {
-			type: [Types.ObjectId],
-			trim: true,
-			max: 255,
-			default: null,
-			ref: 'dr_speciality',
-		},
 		date: {
 			type: Date,
 			required: true,
@@ -35,10 +28,7 @@ const consultModel = new Schema(
 			ref: 'dr_details',
 			default: null,
 		},
-		price: {
-			type: Number,
-			required: true,
-		},
+
 		consultModel: {
 			type: String,
 			default: 'VIDEO',

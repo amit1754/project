@@ -3,15 +3,16 @@ import {
 	drService,
 	scheduleAppointmentService,
 } from '../mongoServices';
-import { scheduleAppointmentModel } from '../models';
+
 import { Types } from 'mongoose';
 import moment from 'moment';
+import _ from 'lodash';
 const scheduleAppointment = async (req, res) => {
 	try {
 		const { id } = req.body;
 		let filter = { _id: Types.ObjectId(id), isSchedule: false };
 		const { data } = await appointmentService.findAllQuery(filter);
-		console.log('data', data.length);
+
 		if (data.length != 0 && data[0]?.isSchedule === false) {
 			let appointmentData = data[0];
 
@@ -27,7 +28,7 @@ const scheduleAppointment = async (req, res) => {
 			});
 			let startDate = moment(appointmentData.date).startOf('day').toISOString();
 			let endDate = moment(appointmentData.date).endOf('day').toISOString();
-			console.log('availableDr', availableDr);
+
 			if (availableDr) {
 				let drIds = availableDr.map((x) => x._id);
 				let filterDr = {
@@ -37,7 +38,6 @@ const scheduleAppointment = async (req, res) => {
 				const { data: drAppointmentData } =
 					await scheduleAppointmentService.findAllQuery(filterDr);
 
-				console.log('drAppointmentData', drAppointmentData);
 				if (drAppointmentData.length == 0) {
 					let drAppointment = {
 						drId: drIds,
@@ -49,7 +49,7 @@ const scheduleAppointment = async (req, res) => {
 						},
 						date: appointmentData.date,
 					};
-					console.log('drAppointment', drAppointment);
+
 					// let createAppointment = new scheduleAppointmentModel(drAppointment);
 					// let saveAppointment = await createAppointment.save();
 					// let filterA = { _id: Types.ObjectId(id) };
@@ -72,7 +72,6 @@ const scheduleAppointment = async (req, res) => {
 			});
 		}
 	} catch (error) {
-		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(500).json({
 			success: false,
@@ -82,18 +81,31 @@ const scheduleAppointment = async (req, res) => {
 };
 const getScheduleAppointment = async (_req, res) => {
 	try {
-		let filter = {};
-		const { data } = await scheduleAppointmentService.findAllQuery(filter);
+		const { data } = await drService.findAllQuery({});
+		let timeSlot = [];
+		for (const element of data) {
+			let { data: appointment } = await scheduleAppointmentService.findAllQuery(
+				{
+					drId: element._id,
+				},
+			);
+
+			if (appointment.length == 0) {
+				element.timeSlot.map((x) => {
+					timeSlot.push(x);
+				});
+			}
+		}
+		let timeSlotData = _.uniqBy(timeSlot, '_id');
 		return res.status(200).json({
 			success: true,
-			data,
+			data: timeSlotData,
 		});
 	} catch (error) {
-		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(500).json({
 			success: false,
-			error: error.message || FAILED_RESPONSE,
+			error: error,
 		});
 	}
 };

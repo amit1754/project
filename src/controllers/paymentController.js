@@ -12,10 +12,8 @@ const addPayment = async (req, res) => {
 		const { data: appointment } = await appointmentService.findAllQuery({
 			_id: body.appointmentId,
 		});
-		console.log('appointment', appointment);
 		if (appointment.length !== 0) {
 			const paymentDetails = await rozorPayment(body.paymentId);
-			console.log(paymentDetails);
 		}
 		return res.status(SUCCESS).json({
 			status: true,

@@ -89,7 +89,6 @@ const updateDevice = async (req, res) => {
 };
 const deleteDevice = async (req, res) => {
 	try {
-		console.log('req.params', req.params);
 		const { id } = req.params;
 		const filter = { _id: id };
 		const update = { deletedAt: new Date(), deletedBy: req.currentUser._id };

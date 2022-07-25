@@ -11,5 +11,6 @@ router.post('/delete/:id', drController.deleteDr);
 router.get('/dr/list', drController.listDr);
 router.get('/customer/list', drController.ListCustomer);
 router.delete('/customer/delete/:id', authMiddleware, drController.deleteDr);
+router.post('/social/login', drController.socialLogin);
 
 module.exports = router;

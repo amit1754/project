@@ -20,9 +20,12 @@ const swaggerDocument = require('./swagger.json');
 require('dotenv').config({ path: '.env' });
 let path = require('path');
 
+console.log(
+	'path.join(__dirname, process.env.FILE_PATH)',
+	path.join(__dirname, process.env.FILE_PATH),
+);
 process.env.FILE =
-	path.join(__dirname, process.env.FILE_PATH) ||
-	path.join(__dirname, 'uploads');
+	path.join(__dirname, process.env.FILE_PATH) || path.join(__dirname, 'public');
 
 const {
 	SERVER: { PORT },
@@ -61,8 +64,9 @@ server.use(morgan('dev'));
 /** Compress Requests */
 server.use(compression());
 /** File Upload Static */
+console.log('FILE_PATH', express.static(FILE_PATH));
 server.use(
-	`/${FILE_PATH}`,
+	`/image`,
 	express.static(FILE_PATH),
 	serveIndex(FILE_PATH, { icons: true }),
 );

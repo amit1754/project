@@ -1,7 +1,6 @@
 import { drModel } from '../models';
 const findAllQuery = async (query) => {
-	let { search, _id, limit, page, sortField, sortValue, specialization } =
-		query;
+	let { search, _id, limit, page, sortField, sortValue, email } = query;
 	let sort = {};
 	let whereClause = {};
 	if (sortField) {
@@ -22,10 +21,10 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	if (specialization) {
-		whereClause = { ...whereClause, specialization };
+	if (email) {
+		whereClause = { ...whereClause, email };
 	}
-	console.log('whereClause', whereClause);
+
 	const data = await drModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
@@ -37,9 +36,6 @@ const findAllQuery = async (query) => {
 };
 
 const updateOneQuery = async (filter, update, projection) => {
-	console.log('projection', projection);
-	console.log('update', update);
-	console.log('filter', filter);
 	let options = { new: true, fields: { ...projection } };
 
 	const data = await drModel.findOneAndUpdate(filter, update, options);

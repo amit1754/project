@@ -63,7 +63,6 @@ const updatePackage = async (req, res) => {
 		const updateObj = {
 			...req.body,
 		};
-		console.log('updateObj', updateObj);
 		const projection = {};
 		const updatePackageResponse = await packagesService.updateOneQuery(
 			filter,
@@ -80,7 +79,6 @@ const updatePackage = async (req, res) => {
 			throw new Error(PACKAGE.UPDATE_FAILED);
 		}
 	} catch (err) {
-		console.log('err', err);
 		errorLogger(err.message, req.originalUrl, req.ip);
 		return res.status(FAILED).send({
 			success: false,

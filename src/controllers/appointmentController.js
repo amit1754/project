@@ -1,7 +1,7 @@
 import { appointmentModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import { appointmentService, specialityService } from '../mongoServices';
+import { appointmentService } from '../mongoServices';
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, APPOINTMENT },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -9,29 +9,14 @@ const {
 const createAppointment = async (req, res) => {
 	try {
 		const { currentUser } = req;
-		const { pain, date, startTime, endTime } = req.body;
-		let totalPrice = 0;
-		if (pain.length === 0) {
-			let query = { _id: pain };
-			let { data } = await specialityService.findAllQuery(query);
+		const { date, startTime, endTime } = req.body;
 
-			totalPrice = data[0].price;
-		} else {
-			for (const element of pain) {
-				let query = { _id: element };
-				let { data } = await specialityService.findAllQuery(query);
-
-				totalPrice += data[0].price;
-			}
-		}
 		let updateDate = new Date(date).setHours(8);
 		let payloadData = {
 			date: updateDate,
 			startTime,
 			endTime,
-			symptoms: pain,
 			patientId: currentUser._id,
-			price: totalPrice,
 		};
 		const payload = new appointmentModel(payloadData);
 		const savePayload = await payload.save();
@@ -67,7 +52,7 @@ const getAppointment = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		console.log('error', error);
+
 		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
@@ -128,7 +113,6 @@ const deleteAppointment = async (req, res) => {
 			throw new Error(APPOINTMENT.DELETE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,

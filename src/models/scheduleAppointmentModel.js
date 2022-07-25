@@ -22,6 +22,10 @@ const scheduleAppointment = new Schema(
 				type: String,
 			},
 		},
+		timeSlotId: {
+			type: Types.ObjectId,
+			ref: 'timeSlotALL',
+		},
 		date: {
 			type: Date,
 		},

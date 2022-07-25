@@ -1,6 +1,6 @@
 import { customerModel } from '../models';
 const findAllQuery = async (query) => {
-	let { search, _id, limit, page, sortField, sortValue } = query;
+	let { search, _id, limit, page, sortField, sortValue, email } = query;
 	let sort = {};
 	let whereClause = {};
 	if (sortField) {
@@ -20,6 +20,9 @@ const findAllQuery = async (query) => {
 	}
 	if (_id) {
 		whereClause = { ...whereClause, _id };
+	}
+	if (email) {
+		whereClause = { ...whereClause, email };
 	}
 	const data = await customerModel
 		.find(whereClause)
