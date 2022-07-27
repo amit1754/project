@@ -12,9 +12,12 @@ const findAllQuery = async (query) => {
 		date,
 		timeSlotId,
 		patientId,
+		populate,
 	} = query;
-	let sort = {};
-	let whereClause = { deletedAt: null };
+
+	let sort = {},
+		data,
+		whereClause = { deletedAt: null };
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
@@ -46,11 +49,20 @@ const findAllQuery = async (query) => {
 		whereClause = { ...whereClause, patientId };
 	}
 
-	const data = await appointmentModel
-		.find(whereClause)
-		.skip(page > 0 ? +limit * (+page - 1) : 0)
-		.limit(+limit || 20)
-		.sort(sort);
+	if (populate) {
+		data = await appointmentModel
+			.find(whereClause)
+			.skip(page > 0 ? +limit * (+page - 1) : 0)
+			.limit(+limit || 20)
+			.sort(sort)
+			.populate('');
+	} else {
+		data = await appointmentModel
+			.find(whereClause)
+			.skip(page > 0 ? +limit * (+page - 1) : 0)
+			.limit(+limit || 20)
+			.sort(sort);
+	}
 
 	const totalCount = await appointmentModel.find(whereClause).countDocuments();
 

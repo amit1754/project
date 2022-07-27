@@ -1,10 +1,7 @@
 import { appointmentModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import {
-	appointmentService,
-	scheduleAppointmentService,
-} from '../mongoServices';
+import { appointmentService } from '../mongoServices';
 import moment from 'moment';
 import { scheduleAppointmentController } from './';
 

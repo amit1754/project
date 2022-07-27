@@ -59,7 +59,7 @@ const updatesettings = async (req, res) => {
 		await settingService.updateOneQuery(filter, update, projection);
 		res.status(SUCCESS).send({
 			success: true,
-			message: DEVICE.UPDATE_SUCCESS,
+			message: SETTING.UPDATE_SUCCESS,
 			data: [],
 		});
 	} catch (error) {

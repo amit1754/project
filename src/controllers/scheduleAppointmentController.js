@@ -16,7 +16,6 @@ const scheduleAppointment = async (appointment) => {
 				pagination: false,
 			};
 			let { data: dr } = await drService.findAllQuery(drFilter);
-			console.log('dr.length', dr.length);
 
 			console.log('dr.length !== 0', dr.length !== 0);
 			if (dr.length !== 0) {
@@ -25,16 +24,17 @@ const scheduleAppointment = async (appointment) => {
 					let filter = {
 						timeSlotId: appointment.timeSlotId,
 						drId: element._id,
+						date: appointment.date,
 					};
 					let { data: checkSlot } =
 						await scheduleAppointmentService.findAllQuery(filter);
-					console.log('checkSlot', checkSlot.length);
+
 					if (checkSlot.length === 0) {
 						availableDr = element;
 						break;
 					}
 				}
-				console.log('availableDr', availableDr);
+
 				if (availableDr.length !== 0) {
 					let drAppointment = {
 						drId: availableDr._id,
