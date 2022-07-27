@@ -1,7 +1,13 @@
 import { appointmentModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import { appointmentService } from '../mongoServices';
+import {
+	appointmentService,
+	scheduleAppointmentService,
+} from '../mongoServices';
+import moment from 'moment';
+import { scheduleAppointmentController } from './';
+
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, APPOINTMENT },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -9,25 +15,47 @@ const {
 const createAppointment = async (req, res) => {
 	try {
 		const { currentUser } = req;
-		const { date, startTime, endTime } = req.body;
-
-		let updateDate = new Date(date).setHours(8);
-		let payloadData = {
-			date: updateDate,
-			startTime,
-			endTime,
+		const { date, timeSlotId } = req.body;
+		let payload = {
+			date: {
+				$gte: moment(date).add(1, 'days').utc().startOf('day').toISOString(),
+				$lte: moment(date).add(1, 'days').utc().endOf('day').toISOString(),
+			},
+			timeSlotId,
 			patientId: currentUser._id,
 		};
-		const payload = new appointmentModel(payloadData);
-		const savePayload = await payload.save();
-		if (savePayload) {
+
+		const appointment = await appointmentService.findAllQuery(payload);
+		if (appointment?.data?.length === 0) {
+			let updateDate = new Date(date).setHours(8);
+			let payloadData = {
+				date: updateDate,
+				patientId: currentUser._id,
+				timeSlotId,
+			};
+			const payloadSave = new appointmentModel(payloadData);
+			const savePayload = await payloadSave.save();
+			if (savePayload) {
+				const scheduleAppointment =
+					await scheduleAppointmentController.scheduleAppointment(savePayload);
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: APPOINTMENT.CREATE_SUCCESS,
+					data: scheduleAppointment,
+				});
+			} else {
+				throw new Error(APPOINTMENT.CREATE_FAILED);
+			}
+		} else {
+			const scheduleAppointment =
+				await scheduleAppointmentController.scheduleAppointment(
+					appointment.data[0],
+				);
 			return res.status(SUCCESS).send({
 				success: true,
 				msg: APPOINTMENT.CREATE_SUCCESS,
-				data: [],
+				data: scheduleAppointment,
 			});
-		} else {
-			throw new Error(APPOINTMENT.CREATE_FAILED);
 		}
 	} catch (err) {
 		errorLogger(err.message, req.originalUrl, req.ip);

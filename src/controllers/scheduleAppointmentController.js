@@ -3,105 +3,108 @@ import {
 	drService,
 	scheduleAppointmentService,
 } from '../mongoServices';
-
+import { monthlyTimeSlotModel, scheduleAppointmentModel } from '../models';
 import { Types } from 'mongoose';
 import moment from 'moment';
-import _ from 'lodash';
-const scheduleAppointment = async (req, res) => {
+require('dotenv').config({ path: 'src/config/.env' });
+
+const scheduleAppointment = async (appointment) => {
 	try {
-		const { id } = req.body;
-		let filter = { _id: Types.ObjectId(id), isSchedule: false };
-		const { data } = await appointmentService.findAllQuery(filter);
-
-		if (data.length != 0 && data[0]?.isSchedule === false) {
-			let appointmentData = data[0];
-
-			let findDrFilter = { specialization: { $in: appointmentData.symptoms } };
-			let { data: dr } = await drService.findAllQuery(findDrFilter);
-
-			const availableDr = dr.find((x) => {
-				if (x.timeSlot != null) {
-					return x.timeSlot.find((y) => {
-						if (y.startTime == appointmentData.startTime) return x._id;
-					});
-				}
-			});
-			let startDate = moment(appointmentData.date).startOf('day').toISOString();
-			let endDate = moment(appointmentData.date).endOf('day').toISOString();
-
-			if (availableDr) {
-				let drIds = availableDr.map((x) => x._id);
-				let filterDr = {
-					_id: { $in: drIds },
-					date: { $gte: startDate, $lte: endDate },
-				};
-				const { data: drAppointmentData } =
-					await scheduleAppointmentService.findAllQuery(filterDr);
-
-				if (drAppointmentData.length == 0) {
-					let drAppointment = {
-						drId: drIds,
-						appointmentId: id,
-						patientId: appointmentData.patientId,
-						timeSlot: {
-							startTime: appointmentData.startTime,
-							endTime: appointmentData.endTime,
-						},
-						date: appointmentData.date,
+		if (appointment.isSchedule === false) {
+			let drFilter = {
+				timeSlot: appointment.timeSlotId,
+				pagination: false,
+			};
+			let { data: dr } = await drService.findAllQuery(drFilter);
+			if (dr.length !== 0) {
+				let availableDr = [];
+				for (const element of dr) {
+					let filter = {
+						timeSlotId: appointment.timeSlotId,
+						drId: element._id,
 					};
-
-					// let createAppointment = new scheduleAppointmentModel(drAppointment);
-					// let saveAppointment = await createAppointment.save();
-					// let filterA = { _id: Types.ObjectId(id) };
-					// let updateAppointment = { isSchedule: true, drId: availableDr._id };
-					// await appointmentService.updateOneQuery(filterA, updateAppointment);
-					return res.status(200).json({
-						success: true,
-						data: true,
-					});
-				} else {
-					throw new Error('Slot is not available');
+					let { data: checkSlot } =
+						await scheduleAppointmentService.findAllQuery(filter);
+					if (checkSlot.length === 0) {
+						availableDr = element;
+						break;
+					}
 				}
+				let drAppointment = {
+					drId: availableDr._id,
+					appointmentId: appointment.id,
+					patientId: appointment.patientId,
+					date: appointment.date,
+					timeSlotId: appointment.timeSlotId,
+				};
+				let scheduleAppointmentPayload = new scheduleAppointmentModel(
+					drAppointment,
+				);
+				let data = await scheduleAppointmentPayload.save();
+				let filterA = { _id: Types.ObjectId(appointment._id) };
+				let updateAppointment = {
+					isSchedule: true,
+					drId: availableDr._id,
+					scheduleAppointmentID: data._id,
+				};
+				await appointmentService.updateOneQuery(filterA, updateAppointment);
+				return data;
 			} else {
-				throw new Error('Doctor is not available');
+				return {
+					error: dr,
+				};
 			}
+			// let startDate = moment(appointment.date).startOf('day').toISOString();
+			// let endDate = moment(appointment.date).endOf('day').toISOString();
 		} else {
-			return res.status(500).json({
-				success: false,
-				message: 'Appointment already schedule',
-			});
+			throw new Error('Appointment already scheduled');
 		}
 	} catch (error) {
+		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
-		return res.status(500).json({
-			success: false,
+		return {
 			error: error.message || FAILED_RESPONSE,
-		});
+		};
 	}
 };
 const getScheduleAppointment = async (_req, res) => {
 	try {
-		const { data } = await drService.findAllQuery({});
-		let timeSlot = [];
-		for (const element of data) {
-			let { data: appointment } = await scheduleAppointmentService.findAllQuery(
-				{
-					drId: element._id,
-				},
-			);
+		let days = process.env.DAYS;
 
-			if (appointment.length == 0) {
-				element.timeSlot.map((x) => {
-					timeSlot.push(x);
-				});
+		const { data: dr } = await drService.findAllQuery({});
+		for (let i = 0; i < days; i++) {
+			for (const element of dr) {
+				for (const slot of element.timeSlot) {
+					const startDate = moment()
+						.add(i, 'days')
+						.startOf('day')
+						.toISOString();
+					const endDate = moment().add(i, 'days').endOf('day').toISOString();
+					let filter = {
+						drId: element._id,
+						date: { $gte: startDate, $lte: endDate },
+						timeSlotId: slot._id,
+					};
+					const { data: appointment } =
+						await scheduleAppointmentService.findAllQuery(filter);
+					if (appointment.length === 0) {
+						let payload = {
+							drId: element._id,
+							timeSlotId: slot._id,
+							date: moment(startDate).add(8, 'hours').toISOString(),
+						};
+						let createTimeSlot = new monthlyTimeSlotModel(payload);
+						await createTimeSlot.save();
+					}
+				}
 			}
 		}
-		let timeSlotData = _.uniqBy(timeSlot, '_id');
 		return res.status(200).json({
 			success: true,
-			data: timeSlotData,
+			message: 'Time slot created successfully',
 		});
 	} catch (error) {
+		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(500).json({
 			success: false,

@@ -1,19 +1,11 @@
 import { Schema, model, Types } from 'mongoose';
-
-const consultModel = new Schema(
+const appointment = new Schema(
 	{
 		date: {
 			type: Date,
 			required: true,
 		},
-		startTime: {
-			type: String,
-			required: true,
-		},
-		endTime: {
-			type: String,
-			required: true,
-		},
+
 		patientId: {
 			type: Types.ObjectId,
 			required: true,
@@ -28,7 +20,10 @@ const consultModel = new Schema(
 			ref: 'dr_details',
 			default: null,
 		},
-
+		timeSlotId: {
+			type: Types.ObjectId,
+			ref: 'timeSlotALL',
+		},
 		consultModel: {
 			type: String,
 			default: 'VIDEO',
@@ -44,6 +39,11 @@ const consultModel = new Schema(
 		isSchedule: {
 			type: Boolean,
 			default: false,
+		},
+		scheduleAppointmentID: {
+			type: Types.ObjectId,
+			ref: 'scheduleAppointment',
+			default: null,
 		},
 		deletedAt: {
 			type: Date,
@@ -61,4 +61,4 @@ const consultModel = new Schema(
 	{ timestamps: true },
 );
 
-module.exports = new model('appointment', consultModel);
+module.exports = new model('appointment', appointment);

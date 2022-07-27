@@ -1,7 +1,18 @@
 import { appointmentModel } from '../models';
 
 const findAllQuery = async (query) => {
-	let { search, _id, limit, page, sortField, sortValue, isSchedule } = query;
+	let {
+		search,
+		_id,
+		limit,
+		page,
+		sortField,
+		sortValue,
+		isSchedule,
+		date,
+		timeSlotId,
+		patientId,
+	} = query;
 	let sort = {};
 	let whereClause = { deletedAt: null };
 	if (sortField) {
@@ -24,6 +35,15 @@ const findAllQuery = async (query) => {
 	}
 	if (isSchedule === false || isSchedule === true) {
 		whereClause = { ...whereClause, isSchedule };
+	}
+	if (date) {
+		whereClause = { ...whereClause, date };
+	}
+	if (timeSlotId) {
+		whereClause = { ...whereClause, timeSlotId };
+	}
+	if (patientId) {
+		whereClause = { ...whereClause, patientId };
 	}
 
 	const data = await appointmentModel

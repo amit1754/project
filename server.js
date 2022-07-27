@@ -11,6 +11,7 @@ import './src/config/dbConnection';
 import routes from './src/routes';
 // import fs from 'fs';
 import { ENV } from './src/constants';
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -20,10 +21,6 @@ const swaggerDocument = require('./swagger.json');
 require('dotenv').config({ path: '.env' });
 let path = require('path');
 
-console.log(
-	'path.join(__dirname, process.env.FILE_PATH)',
-	path.join(__dirname, process.env.FILE_PATH),
-);
 process.env.FILE =
 	path.join(__dirname, process.env.FILE_PATH) || path.join(__dirname, 'public');
 
