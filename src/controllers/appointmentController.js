@@ -51,11 +51,15 @@ const createAppointment = async (req, res) => {
 				await scheduleAppointmentController.scheduleAppointment(
 					appointment.data[0],
 				);
-			return res.status(SUCCESS).send({
-				success: true,
-				msg: APPOINTMENT.CREATE_SUCCESS,
-				data: scheduleAppointment,
-			});
+			if (scheduleAppointment?.error) {
+				throw new Error(scheduleAppointment.error);
+			} else {
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: APPOINTMENT.CREATE_SUCCESS,
+					data: scheduleAppointment,
+				});
+			}
 		}
 	} catch (err) {
 		errorLogger(err.message, req.originalUrl, req.ip);

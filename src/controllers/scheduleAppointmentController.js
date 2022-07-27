@@ -16,6 +16,9 @@ const scheduleAppointment = async (appointment) => {
 				pagination: false,
 			};
 			let { data: dr } = await drService.findAllQuery(drFilter);
+			console.log('dr.length', dr.length);
+
+			console.log('dr.length !== 0', dr.length !== 0);
 			if (dr.length !== 0) {
 				let availableDr = [];
 				for (const element of dr) {
@@ -25,33 +28,41 @@ const scheduleAppointment = async (appointment) => {
 					};
 					let { data: checkSlot } =
 						await scheduleAppointmentService.findAllQuery(filter);
+					console.log('checkSlot', checkSlot.length);
 					if (checkSlot.length === 0) {
 						availableDr = element;
 						break;
 					}
 				}
-				let drAppointment = {
-					drId: availableDr._id,
-					appointmentId: appointment.id,
-					patientId: appointment.patientId,
-					date: appointment.date,
-					timeSlotId: appointment.timeSlotId,
-				};
-				let scheduleAppointmentPayload = new scheduleAppointmentModel(
-					drAppointment,
-				);
-				let data = await scheduleAppointmentPayload.save();
-				let filterA = { _id: Types.ObjectId(appointment._id) };
-				let updateAppointment = {
-					isSchedule: true,
-					drId: availableDr._id,
-					scheduleAppointmentID: data._id,
-				};
-				await appointmentService.updateOneQuery(filterA, updateAppointment);
-				return data;
+				console.log('availableDr', availableDr);
+				if (availableDr.length !== 0) {
+					let drAppointment = {
+						drId: availableDr._id,
+						appointmentId: appointment.id,
+						patientId: appointment.patientId,
+						date: appointment.date,
+						timeSlotId: appointment.timeSlotId,
+					};
+					let scheduleAppointmentPayload = new scheduleAppointmentModel(
+						drAppointment,
+					);
+					let data = await scheduleAppointmentPayload.save();
+					let filterA = { _id: Types.ObjectId(appointment._id) };
+					let updateAppointment = {
+						isSchedule: true,
+						drId: availableDr._id,
+						scheduleAppointmentID: data._id,
+					};
+					await appointmentService.updateOneQuery(filterA, updateAppointment);
+					return availableDr;
+				} else {
+					return {
+						error: 'slot is not a available',
+					};
+				}
 			} else {
 				return {
-					error: dr,
+					error: 'dr is not available',
 				};
 			}
 			// let startDate = moment(appointment.date).startOf('day').toISOString();

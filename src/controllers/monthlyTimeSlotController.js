@@ -63,7 +63,7 @@ const getTodayTimeSlot = async (req, res) => {
 				getAllTimeSlot.push(y);
 			});
 		});
-		getAllTimeSlot = _.uniqBy(getAllTimeSlot, 'startTime');
+		// getAllTimeSlot = _.uniqBy(getAllTimeSlot, 'startTime');
 
 		return res.status(200).json({
 			success: true,
