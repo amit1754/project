@@ -8,6 +8,8 @@ import {
 	jwtGenerate,
 	generatePassword,
 	fileUpload,
+	SendEmail,
+	otpGenerator,
 } from '../../utils';
 import { isValidObjectId } from 'mongoose';
 const {
@@ -104,10 +106,7 @@ const adminUserLogin = async (req, res) => {
 
 const adminUserList = async (req, res) => {
 	try {
-		const { data, totalCount } = await adminUserService.findAllQuery(
-			req.query,
-			req.currentUser._id,
-		);
+		const { data, totalCount } = await adminUserService.findAllQuery(req.query);
 		if (data) {
 			return res.status(SUCCESS).send({
 				success: true,
@@ -293,10 +292,20 @@ const forgetPassword = async (req, res) => {
 		if (!checkExistingUser) {
 			throw new Error(ADMIN_USER.USER_NOT_AVAILABLE);
 		} else {
+			let createOtp = otpGenerator();
+			let filter = { email };
+			let update = { otp: createOtp };
+			await adminUserService.updateOneQuery(filter, update);
+			await SendEmail.sendForgetPasswordEmail(
+				email,
+				createOtp,
+				checkExistingUser.firstName,
+			);
 			return res.status(SUCCESS).send({
 				success: true,
-				msg: 'Mail send successfully',
+				msg: 'Forget password Email  send successfully',
 				data: [],
+				otp: createOtp,
 			});
 		}
 	} catch (error) {
@@ -309,29 +318,34 @@ const forgetPassword = async (req, res) => {
 };
 const resetPassword = async (req, res) => {
 	try {
-		const {
-			currentUser: { _id },
-		} = req;
-		const { newPassword } = req.body;
+		const { email, newPassword, otp } = req.body;
 
-		let filter = { _id };
-		const { salt, hashedPassword } = await hashPassword(newPassword);
-		let update = {
-			salt,
-			hashedPassword,
-			firstLogin: false,
-		};
-		const updateAdminUser = await adminUserService.updateOneQuery(
-			filter,
-			update,
-		);
-		if (updateAdminUser) {
-			return res.status(SUCCESS).json({
-				success: false,
-				msg: error.message || FAILED_RESPONSE,
-			});
+		const checkExistingUser = await adminUserService.userQuery({
+			email,
+			otp,
+		});
+		if (!checkExistingUser) {
+			throw new Error(ADMIN_USER.USER_NOT_AVAILABLE);
 		} else {
-			throw new Error('password changing failed');
+			let filter = { email };
+			const { salt, hashedPassword } = await hashPassword(newPassword);
+			let update = {
+				salt,
+				hashedPassword,
+				firstLogin: false,
+			};
+			const updateAdminUser = await adminUserService.updateOneQuery(
+				filter,
+				update,
+			);
+			if (updateAdminUser) {
+				return res.status(SUCCESS).json({
+					success: true,
+					msg: 'password change successfully',
+				});
+			} else {
+				throw new Error('password changing failed');
+			}
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);

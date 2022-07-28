@@ -55,6 +55,10 @@ const adminUserSchema = new Schema(
 			required: true,
 			default: true,
 		},
+		otp: {
+			type: Number,
+			default: null,
+		},
 		deletedAt: {
 			type: Date,
 			default: null,

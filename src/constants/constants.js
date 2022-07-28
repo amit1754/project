@@ -125,6 +125,7 @@ export default {
 			GET_FAILED: 'Consult is not available',
 			DELETE_SUCCESS: 'Consult delete successfully',
 			DELETE_FAILED: 'Consult deletion failed',
+			ALREADY_AVAILABLE: 'Consult is already available',
 		},
 		LANGUAGE: {
 			CREATE_SUCCESS: 'Language created successfully',
@@ -135,6 +136,7 @@ export default {
 			GET_FAILED: 'Language is not available',
 			DELETE_SUCCESS: 'Language delete successfully',
 			DELETE_FAILED: 'Language deletion failed',
+			ALREADY_AVAILABLE: 'Language is already available',
 		},
 		NOTIFICTIONTYPE: {
 			CREATE_SUCCESS: 'Notification Type created successfully',

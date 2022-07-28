@@ -26,7 +26,7 @@ const findAllQuery = async (query) => {
 	if (search) {
 		search = new RegExp(search, 'ig');
 		whereClause = {
-			$or: [{ displayName: search }, { path: search }],
+			$or: [{ email: search }, { name: search }, { mobileNumber: search }],
 		};
 	}
 	if (_id) {

@@ -15,7 +15,8 @@
 		"/permissions/create": {
 			"post": {
 				"tags": ["Admin permissions"],
-				"summary": "Permissions Create",
+				"summary": "PermissionsCreate",
+				"description": "Permissions Create",
 				"operationId": "PermissionsCreate",
 				"parameters": [],
 				"requestBody": {
@@ -26,8 +27,8 @@
 								"$ref": "#/components/schemas/PermissionsCreateRequest"
 							},
 							"example": {
-								"path": "employee-service/restore/:id",
-								"displayName": "restore  Employee  Service"
+								"path": "employee-service/a",
+								"displayName": "Employee  Service"
 							}
 						}
 					},
@@ -36,7 +37,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -50,13 +52,15 @@
 		"/permissions/get": {
 			"get": {
 				"tags": ["Admin permissions"],
-				"summary": "Permissions Get",
+				"summary": "PermissionsGet",
+				"description": "Permissions Get",
 				"operationId": "PermissionsGet",
 				"parameters": [],
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -70,7 +74,8 @@
 		"/permissions/update/{id}": {
 			"put": {
 				"tags": ["Admin permissions"],
-				"summary": "Update Permissions",
+				"summary": "UpdatePermissions",
+				"description": "Update Permissions",
 				"operationId": "UpdatePermissions",
 				"parameters": [
 					{
@@ -99,7 +104,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -113,20 +119,15 @@
 		"/permissions/delete/{id}": {
 			"delete": {
 				"tags": ["Admin permissions"],
-				"summary": "Permissions Delete",
+				"summary": "PermissionsDelete",
+				"description": "Permissions Delete",
 				"operationId": "PermissionsDelete",
-				"parameters": [
-					{
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"schema": { "type": "string" }
-					}
-				],
+				"parameters": [],
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -140,7 +141,8 @@
 		"/role/create": {
 			"post": {
 				"tags": ["Admin Role"],
-				"summary": "Create Role",
+				"summary": "CreateRole",
+				"description": "Create Role",
 				"operationId": "CreateRole",
 				"parameters": [],
 				"requestBody": {
@@ -161,7 +163,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -175,13 +178,15 @@
 		"/role/get": {
 			"get": {
 				"tags": ["Admin Role"],
-				"summary": "Get role",
+				"summary": "Getrole",
+				"description": "Get role",
 				"operationId": "Getrole",
 				"parameters": [],
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -195,7 +200,8 @@
 		"/role/update/{id}": {
 			"put": {
 				"tags": ["Admin Role"],
-				"summary": "update Role",
+				"summary": "updateRole",
+				"description": "update Role",
 				"operationId": "updateRole",
 				"parameters": [
 					{
@@ -283,7 +289,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -297,7 +304,8 @@
 		"/role/delete/{id}": {
 			"delete": {
 				"tags": ["Admin Role"],
-				"summary": "Delete Role",
+				"summary": "DeleteRole",
+				"description": "Delete Role",
 				"operationId": "DeleteRole",
 				"parameters": [
 					{
@@ -310,7 +318,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -324,7 +333,8 @@
 		"/admin-user/create": {
 			"post": {
 				"tags": ["Admin User"],
-				"summary": "Create Admin User",
+				"summary": "CreateAdminUser",
+				"description": "Create Admin User",
 				"operationId": "CreateAdminUser",
 				"parameters": [],
 				"requestBody": {
@@ -347,7 +357,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -361,7 +372,8 @@
 		"/admin-user/login": {
 			"post": {
 				"tags": ["Admin User"],
-				"summary": "Login Admin User",
+				"summary": "LoginAdminUser",
+				"description": "Login Admin User",
 				"operationId": "LoginAdminUser",
 				"parameters": [],
 				"requestBody": {
@@ -382,7 +394,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -391,13 +404,15 @@
 		"/admin-user/get": {
 			"get": {
 				"tags": ["Admin User"],
-				"summary": "List Admin User",
+				"summary": "ListAdminUser",
+				"description": "List Admin User",
 				"operationId": "ListAdminUser",
 				"parameters": [],
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -411,7 +426,8 @@
 		"/admin-user/status/{id}": {
 			"put": {
 				"tags": ["Admin User"],
-				"summary": "Update Admin User",
+				"summary": "UpdateAdminUser",
+				"description": "Update Admin User",
 				"operationId": "UpdateAdminUser",
 				"parameters": [
 					{
@@ -424,7 +440,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -438,7 +455,8 @@
 		"/admin-user/update/{id}": {
 			"put": {
 				"tags": ["Admin User"],
-				"summary": "Update Status Admin User",
+				"summary": "UpdateStatusAdminUser",
+				"description": "Update Status Admin User",
 				"operationId": "UpdateStatusAdminUser",
 				"parameters": [
 					{
@@ -467,7 +485,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -481,7 +500,8 @@
 		"/admin-user/delete/{id}": {
 			"delete": {
 				"tags": ["Admin User"],
-				"summary": "Delete Admin User",
+				"summary": "DeleteAdminUser",
+				"description": "Delete Admin User",
 				"operationId": "DeleteAdminUser",
 				"parameters": [
 					{
@@ -494,7 +514,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -508,7 +529,8 @@
 		"/admin-user/changePassword": {
 			"put": {
 				"tags": ["Admin User"],
-				"summary": "Change Password Admin User",
+				"summary": "ChangePasswordAdminUser",
+				"description": "Change Password Admin User",
 				"operationId": "ChangePasswordAdminUser",
 				"parameters": [],
 				"requestBody": {
@@ -529,7 +551,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -543,7 +566,8 @@
 		"/admin-user/forget-password": {
 			"post": {
 				"tags": ["Admin User"],
-				"summary": "Forget Password",
+				"summary": "ForgetPassword",
+				"description": "Forget Password",
 				"operationId": "ForgetPassword",
 				"parameters": [],
 				"requestBody": {
@@ -563,7 +587,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -572,7 +597,8 @@
 		"/admin-user/reset-password": {
 			"put": {
 				"tags": ["Admin User"],
-				"summary": "Reset Password",
+				"summary": "ResetPassword",
+				"description": "Reset Password",
 				"operationId": "ResetPassword",
 				"parameters": [],
 				"requestBody": {
@@ -593,45 +619,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
-					}
-				},
-				"deprecated": false,
-				"security": [
-					{
-						"bearer": []
-					}
-				]
-			}
-		},
-		"/user/create": {
-			"post": {
-				"tags": ["User"],
-				"summary": "Create Customer",
-				"operationId": "CreateCustomer",
-				"parameters": [],
-				"requestBody": {
-					"description": "",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/CreateCustomerRequest"
-							},
-							"example": {
-								"name": "tanvi ",
-								"email": "tanveedadhaneeya32@gmail.com",
-								"mobileNumber": "+919726201932",
-								"type": "CUSTOMER",
-								"password": "tanvi@123"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -645,7 +634,8 @@
 		"/user/verify-otp": {
 			"post": {
 				"tags": ["User"],
-				"summary": "Verify Customer",
+				"summary": "VerifyCustomer",
+				"description": "Verify Customer",
 				"operationId": "VerifyCustomer",
 				"parameters": [],
 				"requestBody": {
@@ -656,9 +646,9 @@
 								"$ref": "#/components/schemas/VerifyCustomerRequest"
 							},
 							"example": {
-								"email": "savaliyatushar2197@gmail.com",
+								"email": "customer1@gmail.com",
 								"type": "CUSTOMER",
-								"otp": 488694489
+								"otp": 9571
 							}
 						}
 					},
@@ -667,7 +657,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -676,7 +667,8 @@
 		"/user/customer/list": {
 			"get": {
 				"tags": ["User"],
-				"summary": "Get user List",
+				"summary": "GetuserList",
+				"description": "Get user List",
 				"operationId": "GetuserList",
 				"parameters": [],
 				"responses": {
@@ -705,7 +697,7 @@
 											"deletedAt": null,
 											"deletedBy": null,
 											"_id": "629d9858326ee12ab8200d78",
-											"name": "tanvi ",
+											"name": "tanvi dadhaniya",
 											"mobileNumber": "+919726201932",
 											"createdAt": "2022-06-06T06:02:00.207Z",
 											"updatedAt": "2022-06-06T06:02:00.207Z",
@@ -721,10 +713,50 @@
 				"deprecated": false
 			}
 		},
+		"/user/create": {
+			"post": {
+				"tags": ["Dr &customer"],
+				"summary": "Dr.Create",
+				"description": "Dr. Create",
+				"operationId": "Dr.Create",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Dr.CreateRequest"
+							},
+							"example": {
+								"name": "customer1",
+								"email": "customer1@gmail.com",
+								"mobileNumber": "+917383801751",
+								"type": "CUSTOMER"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {},
+						"content": {}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
 		"/timeSlot/assign": {
 			"put": {
 				"tags": ["Dr &customer"],
-				"summary": "Assign Time Slot",
+				"summary": "AssignTimeSlot",
+				"description": "Assign Time Slot",
 				"operationId": "AssignTimeSlot",
 				"parameters": [],
 				"requestBody": {
@@ -735,10 +767,16 @@
 								"$ref": "#/components/schemas/AssignTimeSlotRequest"
 							},
 							"example": {
-								"drId": "62ceb0fee87bb632e05ca33e",
+								"drId": "62d95849c1da0d310474a30d",
 								"timeSlot": [
-									"62ce6b4e887df22d203c5ff4",
-									"62ceb08ae87bb632e05ca32f"
+									"62d7a59a9492b434857b8e4a",
+									"62d7a5b99492b434857b8e50",
+									"62d7a5cf9492b434857b8e56",
+									"62d7a5de9492b434857b8e5c",
+									"62d7a64a9492b434857b8e62",
+									"62d7a65d9492b434857b8e68",
+									"62d7a66c9492b434857b8e6e",
+									"62d7a67a9492b434857b8e74"
 								]
 							}
 						}
@@ -769,7 +807,8 @@
 		"/user/dr/list": {
 			"get": {
 				"tags": ["Dr &customer"],
-				"summary": "Get Dr. List",
+				"summary": "GetDr.List",
+				"description": "Get Dr. List",
 				"operationId": "GetDr.List",
 				"parameters": [],
 				"responses": {
@@ -829,7 +868,8 @@
 		"/user/customer/delete/{id}": {
 			"delete": {
 				"tags": ["Dr &customer"],
-				"summary": "Delete Customer",
+				"summary": "DeleteCustomer",
+				"description": "Delete Customer",
 				"operationId": "DeleteCustomer",
 				"parameters": [
 					{
@@ -865,271 +905,43 @@
 				]
 			}
 		},
-		"/speciality/create": {
+		"/user/social/login": {
 			"post": {
-				"tags": ["Speciality"],
-				"summary": "speciality create",
-				"operationId": "specialitycreate",
+				"tags": ["Dr &customer"],
+				"summary": "sociallogin",
+				"description": "social login",
+				"operationId": "sociallogin",
 				"parameters": [],
 				"requestBody": {
+					"description": "",
 					"content": {
-						"application/x-www-form-urlencoded": {
-							"encoding": {},
+						"application/json": {
 							"schema": {
-								"required": ["name", "status", "time", "image", "price"],
-								"type": "object",
-								"properties": {
-									"name": {
-										"type": "string",
-										"example": " Back Pain"
-									},
-									"status": {
-										"type": "string",
-										"example": "AVAILABLE"
-									},
-									"time": {
-										"type": "string",
-										"example": "9:00 AM to 5:00 PM"
-									},
-									"image": {
-										"type": "string"
-									},
-									"price": {
-										"type": "integer",
-										"format": "int32",
-										"example": 700
-									}
-								}
+								"$ref": "#/components/schemas/socialloginrequest"
+							},
+							"example": {
+								"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImNkNjcyYTI5OGRkNTk3NzYyMTJlNmE2ZDgzZmI4YTllNjBmZjNiZWYifQ.eyJpc3MiOiJodHRwczpcL1wvd3d3LmZhY2Vib29rLmNvbSIsImF1ZCI6IjEwOTYwMTA0MzQzMzgxOTIiLCJzdWIiOiIxNDUxMTA5MTg1MzAxNTU0IiwiaWF0IjoxNjU4MzIyMTI3LCJleHAiOjE2NTgzMjU3MjcsImp0aSI6IkRJMFguZDlmMWU3ODZjOTc5OTNkNTk1ODMxZTc1ZTAyNzc0YmNmZDQyODVjMDE5NzFkOGQ4M2NmNWE1M2UzNTJkZTEzMiIsIm5vbmNlIjoibXlfbm9uY2UiLCJlbWFpbCI6InBpcGFsaXlhc2Fua2V0MVx1MDA0MGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJTYW5rZXQiLCJmYW1pbHlfbmFtZSI6IlBpcGFsaXlhIiwibmFtZSI6IlNhbmtldCBQaXBhbGl5YSIsInBpY3R1cmUiOiJodHRwczpcL1wvcGxhdGZvcm0tbG9va2FzaWRlLmZic2J4LmNvbVwvcGxhdGZvcm1cL3Byb2ZpbGVwaWNcLz9hc2lkPTE0NTExMDkxODUzMDE1NTQmaGVpZ2h0PTEwMCZ3aWR0aD0xMDAmZXh0PTE2NjA5MTQxMjgmaGFzaD1BZVNVUmR5QVYzX3NaLVkwRDBVIn0.fzXmN3ivyVpq3cWjPV94lgk3iimF6dsl4PnhfvGj2WntwXG8VUJ6o_VEM_Tau_Un6Un_JUl1TnKMM-4ljtCNlEn4YXfGpSHXwatZ22X7UyRjxTTBZezloUw_sFrolSWz_ys9NsKWfGvO8WBLbekppE6bJNUzVe-jCrkLmY7fOVc2IguVg36VWcyIsZAvdeGzsIC5rm3D9jRg8h2HJuTpH5NB2X58Vq8enMv9ZzwGKmRkkFmpUDEyMXGMUZ6eH622-Ngn2hfHIQJIaJFMLEVNxpQMD7GGKNyKSRpuqHK-E-T95Ug-KG1wha6hwi-G_t8So7T2Vqpl8XOCcpJMVRd_Jw",
+								"type": "CUSTOMER"
 							}
 						}
 					},
-					"required": false
+					"required": true
 				},
 				"responses": {
 					"200": {
-						"description": "OK",
+						"description": "",
 						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2003"
-								},
-								"example": {
-									"success": true,
-									"msg": "Speciality created successfully",
-									"data": {
-										"image": "appointment_book/1657696866655-image (4).png",
-										"status": "AVAILABLE",
-										"deletedAt": null,
-										"deletedBy": null,
-										"_id": "62ce726328b7481c283e1c77",
-										"name": " Back Pain",
-										"price": 700,
-										"time": "9:00 AM to 5:00 PM",
-										"createdAt": "2022-07-13T07:21:07.024Z",
-										"updatedAt": "2022-07-13T07:21:07.024Z",
-										"__v": 0
-									}
-								}
-							}
-						}
+						"content": {}
 					}
 				},
-				"deprecated": false,
-				"security": [
-					{
-						"bearer": []
-					}
-				]
-			}
-		},
-		"/speciality/update/{id}": {
-			"post": {
-				"tags": ["Speciality"],
-				"summary": "speciality update",
-				"operationId": "specialityupdate",
-				"parameters": [
-					{
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"schema": { "type": "string" }
-					}
-				],
-				"requestBody": {
-					"content": {
-						"application/x-www-form-urlencoded": {
-							"encoding": {},
-							"schema": {
-								"required": ["name", "status", "time", "price", "image"],
-								"type": "object",
-								"properties": {
-									"name": {
-										"type": "string",
-										"example": " Back Pain "
-									},
-									"status": {
-										"type": "string",
-										"example": "Available"
-									},
-									"time": {
-										"type": "string",
-										"example": "9:00 AM to 5:00 PM"
-									},
-									"price": {
-										"type": "integer",
-										"format": "int32",
-										"example": 700
-									},
-									"image": {
-										"type": "string"
-									}
-								}
-							}
-						}
-					},
-					"required": false
-				},
-				"responses": {
-					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2003"
-								},
-								"example": {
-									"success": true,
-									"msg": "Speciality update successfully",
-									"data": {
-										"image": "appointment_book/1657696907620-image (1).png",
-										"status": "Available",
-										"deletedAt": null,
-										"deletedBy": null,
-										"_id": "62ce726328b7481c283e1c77",
-										"name": " Back Pain ",
-										"price": 700,
-										"time": "9:00 AM to 5:00 PM",
-										"createdAt": "2022-07-13T07:21:07.024Z",
-										"updatedAt": "2022-07-13T07:21:48.467Z",
-										"__v": 0
-									}
-								}
-							}
-						}
-					}
-				},
-				"deprecated": false,
-				"security": [
-					{
-						"bearer": []
-					}
-				]
-			}
-		},
-		"/speciality/listAllSpeciality": {
-			"get": {
-				"tags": ["Speciality"],
-				"summary": "list All speciality",
-				"operationId": "listAllspeciality",
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2005"
-								},
-								"example": {
-									"success": true,
-									"data": [
-										{
-											"image": "appointment_book/1655721158301-img.png",
-											"status": "Available",
-											"deletedAt": null,
-											"deletedBy": null,
-											"_id": "62b046d2d5debb823497dc1c",
-											"name": " Back Pain ",
-											"price": 700,
-											"time": "9:00 AM to 5:00 PM",
-											"createdAt": "2022-06-20T10:07:15.090Z",
-											"updatedAt": "2022-06-20T10:32:39.125Z",
-											"__v": 0
-										},
-										{
-											"image": "appointment_book/1657696907620-image (1).png",
-											"status": "Available",
-											"deletedAt": null,
-											"deletedBy": null,
-											"_id": "62ce726328b7481c283e1c77",
-											"name": " Back Pain ",
-											"price": 700,
-											"time": "9:00 AM to 5:00 PM",
-											"createdAt": "2022-07-13T07:21:07.024Z",
-											"updatedAt": "2022-07-13T07:21:48.467Z",
-											"__v": 0
-										}
-									],
-									"totalCount": 2
-								}
-							}
-						}
-					}
-				},
-				"deprecated": false,
-				"security": [
-					{
-						"bearer": []
-					}
-				]
-			}
-		},
-		"/speciality/delete/{id}": {
-			"delete": {
-				"tags": ["Speciality"],
-				"summary": "delete speciality",
-				"operationId": "deletespeciality",
-				"parameters": [
-					{
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"schema": { "type": "string" }
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m2002"
-								},
-								"example": {
-									"success": true,
-									"msg": "Speciality delete successfully",
-									"data": []
-								}
-							}
-						}
-					}
-				},
-				"deprecated": false,
-				"security": [
-					{
-						"bearer": []
-					}
-				]
+				"deprecated": false
 			}
 		},
 		"/common/createConsult": {
 			"post": {
 				"tags": ["common api"],
-				"summary": "Create Consult",
+				"summary": "CreateConsult",
+				"description": "Create Consult",
 				"operationId": "CreateConsult",
 				"parameters": [],
 				"requestBody": {
@@ -1149,7 +961,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1158,7 +971,8 @@
 		"/common/createLanguage": {
 			"post": {
 				"tags": ["common api"],
-				"summary": "create language",
+				"summary": "createlanguage",
+				"description": "create language",
 				"operationId": "createlanguage",
 				"parameters": [],
 				"requestBody": {
@@ -1178,7 +992,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1187,7 +1002,8 @@
 		"/common/updateLanguage": {
 			"post": {
 				"tags": ["common api"],
-				"summary": "Update Language",
+				"summary": "UpdateLanguage",
+				"description": "Update Language",
 				"operationId": "UpdateLanguage",
 				"parameters": [],
 				"requestBody": {
@@ -1207,7 +1023,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1216,7 +1033,8 @@
 		"/common/updateConsult/{id}": {
 			"post": {
 				"tags": ["common api"],
-				"summary": "Update Consult",
+				"summary": "UpdateConsult",
+				"description": "Update Consult",
 				"operationId": "UpdateConsult",
 				"parameters": [
 					{
@@ -1243,7 +1061,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1252,20 +1071,15 @@
 		"/common/getAllLanguage/{id}": {
 			"get": {
 				"tags": ["common api"],
-				"summary": "get All Language",
+				"summary": "getAllLanguage",
+				"description": "get All Language",
 				"operationId": "getAllLanguage",
-				"parameters": [
-					{
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"schema": { "type": "string" }
-					}
-				],
+				"parameters": [],
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1274,7 +1088,8 @@
 		"/common/getAllConsult/{id}": {
 			"get": {
 				"tags": ["common api"],
-				"summary": "get All Consult",
+				"summary": "getAllConsult",
+				"description": "get All Consult",
 				"operationId": "getAllConsult",
 				"parameters": [
 					{
@@ -1287,7 +1102,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1296,7 +1112,8 @@
 		"/common/deleteLanguage/{id}": {
 			"delete": {
 				"tags": ["common api"],
-				"summary": "delete language",
+				"summary": "deletelanguage",
+				"description": "delete language",
 				"operationId": "deletelanguage",
 				"parameters": [
 					{
@@ -1309,7 +1126,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1318,7 +1136,8 @@
 		"/common/deleteConsult/{id}": {
 			"delete": {
 				"tags": ["common api"],
-				"summary": "delete Consult",
+				"summary": "deleteConsult",
+				"description": "delete Consult",
 				"operationId": "deleteConsult",
 				"parameters": [
 					{
@@ -1331,7 +1150,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1340,7 +1160,8 @@
 		"/notificationType/create": {
 			"post": {
 				"tags": ["NotificationType"],
-				"summary": "create notification type",
+				"summary": "createnotificationtype",
+				"description": "create notification type",
 				"operationId": "createnotificationtype",
 				"parameters": [],
 				"requestBody": {
@@ -1361,7 +1182,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1370,7 +1192,8 @@
 		"/notificationType/update/{id}": {
 			"put": {
 				"tags": ["NotificationType"],
-				"summary": "update notification type",
+				"summary": "updatenotificationtype",
+				"description": "update notification type",
 				"operationId": "updatenotificationtype",
 				"parameters": [
 					{
@@ -1398,7 +1221,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1407,7 +1231,8 @@
 		"/notificationType/delete/{id}": {
 			"delete": {
 				"tags": ["NotificationType"],
-				"summary": "delete notification type",
+				"summary": "deletenotificationtype",
+				"description": "delete notification type",
 				"operationId": "deletenotificationtype",
 				"parameters": [
 					{
@@ -1420,7 +1245,8 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1429,13 +1255,15 @@
 		"/notificationType/list": {
 			"get": {
 				"tags": ["NotificationType"],
-				"summary": "update notification type Copy",
+				"summary": "updatenotificationtypeCopy",
+				"description": "update notification type Copy",
 				"operationId": "updatenotificationtypeCopy",
 				"parameters": [],
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -1444,7 +1272,8 @@
 		"/device/create": {
 			"post": {
 				"tags": ["Device"],
-				"summary": "Add device",
+				"summary": "Adddevice",
+				"description": "Add device",
 				"operationId": "Adddevice",
 				"parameters": [],
 				"requestBody": {
@@ -1493,7 +1322,8 @@
 		"/device/get": {
 			"get": {
 				"tags": ["Device"],
-				"summary": "Get devices",
+				"summary": "Getdevices",
+				"description": "Get devices",
 				"operationId": "Getdevices",
 				"parameters": [],
 				"responses": {
@@ -1552,7 +1382,8 @@
 		"/device/update/{id}": {
 			"put": {
 				"tags": ["Device"],
-				"summary": "Update device",
+				"summary": "Updatedevice",
+				"description": "Update device",
 				"operationId": "Updatedevice",
 				"parameters": [
 					{
@@ -1608,7 +1439,8 @@
 		"/device/delete/{id}": {
 			"delete": {
 				"tags": ["Device"],
-				"summary": "Delete Device",
+				"summary": "DeleteDevice",
+				"description": "Delete Device",
 				"operationId": "DeleteDevice",
 				"parameters": [
 					{
@@ -1647,13 +1479,15 @@
 		"/dashboard": {
 			"get": {
 				"tags": ["Dashboard"],
-				"summary": "Get Dashboard",
+				"summary": "GetDashboard",
+				"description": "Get Dashboard",
 				"operationId": "GetDashboard",
 				"parameters": [],
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false,
@@ -1667,7 +1501,8 @@
 		"/timeSlot/create": {
 			"post": {
 				"tags": ["Time Slot"],
-				"summary": "Create time Slot",
+				"summary": "CreatetimeSlot",
+				"description": "Create time Slot",
 				"operationId": "CreatetimeSlot",
 				"parameters": [],
 				"requestBody": {
@@ -1723,7 +1558,8 @@
 		"/timeSlot/update/{id}": {
 			"put": {
 				"tags": ["Time Slot"],
-				"summary": "Update time Slot",
+				"summary": "UpdatetimeSlot",
+				"description": "Update time Slot",
 				"operationId": "UpdatetimeSlot",
 				"parameters": [
 					{
@@ -1777,7 +1613,8 @@
 		"/timeSlot/delete/{id}": {
 			"delete": {
 				"tags": ["Time Slot"],
-				"summary": "Delete time Slot",
+				"summary": "DeletetimeSlot",
+				"description": "Delete time Slot",
 				"operationId": "DeletetimeSlot",
 				"parameters": [
 					{
@@ -1816,7 +1653,8 @@
 		"/timeSlot/get": {
 			"get": {
 				"tags": ["Time Slot"],
-				"summary": "Get Time Slot",
+				"summary": "GetTimeSlot",
+				"description": "Get Time Slot",
 				"operationId": "GetTimeSlot",
 				"parameters": [],
 				"responses": {
@@ -1860,7 +1698,8 @@
 		"/package/create": {
 			"post": {
 				"tags": ["Package Management"],
-				"summary": "Create Package",
+				"summary": "CreatePackage",
+				"description": "Create Package",
 				"operationId": "CreatePackage",
 				"parameters": [],
 				"requestBody": {
@@ -1910,7 +1749,8 @@
 		"/package/update/{id}": {
 			"put": {
 				"tags": ["Package Management"],
-				"summary": "Update Package",
+				"summary": "UpdatePackage",
+				"description": "Update Package",
 				"operationId": "UpdatePackage",
 				"parameters": [
 					{
@@ -1932,7 +1772,8 @@
 								"description": "description package",
 								"priceByMonth": 10,
 								"priceByYear": 100,
-								"shortDescription": "aaa"
+								"shortDescription": "aaa",
+								"image": "/images/package/1658486962368.png"
 							}
 						}
 					},
@@ -1964,10 +1805,51 @@
 				]
 			}
 		},
+		"/package/delete/{id}": {
+			"delete": {
+				"tags": ["Package Management"],
+				"summary": "deletepackage",
+				"description": "delete package",
+				"operationId": "deletepackage",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m2002"
+								},
+								"example": {
+									"success": true,
+									"msg": "Package delete successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
 		"/package/get": {
 			"get": {
 				"tags": ["Package Management"],
-				"summary": "Get Package Slot",
+				"summary": "GetPackageSlot",
+				"description": "Get Package Slot",
 				"operationId": "GetPackageSlot",
 				"parameters": [],
 				"responses": {
@@ -2023,51 +1905,25 @@
 				]
 			}
 		},
-		"/package/delete/{id}": {
-			"delete": {
-				"tags": ["Package Management"],
-				"summary": "delete package",
-				"operationId": "deletepackage",
-				"parameters": [
-					{
-						"in": "path",
-						"name": "id",
-						"required": true,
-						"schema": { "type": "string" }
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"headers": {},
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/m20023"
-								},
-								"example": {
-									"success": true,
-									"msg": "Package delete successfully",
-									"data": []
-								}
-							}
-						}
-					}
-				},
-				"deprecated": false,
-				"security": [
-					{
-						"bearer": []
-					}
-				]
-			}
-		},
 		"/healthArticle/create": {
 			"post": {
 				"tags": ["Health Article"],
-				"summary": "Add Health Article",
+				"summary": "AddHealthArticle",
+				"description": "Add Health Article",
 				"operationId": "AddHealthArticle",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "Content-Type",
+						"in": "header",
+						"description": "",
+						"required": true,
+						"style": "simple",
+						"schema": {
+							"enum": ["application/x-www-form-urlencoded"],
+							"type": "string"
+						}
+					}
+				],
 				"requestBody": {
 					"content": {
 						"application/x-www-form-urlencoded": {
@@ -2077,7 +1933,7 @@
 								"type": "object",
 								"properties": {
 									"profileImage": {
-										"type": "file"
+										"type": "string"
 									},
 									"title": {
 										"type": "string",
@@ -2085,7 +1941,7 @@
 									},
 									"description": {
 										"type": "string",
-										"example": "Article edescdsf"
+										"example": "Articla edescdsf"
 									}
 								}
 							}
@@ -2119,10 +1975,11 @@
 				]
 			}
 		},
-		"/healthArticle/get": {
+		"/": {
 			"get": {
 				"tags": ["Health Article"],
-				"summary": "Get Health Article",
+				"summary": "GetHealthArticle",
+				"description": "Get Health Article",
 				"operationId": "GetHealthArticle",
 				"parameters": [],
 				"responses": {
@@ -2198,9 +2055,21 @@
 		"/healthArticle/update/{id}": {
 			"put": {
 				"tags": ["Health Article"],
-				"summary": "Update Health Article",
+				"summary": "UpdateHealthArticle",
+				"description": "Update Health Article",
 				"operationId": "UpdateHealthArticle",
 				"parameters": [
+					{
+						"name": "Content-Type",
+						"in": "header",
+						"description": "",
+						"required": true,
+						"style": "simple",
+						"schema": {
+							"enum": ["application/x-www-form-urlencoded"],
+							"type": "string"
+						}
+					},
 					{
 						"in": "path",
 						"name": "id",
@@ -2222,10 +2091,10 @@
 									},
 									"description": {
 										"type": "string",
-										"example": "Article 1"
+										"example": "Articla edescdsf"
 									},
 									"profileImage": {
-										"type": "file"
+										"type": "string"
 									}
 								}
 							}
@@ -2234,7 +2103,7 @@
 					"required": false
 				},
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
 						"headers": {},
 						"content": {
@@ -2262,7 +2131,8 @@
 		"/healthArticle/delete/{id}": {
 			"delete": {
 				"tags": ["Health Article"],
-				"summary": "Delete Health Article",
+				"summary": "DeleteHealthArticle",
+				"description": "Delete Health Article",
 				"operationId": "DeleteHealthArticle",
 				"parameters": [
 					{
@@ -2273,7 +2143,7 @@
 					}
 				],
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
 						"headers": {},
 						"content": {
@@ -2301,7 +2171,8 @@
 		"/settings/create": {
 			"post": {
 				"tags": ["Settings"],
-				"summary": "Add Settings",
+				"summary": "AddSettings",
+				"description": "Add Settings",
 				"operationId": "AddSettings",
 				"parameters": [],
 				"requestBody": {
@@ -2361,7 +2232,8 @@
 		"/settings/get": {
 			"get": {
 				"tags": ["Settings"],
-				"summary": "Get All settings",
+				"summary": "GetAllsettings",
+				"description": "Get All settings",
 				"operationId": "GetAllsettings",
 				"parameters": [],
 				"responses": {
@@ -2554,7 +2426,8 @@
 		"/settings/update/{id}": {
 			"put": {
 				"tags": ["Settings"],
-				"summary": "Update Sttings",
+				"summary": "UpdateSttings",
+				"description": "Update Sttings",
 				"operationId": "UpdateSttings",
 				"parameters": [
 					{
@@ -2572,16 +2445,15 @@
 								"$ref": "#/components/schemas/UpdateSttingsRequest"
 							},
 							"example": {
-								"filedName": "timeSlot",
-								"filedValue": 5,
-								"filedType": "number"
+								"type": "PRIVCYPOLICY",
+								"content": "<span>khdkha</span>"
 							}
 						}
 					},
 					"required": true
 				},
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
 						"headers": {},
 						"content": {
@@ -2609,7 +2481,8 @@
 		"/settings/delete/{id}": {
 			"delete": {
 				"tags": ["Settings"],
-				"summary": "Delete Settings",
+				"summary": "DeleteSettings",
+				"description": "Delete Settings",
 				"operationId": "DeleteSettings",
 				"parameters": [
 					{
@@ -2620,7 +2493,7 @@
 					}
 				],
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
 						"headers": {},
 						"content": {
@@ -2648,7 +2521,8 @@
 		"/faq/create": {
 			"post": {
 				"tags": ["faqs"],
-				"summary": "add Faqs",
+				"summary": "addFaqs",
+				"description": "add Faqs",
 				"operationId": "addFaqs",
 				"parameters": [],
 				"requestBody": {
@@ -2665,7 +2539,7 @@
 					"required": true
 				},
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
 						"headers": {},
 						"content": {
@@ -2699,7 +2573,8 @@
 			},
 			"put": {
 				"tags": ["faqs"],
-				"summary": "update Faqs",
+				"summary": "updateFaqs",
+				"description": "update Faqs",
 				"operationId": "updateFaqs",
 				"parameters": [],
 				"responses": {
@@ -2727,6 +2602,7 @@
 			"get": {
 				"tags": ["faqs"],
 				"summary": "faqs",
+				"description": "faqs",
 				"operationId": "faqs",
 				"parameters": [],
 				"responses": {
@@ -2766,7 +2642,8 @@
 		"/faq/delete/{id}": {
 			"delete": {
 				"tags": ["faqs"],
-				"summary": "Delete Faqs",
+				"summary": "DeleteFaqs",
+				"description": "Delete Faqs",
 				"operationId": "DeleteFaqs",
 				"parameters": [
 					{
@@ -2779,57 +2656,22 @@
 				"responses": {
 					"200": {
 						"description": "",
-						"headers": {}
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
 			}
 		},
-		"/appointment/create": {
-			"post": {
-				"tags": ["Appointment"],
-				"summary": "Appointment Create",
-				"operationId": "AppointmentCreate",
-				"parameters": [],
-				"requestBody": {
-					"description": "",
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/AppointmentCreateRequest"
-							},
-							"example": {
-								"date": "07-18-2022",
-								"startTime": "8:00 A",
-								"endTime": "8:30 A",
-								"pain": ["62b046d2d5debb823497dc1c"]
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"description": "",
-						"headers": {}
-					}
-				},
-				"deprecated": false,
-				"security": [
-					{
-						"bearer": []
-					}
-				]
-			}
-		},
 		"/appointment/get": {
 			"get": {
 				"tags": ["Appointment"],
-				"summary": "Get Appointment",
+				"summary": "GetAppointment",
+				"description": "Get Appointment",
 				"operationId": "GetAppointment",
 				"parameters": [],
 				"responses": {
-					"default": {
+					"200": {
 						"description": "",
 						"headers": {},
 						"content": {
@@ -2894,7 +2736,8 @@
 		"/appointment/update/{id}": {
 			"put": {
 				"tags": ["Appointment"],
-				"summary": "Appointment Update",
+				"summary": "AppointmentUpdate",
+				"description": "Appointment Update",
 				"operationId": "AppointmentUpdate",
 				"parameters": [
 					{
@@ -2946,7 +2789,8 @@
 		"/appointment/delete/{id}": {
 			"delete": {
 				"tags": ["Appointment"],
-				"summary": "Appointment Delete",
+				"summary": "AppointmentDelete",
+				"description": "Appointment Delete",
 				"operationId": "AppointmentDelete",
 				"parameters": [
 					{
@@ -2972,6 +2816,149 @@
 								}
 							}
 						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/payment/create": {
+			"post": {
+				"tags": ["payment"],
+				"summary": "addPayment",
+				"description": "add Payment",
+				"operationId": "addPayment",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/addPaymentRequest"
+							},
+							"example": {
+								"appointmentId": "62d65df0f511bf5509c3b622",
+								"paymentId": "pay_Jva8VkThS76MEa"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {},
+						"content": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/image/upload": {
+			"post": {
+				"tags": ["Image Uplod"],
+				"summary": "imageUpload",
+				"description": "image Upload",
+				"operationId": "imageUpload",
+				"parameters": [
+					{
+						"name": "field",
+						"in": "query",
+						"description": "",
+						"required": true,
+						"style": "form",
+						"explode": true,
+						"schema": {
+							"type": "string",
+							"example": "profile"
+						}
+					},
+					{
+						"name": "Content-Type",
+						"in": "header",
+						"description": "",
+						"required": true,
+						"style": "simple",
+						"schema": {
+							"enum": ["multipart/form-data"],
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"multipart/form-data": {
+							"encoding": {},
+							"schema": {
+								"required": ["file"],
+								"type": "object",
+								"properties": {
+									"file": {
+										"type": "file"
+									}
+								}
+							}
+						}
+					},
+					"required": false
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {},
+						"content": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/monthlyTimeSlot/create": {
+			"post": {
+				"tags": ["Get all time SLot"],
+				"summary": "MonthlyTimeSlotCreate",
+				"description": "Monthly TimeSlot Create",
+				"operationId": "MonthlyTimeSlotCreate",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {},
+						"content": {}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/monthlyTimeSlot/get": {
+			"post": {
+				"tags": ["Get all time SLot"],
+				"summary": "GetTimeSlotBYToday",
+				"description": "Get TimeSlotBY Today",
+				"operationId": "GetTimeSlotBYToday",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GetTimeSlotBYTodayRequest"
+							},
+							"example": {
+								"date": "2022-07-27"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {},
+						"content": {}
 					}
 				},
 				"deprecated": false
@@ -3235,7 +3222,7 @@
 			},
 			"CreateCustomerRequest": {
 				"title": "CreateCustomerRequest",
-				"required": ["name", "email", "mobileNumber", "type", "password"],
+				"required": ["name", "email", "mobileNumber", "type"],
 				"type": "object",
 				"properties": {
 					"name": {
@@ -3249,17 +3236,13 @@
 					},
 					"type": {
 						"type": "string"
-					},
-					"password": {
-						"type": "string"
 					}
 				},
 				"example": {
-					"name": "tanvi ",
-					"email": "tanveedadhaneeya32@gmail.com",
-					"mobileNumber": "+919726201932",
-					"type": "CUSTOMER",
-					"password": "tanvi@123"
+					"name": "customer2",
+					"email": "customer2@gmail.com",
+					"mobileNumber": "+917383801752",
+					"type": "CUSTOMER"
 				}
 			},
 			"VerifyCustomerRequest": {
@@ -3279,9 +3262,9 @@
 					}
 				},
 				"example": {
-					"email": "savaliyatushar2197@gmail.com",
+					"email": "customer1@gmail.com",
 					"type": "CUSTOMER",
-					"otp": 488694489
+					"otp": 9571
 				}
 			},
 			"m200": {
@@ -3324,7 +3307,7 @@
 							"deletedAt": null,
 							"deletedBy": null,
 							"_id": "629d9858326ee12ab8200d78",
-							"name": "tanvi",
+							"name": "tanvi dadhaniya",
 							"mobileNumber": "+919726201932",
 							"createdAt": "2022-06-06T06:02:00.207Z",
 							"updatedAt": "2022-06-06T06:02:00.207Z",
@@ -3429,7 +3412,7 @@
 					"deletedAt": null,
 					"deletedBy": null,
 					"_id": "629d9858326ee12ab8200d78",
-					"name": "tanvi ",
+					"name": "tanvi dadhaniya",
 					"mobileNumber": "+919726201932",
 					"createdAt": "2022-06-06T06:02:00.207Z",
 					"updatedAt": "2022-06-06T06:02:00.207Z",
@@ -3438,7 +3421,7 @@
 			},
 			"Dr.CreateRequest": {
 				"title": "Dr.CreateRequest",
-				"required": ["name", "email", "mobileNumber", "password", "type"],
+				"required": ["name", "email", "mobileNumber", "type"],
 				"type": "object",
 				"properties": {
 					"name": {
@@ -3450,19 +3433,15 @@
 					"mobileNumber": {
 						"type": "string"
 					},
-					"password": {
-						"type": "string"
-					},
 					"type": {
 						"type": "string"
 					}
 				},
 				"example": {
-					"name": "tushar Savaliya",
-					"email": "savaliyatushar2197@gmail.com",
-					"mobileNumber": "+918980514085",
-					"password": "abc@123",
-					"type": "DR"
+					"name": "customer1",
+					"email": "customer1@gmail.com",
+					"mobileNumber": "+917383801751",
+					"type": "CUSTOMER"
 				}
 			},
 			"VerifyDrRequest": {
@@ -3482,9 +3461,9 @@
 					}
 				},
 				"example": {
-					"email": "savaliyatushar2197@gmail.com",
-					"type": "DR",
-					"otp": 88569596
+					"email": "customer4@gmail.com",
+					"type": "CUSTOMER",
+					"otp": 1901
 				}
 			},
 			"AssignTimeSlotRequest": {
@@ -3504,8 +3483,17 @@
 					}
 				},
 				"example": {
-					"drId": "62ceb0fee87bb632e05ca33e",
-					"timeSlot": ["62ce6b4e887df22d203c5ff4", "62ceb08ae87bb632e05ca32f"]
+					"drId": "62d95849c1da0d310474a30d",
+					"timeSlot": [
+						"62d7a59a9492b434857b8e4a",
+						"62d7a5b99492b434857b8e50",
+						"62d7a5cf9492b434857b8e56",
+						"62d7a5de9492b434857b8e5c",
+						"62d7a64a9492b434857b8e62",
+						"62d7a65d9492b434857b8e68",
+						"62d7a66c9492b434857b8e6e",
+						"62d7a67a9492b434857b8e74"
+					]
 				}
 			},
 			"AssignTimeSlot": {
@@ -3645,7 +3633,10 @@
 					"salt": {
 						"type": "string"
 					},
-
+					"addedBy": {
+						"type": "string",
+						"nullable": true
+					},
 					"designation": {
 						"type": "string",
 						"nullable": true
@@ -3660,6 +3651,14 @@
 					"isEnabled": {
 						"type": "boolean"
 					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
 					"_id": {
 						"type": "string"
 					},
@@ -3673,9 +3672,11 @@
 						"type": "integer",
 						"format": "int32"
 					},
-					"addedBy": {
-						"type": "string",
-						"nullable": true
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
 					},
 					"__v": {
 						"type": "integer",
@@ -3731,6 +3732,23 @@
 					"data": []
 				}
 			},
+			"socialloginrequest": {
+				"title": "socialloginrequest",
+				"required": ["token", "type"],
+				"type": "object",
+				"properties": {
+					"token": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImNkNjcyYTI5OGRkNTk3NzYyMTJlNmE2ZDgzZmI4YTllNjBmZjNiZWYifQ.eyJpc3MiOiJodHRwczpcL1wvd3d3LmZhY2Vib29rLmNvbSIsImF1ZCI6IjEwOTYwMTA0MzQzMzgxOTIiLCJzdWIiOiIxNDUxMTA5MTg1MzAxNTU0IiwiaWF0IjoxNjU4MzIyMTI3LCJleHAiOjE2NTgzMjU3MjcsImp0aSI6IkRJMFguZDlmMWU3ODZjOTc5OTNkNTk1ODMxZTc1ZTAyNzc0YmNmZDQyODVjMDE5NzFkOGQ4M2NmNWE1M2UzNTJkZTEzMiIsIm5vbmNlIjoibXlfbm9uY2UiLCJlbWFpbCI6InBpcGFsaXlhc2Fua2V0MVx1MDA0MGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJTYW5rZXQiLCJmYW1pbHlfbmFtZSI6IlBpcGFsaXlhIiwibmFtZSI6IlNhbmtldCBQaXBhbGl5YSIsInBpY3R1cmUiOiJodHRwczpcL1wvcGxhdGZvcm0tbG9va2FzaWRlLmZic2J4LmNvbVwvcGxhdGZvcm1cL3Byb2ZpbGVwaWNcLz9hc2lkPTE0NTExMDkxODUzMDE1NTQmaGVpZ2h0PTEwMCZ3aWR0aD0xMDAmZXh0PTE2NjA5MTQxMjgmaGFzaD1BZVNVUmR5QVYzX3NaLVkwRDBVIn0.fzXmN3ivyVpq3cWjPV94lgk3iimF6dsl4PnhfvGj2WntwXG8VUJ6o_VEM_Tau_Un6Un_JUl1TnKMM-4ljtCNlEn4YXfGpSHXwatZ22X7UyRjxTTBZezloUw_sFrolSWz_ys9NsKWfGvO8WBLbekppE6bJNUzVe-jCrkLmY7fOVc2IguVg36VWcyIsZAvdeGzsIC5rm3D9jRg8h2HJuTpH5NB2X58Vq8enMv9ZzwGKmRkkFmpUDEyMXGMUZ6eH622-Ngn2hfHIQJIaJFMLEVNxpQMD7GGKNyKSRpuqHK-E-T95Ug-KG1wha6hwi-G_t8So7T2Vqpl8XOCcpJMVRd_Jw",
+					"type": "CUSTOMER"
+				}
+			},
 			"m2003": {
 				"title": "m2003",
 				"required": ["success", "msg", "data"],
@@ -3739,7 +3757,7 @@
 					"success": {
 						"type": "boolean"
 					},
-					"updatedAt": {
+					"msg": {
 						"type": "string"
 					},
 					"data": {
@@ -3887,7 +3905,7 @@
 				}
 			},
 			"deletespecialityrequest": {
-				"title": "deletespeciality request",
+				"title": "deletespecialityrequest",
 				"required": ["name", "status", "time", "price", "image"],
 				"type": "object",
 				"properties": {
@@ -3914,6 +3932,27 @@
 					"time": "9:00 AM to 7:00 PM",
 					"price": 700,
 					"image": "src/images/Back-Pain.png"
+				}
+			},
+			"AssignSpecilityRequest": {
+				"title": "AssignSpecilityRequest",
+				"required": ["drId", "specialization"],
+				"type": "object",
+				"properties": {
+					"drId": {
+						"type": "string"
+					},
+					"specialization": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"drId": "62d79c50497aec23b99c75cd",
+					"specialization": ["62ce726328b7481c283e1c77"]
 				}
 			},
 			"CreateConsultRequest": {
@@ -4461,7 +4500,8 @@
 					"description",
 					"priceByMonth",
 					"priceByYear",
-					"shortDescription"
+					"shortDescription",
+					"image"
 				],
 				"type": "object",
 				"properties": {
@@ -4481,6 +4521,9 @@
 					},
 					"shortDescription": {
 						"type": "string"
+					},
+					"image": {
+						"type": "string"
 					}
 				},
 				"example": {
@@ -4488,7 +4531,25 @@
 					"description": "description package",
 					"priceByMonth": 10,
 					"priceByYear": 100,
-					"shortDescription": "aaa"
+					"shortDescription": "aaa",
+					"image": "/images/package/1658486962368.png"
+				}
+			},
+			"deletepackagerequest": {
+				"title": "deletepackagerequest",
+				"required": ["startTime", "endTime"],
+				"type": "object",
+				"properties": {
+					"startTime": {
+						"type": "string"
+					},
+					"endTime": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"startTime": "10:00 A",
+					"endTime": "10:30 A"
 				}
 			},
 			"m20018": {
@@ -4769,10 +4830,6 @@
 					},
 					"filedType": {
 						"type": "string"
-					},
-					"__v": {
-						"type": "integer",
-						"format": "int32"
 					}
 				},
 				"example": {
@@ -4786,6 +4843,9 @@
 				"required": ["success", "message", "data"],
 				"type": "object",
 				"properties": {
+					"success": {
+						"type": "boolean"
+					},
 					"message": {
 						"type": "string"
 					},
@@ -4908,7 +4968,7 @@
 							"deletedAt": "2022-07-14T06:58:56.536Z",
 							"deletedBy": "62cea492266f8229a87aaaef",
 							"_id": "62cea492266f8229a87aaaef",
-							"content": "hello world",
+							"content": "hellow world",
 							"filedName": "demoFiled",
 							"createdAt": "2022-07-13T10:55:14.379Z",
 							"updatedAt": "2022-07-14T06:58:56.537Z",
@@ -5141,24 +5201,19 @@
 			},
 			"UpdateSttingsRequest": {
 				"title": "UpdateSttingsRequest",
-				"required": ["filedName", "filedValue", "filedType"],
+				"required": ["type", "content"],
 				"type": "object",
 				"properties": {
-					"filedName": {
+					"type": {
 						"type": "string"
 					},
-					"filedValue": {
-						"type": "integer",
-						"format": "int32"
-					},
-					"filedType": {
+					"content": {
 						"type": "string"
 					}
 				},
 				"example": {
-					"filedName": "timeSlot",
-					"filedValue": 5,
-					"filedType": "number"
+					"type": "PRIVCYPOLICY",
+					"content": "<span>khdkha</span>"
 				}
 			},
 			"m20027": {
@@ -5286,8 +5341,25 @@
 					"data": []
 				}
 			},
-			"m200231": {
-				"title": "m2002",
+			"AppointmentCreateRequest": {
+				"title": "AppointmentCreateRequest",
+				"required": ["date", "timeSlotId"],
+				"type": "object",
+				"properties": {
+					"date": {
+						"type": "string"
+					},
+					"timeSlotId": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"date": "2022-07-26",
+					"timeSlotId": "62d7a59a9492b434857b8e4a"
+				}
+			},
+			"m20030": {
+				"title": "m20030",
 				"required": ["success", "msg", "data"],
 				"type": "object",
 				"properties": {
@@ -5300,22 +5372,101 @@
 					"data": {
 						"type": "array",
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Data12"
 						},
 						"description": ""
 					}
 				},
 				"example": {
 					"success": true,
-					"msg": "Doctor delete successfully",
-					"data": []
+					"msg": "Appointment created successfully",
+					"data": [
+						{
+							"symptoms": ["62b046d2d5debb823497dc1c"],
+							"isActive": true,
+							"drId": null,
+							"consultModel": "VIDEO",
+							"prescription": null,
+							"notes": null,
+							"deletedAt": null,
+							"deletedBy": null,
+							"isDeleted": false,
+							"_id": "62d6749958eb62639e632ffd",
+							"date": "2022-07-18T02:30:00.000Z",
+							"startTime": "8:00 A",
+							"endTime": "8:30 A",
+							"patientId": "62d51064f411fb5f8a3c4716",
+							"price": 700,
+							"createdAt": "2022-07-19T09:08:41.218Z",
+							"updatedAt": "2022-07-19T09:08:41.218Z",
+							"__v": 0
+						}
+					]
 				}
 			},
-			"AppointmentCreateRequest": {
-				"title": "AppointmentCreateRequest",
-				"required": ["date", "startTime", "endTime", "pain"],
+			"Data12": {
+				"title": "Data12",
+				"required": [
+					"symptoms",
+					"isActive",
+					"drId",
+					"consultModel",
+					"prescription",
+					"notes",
+					"deletedAt",
+					"deletedBy",
+					"isDeleted",
+					"_id",
+					"date",
+					"startTime",
+					"endTime",
+					"patientId",
+					"price",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
 				"type": "object",
 				"properties": {
+					"symptoms": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"drId": {
+						"type": "string",
+						"nullable": true
+					},
+					"consultModel": {
+						"type": "string"
+					},
+					"prescription": {
+						"type": "string",
+						"nullable": true
+					},
+					"notes": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"isDeleted": {
+						"type": "boolean"
+					},
+					"_id": {
+						"type": "string"
+					},
 					"date": {
 						"type": "string"
 					},
@@ -5325,19 +5476,43 @@
 					"endTime": {
 						"type": "string"
 					},
-					"pain": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						},
-						"description": ""
+					"patientId": {
+						"type": "string"
+					},
+					"price": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
 					}
 				},
 				"example": {
-					"date": "07-18-2022",
+					"symptoms": ["62b046d2d5debb823497dc1c"],
+					"isActive": true,
+					"drId": null,
+					"consultModel": "VIDEO",
+					"prescription": null,
+					"notes": null,
+					"deletedAt": null,
+					"deletedBy": null,
+					"isDeleted": false,
+					"_id": "62d6749958eb62639e632ffd",
+					"date": "2022-07-18T02:30:00.000Z",
 					"startTime": "8:00 A",
 					"endTime": "8:30 A",
-					"pain": ["62b046d2d5debb823497dc1c"]
+					"patientId": "62d51064f411fb5f8a3c4716",
+					"price": 700,
+					"createdAt": "2022-07-19T09:08:41.218Z",
+					"updatedAt": "2022-07-19T09:08:41.218Z",
+					"__v": 0
 				}
 			},
 			"m20031": {
@@ -5345,7 +5520,7 @@
 				"required": ["success", "message", "data", "totalCount"],
 				"type": "object",
 				"properties": {
-					"status": {
+					"success": {
 						"type": "boolean"
 					},
 					"message": {
@@ -5357,6 +5532,10 @@
 							"$ref": "#/components/schemas/Data12"
 						},
 						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
 					}
 				},
 				"example": {
@@ -5464,6 +5643,36 @@
 					"endTime": "8:30 A",
 					"pain": ["62b046d2d5debb823497dc1c"]
 				}
+			},
+			"addPaymentRequest": {
+				"title": "addPaymentRequest",
+				"required": ["appointmentId", "paymentId"],
+				"type": "object",
+				"properties": {
+					"appointmentId": {
+						"type": "string"
+					},
+					"paymentId": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"appointmentId": "62d65df0f511bf5509c3b622",
+					"paymentId": "pay_Jva8VkThS76MEa"
+				}
+			},
+			"GetTimeSlotBYTodayRequest": {
+				"title": "GetTimeSlotBYTodayRequest",
+				"required": ["date"],
+				"type": "object",
+				"properties": {
+					"date": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"date": "2022-07-27"
+				}
 			}
 		},
 		"securitySchemes": {
@@ -5522,6 +5731,15 @@
 		},
 		{
 			"name": "Appointment"
+		},
+		{
+			"name": "payment"
+		},
+		{
+			"name": "Image Uplod"
+		},
+		{
+			"name": "Get all time SLot"
 		}
 	]
 }

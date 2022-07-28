@@ -52,6 +52,7 @@ const createDr = async (req, res) => {
 						success: true,
 						msg: CUSTOMER_MESSAGE.VERIFY_OTP,
 						data: [],
+						otp: createOtp,
 					});
 				} else {
 					throw new Error(CUSTOMER_MESSAGE.CREATE_FAILED);

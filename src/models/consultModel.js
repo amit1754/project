@@ -7,6 +7,7 @@ const consultModel = new Schema(
 			trim: true,
 			max: 255,
 			required: true,
+			unique: true,
 		},
 		deletedAt: {
 			type: Date,

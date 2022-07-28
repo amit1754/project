@@ -26,6 +26,9 @@ const createConsult = async (req, res) => {
 			throw new Error(CONSULT.CREATE_FAILED);
 		}
 	} catch (error) {
+		if (error.code === 11000) {
+			error.message = CONSULT.ALREADY_AVAILABLE;
+		}
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -53,6 +56,9 @@ const createLanguage = async (req, res) => {
 			throw new Error(LANGUAGE.CREATE_FAILED);
 		}
 	} catch (error) {
+		if (error.code === 11000) {
+			error.message = LANGUAGE.ALREADY_AVAILABLE;
+		}
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -129,6 +135,9 @@ const updateLanguage = async (req, res) => {
 			throw new Error(LANGUAGE.UPDATE_FAILED);
 		}
 	} catch (error) {
+		if (error.code === 11000) {
+			error.message = LANGUAGE.ALREADY_AVAILABLE;
+		}
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -153,6 +162,9 @@ const updateConsult = async (req, res) => {
 			throw new Error(CONSULT.UPDATE_FAILED);
 		}
 	} catch (error) {
+		if (error.code === 11000) {
+			error.message = CONSULT.ALREADY_AVAILABLE;
+		}
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -163,9 +175,10 @@ const updateConsult = async (req, res) => {
 
 const deleteConsult = async (req, res) => {
 	try {
+		console.log('req.params', req.params);
 		const consult = await consultModel.updateOne(
 			{ _id: req.params.id },
-			{ deletedAt: new Date(), deletedBy: req.user.id },
+			{ deletedAt: new Date(), deletedBy: req.currentUser.id },
 		);
 		if (consult) {
 			return res.status(SUCCESS).send({
@@ -177,6 +190,7 @@ const deleteConsult = async (req, res) => {
 			throw new Error(CONSULT.DELETE_FAILED);
 		}
 	} catch (error) {
+		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -189,7 +203,7 @@ const deleteLanguage = async (req, res) => {
 	try {
 		const language = await languageModel.updateOne(
 			{ _id: req.params.id },
-			{ deletedAt: new Date(), deletedBy: req.user.id },
+			{ deletedAt: new Date(), deletedBy: req.currentUser.id },
 		);
 		if (language) {
 			return res.status(SUCCESS).send({
