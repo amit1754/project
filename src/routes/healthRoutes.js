@@ -5,12 +5,7 @@ import { authMiddleware } from '../middleware';
 
 const router = express.Router();
 
-router.post(
-	'/create',
-	authMiddleware,
-
-	healthController.createHealthArticle,
-);
+router.post('/create', authMiddleware, healthController.createHealthArticle);
 router.delete(
 	'/delete/:id',
 	authMiddleware,

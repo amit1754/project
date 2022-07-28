@@ -48,6 +48,8 @@ const FILE_PATH = process.env.FILE_PATH || 'uploads';
 /** Parse Req.body */
 server.use(json());
 server.use(urlencoded({ extended: true }));
+server.use('/resources', express.static(__dirname + '/public'));
+
 /** CORS */
 
 let corsOptions = {
