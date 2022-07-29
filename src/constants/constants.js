@@ -103,6 +103,7 @@ export default {
 			DELETE_SUCCESS: 'Doctor delete successfully',
 			DELETE_FAILED: 'Doctor deletion failed',
 			VERIFY_OTP: 'Otp is send into email',
+			VERIFY_FAILED: 'otp is wrong',
 		},
 		SPECIALITY: {
 			CREATE_SUCCESS: 'Speciality created successfully',

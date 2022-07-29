@@ -89,6 +89,7 @@ const createDr = async (req, res) => {
 					success: true,
 					msg: DR_USER.VERIFY_OTP,
 					data: [],
+					createOtp,
 				});
 			}
 		}
@@ -129,7 +130,7 @@ const verifyOtp = async (req, res) => {
 				throw new Error(CUSTOMER_MESSAGE.VERIFY_FAILED);
 			}
 		} else {
-			const findDr = await drModel.findOne({ email, isEnabled: false });
+			const findDr = await drModel.findOne({ email });
 			if (findDr) {
 				if (findDr.otp === otp) {
 					await drModel.findOneAndUpdate(
