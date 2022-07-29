@@ -68,7 +68,11 @@ const createAppointment = async (req, res) => {
 };
 const getAppointment = async (req, res) => {
 	try {
-		let { data, totalCount } = await appointmentService.findAllQuery(req.query);
+		let filter = {
+			...req.query,
+			populate: true,
+		};
+		let { data, totalCount } = await appointmentService.findAllQuery(filter);
 		if (data) {
 			return res.status(SUCCESS).json({
 				success: true,

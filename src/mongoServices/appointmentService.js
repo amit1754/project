@@ -50,12 +50,15 @@ const findAllQuery = async (query) => {
 	}
 
 	if (populate) {
+		console.log('populate', populate);
 		data = await appointmentModel
 			.find(whereClause)
 			.skip(page > 0 ? +limit * (+page - 1) : 0)
 			.limit(+limit || 20)
 			.sort(sort)
-			.populate('');
+			.populate('patientId')
+			.populate('drId')
+			.populate('timeSlotId');
 	} else {
 		data = await appointmentModel
 			.find(whereClause)
