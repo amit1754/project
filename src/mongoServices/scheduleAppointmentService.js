@@ -41,7 +41,6 @@ const findAllQuery = async (query) => {
 	if (drId) {
 		whereClause = { ...whereClause, drId };
 	}
-	console.log('whereClause', whereClause);
 	const data = await scheduleAppointmentModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)

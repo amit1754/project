@@ -28,7 +28,7 @@ const createAppointment = async (req, res) => {
 			let payloadData = {
 				date: updateDate,
 				patientId: currentUser._id,
-				timeSlotId,
+				timeSlotId, 
 			};
 			const payloadSave = new appointmentModel(payloadData);
 			const savePayload = await payloadSave.save();

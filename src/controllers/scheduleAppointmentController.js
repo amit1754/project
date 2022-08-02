@@ -124,4 +124,19 @@ const getScheduleAppointment = async (_req, res) => {
 	}
 };
 
+const getScheduleAppointmentData = async (req, res) => {
+	try {
+		const { data, totalCount } = await scheduleAppointmentService.findAllQuery(
+			req.query,
+		);
+		return res.json(200).send({ status: 'success', data, totalCount });
+	} catch (error) {
+		console.log('error', error);
+		// errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(500).json({
+			success: false,
+			error: error,
+		});
+	}
+};
 export default { scheduleAppointment, getScheduleAppointment };

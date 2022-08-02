@@ -1,4 +1,3 @@
-// Role base AccessController
 export { default as permissionsModel } from './adminModel/permissionModel';
 export { default as roleModel } from './adminModel/roleModel';
 export { default as adminUserModel } from './adminModel/userModel';
