@@ -63,6 +63,7 @@ const updatePackage = async (req, res) => {
 		const updateObj = {
 			...req.body,
 		};
+		console.log('updateObj', updateObj);
 		const projection = {};
 		const updatePackageResponse = await packagesService.updateOneQuery(
 			filter,
