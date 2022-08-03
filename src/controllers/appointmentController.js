@@ -28,7 +28,7 @@ const createAppointment = async (req, res) => {
 			let payloadData = {
 				date: updateDate,
 				patientId: currentUser._id,
-				timeSlotId, 
+				timeSlotId,
 			};
 			const payloadSave = new appointmentModel(payloadData);
 			const savePayload = await payloadSave.save();
@@ -153,10 +153,38 @@ const deleteAppointment = async (req, res) => {
 		});
 	}
 };
+const getCustomerAppointment = async (req, res) => {
+	try {
+		let { currentUser } = req;
+		let filter = {
+			patientId: currentUser._id,
+			scheduleAppointmentID: { $ne: null },
+			date: {
+				$gte: moment().utc().startOf('day').toISOString(),
+				$lte: moment().utc().endOf('day').toISOString(),
+			},
+			populate: true,
+		};
+		let { data, totalCount } = await appointmentService.findAllQuery(filter);
+		return res.status(SUCCESS).json({
+			success: true,
+			message: APPOINTMENT.GET_SUCCESS,
+			data,
+			totalCount,
+		});
+	} catch (error) {
+		errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
 
 export default {
 	createAppointment,
 	getAppointment,
 	updateAppointment,
 	deleteAppointment,
+	getCustomerAppointment,
 };

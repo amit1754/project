@@ -18,9 +18,9 @@ const swaggerDocument = require('./swagger.json');
 // import roleSeed from './src/dbSeed/Role';
 // import userSeed from './src/dbSeed/Users';
 // import PermissionsSeed from './src/dbSeed/Permissions';
+import './src/service/cronJob';
 require('dotenv').config({ path: '.env' });
 let path = require('path');
-
 process.env.FILE =
 	path.join(__dirname, process.env.FILE_PATH) || path.join(__dirname, 'public');
 
@@ -35,7 +35,6 @@ const server = express();
 // 	await PermissionsSeed();
 // 	// role for super user seed
 // 	await roleSeed();
-
 // 	// // seed for super user
 // 	await userSeed();
 // })();

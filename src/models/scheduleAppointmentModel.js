@@ -29,6 +29,11 @@ const scheduleAppointment = new Schema(
 		date: {
 			type: Date,
 		},
+		paymentID: {
+			type: Types.ObjectId,
+			ref: 'monthlyTimeSlot',
+			default: null,
+		},
 
 		deletedAt: {
 			type: Date,

@@ -16,3 +16,4 @@ export { default as faqsModel } from './faqsModel';
 export { default as appointmentModel } from './appointmentModel';
 export { default as scheduleAppointmentModel } from './scheduleAppointmentModel';
 export { default as monthlyTimeSlotModel } from './monthlyTimeSlotModel';
+export { default as paymentModel } from './paymentModel';

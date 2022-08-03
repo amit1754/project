@@ -54,7 +54,7 @@ const scheduleAppointment = async (appointment) => {
 						scheduleAppointmentID: data._id,
 					};
 					await appointmentService.updateOneQuery(filterA, updateAppointment);
-					return availableDr;
+					return data;
 				} else {
 					return {
 						error: 'slot is not a available',

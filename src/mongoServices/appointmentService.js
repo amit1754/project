@@ -8,9 +8,9 @@ const findAllQuery = async (query) => {
 		page,
 		sortField,
 		sortValue,
-		isSchedule,
+		scheduleAppointmentID,
 		date,
-		timeSlotId,
+
 		patientId,
 		populate,
 	} = query;
@@ -36,21 +36,19 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	if (isSchedule === false || isSchedule === true) {
-		whereClause = { ...whereClause, isSchedule };
-	}
+
 	if (date) {
 		whereClause = { ...whereClause, date };
 	}
-	if (timeSlotId) {
-		whereClause = { ...whereClause, timeSlotId };
-	}
+
 	if (patientId) {
 		whereClause = { ...whereClause, patientId };
 	}
+	if (scheduleAppointmentID) {
+		whereClause = { ...whereClause, scheduleAppointmentID };
+	}
 
 	if (populate) {
-		console.log('populate', populate);
 		data = await appointmentModel
 			.find(whereClause)
 			.skip(page > 0 ? +limit * (+page - 1) : 0)

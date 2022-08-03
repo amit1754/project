@@ -1,14 +1,11 @@
 import moment from 'moment';
+import cron from 'node-cron';
 import { monthlyTimeSlotModel } from '../models';
-import {
-	drService,
-	scheduleAppointmentService,
-	monthlyTimeService,
-} from '../mongoServices';
+import { drService, scheduleAppointmentService } from '../mongoServices';
 require('dotenv').config({ path: 'src/config/.env' });
 
-// schedule.scheduleJob('* * * * 2 *', async () => {
-const data = async (_req, res) => {
+const data = cron.schedule('0 1 * * *', async () => {
+	console.log('cron');
 	try {
 		let days = Number(process.env.DAYS);
 		let newDate = moment().add(days, 'days');
@@ -20,7 +17,6 @@ const data = async (_req, res) => {
 			},
 		};
 		let getNewDateTimeSlots = await monthlyTimeSlotModel.find(filterDate);
-
 		if (getNewDateTimeSlots.length === 0) {
 			const { data: dr } = await drService.findAllQuery({});
 			for (let i = 0; i < 1; i++) {
@@ -57,18 +53,10 @@ const data = async (_req, res) => {
 		} else {
 			throw new Error('Data is available');
 		}
-
-		return res.status(200).json({
-			success: true,
-			message: 'Time slot created successfully',
-		});
+		return true;
 	} catch (err) {
-		return res.status(500).json({
-			success: false,
-			error: err.message,
-		});
+		return false;
 	}
-};
+});
 
 export default data;
-// });
