@@ -123,7 +123,7 @@ const assignTimeSlot = async (req, res) => {
 			};
 			let projection = {};
 			let updateDr = await drService.updateOneQuery(filter, update, projection);
-			console.log('updateDr', updateDr);
+
 			if (updateDr) {
 				return res.status(SUCCESS).send({
 					success: true,

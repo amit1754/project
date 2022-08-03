@@ -19,11 +19,11 @@ const drModel = new Schema(
 		mobileNumber: {
 			type: String,
 			max: 255,
-			required: true,
+			default: null,
 		},
 		otp: {
 			type: Number,
-			required: true,
+			default: null,
 		},
 		gender: {
 			type: String,
@@ -76,6 +76,10 @@ const drModel = new Schema(
 			default: null,
 			ref: 'timeSlotALL',
 		},
+		isFirstTime: {
+			type: Boolean,
+			default: true,
+		},
 		isEnabled: {
 			type: Boolean,
 			required: true,
@@ -95,7 +99,7 @@ const drModel = new Schema(
 
 let autoPopulateLead = function (next) {
 	this.populate('timeSlot');
-	this.populate('specialization');
+	
 
 	next();
 };

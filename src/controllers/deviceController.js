@@ -36,9 +36,9 @@ const createDevice = async (req, res) => {
 		});
 	} catch (error) {
 		if (error.code === 11000) {
-			errorLogger(error.message, req.originalUrl, req.ip);
 			error.message = DEVICE.DELETE_ALREADY_AVAILABLE;
 		}
+		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
 			message: error.message || FAILED_RESPONSE,
@@ -89,7 +89,6 @@ const updateDevice = async (req, res) => {
 };
 const deleteDevice = async (req, res) => {
 	try {
-		console.log('req.params', req.params);
 		const { id } = req.params;
 		const filter = { _id: id };
 		const update = { deletedAt: new Date(), deletedBy: req.currentUser._id };

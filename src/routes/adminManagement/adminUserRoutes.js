@@ -37,7 +37,7 @@ router.put(
 router.post('/forget-password', adminUserController.forgetPassword);
 router.put(
 	'/reset-password',
-	resetPasswordMiddleware,
+
 	adminUserController.resetPassword,
 );
 

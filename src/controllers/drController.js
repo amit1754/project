@@ -8,12 +8,12 @@ import {
 	hashPassword,
 } from '../utils';
 import { drService, CustomerService } from '../mongoServices';
+import jwt_decode from 'jwt-decode';
 const {
 	RESPONSE_MESSAGE: { DR_USER, FAILED_RESPONSE, CUSTOMER_MESSAGE },
 	STATUS_CODE: { SUCCESS, FAILED },
 	USER_TYPE: { CUSTOMER },
 } = CONSTANTS;
-
 require('dotenv').config({ path: '.env' });
 const createDr = async (req, res) => {
 	try {
@@ -27,7 +27,6 @@ const createDr = async (req, res) => {
 			password: hashedPassword,
 			salt: salt,
 		};
-		console.log('insertObj', insertObj);
 
 		if (type === CUSTOMER) {
 			const findCustomer = await customerModel.findOne({ email });
@@ -52,6 +51,7 @@ const createDr = async (req, res) => {
 						success: true,
 						msg: CUSTOMER_MESSAGE.VERIFY_OTP,
 						data: [],
+						otp: createOtp,
 					});
 				} else {
 					throw new Error(CUSTOMER_MESSAGE.CREATE_FAILED);
@@ -88,6 +88,7 @@ const createDr = async (req, res) => {
 					success: true,
 					msg: DR_USER.VERIFY_OTP,
 					data: [],
+					createOtp,
 				});
 			}
 		}
@@ -110,14 +111,13 @@ const verifyOtp = async (req, res) => {
 			let filter = { email, otp: Number(otp) },
 				update = { otp: null, isEnabled: true },
 				projection = {};
-			console.log('filter', filter);
 
 			const findAndVerify = await CustomerService.updateOneQuery(
 				filter,
 				update,
 				projection,
 			);
-			console.log('findAndVerify', findAndVerify);
+
 			if (findAndVerify) {
 				let token = jwtGenerate(findAndVerify._id, type);
 				return res.status(SUCCESS).send({
@@ -129,7 +129,7 @@ const verifyOtp = async (req, res) => {
 				throw new Error(CUSTOMER_MESSAGE.VERIFY_FAILED);
 			}
 		} else {
-			const findDr = await drModel.findOne({ email, isEnabled: false });
+			const findDr = await drModel.findOne({ email });
 			if (findDr) {
 				if (findDr.otp === otp) {
 					await drModel.findOneAndUpdate(
@@ -151,7 +151,6 @@ const verifyOtp = async (req, res) => {
 			}
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -168,6 +167,7 @@ const updateProfile = async (req, res) => {
 				mainStream,
 				specialization,
 				designation,
+				isFirstTime: false,
 			};
 		const updateDr = await drService.updateDr(filter, updateData);
 
@@ -209,7 +209,6 @@ const deleteDr = async (req, res) => {
 			throw new Error(DR_USER.DELETE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -238,93 +237,11 @@ const listDr = async (req, res) => {
 		});
 	}
 };
-const ListCustomer = async (req, res) => {
-	try {
-		const { data, totalCount } = await CustomerService.findAllQuery(req.query);
-		if (data) {
-			return res.status(SUCCESS).send({
-				success: true,
-				msg: CUSTOMER_MESSAGE.GET_SUCCESS,
-				data,
-				totalCount,
-			});
-		} else {
-			throw new Error(CUSTOMER_MESSAGE.GET_FAILED);
-		}
-	} catch (error) {
-		errorLogger(error.message, req.originalUrl, req.ip);
-		return res.status(FAILED).json({
-			success: false,
-			error: error.message || FAILED_RESPONSE,
-		});
-	}
-};
-const updateCustomer = async (req, res) => {
-	try {
-		const { id } = req.params;
 
-		let filter = { _id: id },
-			updateData = {
-				...req.body,
-			};
-		const updateCustomerData = await CustomerService.updateCustomer(
-			filter,
-			updateData,
-		);
-		if (updateCustomerData) {
-			return res.status(SUCCESS).send({
-				success: true,
-				msg: CUSTOMER_MESSAGE.UPDATE_SUCCESS,
-				data: [],
-			});
-		} else {
-			throw new Error(CUSTOMER_MESSAGE.UPDATE_FAILED);
-		}
-	} catch (error) {
-		errorLogger(error.message, req.originalUrl, req.ip);
-		return res.status(FAILED).json({
-			success: false,
-			error: error.message || FAILED_RESPONSE,
-		});
-	}
-};
-const deleteCustomer = async (req, res) => {
-	try {
-		const { id } = req.params;
-		let filter = { _id: id },
-			updateData = {
-				isEnabledL: false,
-				deletedAt: new Date(),
-				deletedBy: req.currentUser._Id,
-			};
-		const deleteCustomerData = await CustomerService.updateCustomer(
-			filter,
-			updateData,
-		);
-		if (deleteCustomerData) {
-			return res.status(SUCCESS).send({
-				success: true,
-				msg: CUSTOMER_MESSAGE.DELETE_SUCCESS,
-				data: [],
-			});
-		} else {
-			throw new Error(CUSTOMER_MESSAGE.DELETE_FAILED);
-		}
-	} catch (error) {
-		errorLogger(error.message, req.originalUrl, req.ip);
-		return res.status(FAILED).json({
-			success: false,
-			error: error.message || FAILED_RESPONSE,
-		});
-	}
-};
 export default {
 	createDr,
 	verifyOtp,
 	updateProfile,
 	deleteDr,
 	listDr,
-	ListCustomer,
-	updateCustomer,
-	deleteCustomer,
 };

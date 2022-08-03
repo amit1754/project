@@ -1,7 +1,10 @@
 import { appointmentModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import { appointmentService, specialityService } from '../mongoServices';
+import { appointmentService } from '../mongoServices';
+import moment from 'moment';
+import { scheduleAppointmentController } from './';
+
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, APPOINTMENT },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -9,40 +12,51 @@ const {
 const createAppointment = async (req, res) => {
 	try {
 		const { currentUser } = req;
-		const { pain, date, startTime, endTime } = req.body;
-		let totalPrice = 0;
-		if (pain.length === 0) {
-			let query = { _id: pain };
-			let { data } = await specialityService.findAllQuery(query);
-
-			totalPrice = data[0].price;
-		} else {
-			for (const element of pain) {
-				let query = { _id: element };
-				let { data } = await specialityService.findAllQuery(query);
-
-				totalPrice += data[0].price;
-			}
-		}
-		let updateDate = new Date(date).setHours(8);
-		let payloadData = {
-			date: updateDate,
-			startTime,
-			endTime,
-			symptoms: pain,
+		const { date, timeSlotId } = req.body;
+		let payload = {
+			date: {
+				$gte: moment(date).add(1, 'days').utc().startOf('day').toISOString(),
+				$lte: moment(date).add(1, 'days').utc().endOf('day').toISOString(),
+			},
+			timeSlotId,
 			patientId: currentUser._id,
-			price: totalPrice,
 		};
-		const payload = new appointmentModel(payloadData);
-		const savePayload = await payload.save();
-		if (savePayload) {
-			return res.status(SUCCESS).send({
-				success: true,
-				msg: APPOINTMENT.CREATE_SUCCESS,
-				data: [],
-			});
+
+		const appointment = await appointmentService.findAllQuery(payload);
+		if (appointment?.data?.length === 0) {
+			let updateDate = new Date(date).setHours(8);
+			let payloadData = {
+				date: updateDate,
+				patientId: currentUser._id,
+				timeSlotId,
+			};
+			const payloadSave = new appointmentModel(payloadData);
+			const savePayload = await payloadSave.save();
+			if (savePayload) {
+				const scheduleAppointment =
+					await scheduleAppointmentController.scheduleAppointment(savePayload);
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: APPOINTMENT.CREATE_SUCCESS,
+					data: scheduleAppointment,
+				});
+			} else {
+				throw new Error(APPOINTMENT.CREATE_FAILED);
+			}
 		} else {
-			throw new Error(APPOINTMENT.CREATE_FAILED);
+			const scheduleAppointment =
+				await scheduleAppointmentController.scheduleAppointment(
+					appointment.data[0],
+				);
+			if (scheduleAppointment?.error) {
+				throw new Error(scheduleAppointment.error);
+			} else {
+				return res.status(SUCCESS).send({
+					success: true,
+					msg: APPOINTMENT.CREATE_SUCCESS,
+					data: scheduleAppointment,
+				});
+			}
 		}
 	} catch (err) {
 		errorLogger(err.message, req.originalUrl, req.ip);
@@ -54,7 +68,11 @@ const createAppointment = async (req, res) => {
 };
 const getAppointment = async (req, res) => {
 	try {
-		let { data, totalCount } = await appointmentService.findAllQuery(req.query);
+		let filter = {
+			...req.query,
+			populate: true,
+		};
+		let { data, totalCount } = await appointmentService.findAllQuery(filter);
 		if (data) {
 			return res.status(SUCCESS).json({
 				success: true,
@@ -67,7 +85,7 @@ const getAppointment = async (req, res) => {
 		}
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
-		console.log('error', error);
+
 		return res.status(FAILED).json({
 			success: false,
 			error: error.message || FAILED_RESPONSE,
@@ -128,7 +146,33 @@ const deleteAppointment = async (req, res) => {
 			throw new Error(APPOINTMENT.DELETE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
+		errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
+const getCustomerAppointment = async (req, res) => {
+	try {
+		let { currentUser } = req;
+		let filter = {
+			patientId: currentUser._id,
+			scheduleAppointmentID: { $ne: null },
+			date: {
+				$gte: moment().utc().startOf('day').toISOString(),
+				$lte: moment().utc().endOf('day').toISOString(),
+			},
+			populate: true,
+		};
+		let { data, totalCount } = await appointmentService.findAllQuery(filter);
+		return res.status(SUCCESS).json({
+			success: true,
+			message: APPOINTMENT.GET_SUCCESS,
+			data,
+			totalCount,
+		});
+	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,
@@ -142,4 +186,5 @@ export default {
 	getAppointment,
 	updateAppointment,
 	deleteAppointment,
+	getCustomerAppointment,
 };

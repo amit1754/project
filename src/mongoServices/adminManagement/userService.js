@@ -1,4 +1,4 @@
-import { Mongoose, Types } from 'mongoose';
+import { Types } from 'mongoose';
 
 import { adminUserModel } from '../../models';
 
@@ -44,7 +44,7 @@ const findAllQuery = async (query, userId) => {
 	if (search) {
 		search = new RegExp(search, 'ig');
 		whereClause = {
-			$or: [{ displayName: search }, { path: search }],
+			$or: [{ name: search }, { email: search }],
 		};
 	}
 	if (_id) {

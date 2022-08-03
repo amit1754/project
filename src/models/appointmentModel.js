@@ -1,26 +1,11 @@
 import { Schema, model, Types } from 'mongoose';
-
-const consultModel = new Schema(
+const appointment = new Schema(
 	{
-		symptoms: {
-			type: [Types.ObjectId],
-			trim: true,
-			max: 255,
-			default: null,
-			ref: 'dr_speciality',
-		},
 		date: {
 			type: Date,
 			required: true,
 		},
-		startTime: {
-			type: String,
-			required: true,
-		},
-		endTime: {
-			type: String,
-			required: true,
-		},
+
 		patientId: {
 			type: Types.ObjectId,
 			required: true,
@@ -35,9 +20,9 @@ const consultModel = new Schema(
 			ref: 'dr_details',
 			default: null,
 		},
-		price: {
-			type: Number,
-			required: true,
+		timeSlotId: {
+			type: Types.ObjectId,
+			ref: 'timeSlotALL',
 		},
 		consultModel: {
 			type: String,
@@ -55,6 +40,11 @@ const consultModel = new Schema(
 			type: Boolean,
 			default: false,
 		},
+		scheduleAppointmentID: {
+			type: Types.ObjectId,
+			ref: 'scheduleAppointment',
+			default: null,
+		},
 		deletedAt: {
 			type: Date,
 			default: null,
@@ -71,4 +61,4 @@ const consultModel = new Schema(
 	{ timestamps: true },
 );
 
-module.exports = new model('appointment', consultModel);
+module.exports = new model('appointment', appointment);

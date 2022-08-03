@@ -12,7 +12,18 @@ const sendRegisterEmail = async (email, otp, name) => {
 
 	// Send Confirm Account Email
 	const sendEmail = await sendMail(email, EMAIL, 'register with curific', html);
-	console.log('sendEmail', sendEmail);
+
+	if (sendEmail[0].statusCode != 202) {
+		throw new Error('mail is not send');
+	} else return sendEmail;
+};
+const sendForgetPasswordEmail = async (email, otp, name) => {
+	const html = `
+					Hello ${name} ,
+						Otp: ${otp}`;
+
+	// Send Confirm Account Email
+	const sendEmail = await sendMail(email, EMAIL, 'Forget Password', html);
 
 	if (sendEmail[0].statusCode != 202) {
 		throw new Error('mail is not send');
@@ -21,4 +32,5 @@ const sendRegisterEmail = async (email, otp, name) => {
 
 export default {
 	sendRegisterEmail,
+	sendForgetPasswordEmail,
 };

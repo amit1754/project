@@ -1,10 +1,23 @@
 import { appointmentModel } from '../models';
 
 const findAllQuery = async (query) => {
-	console.log('query', query);
-	let { search, _id, limit, page, sortField, sortValue, isSchedule } = query;
-	let sort = {};
-	let whereClause = { deletedAt: null };
+	let {
+		search,
+		_id,
+		limit,
+		page,
+		sortField,
+		sortValue,
+		scheduleAppointmentID,
+		date,
+
+		patientId,
+		populate,
+	} = query;
+
+	let sort = {},
+		data,
+		whereClause = { deletedAt: null };
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
@@ -23,19 +36,37 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	if (isSchedule === false || isSchedule === true) {
-		whereClause = { ...whereClause, isSchedule };
+
+	if (date) {
+		whereClause = { ...whereClause, date };
 	}
-	console.log('whereClause', whereClause);
-	const data = await appointmentModel
-		.find(whereClause)
-		.skip(page > 0 ? +limit * (+page - 1) : 0)
-		.limit(+limit || 20)
-		.sort(sort);
+
+	if (patientId) {
+		whereClause = { ...whereClause, patientId };
+	}
+	if (scheduleAppointmentID) {
+		whereClause = { ...whereClause, scheduleAppointmentID };
+	}
+
+	if (populate) {
+		data = await appointmentModel
+			.find(whereClause)
+			.skip(page > 0 ? +limit * (+page - 1) : 0)
+			.limit(+limit || 20)
+			.sort(sort)
+			.populate('patientId')
+			.populate('drId')
+			.populate('timeSlotId');
+	} else {
+		data = await appointmentModel
+			.find(whereClause)
+			.skip(page > 0 ? +limit * (+page - 1) : 0)
+			.limit(+limit || 20)
+			.sort(sort);
+	}
 
 	const totalCount = await appointmentModel.find(whereClause).countDocuments();
 
-	console.log('totalCount', totalCount);
 	return { data, totalCount };
 };
 

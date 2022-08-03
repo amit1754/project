@@ -11,18 +11,18 @@ import './src/config/dbConnection';
 import routes from './src/routes';
 // import fs from 'fs';
 import { ENV } from './src/constants';
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
 // import roleSeed from './src/dbSeed/Role';
 // import userSeed from './src/dbSeed/Users';
 // import PermissionsSeed from './src/dbSeed/Permissions';
+import './src/service/cronJob';
 require('dotenv').config({ path: '.env' });
 let path = require('path');
-
 process.env.FILE =
-	path.join(__dirname, process.env.FILE_PATH) ||
-	path.join(__dirname, 'uploads');
+	path.join(__dirname, process.env.FILE_PATH) || path.join(__dirname, 'public');
 
 const {
 	SERVER: { PORT },
@@ -35,7 +35,6 @@ const server = express();
 // 	await PermissionsSeed();
 // 	// role for super user seed
 // 	await roleSeed();
-
 // 	// // seed for super user
 // 	await userSeed();
 // })();
@@ -48,6 +47,8 @@ const FILE_PATH = process.env.FILE_PATH || 'uploads';
 /** Parse Req.body */
 server.use(json());
 server.use(urlencoded({ extended: true }));
+server.use('/resources', express.static(__dirname + '/public'));
+
 /** CORS */
 
 let corsOptions = {
@@ -61,8 +62,9 @@ server.use(morgan('dev'));
 /** Compress Requests */
 server.use(compression());
 /** File Upload Static */
+console.log('FILE_PATH', express.static(FILE_PATH));
 server.use(
-	`/${FILE_PATH}`,
+	`/image`,
 	express.static(FILE_PATH),
 	serveIndex(FILE_PATH, { icons: true }),
 );

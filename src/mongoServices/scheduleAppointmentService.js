@@ -1,8 +1,25 @@
 import { scheduleAppointmentModel } from '../models';
 const findAllQuery = async (query) => {
+<<<<<<< HEAD
+	let {
+		search,
+		_id,
+		limit,
+		page,
+		sortField,
+		sortValue,
+		date,
+		timeSlotId,
+		drId,
+	} = query;
+	let sort = {};
+	let whereClause = { isDeleted: false };
+
+=======
 	let { search, _id, limit, page, sortField, sortValue, date } = query;
 	let sort = {};
 	let whereClause = { isDeleted: false };
+>>>>>>> b4e49509168f9c895df738b4529fd10a74479fc4
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
@@ -24,7 +41,12 @@ const findAllQuery = async (query) => {
 	if (date) {
 		whereClause = { ...whereClause, date };
 	}
-	console.log('whereClause', whereClause);
+	if (timeSlotId) {
+		whereClause = { ...whereClause, timeSlotId };
+	}
+	if (drId) {
+		whereClause = { ...whereClause, drId };
+	}
 	const data = await scheduleAppointmentModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)

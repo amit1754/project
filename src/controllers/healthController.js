@@ -1,7 +1,7 @@
 import { healthModel } from '../models';
 import { healthService } from '../mongoServices';
 import { CONSTANTS } from '../constants';
-import { errorLogger, fileUpload } from '../utils';
+import { errorLogger } from '../utils';
 
 const {
 	RESPONSE_MESSAGE: { HEALTH_ARTICLE, FAILED_RESPONSE },
@@ -11,7 +11,6 @@ const createHealthArticle = async (req, res) => {
 	try {
 		let payload = {
 			...req.body,
-			profileImage: req.file.filename,
 		};
 		const Model = new healthModel(payload);
 		const saveResponse = await Model.save();
@@ -91,13 +90,7 @@ const updateHealthArticle = async (req, res) => {
 			let payload = {
 				...req.body,
 			};
-			if (req.file) {
-				fileUpload.removeFile(data[0].profileImage);
 
-				payload = {
-					profileImage: req.file.path,
-				};
-			}
 			const response = healthService.updateOneQuery(filter, payload);
 			if (response) {
 				res.status(SUCCESS).json({

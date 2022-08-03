@@ -10,6 +10,8 @@ export default {
 		MONGO_URI:
 			'mongodb://wisecaller_admin:Dealing2021@54.196.46.51:27017/database?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false',
 		MONGO_DB_NAME: 'database',
+		MONGO_PATIENT:
+			"'mongodb://wisecaller_admin:Dealing2021@54.196.46.51:27017/curificPatient?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
 	},
 
 	JWT: {

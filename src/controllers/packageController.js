@@ -80,7 +80,6 @@ const updatePackage = async (req, res) => {
 			throw new Error(PACKAGE.UPDATE_FAILED);
 		}
 	} catch (err) {
-		console.log('err', err);
 		errorLogger(err.message, req.originalUrl, req.ip);
 		return res.status(FAILED).send({
 			success: false,

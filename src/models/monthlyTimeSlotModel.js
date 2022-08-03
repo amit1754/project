@@ -1,13 +1,16 @@
 import { Schema, model, Types } from 'mongoose';
 
-const consultModel = new Schema(
+const monthlyTimeSlot = new Schema(
 	{
-		name: {
+		timeSlotId: {
+			type: Types.ObjectId,
+			ref: 'timeSlotALL',
+		},
+		date: {
 			type: String,
 			trim: true,
 			max: 255,
 			required: true,
-			unique: true,
 		},
 		deletedAt: {
 			type: Date,
@@ -21,4 +24,4 @@ const consultModel = new Schema(
 	{ timestamps: true },
 );
 
-module.exports = new model('consult_details', consultModel);
+module.exports = new model('monthlyTimeSlot', monthlyTimeSlot);
