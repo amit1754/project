@@ -1,6 +1,10 @@
 import moment from 'moment';
 import { monthlyTimeSlotModel } from '../models';
-import { drService } from '../mongoServices';
+import {
+	drService,
+	scheduleAppointmentService,
+	monthlyTimeService,
+} from '../mongoServices';
 require('dotenv').config({ path: 'src/config/.env' });
 
 // schedule.scheduleJob('* * * * 2 *', async () => {
@@ -15,7 +19,7 @@ const data = async (_req, res) => {
 				$lte: moment(newDate).endOf('day').toISOString(),
 			},
 		};
-		let getNewDateTimeSlots = await monthlyTimeSlotModel.find(...filterDate);
+		let getNewDateTimeSlots = await monthlyTimeSlotModel.find(filterDate);
 
 		if (getNewDateTimeSlots.length === 0) {
 			const { data: dr } = await drService.findAllQuery({});
