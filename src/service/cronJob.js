@@ -26,11 +26,14 @@ const data = async (_req, res) => {
 			for (let i = 0; i < 1; i++) {
 				for (const element of dr) {
 					for (const slot of element.timeSlot) {
-						const startDate = moment()
+						const startDate = moment(newDate)
 							.add(i, 'days')
 							.startOf('day')
 							.toISOString();
-						const endDate = moment().add(i, 'days').endOf('day').toISOString();
+						const endDate = moment(newDate)
+							.add(i, 'days')
+							.endOf('day')
+							.toISOString();
 						let filter = {
 							drId: element._id,
 							date: { $gte: startDate, $lte: endDate },
