@@ -1,5 +1,6 @@
 import { scheduleAppointmentModel } from '../models';
 const findAllQuery = async (query) => {
+<<<<<<< HEAD
 	let {
 		search,
 		_id,
@@ -14,6 +15,11 @@ const findAllQuery = async (query) => {
 	let sort = {};
 	let whereClause = { isDeleted: false };
 
+=======
+	let { search, _id, limit, page, sortField, sortValue, date } = query;
+	let sort = {};
+	let whereClause = { isDeleted: false };
+>>>>>>> b4e49509168f9c895df738b4529fd10a74479fc4
 	if (sortField) {
 		sort = {
 			[sortField]: sortValue === 'ASC' ? 1 : -1,
