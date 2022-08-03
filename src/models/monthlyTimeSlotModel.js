@@ -1,6 +1,6 @@
 import { Schema, model, Types } from 'mongoose';
 
-const languageModel = new Schema(
+const monthlyTimeSlot = new Schema(
 	{
 		timeSlotId: {
 			type: Types.ObjectId,
@@ -24,4 +24,4 @@ const languageModel = new Schema(
 	{ timestamps: true },
 );
 
-module.exports = new model('monthlyTimeSlot', languageModel);
+module.exports = new model('monthlyTimeSlot', monthlyTimeSlot);
