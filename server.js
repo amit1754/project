@@ -14,11 +14,12 @@ import { ENV } from './src/constants';
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const swaggerDocument1 = require('./swagger1.json');
 
 // import roleSeed from './src/dbSeed/Role';
 // import userSeed from './src/dbSeed/Users';
 // import PermissionsSeed from './src/dbSeed/Permissions';
-import './src/service/cronJob';
+import './src/service/cron/createDailytimeSlot';
 require('dotenv').config({ path: '.env' });
 let path = require('path');
 process.env.FILE =
@@ -74,6 +75,7 @@ const NETWORK_BASE_API_URL = `http://${ip.address()}:${PORT}/api/v1/`;
 
 server.use('/api/v1', routes);
 server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+server.use('/api-docs1', swaggerUi.serve, swaggerUi.setup(swaggerDocument1));
 server.use('/**', (_req, res) => {
 	res.status(404).json({
 		success: false,
