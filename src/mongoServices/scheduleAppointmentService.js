@@ -10,7 +10,9 @@ const findAllQuery = async (query) => {
 		date,
 		timeSlotId,
 		drId,
+		appointmentId,
 	} = query;
+	console.log('query', query);
 	let sort = {};
 	let whereClause = { isDeleted: false };
 
@@ -41,6 +43,10 @@ const findAllQuery = async (query) => {
 	if (drId) {
 		whereClause = { ...whereClause, drId };
 	}
+	if (appointmentId) {
+		whereClause = { ...whereClause, appointmentId };
+	}
+	console.log('whereClause', whereClause);
 	const data = await scheduleAppointmentModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
@@ -62,8 +68,13 @@ const updateOneQuery = async (filter, update, projection) => {
 	);
 	return data;
 };
+const deleteOneQuery = async (appointmentId) => {
+	await scheduleAppointmentModel.findOneAndDelete(appointmentId);
+	return true;
+};
 
 export default {
 	findAllQuery,
 	updateOneQuery,
+	deleteOneQuery,
 };

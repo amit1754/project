@@ -1,5 +1,9 @@
 import { CONSTANTS } from '../constants';
-import { appointmentService, paymentService } from '../mongoServices';
+import {
+	appointmentService,
+	paymentService,
+	scheduleAppointmentService,
+} from '../mongoServices';
 import { paymentModel } from '../models';
 import { rozorPayment } from '../service';
 const {
@@ -67,5 +71,40 @@ const addPayment = async (req, res) => {
 		});
 	}
 };
+const failedPayment = async (req, res) => {
+	try {
+		const payload = req.body;
+		const { data: findPaymentData } = await paymentService.findAllQuery(
+			payload,
+		);
+		console.log('findPaymentData', findPaymentData.length);
 
-export default { addPayment };
+		if (findPaymentData.length === 0) {
+			const scheduleAppointmentData =
+				await scheduleAppointmentService.deleteOneQuery(payload);
+
+			if (scheduleAppointmentData) {
+				await appointmentService.deleteOneQuery(payload.appointmentId);
+			}
+			return res.status(SUCCESS).json({
+				success: true,
+				message: 'Failed payment deleted successfully',
+				data: [],
+			});
+		} else {
+			return res.status(SUCCESS).json({
+				success: true,
+				message: 'Payment already done',
+				data: [],
+			});
+		}
+	} catch (error) {
+		console.log('error', error);
+		res.status(FAILED).json({
+			status: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
+
+export default { addPayment, failedPayment };

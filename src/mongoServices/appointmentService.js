@@ -76,8 +76,12 @@ const updateOneQuery = async (filter, update, projection) => {
 	const data = await appointmentModel.findOneAndUpdate(filter, update, options);
 	return data;
 };
-
+const deleteOneQuery = async (appointmentId) => {
+	await appointmentModel.findOneAndDelete({ _id: appointmentId });
+	return true;
+};
 export default {
 	findAllQuery,
 	updateOneQuery,
+	deleteOneQuery,
 };

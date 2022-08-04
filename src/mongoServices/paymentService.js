@@ -1,6 +1,15 @@
 import { paymentModel } from '../models';
 const findAllQuery = async (query) => {
-	let { search, _id, limit, page, sortField, sortValue, paymentId } = query;
+	let {
+		search,
+		_id,
+		limit,
+		page,
+		sortField,
+		sortValue,
+		paymentId,
+		appointmentId,
+	} = query;
 	let sort = {};
 	let whereClause = { deletedAt: null };
 	if (sortField) {
@@ -24,7 +33,9 @@ const findAllQuery = async (query) => {
 	if (paymentId) {
 		whereClause = { ...whereClause, paymentId };
 	}
-	console.log('whereClause', whereClause);
+	if (appointmentId) {
+		whereClause = { ...whereClause, appointmentId };
+	}
 	const data = await paymentModel
 		.find(whereClause)
 		.skip(page > 0 ? +limit * (+page - 1) : 0)
