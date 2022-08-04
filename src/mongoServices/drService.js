@@ -1,17 +1,6 @@
 import { drModel } from '../models';
 const findAllQuery = async (query) => {
-	let {
-		search,
-		_id,
-		limit,
-		page,
-		sortField,
-		sortValue,
-		email,
-		timeSlot,
-		pagination,
-	} = query;
-	console.log('limit', query);
+	let { search, _id, limit, page, sortField, sortValue } = query;
 	let sort = {};
 	let whereClause = {};
 	if (sortField) {
