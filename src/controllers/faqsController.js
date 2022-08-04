@@ -9,6 +9,7 @@ const {
 const addFaq = async (req, res) => {
 	try {
 		const { body } = req;
+		console.log('body', body);
 		const payload = new faqsModel(body);
 		const data = await payload.save();
 		if (data) {
