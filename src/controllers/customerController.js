@@ -1,6 +1,6 @@
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import { CustomerService } from '../mongoServices';
+import { appointmentService, CustomerService } from '../mongoServices';
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, CUSTOMER_MESSAGE },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -160,10 +160,37 @@ const socialLogin = async (req, res) => {
 		});
 	}
 };
+const getCustomerAppointment = async (req, res) => {
+	try {
+		console.log('req.query', req.query);
+		const payload = {
+			...req.query,
+			populate: true,
+		};
+		const { data, totalCount } = await appointmentService.findAllQuery(payload);
+		if (data) {
+			return res.status(SUCCESS).send({
+				success: true,
+				msg: CUSTOMER_MESSAGE.GET_SUCCESS,
+				data,
+				totalCount,
+			});
+		} else {
+			throw new Error(CUSTOMER_MESSAGE.GET_FAILED);
+		}
+	} catch (error) {
+		errorLogger(error.message, req.originalUrl, req.ip);
+		return res.status(FAILED).json({
+			success: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
 
 export default {
 	ListCustomer,
 	updateCustomer,
 	deleteCustomer,
 	socialLogin,
+	getCustomerAppointment,
 };
