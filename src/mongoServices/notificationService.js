@@ -1,4 +1,4 @@
-import { drModel } from '../models';
+import { notificationModel } from '../models';
 const findAllQuery = async (query) => {
 	let {
 		search,
@@ -9,10 +9,14 @@ const findAllQuery = async (query) => {
 		sortValue,
 		pagination,
 		timeSlot,
+		drId,
+		patientId,
 		email,
+		populate,
 	} = query;
 	console.log('query', query);
-	let sort = {};
+	let sort = {},
+		data;
 	let whereClause = {};
 	if (sortField) {
 		sort = {
@@ -38,29 +42,32 @@ const findAllQuery = async (query) => {
 	if (timeSlot) {
 		whereClause = { ...whereClause, timeSlot };
 	}
-	if (pagination) {
-		const data = await drModel.find(whereClause).sort(sort);
-		return data;
+	if (drId) {
+		whereClause = { ...whereClause, drId };
+	}
+	if (patientId) {
+		whereClause = { ...whereClause, patientId };
+	}
+	if (populate) {
+		data = await notificationModel
+			.find(whereClause)
+			.populate('patientId')
+			.populate('drId')
+			.populate('timeSlotId')
+			.skip(page > 0 ? +limit * (+page - 1) : 0)
+			.limit(+limit || 20)
+			.sort(sort);
 	} else {
-		const data = await drModel
+		data = await notificationModel
 			.find(whereClause)
 			.skip(page > 0 ? +limit * (+page - 1) : 0)
 			.limit(+limit || 20)
 			.sort(sort);
-
-		const totalCount = await drModel.find(whereClause).countDocuments();
-		return { data, totalCount };
 	}
-};
-
-const updateOneQuery = async (filter, update, projection) => {
-	let options = { new: true, fields: { ...projection } };
-
-	const data = await drModel.findOneAndUpdate(filter, update, options);
-	return data;
+	const totalCount = await notificationModel.find(whereClause).countDocuments();
+	return { data, totalCount };
 };
 
 export default {
 	findAllQuery,
-	updateOneQuery,
 };

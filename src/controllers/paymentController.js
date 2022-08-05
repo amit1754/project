@@ -4,7 +4,7 @@ import {
 	paymentService,
 	scheduleAppointmentService,
 } from '../mongoServices';
-import { paymentModel } from '../models';
+import { notificationModel, paymentModel } from '../models';
 import { rozorPayment } from '../service';
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, FAQS },
@@ -49,6 +49,15 @@ const addPayment = async (req, res) => {
 						{},
 					);
 					if (updatePayload) {
+						const notificationPayload = {
+							drId: updatePayload.drId,
+							patientId: updatePayload.patientId,
+							timeSlotId: updatePayload.timeSlotId,
+						};
+						const notificationSavedData = new notificationModel(
+							notificationPayload,
+						);
+						await notificationSavedData.save();
 						return res.status(SUCCESS).json({
 							success: true,
 							message: 'Payment added successfully',

@@ -149,6 +149,16 @@ export default {
 			DELETE_SUCCESS: 'Notification Type delete successfully',
 			DELETE_FAILED: 'Notification Type deletion failed',
 		},
+		NOTIFICATION: {
+			CREATE_SUCCESS: 'Notification created successfully',
+			CREATE_FAILED: 'Notification creating failed',
+			UPDATE_SUCCESS: 'Notification update successfully',
+			UPDATE_FAILED: 'Notification updating failed',
+			GET_SUCCESS: 'Notification get successfully',
+			GET_FAILED: 'Notification is not available',
+			DELETE_SUCCESS: 'Notification delete successfully',
+			DELETE_FAILED: 'Notification deletion failed',
+		},
 		DEVICE: {
 			CREATE_SUCCESS: 'Device created successfully',
 			CREATE_FAILED: 'Device creating failed',
