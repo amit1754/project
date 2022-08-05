@@ -1,6 +1,7 @@
 import { settingModel } from '../models';
 const findAllQuery = async (query) => {
-	let { search, _id, limit, page, sortField, sortValue, type } = query;
+	let { search, _id, limit, page, sortField, sortValue, type, filedName } =
+		query;
 	let sort = {};
 	let whereClause = {};
 	if (sortField) {
@@ -23,6 +24,9 @@ const findAllQuery = async (query) => {
 	}
 	if (type) {
 		whereClause = { ...whereClause, type };
+	}
+	if (filedName) {
+		whereClause = { ...whereClause, filedName };
 	}
 	const data = await settingModel
 		.find(whereClause)
