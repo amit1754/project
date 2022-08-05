@@ -14,6 +14,7 @@ const findAllQuery = async (query) => {
 		patientId,
 		populate,
 	} = query;
+	console.log('query', query);
 
 	let sort = {},
 		data,

@@ -13,7 +13,13 @@ router.post('/verify-otp', validator.VerifyDrValidator, drController.verifyOtp);
 router.post('/update', drController.updateProfile);
 router.post('/delete/:id', drController.deleteDr);
 router.get('/dr/list', drController.listDr);
+
 router.get('/customer/list', customerController.ListCustomer);
+router.get(
+	'/getCustomerAppointment',
+	customerMiddleware,
+	customerController.getCustomerAppointment,
+);
 router.delete('/customer/delete/:id', authMiddleware, drController.deleteDr);
 router.post('/social/login', customerController.socialLogin);
 router.get(
