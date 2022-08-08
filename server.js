@@ -18,7 +18,11 @@ const swaggerDocument = require('./swagger.json');
 // import roleSeed from './src/dbSeed/Role';
 // import userSeed from './src/dbSeed/Users';
 // import PermissionsSeed from './src/dbSeed/Permissions';
+
+// cron Job
 import './src/service/cron/createDailyTimeSlot';
+import './src/service/cron/removeDailyTimeSlot';
+
 require('dotenv').config({ path: '.env' });
 let path = require('path');
 process.env.FILE =
@@ -40,7 +44,7 @@ const server = express();
 // })();
 
 const HOST = process.env.HOST || 'localhost';
-const FILE_PATH = process.env.FILE_PATH || 'uploads';
+const FILE_PATH = process.env.FILE_PATH || 'public';
 
 /** Middleware */
 
@@ -62,7 +66,6 @@ server.use(morgan('dev'));
 /** Compress Requests */
 server.use(compression());
 /** File Upload Static */
-console.log('FILE_PATH', express.static(FILE_PATH));
 server.use(
 	`/image`,
 	express.static(FILE_PATH),
