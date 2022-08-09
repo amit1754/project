@@ -16,3 +16,4 @@ export { default as monthlyTimeService } from './monthlyTimeService';
 
 export { default as paymentService } from './paymentService';
 export { default as notificationService } from './notificationService';
+export { default as feedbackService } from './feedbackService';

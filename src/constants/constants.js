@@ -238,5 +238,15 @@ export default {
 			DELETE_SUCCESS: 'Appointment delete successfully',
 			DELETE_FAILED: 'Appointment deletion failed',
 		},
+		FEEDBACK: {
+			CREATE_SUCCESS: 'Feedback created successfully',
+			CREATE_FAILED: 'Feedback creating failed',
+			UPDATE_SUCCESS: 'Feedback update successfully',
+			UPDATE_FAILED: 'Feedback updating failed',
+			GET_SUCCESS: 'Feedback get successfully',
+			GET_FAILED: 'Feedback is not available',
+			DELETE_SUCCESS: 'Feedback delete successfully',
+			DELETE_FAILED: 'Feedback deletion failed',
+		},
 	},
 };
