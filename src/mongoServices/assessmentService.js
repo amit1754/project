@@ -1,4 +1,4 @@
-import { appointmentModel } from '../models';
+import { assessmentModel } from '../models';
 
 const findAllQuery = async (query) => {
 	let {
@@ -10,12 +10,10 @@ const findAllQuery = async (query) => {
 		sortValue,
 		scheduleAppointmentID,
 		date,
-		timeSlotId,
+
 		patientId,
 		populate,
 	} = query;
-	console.log('query', query);
-
 	let sort = {},
 		data,
 		whereClause = { deletedAt: null };
@@ -41,9 +39,6 @@ const findAllQuery = async (query) => {
 	if (date) {
 		whereClause = { ...whereClause, date };
 	}
-	if (timeSlotId) {
-		whereClause = { ...whereClause, timeSlotId };
-	}
 
 	if (patientId) {
 		whereClause = { ...whereClause, patientId };
@@ -53,7 +48,7 @@ const findAllQuery = async (query) => {
 	}
 
 	if (populate) {
-		data = await appointmentModel
+		data = await assessmentModel
 			.find(whereClause)
 			.skip(page > 0 ? +limit * (+page - 1) : 0)
 			.limit(+limit || 20)
@@ -62,30 +57,18 @@ const findAllQuery = async (query) => {
 			.populate('drId')
 			.populate('timeSlotId');
 	} else {
-		data = await appointmentModel
+		data = await assessmentModel
 			.find(whereClause)
 			.skip(page > 0 ? +limit * (+page - 1) : 0)
 			.limit(+limit || 20)
 			.sort(sort);
 	}
 
-	const totalCount = await appointmentModel.find(whereClause).countDocuments();
+	const totalCount = await assessmentModel.find(whereClause).countDocuments();
 
 	return { data, totalCount };
 };
 
-const updateOneQuery = async (filter, update, projection) => {
-	let options = { new: true, fields: { ...projection } };
-
-	const data = await appointmentModel.findOneAndUpdate(filter, update, options);
-	return data;
-};
-const deleteOneQuery = async (appointmentId) => {
-	await appointmentModel.findOneAndDelete({ _id: appointmentId });
-	return true;
-};
 export default {
 	findAllQuery,
-	updateOneQuery,
-	deleteOneQuery,
 };

@@ -14,5 +14,5 @@ export { default as appointmentService } from './appointmentService';
 export { default as scheduleAppointmentService } from './scheduleAppointmentService';
 export { default as monthlyTimeService } from './monthlyTimeService';
 export { default as paymentService } from './paymentService';
+export { default as sliderService } from './imageFileService';
 export { default as notificationService } from './notificationService';
-export { default as userSubscriptionService } from './userSubscriptionService';

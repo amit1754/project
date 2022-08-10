@@ -253,5 +253,35 @@ export default {
 			DELETE_FAILED: 'Payment deletion failed',
 			PAYMENTNOTFOUND: 'Payment not found',
 		},
+
+		FEEDBACK: {
+			CREATE_SUCCESS: 'Feedback created successfully',
+			CREATE_FAILED: 'Feedback creating failed',
+			UPDATE_SUCCESS: 'Feedback update successfully',
+			UPDATE_FAILED: 'Feedback updating failed',
+			GET_SUCCESS: 'Feedback get successfully',
+			GET_FAILED: 'Feedback is not available',
+			DELETE_SUCCESS: 'Feedback delete successfully',
+			DELETE_FAILED: 'Feedback deletion failed',
+		},
+
+		ASSESSMENT: {
+			CREATE_SUCCESS: 'Assessment created successfully',
+			CREATE_FAILED: 'Assessment creating failed',
+			UPDATE_SUCCESS: 'Assessment update successfully',
+			UPDATE_FAILED: 'Assessment updating failed',
+			GET_SUCCESS: 'Assessment get successfully',
+			GET_FAILED: 'Assessment is not available',
+			DELETE_SUCCESS: 'Assessment delete successfully',
+			DELETE_FAILED: 'Assessment deletion failed',
+		},
+	},
+	IMAGE_DATA: {
+		CREATE_SUCCESS: 'Image data created successfully',
+		CREATE_FAILED: 'Image data create failed',
+		UPDATE_SUCCESS: 'Image data update successfully',
+		UPDATE_FAILED: 'Image data update failed',
+		GET_SUCCESS: 'Image data get successfully',
+		GET_FAILED: 'Image data get failed',
 	},
 };

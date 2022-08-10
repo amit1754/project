@@ -5,7 +5,7 @@ router.use('/permissions', require('./adminManagement/permissionsRoutes'));
 router.use('/role', require('./adminManagement/roleRoutes'));
 router.use('/admin-user', require('./adminManagement/adminUserRoutes'));
 router.use('/user', require('./userRoutes'));
-router.use('/speciality', require('./specialityRoutes'));
+router.use('/ ', require('./specialityRoutes'));
 router.use('/common', require('./commonRoutes'));
 router.use('/notificationType', require('./notificationTypeRoutes'));
 router.use('/device', require('./deviceRoutes'));
@@ -21,7 +21,7 @@ router.use('/payment', require('./paymentRoute'));
 router.use('/image', require('./uploadRoutes'));
 router.use('/scheduleAppointment', require('./scheduleAppointment'));
 router.use('/monthlyTimeSlot', require('./monthlyTimeSlotRoute'));
+router.use('/imageSlider', require('./imageFileRoutes'));
 router.use('/notification', require('./notificationRoutes'));
-router.use('/subscription', require('./subscriptionRoute'));
 
 module.exports = router;
