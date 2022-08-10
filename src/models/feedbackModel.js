@@ -2,6 +2,12 @@ import { Schema, model, Types } from 'mongoose';
 
 const feedbackModel = new Schema(
 	{
+
+		patientId: {
+			type: Schema.Types.ObjectId,
+			ref: 'Patient',
+		},
+
 		patientName: {
 			type: String,
 			trim: true,

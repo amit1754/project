@@ -1,16 +1,11 @@
 import express from 'express';
 import { feedbackController } from '../controllers';
-import { authMiddleware } from '../middleware';
+import { customerMiddleware } from '../middleware';
 
 const router = express.Router();
 
-router.post('/create', feedbackController.setFeedback);
+router.post('/create', customerMiddleware, feedbackController.setFeedback);
 router.get('/getFeedback', feedbackController.getFeedback);
 router.put('/updateFeedback/:id', feedbackController.updateFeedback);
-router.put(
-	'/deleteFeedback/:id',
-	authMiddleware,
-	feedbackController.deleteFeedback,
-);
-
+router.put('/deleteFeedback/:id', feedbackController.deleteFeedback);
 module.exports = router;

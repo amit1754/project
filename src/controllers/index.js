@@ -18,4 +18,5 @@ export { default as paymentController } from './paymentController';
 export { default as scheduleAppointmentController } from './scheduleAppointmentController';
 export { default as monthlyTimeSlotController } from './monthlyTimeSlotController';
 export { default as notificationController } from './notificationController';
+export { default as feedbackController } from './feedbackController';
 export { default as subscriptionController } from './subscriptionController';

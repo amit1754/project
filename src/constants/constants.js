@@ -238,6 +238,7 @@ export default {
 			DELETE_SUCCESS: 'Appointment delete successfully',
 			DELETE_FAILED: 'Appointment deletion failed',
 		},
+
 		SUBSCRIPTION: {
 			CREATE_SUCCESS: 'Subscription created successfully',
 			CREATE_FAILED: 'Subscription creation failed',
@@ -265,6 +266,7 @@ export default {
 			DELETE_FAILED: 'Feedback deletion failed',
 		},
 
+
 		ASSESSMENT: {
 			CREATE_SUCCESS: 'Assessment created successfully',
 			CREATE_FAILED: 'Assessment creating failed',
@@ -284,12 +286,5 @@ export default {
 		GET_SUCCESS: 'Image data get successfully',
 		GET_FAILED: 'Image data get failed',
 	},
-	IMAGE_DATA: {
-		CREATE_SUCCESS: 'Image data created successfully',
-		CREATE_FAILED: 'Image data create failed',
-		UPDATE_SUCCESS: 'Image data update successfully',
-		UPDATE_FAILED: 'Image data update failed',
-		GET_SUCCESS: 'Image data get successfully',
-		GET_FAILED: 'Image data get failed',
-	},
+
 };

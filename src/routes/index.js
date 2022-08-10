@@ -23,5 +23,6 @@ router.use('/scheduleAppointment', require('./scheduleAppointment'));
 router.use('/monthlyTimeSlot', require('./monthlyTimeSlotRoute'));
 router.use('/imageSlider', require('./imageFileRoutes'));
 router.use('/notification', require('./notificationRoutes'));
+router.use('/feedback', require('./feedbackRoute'));
 
 module.exports = router;

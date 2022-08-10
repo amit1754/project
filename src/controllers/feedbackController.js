@@ -8,14 +8,24 @@ const {
 } = CONSTANTS;
 const setFeedback = async (req, res) => {
 	try {
+
+		const currentUserId = req.currentUser._id;
+		const { body } = req;
+		let payload = {
+			...body,
+			patientId: currentUserId,
+		};
+		const feedback = new feedbackModel(payload);
+
 		const { body } = req;
 		const feedback = new feedbackModel(body);
+
 		const data = await feedback.save();
 		if (data) {
 			res.status(SUCCESS).json({
 				status: true,
 				msg: FEEDBACK.CREATE_SUCCESS,
-				data,
+        data:[]
 			});
 		} else {
 			throw new Error(FEEDBACK.CREATE_FAILED);
