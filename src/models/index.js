@@ -20,3 +20,4 @@ export { default as paymentModel } from './paymentModel';
 export { default as sliderModel } from './imageFileModel';
 export { default as notificationModel } from './notificationModel';
 export { default as feedbackModel } from './feedbackModel';
+export { default as assessmentModel } from './assessmentModel';

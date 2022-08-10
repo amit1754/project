@@ -2,27 +2,20 @@ import { feedbackModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
 import { feedbackService } from '../mongoServices';
-
 const {
 	RESPONSE_MESSAGE: { FEEDBACK, FAILED_RESPONSE },
 	STATUS_CODE: { SUCCESS, FAILED },
 } = CONSTANTS;
 const setFeedback = async (req, res) => {
 	try {
-		const currentUserId = req.currentUser._id;
 		const { body } = req;
-		let payload = {
-			...body,
-			patientId: currentUserId,
-		};
-		const feedback = new feedbackModel(payload);
+		const feedback = new feedbackModel(body);
 		const data = await feedback.save();
 		if (data) {
 			res.status(SUCCESS).json({
 				status: true,
 				msg: FEEDBACK.CREATE_SUCCESS,
-
-				data: data,
+				data,
 			});
 		} else {
 			throw new Error(FEEDBACK.CREATE_FAILED);

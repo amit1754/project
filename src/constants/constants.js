@@ -238,6 +238,7 @@ export default {
 			DELETE_SUCCESS: 'Appointment delete successfully',
 			DELETE_FAILED: 'Appointment deletion failed',
 		},
+
 		FEEDBACK: {
 			CREATE_SUCCESS: 'Feedback created successfully',
 			CREATE_FAILED: 'Feedback creating failed',
@@ -247,6 +248,17 @@ export default {
 			GET_FAILED: 'Feedback is not available',
 			DELETE_SUCCESS: 'Feedback delete successfully',
 			DELETE_FAILED: 'Feedback deletion failed',
+		},
+
+		ASSESSMENT: {
+			CREATE_SUCCESS: 'Assessment created successfully',
+			CREATE_FAILED: 'Assessment creating failed',
+			UPDATE_SUCCESS: 'Assessment update successfully',
+			UPDATE_FAILED: 'Assessment updating failed',
+			GET_SUCCESS: 'Assessment get successfully',
+			GET_FAILED: 'Assessment is not available',
+			DELETE_SUCCESS: 'Assessment delete successfully',
+			DELETE_FAILED: 'Assessment deletion failed',
 		},
 	},
 	IMAGE_DATA: {

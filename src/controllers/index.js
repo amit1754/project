@@ -19,3 +19,4 @@ export { default as scheduleAppointmentController } from './scheduleAppointmentC
 export { default as monthlyTimeSlotController } from './monthlyTimeSlotController';
 export { default as notificationController } from './notificationController';
 export { default as feedbackController } from './feedbackController';
+export { default as assessmentController } from './assessmentController';
