@@ -22,4 +22,4 @@ const sliderModel = new Schema(
 	{ timestamps: true },
 );
 
-module.exports = new model('sliderModel', sliderModel);
+module.exports = new model('slider', sliderModel);

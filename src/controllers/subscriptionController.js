@@ -7,7 +7,6 @@ import {
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
 import moment from 'moment';
-import { raw } from 'express';
 
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, SUBSCRIPTION, PAYMENT },
@@ -16,7 +15,6 @@ const {
 const createSubscription = async (req, res) => {
 	try {
 		const { currentUser } = req;
-		console.log('currentUser', currentUser);
 
 		if (!currentUser) {
 			throw new Error('User is not available');

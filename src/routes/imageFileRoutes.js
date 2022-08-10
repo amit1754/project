@@ -4,8 +4,16 @@ import { authMiddleware } from '../middleware';
 
 const router = express.Router();
 
-router.post('/createSlider', imageFileController.createSliderImages);
+router.post(
+	'/createSlider',
+	authMiddleware,
+	imageFileController.createSliderImages,
+);
 router.get('/getSlider', imageFileController.getSliderImages);
-router.put('/updateSlider', imageFileController.updateSliderImages);
+router.put(
+	'/updateSlider',
+	authMiddleware,
+	imageFileController.updateSliderImages,
+);
 
 module.exports = router;

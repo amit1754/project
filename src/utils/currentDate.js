@@ -1,6 +1,6 @@
 module.exports = {
 	getDateTime: function (dt) {
-		var res = '';
+		let res = '';
 		res += module.exports.formatDigits(dt.getFullYear());
 		res += '-';
 		res += module.exports.formatDigits(dt.getMonth() + 1);
@@ -16,7 +16,7 @@ module.exports = {
 	},
 
 	getDate: function (dt) {
-		var res = '';
+		let res = '';
 		res += module.exports.formatDigits(dt.getFullYear());
 		res += '-';
 		res += module.exports.formatDigits(dt.getMonth() + 1);

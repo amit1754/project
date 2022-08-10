@@ -8,7 +8,6 @@ const {
 } = CONSTANTS;
 const setFeedback = async (req, res) => {
 	try {
-
 		const currentUserId = req.currentUser._id;
 		const { body } = req;
 		let payload = {
@@ -17,15 +16,12 @@ const setFeedback = async (req, res) => {
 		};
 		const feedback = new feedbackModel(payload);
 
-		const { body } = req;
-		const feedback = new feedbackModel(body);
-
 		const data = await feedback.save();
 		if (data) {
 			res.status(SUCCESS).json({
 				status: true,
 				msg: FEEDBACK.CREATE_SUCCESS,
-        data:[]
+				data: [],
 			});
 		} else {
 			throw new Error(FEEDBACK.CREATE_FAILED);
@@ -101,12 +97,12 @@ const deleteFeedback = async (req, res) => {
 			isEnabled: false,
 		};
 		const projection = {};
-		const deleteFeedback = await feedbackService.updateOneQuery(
+		const deleteData = await feedbackService.updateOneQuery(
 			filter,
 			update,
 			projection,
 		);
-		if (deleteFeedback) {
+		if (deleteData) {
 			res.status(SUCCESS).json({
 				status: true,
 				msg: FEEDBACK.DELETE_SUCCESS,

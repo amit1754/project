@@ -33,11 +33,12 @@ const getAssessment = async (req, res) => {
 			...req.query,
 			populate: true,
 		};
-		const getAssessment = await assessmentService.findAllQuery(payload);
+		const { data, totalCount } = await assessmentService.findAllQuery(payload);
 		return res.status(SUCCESS).send({
 			success: true,
 			msg: ASSESSMENT.GET_SUCCESS,
-			data: getAssessment,
+			data,
+			totalCount,
 		});
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
