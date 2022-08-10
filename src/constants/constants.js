@@ -284,4 +284,12 @@ export default {
 		GET_SUCCESS: 'Image data get successfully',
 		GET_FAILED: 'Image data get failed',
 	},
+	IMAGE_DATA: {
+		CREATE_SUCCESS: 'Image data created successfully',
+		CREATE_FAILED: 'Image data create failed',
+		UPDATE_SUCCESS: 'Image data update successfully',
+		UPDATE_FAILED: 'Image data update failed',
+		GET_SUCCESS: 'Image data get successfully',
+		GET_FAILED: 'Image data get failed',
+	},
 };
