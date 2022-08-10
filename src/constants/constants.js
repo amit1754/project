@@ -238,5 +238,20 @@ export default {
 			DELETE_SUCCESS: 'Appointment delete successfully',
 			DELETE_FAILED: 'Appointment deletion failed',
 		},
+		SUBSCRIPTION: {
+			CREATE_SUCCESS: 'Subscription created successfully',
+			CREATE_FAILED: 'Subscription creation failed',
+		},
+		PAYMENT: {
+			CREATE_SUCCESS: 'Payment created successfully',
+			CREATE_FAILED: 'Payment creation failed',
+			UPDATE_SUCCESS: 'Payment update successfully',
+			UPDATE_FAILED: 'Payment update failed',
+			GET_SUCCESS: 'Payment get successfully',
+			GET_FAILED: 'Payment get failed',
+			DELETE_SUCCESS: 'Payment delete successfully',
+			DELETE_FAILED: 'Payment deletion failed',
+			PAYMENTNOTFOUND: 'Payment not found',
+		},
 	},
 };

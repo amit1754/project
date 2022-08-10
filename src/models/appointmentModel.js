@@ -45,6 +45,11 @@ const appointment = new Schema(
 			ref: 'scheduleAppointment',
 			default: null,
 		},
+		type: {
+			type: String,
+			enum: ['NEWCASE', 'TREATMENTCASE', 'REASSESSMENTCASE'],
+			default: 'NEWCASE',
+		},
 		deletedAt: {
 			type: Date,
 			default: null,

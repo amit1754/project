@@ -12,6 +12,7 @@ const {
 const createAppointment = async (req, res) => {
 	try {
 		const { currentUser } = req;
+
 		const { date, timeSlotId } = req.body;
 		let payload = {
 			date: {
@@ -21,7 +22,12 @@ const createAppointment = async (req, res) => {
 			timeSlotId,
 			patientId: currentUser._id,
 		};
-
+		if (currentUser.subscribedPackages != null) {
+			payload = {
+				...payload,
+				type: 'TREATMENTCASE',
+			};
+		}
 		const appointment = await appointmentService.findAllQuery(payload);
 		if (appointment?.data?.length === 0) {
 			let updateDate = new Date(date).setHours(8);

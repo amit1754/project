@@ -19,7 +19,6 @@ const data = cron.schedule('0 2 * * *', async () => {
 		};
 		let oldTimeSlot = await monthlyTimeSlotModel.find(filter);
 		let ids = oldTimeSlot.map((x) => x._id);
-		console.log('ids', ids);
 		await monthlyTimeSlotModel.deleteMany({ _id: { $in: ids } });
 		return true;
 	} catch (err) {

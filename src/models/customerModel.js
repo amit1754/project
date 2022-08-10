@@ -61,6 +61,11 @@ const drModel = new Schema(
 
 			default: null,
 		},
+		subscribedPackages: {
+			type: Types.ObjectId,
+			ref: 'userSubscriptions',
+			default: null,
+		},
 
 		isEnabled: {
 			type: Boolean,

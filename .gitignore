@@ -58,3 +58,4 @@ public/
 .vscode
 .vscode/settings.json
 server.js
+src/service/cron/removeDailyTimeSlot.js

@@ -23,10 +23,12 @@ const JwtCustomerAuthorization = async (req, res, next) => {
 		if (currentDate > verifyToken?.exp) {
 			throw new Error(AUTH_MIDDLEWARE.SESSION_EXPIRY);
 		}
-		const { data } = await CustomerService.findAllQuery({
+		const { data, totalCount } = await CustomerService.findAllQuery({
 			_id: verifyToken.sub,
 		});
-		if (data) {
+
+		if (data && totalCount != 0) {
+			req.query._id = data[0]._id;
 			req.currentUser = data[0];
 			next();
 		} else {

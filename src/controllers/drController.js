@@ -8,7 +8,7 @@ import {
 	hashPassword,
 } from '../utils';
 import { drService, CustomerService } from '../mongoServices';
-import jwt_decode from 'jwt-decode';
+
 const {
 	RESPONSE_MESSAGE: { DR_USER, FAILED_RESPONSE, CUSTOMER_MESSAGE },
 	STATUS_CODE: { SUCCESS, FAILED },

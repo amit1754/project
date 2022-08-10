@@ -32,6 +32,7 @@ const JwtAuthorization = async (req, res, next) => {
 				data[0].role.name === 'DEVELOPER' ||
 				data[0].role.name === 'SUPER_USER'
 			) {
+				data[0].role = 'ADMIN';
 				req.currentUser = data[0];
 				next();
 			} else {
@@ -49,6 +50,7 @@ const JwtAuthorization = async (req, res, next) => {
 				if (checkPermissions === -1) {
 					throw new Error(AUTH_MIDDLEWARE.UNAUTHORIZED);
 				} else {
+					data[0].role = 'ADMIN';
 					req.currentUser = data[0];
 					next();
 				}
