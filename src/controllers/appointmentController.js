@@ -1,7 +1,7 @@
 import { appointmentModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import { appointmentService } from '../mongoServices';
+import { appointmentService, userSubscriptionService } from '../mongoServices';
 import moment from 'moment';
 import { scheduleAppointmentController } from './';
 
@@ -12,7 +12,11 @@ const {
 const createAppointment = async (req, res) => {
 	try {
 		const { currentUser } = req;
+		let { totalCount } = await userSubscriptionService.findAllQuery({
+			patientId: currentUser._id,
+		});
 
+		console.log('totalCount', totalCount);
 		const { date, timeSlotId } = req.body;
 		let payload = {
 			date: {
@@ -22,12 +26,7 @@ const createAppointment = async (req, res) => {
 			timeSlotId,
 			patientId: currentUser._id,
 		};
-		if (currentUser.subscribedPackages != null) {
-			payload = {
-				...payload,
-				type: 'TREATMENTCASE',
-			};
-		}
+
 		const appointment = await appointmentService.findAllQuery(payload);
 		if (appointment?.data?.length === 0) {
 			let updateDate = new Date(date).setHours(8);
@@ -35,6 +34,7 @@ const createAppointment = async (req, res) => {
 				date: updateDate,
 				patientId: currentUser._id,
 				timeSlotId,
+				type: totalCount != 0 ? 'TREATMENTCASE' : 'NEWCASE',
 			};
 			const payloadSave = new appointmentModel(payloadData);
 			const savePayload = await payloadSave.save();

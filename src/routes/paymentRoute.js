@@ -1,11 +1,11 @@
 import express from 'express';
 import { paymentController } from '../controllers';
-// import { authMiddleware } from '../middleware';
+import { customerMiddleware } from '../middleware';
 
 const router = express.Router();
 
 // router.get('/get', authMiddleware, packageController.getPackage);
-router.post('/create', paymentController.addPayment);
+router.post('/create', customerMiddleware, paymentController.addPayment);
 router.post('/failedPayment', paymentController.failedPayment);
 // router.put('/update/:id', authMiddleware, packageController.updatePackage);
 // router.delete('/delete/:id', authMiddleware, packageController.deletePackage);

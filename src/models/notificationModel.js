@@ -15,6 +15,10 @@ const notificationModel = new Schema(
 			type: Types.ObjectId,
 			ref: 'timeSlotALL',
 		},
+		notificationType: {
+			type: Types.ObjectId,
+			ref: 'notificationType_details',
+		},
 		deletedAt: {
 			type: Date,
 			default: null,

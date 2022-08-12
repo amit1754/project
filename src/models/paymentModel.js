@@ -21,6 +21,10 @@ const paymentModel = new Schema(
 			ref: 'subscriptionpackages',
 			default: null,
 		},
+		customerId: {
+			type: Types.ObjectId,
+			ref: 'customer_details',
+		},
 		baseAmount: {
 			type: Number,
 		},

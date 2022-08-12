@@ -6,6 +6,7 @@ import {
 } from '../mongoServices';
 import { notificationModel, paymentModel } from '../models';
 import { rozorPayment } from '../service';
+import customerService from '../mongoServices/customerService';
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, FAQS },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -36,36 +37,41 @@ const addPayment = async (req, res) => {
 						? paymentDetails?.discountAmount
 						: 0,
 					otherDetails: paymentDetails,
+					customerId: req.currentUser._id,
 				};
 				let savePayload = new paymentModel(paymentPayload).save();
 				if (savePayload) {
-					let filter = { _id: body.appointmentId };
-					let update = {
-						paymentID: savePayload._id,
-					};
-					let updatePayload = await appointmentService.updateOneQuery(
-						filter,
-						update,
-						{},
-					);
-					if (updatePayload) {
-						const notificationPayload = {
-							drId: updatePayload.drId,
-							patientId: updatePayload.patientId,
-							timeSlotId: updatePayload.timeSlotId,
+					if (body.type === 'APPOINTMENT') {
+						let filterUpdate = { _id: body.appointmentId };
+						let update = {
+							paymentID: savePayload._id,
 						};
-						const notificationSavedData = new notificationModel(
-							notificationPayload,
-						);
-						await notificationSavedData.save();
-						return res.status(SUCCESS).json({
-							success: true,
-							message: 'Payment added successfully',
-							data: [],
-						});
-					} else {
-						throw new Error('Payment not updated');
+
+						await appointmentService.updateOneQuery(filterUpdate, update, {});
 					}
+
+					if (body.type === 'PACKAGE') {
+						let filterUpdate = { _id: body.packageId };
+						let update = {
+							paymentID: savePayload._id,
+						};
+
+						await subscriptionPackageService.updateOneQuery(
+							filterUpdate,
+							update,
+							{},
+						);
+						let filterUser = { _id: req.currentUser._id };
+						let updateUser = {
+							subscribedPackages: savePayload._id,
+						};
+						await customerService.updateOneQuery(filterUser, updateUser);
+					}
+					res.status(SUCCESS).json({
+						success: true,
+						message: 'Payment added successfully',
+						data: [],
+					});
 				} else {
 					throw new Error('Payment not added');
 				}
