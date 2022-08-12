@@ -1,13 +1,13 @@
 {
 	"openapi": "3.0.0",
 	"info": {
-		"title": "CurificBackend Copy",
+		"title": "CurificBackend Copy 2",
 		"contact": {},
 		"version": "1.0"
 	},
 	"servers": [
 		{
-			"url": "http://localhost:5001/api/v1",
+			"url": "http://3.82.115.123:5001/api/v1",
 			"variables": {}
 		}
 	],
@@ -77,9 +77,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -122,9 +120,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -206,9 +202,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -310,9 +304,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -426,9 +418,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -455,9 +445,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -500,9 +488,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -620,7 +606,7 @@
 		},
 		"/user/create": {
 			"post": {
-				"tags": ["Dr & customer"],
+				"tags": ["User"],
 				"summary": "Create Customer",
 				"operationId": "CreateCustomer",
 				"parameters": [],
@@ -669,7 +655,7 @@
 		},
 		"/user/verify-otp": {
 			"post": {
-				"tags": ["Dr & customer"],
+				"tags": ["User"],
 				"summary": "Verify Customer",
 				"operationId": "VerifyCustomer",
 				"parameters": [],
@@ -729,7 +715,7 @@
 		},
 		"/user/customer/list": {
 			"get": {
-				"tags": ["customer"],
+				"tags": ["User"],
 				"summary": "Get user List",
 				"operationId": "GetuserList",
 				"parameters": [
@@ -1011,7 +997,7 @@
 		},
 		"/user/customer/delete/{id}": {
 			"delete": {
-				"tags": ["customer"],
+				"tags": ["Dr &customer"],
 				"summary": "Delete Customer",
 				"operationId": "DeleteCustomer",
 				"parameters": [
@@ -1019,9 +1005,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -1256,9 +1240,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -1421,9 +1403,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -1462,9 +1442,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -1533,9 +1511,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -1572,9 +1548,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -1744,9 +1718,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -1802,9 +1774,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -2025,9 +1995,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -2079,9 +2047,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -2171,9 +2137,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -2227,9 +2191,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -2387,9 +2349,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -2447,9 +2407,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -2544,29 +2502,20 @@
 				"operationId": "AddHealthArticle",
 				"parameters": [],
 				"requestBody": {
+					"description": "",
 					"content": {
-						"application/x-www-form-urlencoded": {
-							"encoding": {},
+						"application/json": {
 							"schema": {
-								"required": ["profileImage", "title", "description"],
-								"type": "object",
-								"properties": {
-									"profileImage": {
-										"type": "string"
-									},
-									"title": {
-										"type": "string",
-										"example": "Article 1"
-									},
-									"description": {
-										"type": "string",
-										"example": "Articla edescdsf"
-									}
-								}
+								"$ref": "#/components/schemas/AddHealthArticleRequest"
+							},
+							"example": {
+								"title": "Article 1",
+								"description": "Articla edescdsf",
+								"profileImage": "/image/a.jpg"
 							}
 						}
 					},
-					"required": false
+					"required": true
 				},
 				"responses": {
 					"200": {
@@ -2680,35 +2629,24 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
+					"description": "",
 					"content": {
-						"application/x-www-form-urlencoded": {
-							"encoding": {},
+						"application/json": {
 							"schema": {
-								"required": ["title", "description", "profileImage"],
-								"type": "object",
-								"properties": {
-									"title": {
-										"type": "string",
-										"example": "Article 1"
-									},
-									"description": {
-										"type": "string",
-										"example": "Articla edescdsf"
-									},
-									"profileImage": {
-										"type": "string"
-									}
-								}
+								"$ref": "#/components/schemas/UpdateHealthArticleRequest"
+							},
+							"example": {
+								"title": "Article 1",
+								"description": "Articla edescdsf",
+								"profileImage": "/image/a.jpg"
 							}
 						}
 					},
-					"required": false
+					"required": true
 				},
 				"responses": {
 					"default": {
@@ -2741,7 +2679,14 @@
 				"tags": ["Health Article"],
 				"summary": "Delete Health Article",
 				"operationId": "DeleteHealthArticle",
-				"parameters": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
 				"responses": {
 					"default": {
 						"description": "",
@@ -2833,7 +2778,20 @@
 				"tags": ["Settings"],
 				"summary": "Get All settings",
 				"operationId": "GetAllsettings",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "filedName",
+						"in": "query",
+						"description": "",
+						"required": true,
+						"style": "form",
+						"explode": true,
+						"schema": {
+							"type": "string",
+							"example": "Appointment Charge"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -3018,7 +2976,12 @@
 						}
 					}
 				},
-				"deprecated": false
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
 			}
 		},
 		"/settings/update/{id}": {
@@ -3031,9 +2994,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -3087,9 +3048,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -3218,7 +3177,7 @@
 				"deprecated": false
 			}
 		},
-		"/faq/update/{id}}": {
+		"/faq/update/{id}": {
 			"put": {
 				"tags": ["faqs"],
 				"summary": "update Faqs",
@@ -3228,9 +3187,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"requestBody": {
@@ -3279,9 +3236,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"schema": {
-							"type": "string"
-						}
+						"schema": { "type": "string" }
 					}
 				],
 				"responses": {
@@ -3324,14 +3279,35 @@
 								"$ref": "#/components/schemas/addPaymentRequest"
 							},
 							"example": {
-								"appointmentId": "62ea69acaa0692b6c175f91d",
-								"paymentId": "pay_Jva8VkThS76MEa",
-								"type": "APPOINTMENT"
+								"packageId": "62ef6fe83fc55f1d330d2013",
+								"paymentId": "pay_K4cEFEY5Mv7pPb",
+								"type": "PACKAGE"
 							}
 						}
 					},
 					"required": true
 				},
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/payment/getPayment": {
+			"get": {
+				"tags": ["payment"],
+				"summary": "Get Payment",
+				"operationId": "GetPayment",
+				"parameters": [],
 				"responses": {
 					"200": {
 						"description": "",
@@ -3420,7 +3396,7 @@
 								"$ref": "#/components/schemas/GetTimeSlotBYTodayRequest"
 							},
 							"example": {
-								"date": "2022-08-04"
+								"date": "2022-08-12"
 							}
 						}
 					},
@@ -3532,7 +3508,459 @@
 						}
 					}
 				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/subscription/create": {
+			"post": {
+				"tags": ["User Subscription"],
+				"summary": "Add User Subscription",
+				"operationId": "AddUserSubscription",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AddUserSubscriptionRequest"
+							},
+							"example": {
+								"packageId": "62ef6fcc3fc55f1d330d2001",
+								"paymentId": "62f20d922ca70035ca1b0338",
+								"month": 12
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20017"
+								},
+								"example": {
+									"success": true,
+									"message": "Subscription created successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/subscription/user/get": {
+			"get": {
+				"tags": ["User Subscription"],
+				"summary": "Get User Subscription",
+				"operationId": "GetUserSubscription",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
 				"deprecated": false
+			}
+		},
+		"/subscription/get": {
+			"get": {
+				"tags": ["User Subscription"],
+				"summary": "Get Admin subscription list",
+				"operationId": "GetAdminsubscriptionlist",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/imageSlider/createSlider": {
+			"post": {
+				"tags": ["SliderImage"],
+				"summary": "Create Image Slider",
+				"operationId": "CreateImageSlider",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateImageSliderRequest"
+							},
+							"example": {
+								"sliderPath": "Home",
+								"image": [
+									"/images/profile/1660128808686.jpg",
+									"/images/profile/1660128808686.jpg",
+									"/images/profile/1660128808686.jpg"
+								]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/200."
+								},
+								"example": {
+									"success": true,
+									"msg": "Image data created successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/imageSlider/getSlider": {
+			"get": {
+				"tags": ["SliderImage"],
+				"summary": "Get Image Slider",
+				"operationId": "GetImageSlider",
+				"parameters": [],
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20047"
+								},
+								"example": {
+									"success": true,
+									"msg": "Image data get successfully",
+									"data": [
+										{
+											"image": [
+												"/images/profile/1660128808686.jpg",
+												"/images/profile/1660128808686.jpg",
+												"/images/profile/1660128808686.jpg"
+											],
+											"deletedAt": null,
+											"deletedBy": null,
+											"_id": "62f38e7e5b6ed8e26bd142d7",
+											"sliderPath": "Home",
+											"createdAt": "2022-08-10T10:54:54.034Z",
+											"updatedAt": "2022-08-10T10:54:54.034Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 1
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/imageSlider/updateSlider/{id}": {
+			"put": {
+				"tags": ["SliderImage"],
+				"summary": "Update Slider",
+				"operationId": "UpdateSlider",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateSliderRequest"
+							},
+							"example": {
+								"image": [
+									"/images/profile/1660128808686.jpg",
+									"/images/profile/1660128808686.jpg",
+									"/images/profile/1660128808686.jpg"
+								]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m200"
+								},
+								"example": {
+									"success": true,
+									"msg": "Image data update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/feedback/create": {
+			"post": {
+				"tags": ["feedback"],
+				"summary": "create feedback",
+				"operationId": "createfeedback",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/createfeedbackrequest"
+							},
+							"example": {
+								"patientName": "tushar",
+								"gender": "MALE",
+								"age": "below 20",
+								"contactNumber": 9876543210,
+								"email": "tushar@gmail.com",
+								"location": "ahmd",
+								"easyAppointment": "yes",
+								"rateExercise": "excellent",
+								"exerciseVideo": "yes",
+								"rateService": "excellent",
+								"comment": "This is test comment"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"default": {
+						"description": "",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20039"
+								},
+								"example": {
+									"status": true,
+									"msg": "Feedback created successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
+			}
+		},
+		"/feedback/getFeedback": {
+			"get": {
+				"tags": ["feedback"],
+				"summary": "Get Feedback",
+				"operationId": "GetFeedback",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20050"
+								},
+								"example": {
+									"status": true,
+									"msg": "Feedback get successfully",
+									"data": [
+										{
+											"gender": "MALE",
+											"email": "tushar@gmail.com",
+											"deletedAt": null,
+											"deletedBy": null,
+											"isEnabled": true,
+											"_id": "62f0f00d69b3a83ab44b0f58",
+											"patientName": "tushar",
+											"age": "below 20",
+											"contactNumber": 9876543210,
+											"location": "ahmd",
+											"easyAppointment": "yes",
+											"rateExercise": "excellent",
+											"exerciseVideo": "yes",
+											"rateService": "excellent",
+											"comment": "This is test comment",
+											"patientId": "62ef94a381cbda2d545341c0",
+											"createdAt": "2022-08-08T11:14:21.819Z",
+											"updatedAt": "2022-08-08T11:14:21.819Z",
+											"__v": 0
+										},
+										{
+											"gender": "MALE",
+											"email": "tushar@gmail.com",
+											"deletedAt": null,
+											"deletedBy": null,
+											"isEnabled": true,
+											"_id": "62f39b84f74dac0135a282e1",
+											"patientName": "tushar",
+											"age": "below 20",
+											"contactNumber": 9876543210,
+											"location": "ahmd",
+											"easyAppointment": "yes",
+											"rateExercise": "excellent",
+											"exerciseVideo": "yes",
+											"rateService": "excellent",
+											"comment": "This is test comment",
+											"patientId": "62f39b79f74dac0135a282dc",
+											"createdAt": "2022-08-10T11:50:28.892Z",
+											"updatedAt": "2022-08-10T11:50:28.892Z",
+											"__v": 0
+										}
+									],
+									"totalCount": 2
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/feedback/updateFeedback/{id}": {
+			"put": {
+				"tags": ["feedback"],
+				"summary": "Update Feedback",
+				"operationId": "UpdateFeedback",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateFeedbackRequest"
+							},
+							"example": {
+								"patientName": "tushar123",
+								"gender": "MALE",
+								"age": "below 20",
+								"contactNumber": 9876543210,
+								"email": "tushar@gmail.com",
+								"location": "ahmd",
+								"easyAppointment": "yes",
+								"rateExercise": "excellent",
+								"exerciseVideo": "yes",
+								"rateService": "excellent",
+								"comment": "This is test comment"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"headers": {},
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/m20017"
+								},
+								"example": {
+									"success": true,
+									"message": "Feedback update successfully",
+									"data": []
+								}
+							}
+						}
+					}
+				},
+				"deprecated": false,
+				"security": []
+			}
+		},
+		"/feedback/deleteFeedback/{id}": {
+			"delete": {
+				"tags": ["feedback"],
+				"summary": "delete Feedback",
+				"operationId": "deleteFeedback",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "",
+						"headers": {}
+					}
+				},
+				"deprecated": false,
+				"security": [
+					{
+						"bearer": []
+					}
+				]
 			}
 		}
 	},
@@ -5436,6 +5864,27 @@
 					"__v": 0
 				}
 			},
+			"AddHealthArticleRequest": {
+				"title": "AddHealthArticleRequest",
+				"required": ["title", "description", "profileImage"],
+				"type": "object",
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"profileImage": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"title": "Article 1",
+					"description": "Articla edescdsf",
+					"profileImage": "/image/a.jpg"
+				}
+			},
 			"m20030": {
 				"title": "m20030",
 				"required": ["success", "message", "data", "totalCount"],
@@ -5574,6 +6023,27 @@
 					"createdAt": "2022-07-15T09:00:03.503Z",
 					"updatedAt": "2022-07-15T09:00:28.918Z",
 					"__v": 0
+				}
+			},
+			"UpdateHealthArticleRequest": {
+				"title": "UpdateHealthArticleRequest",
+				"required": ["title", "description", "profileImage"],
+				"type": "object",
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"profileImage": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"title": "Article 1",
+					"description": "Articla edescdsf",
+					"profileImage": "/image/a.jpg"
 				}
 			},
 			"AddSettingsRequest": {
@@ -6440,10 +6910,10 @@
 			},
 			"addPaymentRequest": {
 				"title": "addPaymentRequest",
-				"required": ["appointmentId", "paymentId", "type"],
+				"required": ["packageId", "paymentId", "type"],
 				"type": "object",
 				"properties": {
-					"appointmentId": {
+					"packageId": {
 						"type": "string"
 					},
 					"paymentId": {
@@ -6454,9 +6924,9 @@
 					}
 				},
 				"example": {
-					"appointmentId": "62ea69acaa0692b6c175f91d",
-					"paymentId": "pay_Jva8VkThS76MEa",
-					"type": "APPOINTMENT"
+					"packageId": "62ef6fe83fc55f1d330d2013",
+					"paymentId": "pay_K4cEFEY5Mv7pPb",
+					"type": "PACKAGE"
 				}
 			},
 			"GetTimeSlotBYTodayRequest": {
@@ -6469,7 +6939,7 @@
 					}
 				},
 				"example": {
-					"date": "2022-08-04"
+					"date": "2022-08-12"
 				}
 			},
 			"m20045": {
@@ -6641,6 +7111,519 @@
 					"updatedAt": "2022-07-20T06:51:10.489Z",
 					"__v": 0
 				}
+			},
+			"AddUserSubscriptionRequest": {
+				"title": "AddUserSubscriptionRequest",
+				"required": ["packageId", "paymentId", "month"],
+				"type": "object",
+				"properties": {
+					"packageId": {
+						"type": "string"
+					},
+					"paymentId": {
+						"type": "string"
+					},
+					"month": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"packageId": "62ef6fcc3fc55f1d330d2001",
+					"paymentId": "62f20d922ca70035ca1b0338",
+					"month": 12
+				}
+			},
+			"CreateImageSliderRequest": {
+				"title": "CreateImageSliderRequest",
+				"required": ["sliderPath", "image"],
+				"type": "object",
+				"properties": {
+					"sliderPath": {
+						"type": "string"
+					},
+					"image": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"sliderPath": "Home",
+					"image": [
+						"/images/profile/1660128808686.jpg",
+						"/images/profile/1660128808686.jpg",
+						"/images/profile/1660128808686.jpg"
+					]
+				}
+			},
+			"200.": {
+				"title": "200.",
+				"required": ["success", "msg", "data"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Image data created successfully",
+					"data": []
+				}
+			},
+			"m20047": {
+				"title": "m20047",
+				"required": ["success", "msg", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data20"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"success": true,
+					"msg": "Image data get successfully",
+					"data": [
+						{
+							"image": [
+								"/images/profile/1660128808686.jpg",
+								"/images/profile/1660128808686.jpg",
+								"/images/profile/1660128808686.jpg"
+							],
+							"deletedAt": null,
+							"deletedBy": null,
+							"_id": "62f38e7e5b6ed8e26bd142d7",
+							"sliderPath": "Home",
+							"createdAt": "2022-08-10T10:54:54.034Z",
+							"updatedAt": "2022-08-10T10:54:54.034Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 1
+				}
+			},
+			"Data20": {
+				"title": "Data20",
+				"required": [
+					"image",
+					"deletedAt",
+					"deletedBy",
+					"_id",
+					"sliderPath",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"image": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"_id": {
+						"type": "string"
+					},
+					"sliderPath": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"image": [
+						"/images/profile/1660128808686.jpg",
+						"/images/profile/1660128808686.jpg",
+						"/images/profile/1660128808686.jpg"
+					],
+					"deletedAt": null,
+					"deletedBy": null,
+					"_id": "62f38e7e5b6ed8e26bd142d7",
+					"sliderPath": "Home",
+					"createdAt": "2022-08-10T10:54:54.034Z",
+					"updatedAt": "2022-08-10T10:54:54.034Z",
+					"__v": 0
+				}
+			},
+			"UpdateSliderRequest": {
+				"title": "UpdateSliderRequest",
+				"required": ["image"],
+				"type": "object",
+				"properties": {
+					"image": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"description": ""
+					}
+				},
+				"example": {
+					"image": [
+						"/images/profile/1660128808686.jpg",
+						"/images/profile/1660128808686.jpg",
+						"/images/profile/1660128808686.jpg"
+					]
+				}
+			},
+			"createfeedbackrequest": {
+				"title": "createfeedbackrequest",
+				"required": [
+					"patientName",
+					"gender",
+					"age",
+					"contactNumber",
+					"email",
+					"location",
+					"easyAppointment",
+					"rateExercise",
+					"exerciseVideo",
+					"rateService",
+					"comment"
+				],
+				"type": "object",
+				"properties": {
+					"patientName": {
+						"type": "string"
+					},
+					"gender": {
+						"type": "string"
+					},
+					"age": {
+						"type": "string"
+					},
+					"contactNumber": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"email": {
+						"type": "string"
+					},
+					"location": {
+						"type": "string"
+					},
+					"easyAppointment": {
+						"type": "string"
+					},
+					"rateExercise": {
+						"type": "string"
+					},
+					"exerciseVideo": {
+						"type": "string"
+					},
+					"rateService": {
+						"type": "string"
+					},
+					"comment": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"patientName": "tushar",
+					"gender": "MALE",
+					"age": "below 20",
+					"contactNumber": 9876543210,
+					"email": "tushar@gmail.com",
+					"location": "ahmd",
+					"easyAppointment": "yes",
+					"rateExercise": "excellent",
+					"exerciseVideo": "yes",
+					"rateService": "excellent",
+					"comment": "This is test comment"
+				}
+			},
+			"m20050": {
+				"title": "m20050",
+				"required": ["status", "msg", "data", "totalCount"],
+				"type": "object",
+				"properties": {
+					"status": {
+						"type": "boolean"
+					},
+					"msg": {
+						"type": "string"
+					},
+					"data": {
+						"type": "array",
+						"items": {
+							"$ref": "#/components/schemas/Data21"
+						},
+						"description": ""
+					},
+					"totalCount": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"status": true,
+					"msg": "Feedback get successfully",
+					"data": [
+						{
+							"gender": "MALE",
+							"email": "tushar@gmail.com",
+							"deletedAt": null,
+							"deletedBy": null,
+							"isEnabled": true,
+							"_id": "62f0f00d69b3a83ab44b0f58",
+							"patientName": "tushar",
+							"age": "below 20",
+							"contactNumber": 9876543210,
+							"location": "ahmd",
+							"easyAppointment": "yes",
+							"rateExercise": "excellent",
+							"exerciseVideo": "yes",
+							"rateService": "excellent",
+							"comment": "This is test comment",
+							"patientId": "62ef94a381cbda2d545341c0",
+							"createdAt": "2022-08-08T11:14:21.819Z",
+							"updatedAt": "2022-08-08T11:14:21.819Z",
+							"__v": 0
+						},
+						{
+							"gender": "MALE",
+							"email": "tushar@gmail.com",
+							"deletedAt": null,
+							"deletedBy": null,
+							"isEnabled": true,
+							"_id": "62f39b84f74dac0135a282e1",
+							"patientName": "tushar",
+							"age": "below 20",
+							"contactNumber": 9876543210,
+							"location": "ahmd",
+							"easyAppointment": "yes",
+							"rateExercise": "excellent",
+							"exerciseVideo": "yes",
+							"rateService": "excellent",
+							"comment": "This is test comment",
+							"patientId": "62f39b79f74dac0135a282dc",
+							"createdAt": "2022-08-10T11:50:28.892Z",
+							"updatedAt": "2022-08-10T11:50:28.892Z",
+							"__v": 0
+						}
+					],
+					"totalCount": 2
+				}
+			},
+			"Data21": {
+				"title": "Data21",
+				"required": [
+					"gender",
+					"email",
+					"deletedAt",
+					"deletedBy",
+					"isEnabled",
+					"_id",
+					"patientName",
+					"age",
+					"contactNumber",
+					"location",
+					"easyAppointment",
+					"rateExercise",
+					"exerciseVideo",
+					"rateService",
+					"comment",
+					"patientId",
+					"createdAt",
+					"updatedAt",
+					"__v"
+				],
+				"type": "object",
+				"properties": {
+					"gender": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"deletedAt": {
+						"type": "string",
+						"nullable": true
+					},
+					"deletedBy": {
+						"type": "string",
+						"nullable": true
+					},
+					"isEnabled": {
+						"type": "boolean"
+					},
+					"_id": {
+						"type": "string"
+					},
+					"patientName": {
+						"type": "string"
+					},
+					"age": {
+						"type": "string"
+					},
+					"contactNumber": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"location": {
+						"type": "string"
+					},
+					"easyAppointment": {
+						"type": "string"
+					},
+					"rateExercise": {
+						"type": "string"
+					},
+					"exerciseVideo": {
+						"type": "string"
+					},
+					"rateService": {
+						"type": "string"
+					},
+					"comment": {
+						"type": "string"
+					},
+					"patientId": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "integer",
+						"format": "int32"
+					}
+				},
+				"example": {
+					"gender": "MALE",
+					"email": "tushar@gmail.com",
+					"deletedAt": null,
+					"deletedBy": null,
+					"isEnabled": true,
+					"_id": "62f0f00d69b3a83ab44b0f58",
+					"patientName": "tushar",
+					"age": "below 20",
+					"contactNumber": 9876543210,
+					"location": "ahmd",
+					"easyAppointment": "yes",
+					"rateExercise": "excellent",
+					"exerciseVideo": "yes",
+					"rateService": "excellent",
+					"comment": "This is test comment",
+					"patientId": "62ef94a381cbda2d545341c0",
+					"createdAt": "2022-08-08T11:14:21.819Z",
+					"updatedAt": "2022-08-08T11:14:21.819Z",
+					"__v": 0
+				}
+			},
+			"UpdateFeedbackRequest": {
+				"title": "UpdateFeedbackRequest",
+				"required": [
+					"patientName",
+					"gender",
+					"age",
+					"contactNumber",
+					"email",
+					"location",
+					"easyAppointment",
+					"rateExercise",
+					"exerciseVideo",
+					"rateService",
+					"comment"
+				],
+				"type": "object",
+				"properties": {
+					"patientName": {
+						"type": "string"
+					},
+					"gender": {
+						"type": "string"
+					},
+					"age": {
+						"type": "string"
+					},
+					"contactNumber": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"email": {
+						"type": "string"
+					},
+					"location": {
+						"type": "string"
+					},
+					"easyAppointment": {
+						"type": "string"
+					},
+					"rateExercise": {
+						"type": "string"
+					},
+					"exerciseVideo": {
+						"type": "string"
+					},
+					"rateService": {
+						"type": "string"
+					},
+					"comment": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"patientName": "tushar123",
+					"gender": "MALE",
+					"age": "below 20",
+					"contactNumber": 9876543210,
+					"email": "tushar@gmail.com",
+					"location": "ahmd",
+					"easyAppointment": "yes",
+					"rateExercise": "excellent",
+					"exerciseVideo": "yes",
+					"rateService": "excellent",
+					"comment": "This is test comment"
+				}
 			}
 		},
 		"securitySchemes": {
@@ -6665,7 +7648,7 @@
 			"name": "User"
 		},
 		{
-			"name": "Dr & customer"
+			"name": "Dr &customer"
 		},
 		{
 			"name": "common api"
@@ -6705,6 +7688,15 @@
 		},
 		{
 			"name": "Get all time SLot"
+		},
+		{
+			"name": "User Subscription"
+		},
+		{
+			"name": "SliderImage"
+		},
+		{
+			"name": "feedback"
 		}
 	]
 }
