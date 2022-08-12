@@ -8,7 +8,7 @@ import { notificationModel, paymentModel } from '../models';
 import { rozorPayment } from '../service';
 import customerService from '../mongoServices/customerService';
 const {
-	RESPONSE_MESSAGE: { FAILED_RESPONSE, FAQS },
+	RESPONSE_MESSAGE: { FAILED_RESPONSE, FAQS, PAYMENT },
 	STATUS_CODE: { SUCCESS, FAILED },
 } = CONSTANTS;
 
@@ -80,7 +80,7 @@ const addPayment = async (req, res) => {
 			throw new Error('Appointment not found');
 		}
 	} catch (error) {
-		res.status(FAILED).json({
+		return res.status(FAILED).json({
 			status: false,
 			error: error.message || FAILED_RESPONSE,
 		});
@@ -122,4 +122,25 @@ const failedPayment = async (req, res) => {
 	}
 };
 
-export default { addPayment, failedPayment };
+const getPayment = async (req, res) => {
+	try {
+		console.log(req.query);
+		const payload = {
+			...req.query,
+			isDeleted: true,
+		};
+		const paymentData = await paymentService.findAllQuery(payload);
+		return res.status(SUCCESS).json({
+			success: true,
+			message: PAYMENT.GET_SUCCESS,
+			data: paymentData,
+		});
+	} catch (error) {
+		return res.status(FAILED).json({
+			status: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
+
+export default { addPayment, failedPayment, getPayment };
