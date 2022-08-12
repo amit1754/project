@@ -13,11 +13,6 @@ const upload = (req, res) => {
 };
 
 const router = express.Router();
-router.post(
-	'/upload',
-	fileUpload.upload.single('file'),
-
-	upload,
-);
+router.post('/upload', fileUpload.upload.single('file'), upload);
 
 module.exports = router;
