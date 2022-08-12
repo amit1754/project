@@ -7,6 +7,7 @@ const router = express.Router();
 // router.get('/get', authMiddleware, packageController.getPackage);
 router.post('/create', paymentController.addPayment);
 router.post('/failedPayment', paymentController.failedPayment);
+router.get('/getPayment', paymentController.getPayment);
 // router.put('/update/:id', authMiddleware, packageController.updatePackage);
 // router.delete('/delete/:id', authMiddleware, packageController.deletePackage);
 

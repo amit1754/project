@@ -24,5 +24,6 @@ router.use('/monthlyTimeSlot', require('./monthlyTimeSlotRoute'));
 router.use('/imageSlider', require('./imageFileRoutes'));
 router.use('/notification', require('./notificationRoutes'));
 router.use('/feedback', require('./feedbackRoute'));
+router.use('/subscription', require('./subscriptionRoute'));
 
 module.exports = router;

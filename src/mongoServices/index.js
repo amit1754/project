@@ -17,3 +17,4 @@ export { default as paymentService } from './paymentService';
 export { default as sliderService } from './imageFileService';
 export { default as notificationService } from './notificationService';
 export { default as feedbackService } from './feedbackService';
+export { default as userSubscriptionService } from './userSubscriptionService';

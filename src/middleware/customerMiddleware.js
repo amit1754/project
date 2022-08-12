@@ -28,7 +28,7 @@ const JwtCustomerAuthorization = async (req, res, next) => {
 		});
 
 		if (data && totalCount != 0) {
-			req.query._id = data[0]._id;
+			// req.query._id = data[0]._id;
 			req.currentUser = data[0];
 			next();
 		} else {
