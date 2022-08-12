@@ -79,11 +79,19 @@ const getAppointment = async (req, res) => {
 			populate: true,
 		};
 		let { data, totalCount } = await appointmentService.findAllQuery(filter);
+		const newCase = data.filter((items) => items.type === 'NEWCASE');
+		const treatMentCase = data.find((items) => items.type === 'TREATMENTCASE');
+		const reAssessmentCase = data.find(
+			(items) => items.type === 'REASSESSMENTCASE',
+		);
 		if (data) {
 			return res.status(SUCCESS).json({
 				success: true,
 				message: APPOINTMENT.GET_SUCCESS,
-				data,
+				data: data,
+				newCase: newCase,
+				treatmentCase: treatMentCase,
+				reAssessmentCase: reAssessmentCase,
 				totalCount,
 			});
 		} else {
