@@ -22,3 +22,4 @@ export { default as subscriptionModel } from './subscriptionModel';
 export { default as notificationModel } from './notificationModel';
 export { default as feedbackModel } from './feedbackModel';
 export { default as assessmentModel } from './assessmentModel';
+export { default as liveEventModel } from './liveEventModel';

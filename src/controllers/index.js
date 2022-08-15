@@ -20,3 +20,4 @@ export { default as monthlyTimeSlotController } from './monthlyTimeSlotControlle
 export { default as notificationController } from './notificationController';
 export { default as feedbackController } from './feedbackController';
 export { default as subscriptionController } from './subscriptionController';
+export { default as liveEventController } from './liveEventController';

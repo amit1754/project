@@ -18,3 +18,4 @@ export { default as sliderService } from './imageFileService';
 export { default as notificationService } from './notificationService';
 export { default as feedbackService } from './feedbackService';
 export { default as userSubscriptionService } from './userSubscriptionService';
+export { default as liveEventService } from './liveEventService';

@@ -266,7 +266,6 @@ export default {
 			DELETE_FAILED: 'Feedback deletion failed',
 		},
 
-
 		ASSESSMENT: {
 			CREATE_SUCCESS: 'Assessment created successfully',
 			CREATE_FAILED: 'Assessment creating failed',
@@ -277,6 +276,19 @@ export default {
 			DELETE_SUCCESS: 'Assessment delete successfully',
 			DELETE_FAILED: 'Assessment deletion failed',
 		},
+		LIVEEVENT: {
+			CREATE_SUCCESS: 'Live Event created successfully',
+			CREATE_FAILED: 'Live Event creating failed',
+
+			UPDATE_SUCCESS: 'Live Event update successfully',
+			UPDATE_FAILED: 'Live Event updating failed',
+			GET_SUCCESS: 'Live Event get successfully',
+			GET_FAILED: 'Live Event is not available',
+			DELETE_SUCCESS: 'Live Event delete successfully',
+
+			DELETE_FAILED: 'Live Event deletion failed',
+			NOT_AVAILABLE: 'Live Event is not available',
+		},
 	},
 	IMAGE_DATA: {
 		CREATE_SUCCESS: 'Image data created successfully',
@@ -286,5 +298,4 @@ export default {
 		GET_SUCCESS: 'Image data get successfully',
 		GET_FAILED: 'Image data get failed',
 	},
-
 };
