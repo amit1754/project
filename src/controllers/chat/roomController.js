@@ -12,7 +12,7 @@ const {
 } = CONSTANTS;
 const createRoom = async (req, res) => {
 	try {
-		const { drId, patientId } = req.body;
+		const { drId, patientId, appointmentId } = req.body;
 		let filter = { _id: drId };
 		let dr = await drService.findAllQuery(filter);
 		filter = { _id: patientId };
@@ -25,7 +25,7 @@ const createRoom = async (req, res) => {
 			let room = {
 				drId: drId,
 				patientId: patientId,
-				appointmentID: req.body.appointmentID,
+				appointmentID: appointmentId,
 			};
 			let chatRoom = await new chatRoomModel(room).save();
 			console.log('chatRoom', chatRoom);
@@ -54,9 +54,16 @@ const sendMessage = async (req, res) => {
 		} else {
 			let chatRoomUpdate = await chatRoomService.updateOneQuery(
 				{ _id: roomId },
-				{ chatContent: { content: content, senderId: senderId } },
+				{
+					$push: {
+						chatContent: {
+							content: content,
+							senderId: senderId,
+						},
+					},
+				},
 			);
-			console.log('chatRoomUpdate', chatRoomUpdate);
+
 			if (chatRoomUpdate) {
 				return res.status(SUCCESS).send({
 					success: true,
@@ -67,7 +74,6 @@ const sendMessage = async (req, res) => {
 			}
 		}
 	} catch (err) {
-		console.log('err', err);
 		errorLogger(req, res, err);
 		return res.status(FAILED).send({
 			success: false,
@@ -75,4 +81,22 @@ const sendMessage = async (req, res) => {
 		});
 	}
 };
-export default { createRoom, sendMessage };
+
+const getRoomDetails = async (req, res) => {
+	try {
+		let data = await chatRoomService.findAllQuery(req.query);
+		return res.status(SUCCESS).send({
+			success: true,
+			message: 'get',
+			data,
+		});
+	} catch (err) {
+		errorLogger(req, res, err);
+		return res.status(FAILED).send({
+			success: false,
+			message: err.message || FAILED_RESPONSE,
+		});
+	}
+};
+
+export default { createRoom, sendMessage, getRoomDetails };
