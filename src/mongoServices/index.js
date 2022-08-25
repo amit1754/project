@@ -20,3 +20,4 @@ export { default as feedbackService } from './feedbackService';
 export { default as userSubscriptionService } from './userSubscriptionService';
 export { default as liveEventService } from './liveEventService';
 export { default as chatRoomService } from './chatRoomService';
+export { default as assessmentService } from './assessmentService';
