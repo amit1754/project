@@ -22,20 +22,33 @@ const createRoom = async (req, res) => {
 		} else if (patient.length == 0) {
 			throw new Error(CHATROOM.PATIENTNOTFOUND);
 		} else {
-			let room = {
+			let filterChat = {
 				drId: drId,
 				patientId: patientId,
 				appointmentID: appointmentId,
 			};
-			let chatRoom = await new chatRoomModel(room).save();
-			console.log('chatRoom', chatRoom);
+			let roomId;
+			const data = await chatRoomService.findAllQuery(filterChat);
+			console.log('data', data);
+			if (data === null) {
+				let room = {
+					drId: drId,
+					patientId: patientId,
+					appointmentID: appointmentId,
+				};
+				let chatRoom = await new chatRoomModel(room).save();
+				roomId = chatRoom._id;
+			} else {
+				roomId = data._id;
+			}
 			return res.status(SUCCESS).send({
 				success: true,
 				message: CHATROOM.CREATE_SUCCESS,
-				roomId: chatRoom._id,
+				roomId: roomId,
 			});
 		}
 	} catch (err) {
+		console.log('err', err);
 		errorLogger(req, res, err);
 		return res.status(FAILED).send({
 			success: false,
@@ -99,4 +112,31 @@ const getRoomDetails = async (req, res) => {
 	}
 };
 
-export default { createRoom, sendMessage, getRoomDetails };
+const sendSocketMessage = async (data) => {
+	try {
+		const { roomId, content, senderId } = data;
+		let filter = { _id: roomId };
+		let chatRoom = await chatRoomService.findAllQuery(filter);
+		if (chatRoom.length == 0) {
+			throw new Error(CHATROOM.ROOMNOTFOUND);
+		} else {
+			let chatRoomUpdate = await chatRoomService.updateOneQuery(
+				{ _id: roomId },
+				{
+					$push: {
+						chatContent: {
+							content: content,
+							senderId: senderId,
+						},
+					},
+				},
+			);
+
+			return chatRoomUpdate;
+		}
+	} catch (err) {
+		return false;
+	}
+};
+
+export default { createRoom, sendMessage, getRoomDetails, sendSocketMessage };
