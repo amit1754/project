@@ -23,3 +23,5 @@ export { default as subscriptionController } from './subscriptionController';
 export { default as liveEventController } from './liveEventController';
 export { default as chatRoomController } from './chat/roomController';
 export { default as assessmentController } from './assessmentController';
+export { default as videoController } from './video/videoController';
+export { default as therapyController } from './therapyController';

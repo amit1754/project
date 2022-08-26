@@ -41,7 +41,8 @@ const upload = multer({
 			if (
 				mimetype == 'image/jpeg' ||
 				mimetype === 'image/png' ||
-				mimetype == 'image/jpg'
+				mimetype == 'image/jpg' ||
+				mimetype == 'application/pdf'
 			) {
 				cb(null, true);
 			} else {

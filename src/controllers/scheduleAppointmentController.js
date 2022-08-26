@@ -17,7 +17,6 @@ const scheduleAppointment = async (appointment) => {
 			};
 			let { data: dr } = await drService.findAllQuery(drFilter);
 
-			console.log('dr.length !== 0', dr.length !== 0);
 			if (dr.length !== 0) {
 				let availableDr = [];
 				for (const element of dr) {
@@ -71,7 +70,6 @@ const scheduleAppointment = async (appointment) => {
 			throw new Error('Appointment already scheduled');
 		}
 	} catch (error) {
-		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
 		return {
 			error: error.message || FAILED_RESPONSE,
@@ -115,7 +113,6 @@ const getScheduleAppointment = async (_req, res) => {
 			message: 'Time slot created successfully',
 		});
 	} catch (error) {
-		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(500).json({
 			success: false,
@@ -131,7 +128,6 @@ const getScheduleAppointmentData = async (req, res) => {
 		);
 		return res.json(200).send({ status: 'success', data, totalCount });
 	} catch (error) {
-		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(500).json({
 			success: false,

@@ -4,9 +4,10 @@ import {
 	paymentService,
 	scheduleAppointmentService,
 } from '../mongoServices';
-import { notificationModel, paymentModel } from '../models';
+import { paymentModel } from '../models';
 import { rozorPayment } from '../service';
 import customerService from '../mongoServices/customerService';
+import { videoController } from '../controllers';
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, FAQS, PAYMENT },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -48,6 +49,14 @@ const addPayment = async (req, res) => {
 						};
 
 						await appointmentService.updateOneQuery(filterUpdate, update, {});
+						let createVideoRoomPayload = {
+							appointmentId: body.appointmentId,
+							patientId: appointment[0].patientId,
+							drId: appointment[0].drId,
+							date: appointment[0].date,
+							timeSlotId: appointment[0].timeSlotId,
+						};
+						await videoController.createVideoCallRoom(createVideoRoomPayload);
 					}
 
 					if (body.type === 'PACKAGE') {
@@ -92,7 +101,6 @@ const failedPayment = async (req, res) => {
 		const { data: findPaymentData } = await paymentService.findAllQuery(
 			payload,
 		);
-		console.log('findPaymentData', findPaymentData.length);
 
 		if (findPaymentData.length === 0) {
 			const scheduleAppointmentData =
@@ -114,7 +122,6 @@ const failedPayment = async (req, res) => {
 			});
 		}
 	} catch (error) {
-		console.log('error', error);
 		res.status(FAILED).json({
 			status: false,
 			error: error.message || FAILED_RESPONSE,
@@ -124,7 +131,6 @@ const failedPayment = async (req, res) => {
 
 const getPayment = async (req, res) => {
 	try {
-		console.log(req.query);
 		const payload = {
 			...req.query,
 			isDeleted: true,

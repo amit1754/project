@@ -175,7 +175,6 @@ const updateConsult = async (req, res) => {
 
 const deleteConsult = async (req, res) => {
 	try {
-		console.log('req.params', req.params);
 		const consult = await consultModel.updateOne(
 			{ _id: req.params.id },
 			{ deletedAt: new Date(), deletedBy: req.currentUser.id },
@@ -190,7 +189,6 @@ const deleteConsult = async (req, res) => {
 			throw new Error(CONSULT.DELETE_FAILED);
 		}
 	} catch (error) {
-		console.log('error', error);
 		errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(FAILED).json({
 			success: false,

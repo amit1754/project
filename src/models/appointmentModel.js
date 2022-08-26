@@ -46,6 +46,15 @@ const appointment = new Schema(
 			ref: 'scheduleAppointment',
 			default: null,
 		},
+		therapy: {
+			type: [Types.ObjectId],
+			ref: 'therapy',
+			default: null,
+		},
+		documents: {
+			type: Array,
+			default: null,
+		},
 		type: {
 			type: String,
 			enum: ['NEWCASE', 'TREATMENTCASE', 'REASSESSMENTCASE'],

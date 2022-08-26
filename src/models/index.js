@@ -24,3 +24,6 @@ export { default as feedbackModel } from './feedbackModel';
 export { default as assessmentModel } from './assessmentModel';
 export { default as liveEventModel } from './liveEventModel';
 export { default as chatRoomModel } from './chatModel';
+export { default as videoCallModel } from './videoModel';
+export { default as callHistoryModel } from './callHistoryModel';
+export { default as therapyModel } from './therapyModel';

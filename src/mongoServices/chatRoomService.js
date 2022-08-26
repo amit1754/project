@@ -14,7 +14,6 @@ const findAllQuery = async (query) => {
 	if (patientId) {
 		whereClause = { ...whereClause, patientId: patientId };
 	}
-	console.log('whereClause', whereClause);
 
 	const data = await chatRoomModel
 		.findOne(whereClause)

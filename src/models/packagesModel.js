@@ -10,7 +10,7 @@ const packagesModel = new Schema(
 			unique: true,
 		},
 		description: {
-			type: String,
+			type: Array,
 			trim: true,
 			required: true,
 		},

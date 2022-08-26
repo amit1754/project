@@ -16,7 +16,6 @@ const createAppointment = async (req, res) => {
 			patientId: currentUser._id,
 		});
 
-		console.log('totalCount', totalCount);
 		const { date, timeSlotId } = req.body;
 		let payload = {
 			date: {

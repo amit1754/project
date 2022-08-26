@@ -21,7 +21,6 @@ const findAllQuery = async (query) => {
 	if (_id) {
 		whereClause = { ...whereClause, _id };
 	}
-	console.log('whereClause', whereClause);
 	if (pagination) {
 		const data = await sliderModel.find(whereClause).sort(sort);
 		return data;

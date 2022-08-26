@@ -29,7 +29,6 @@ const createRoom = async (req, res) => {
 			};
 			let roomId;
 			const data = await chatRoomService.findAllQuery(filterChat);
-			console.log('data', data);
 			if (data === null) {
 				let room = {
 					drId: drId,
@@ -48,7 +47,6 @@ const createRoom = async (req, res) => {
 			});
 		}
 	} catch (err) {
-		console.log('err', err);
 		errorLogger(req, res, err);
 		return res.status(FAILED).send({
 			success: false,

@@ -7,14 +7,12 @@ const findAllQuery = async (query) => {
 		page,
 		sortField,
 		sortValue,
-		pagination,
 		timeSlot,
 		drId,
 		patientId,
 		email,
 		populate,
 	} = query;
-	console.log('query', query);
 	let sort = {},
 		data;
 	let whereClause = {};

@@ -162,7 +162,6 @@ const socialLogin = async (req, res) => {
 };
 const getCustomerAppointment = async (req, res) => {
 	try {
-		console.log('req.query', req.query);
 		const payload = {
 			...req.query,
 			populate: true,

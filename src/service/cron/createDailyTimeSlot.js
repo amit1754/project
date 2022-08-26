@@ -5,11 +5,9 @@ import { drService, scheduleAppointmentService } from '../../mongoServices';
 require('dotenv').config({ path: 'src/config/.env' });
 
 const data = cron.schedule('0 1 * * *', async () => {
-	console.log('cron');
 	try {
 		let days = Number(process.env.DAYS);
 		let newDate = moment().add(days, 'days');
-		console.log('newDate', newDate);
 		let filterDate = {
 			date: {
 				$gte: moment(newDate).startOf('day').toISOString(),

@@ -14,7 +14,6 @@ const findAllQuery = async (query) => {
 		patientId,
 		populate,
 	} = query;
-	console.log('query', query);
 
 	let sort = {},
 		data,
@@ -60,7 +59,8 @@ const findAllQuery = async (query) => {
 			.sort(sort)
 			.populate('patientId')
 			.populate('drId')
-			.populate('timeSlotId');
+			.populate('timeSlotId')
+			.populate('therapy');
 	} else {
 		data = await appointmentModel
 			.find(whereClause)

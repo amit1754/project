@@ -299,6 +299,16 @@ export default {
 			SEND_SUCCESS: 'Message sent successfully',
 			SEND_FAILED: 'Message sending failed',
 		},
+		THERAPY: {
+			CREATE_SUCCESS: 'Therapy  created successfully',
+			CREATE_FAILED: 'Therapy  creating failed',
+			GET_FAILED: 'Therapy  Get failed',
+			GET_SUCCESS: 'Therapy  Get failed',
+			UPDATE_SUCCESS: 'Therapy  Update failed',
+			UPDATE_FAILED: 'Therapy  Update failed',
+			DELETE_SUCCESS: 'Therapy  Delete failed',
+			DELETE_FAILED: 'Therapy  Delete failed',
+		},
 	},
 	IMAGE_DATA: {
 		CREATE_SUCCESS: 'Image data created successfully',

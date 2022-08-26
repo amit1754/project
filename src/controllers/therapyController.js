@@ -1,24 +1,24 @@
-import { faqsModel } from '../models';
+import { therapyModel } from '../models';
 import { CONSTANTS } from '../constants';
 import { errorLogger } from '../utils';
-import { faqService } from '../mongoServices';
+import { therapyService } from '../mongoServices';
 const {
-	RESPONSE_MESSAGE: { FAILED_RESPONSE, FAQS },
+	RESPONSE_MESSAGE: { FAILED_RESPONSE, THERAPY },
 	STATUS_CODE: { SUCCESS, FAILED },
 } = CONSTANTS;
-const addFaq = async (req, res) => {
+const addTherapy = async (req, res) => {
 	try {
 		const { body } = req;
-		const payload = new faqsModel(body);
+		const payload = new therapyModel(body);
 		const data = await payload.save();
 		if (data) {
 			res.status(SUCCESS).json({
 				status: true,
-				msg: FAQS.ADD_SUCCESS,
-				data,
+				msg: THERAPY.ADD_SUCCESS,
+				data: [],
 			});
 		} else {
-			throw new Error(FAQS.DELETE_FAILED);
+			throw new Error(THERAPY.DELETE_FAILED);
 		}
 	} catch (error) {
 		errorLogger(error);
@@ -29,18 +29,18 @@ const addFaq = async (req, res) => {
 	}
 };
 
-const getFAQS = async (req, res) => {
+const getTherapy = async (req, res) => {
 	try {
-		const { data, totalCount } = await faqService.findAllQuery(req.query);
+		const { data, totalCount } = await therapyService.findAllQuery(req.query);
 		if (data) {
 			res.status(SUCCESS).json({
 				status: true,
-				msg: FAQS.GET_SUCCESS,
+				msg: THERAPY.GET_SUCCESS,
 				data,
 				totalCount,
 			});
 		} else {
-			throw new Error(FAQS.GET_FAILED);
+			throw new Error(THERAPY.GET_FAILED);
 		}
 	} catch (error) {
 		errorLogger(error);
@@ -50,7 +50,7 @@ const getFAQS = async (req, res) => {
 		});
 	}
 };
-const deleteFAQS = async (req, res) => {
+const deleteTherapy = async (req, res) => {
 	try {
 		const filter = { _id: req.params.id };
 		const update = {
@@ -60,7 +60,7 @@ const deleteFAQS = async (req, res) => {
 			isEnabled: false,
 		};
 		const projection = {};
-		const deletePackageResponse = await faqService.updateOneQuery(
+		const deletePackageResponse = await therapyService.updateOneQuery(
 			filter,
 			update,
 			projection,
@@ -68,11 +68,11 @@ const deleteFAQS = async (req, res) => {
 		if (deletePackageResponse) {
 			res.status(SUCCESS).json({
 				status: true,
-				msg: FAQS.DELETE_SUCCESS,
+				msg: THERAPY.DELETE_SUCCESS,
 				data: [],
 			});
 		} else {
-			throw new Error(FAQS.DELETE_FAILED);
+			throw new Error(THERAPY.DELETE_FAILED);
 		}
 	} catch (err) {
 		errorLogger(err);
@@ -83,14 +83,14 @@ const deleteFAQS = async (req, res) => {
 	}
 };
 
-const updateFAQS = async (req, res) => {
+const updateTherapy = async (req, res) => {
 	try {
 		const filter = { _id: req.params.id };
 		const updateObj = {
 			...req.body,
 		};
 		const projection = {};
-		const updatePackageResponse = await faqService.updateOneQuery(
+		const updatePackageResponse = await therapyService.updateOneQuery(
 			filter,
 			updateObj,
 			projection,
@@ -98,11 +98,11 @@ const updateFAQS = async (req, res) => {
 		if (updatePackageResponse) {
 			res.status(SUCCESS).json({
 				status: true,
-				msg: FAQS.UPDATE_SUCCESS,
+				msg: THERAPY.UPDATE_SUCCESS,
 				data: [],
 			});
 		} else {
-			throw new Error(FAQS.UPDATE_FAILED);
+			throw new Error(THERAPY.UPDATE_FAILED);
 		}
 	} catch (err) {
 		errorLogger(err);
@@ -114,8 +114,8 @@ const updateFAQS = async (req, res) => {
 };
 
 export default {
-	addFaq,
-	getFAQS,
-	deleteFAQS,
-	updateFAQS,
+	addTherapy,
+	getTherapy,
+	deleteTherapy,
+	updateTherapy,
 };

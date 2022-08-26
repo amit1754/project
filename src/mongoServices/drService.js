@@ -11,7 +11,6 @@ const findAllQuery = async (query) => {
 		timeSlot,
 		email,
 	} = query;
-	console.log('query', query);
 	let sort = {};
 	let whereClause = {};
 	if (sortField) {

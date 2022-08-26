@@ -42,7 +42,6 @@ const createMonthlyTimeSlot = async (_req, res) => {
 			message: 'Time slot created successfully',
 		});
 	} catch (error) {
-		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(500).json({
 			success: false,
@@ -71,7 +70,6 @@ const getTodayTimeSlot = async (req, res) => {
 			data: getAllTimeSlot,
 		});
 	} catch (error) {
-		console.log('error', error);
 		// errorLogger(error.message, req.originalUrl, req.ip);
 		return res.status(500).json({
 			success: false,
