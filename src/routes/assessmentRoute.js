@@ -1,9 +1,13 @@
 import express from 'express';
 import { assessmentController } from '../controllers';
-// import { customerMiddleware, authMiddleware } from '../middleware';
+import { authMiddleware } from '../middleware';
 const router = express.Router();
 
 router.post('/create', assessmentController.setAssessment);
-router.get('/getAssessment', assessmentController.getAssessment);
+router.get(
+	'/getAssessment',
+	authMiddleware,
+	assessmentController.getAssessment,
+);
 
 module.exports = router;

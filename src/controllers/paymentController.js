@@ -135,11 +135,12 @@ const getPayment = async (req, res) => {
 			...req.query,
 			isDeleted: true,
 		};
-		const paymentData = await paymentService.findAllQuery(payload);
+		const {data,totalCount} = await paymentService.findAllQuery(payload);
 		return res.status(SUCCESS).json({
 			success: true,
 			message: PAYMENT.GET_SUCCESS,
-			data: paymentData.data,
+			data,
+			totalCount,
 		});
 	} catch (error) {
 		return res.status(FAILED).json({

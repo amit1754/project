@@ -10,13 +10,13 @@ const findAllQuery = async (query) => {
 		};
 	} else {
 		sort = {
-			displayName: 1,
+			createdAt: 1,
 		};
 	}
 	if (search) {
 		search = new RegExp(search, 'ig');
 		whereClause = {
-			$or: [{ displayName: search }, { path: search }],
+			$or: [{ filedName: search }, { filedValue: search }],
 		};
 	}
 	if (_id) {
@@ -24,6 +24,8 @@ const findAllQuery = async (query) => {
 	}
 	if (type) {
 		whereClause = { ...whereClause, type };
+	} else {
+		whereClause = { ...whereClause, type: 'NULL' };
 	}
 	if (filedName) {
 		whereClause = { ...whereClause, filedName };

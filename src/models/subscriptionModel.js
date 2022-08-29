@@ -27,6 +27,10 @@ const SubscriptionModel = new Schema(
 			type: String,
 			enum: ['MONTHLY', 'YEARLY'],
 		},
+		isEnabled: {
+			type: Boolean,
+			default: true,
+		},
 		deletedAt: {
 			type: Date,
 			default: null,

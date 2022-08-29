@@ -9,13 +9,13 @@ const findAllQuery = async (query) => {
 		};
 	} else {
 		sort = {
-			displayName: 1,
+			createAt: 1,
 		};
 	}
 	if (search) {
 		search = new RegExp(search, 'ig');
 		whereClause = {
-			$or: [{ email: search }, { name: search }, { mobileNumber: search }],
+			$or: [{ sliderPath: search }],
 		};
 	}
 	if (_id) {
