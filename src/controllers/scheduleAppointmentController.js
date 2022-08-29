@@ -1,12 +1,18 @@
 import {
 	appointmentService,
 	drService,
+	monthlyTimeService,
 	scheduleAppointmentService,
 } from '../mongoServices';
 import { monthlyTimeSlotModel, scheduleAppointmentModel } from '../models';
 import { Types } from 'mongoose';
 import moment from 'moment';
+import { CONSTANTS } from '../constants';
 require('dotenv').config({ path: 'src/config/.env' });
+
+const {
+	RESPONSE_MESSAGE: { RESCHEDULE },
+} = CONSTANTS;
 
 const scheduleAppointment = async (appointment) => {
 	try {
@@ -135,4 +141,35 @@ const getScheduleAppointmentData = async (req, res) => {
 		});
 	}
 };
-export default { scheduleAppointment, getScheduleAppointment };
+
+const setReScheduleAppointment = async (req, res) => {
+	try {
+		const filter = req.params.id;
+		const projection = {};
+		const payload = {
+			date: req.body.date,
+			timeSlotId: req.body.timeSlotId,
+		};
+		await scheduleAppointmentService.updateOneQuery(
+			filter,
+			payload,
+			projection,
+		);
+
+		return res.status(200).json({
+			message: RESCHEDULE.CREATE_SUCCESS,
+			success: true,
+			data: availableTimeSlot,
+		});
+	} catch (error) {
+		return {
+			error: error.message || FAILED_RESPONSE,
+		};
+	}
+};
+
+export default {
+	scheduleAppointment,
+	getScheduleAppointment,
+	setReScheduleAppointment,
+};

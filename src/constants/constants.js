@@ -299,6 +299,13 @@ export default {
 			SEND_SUCCESS: 'Message sent successfully',
 			SEND_FAILED: 'Message sending failed',
 		},
+		RESCHEDULE: {
+			CREATE_SUCCESS: 'Re-Schedule Appointment created successfully',
+			CREATE_FAILED: 'Re-Schedule Appointment creating failed',
+			GET_SUCCESS: 'Re-Schedule Appointment get successfully',
+			GET_FAILED: 'Re-Schedule Appointment is not available',
+			APPOINTMENT_FAILED: 'Appointment is not schedule',
+		},
 		THERAPY: {
 			CREATE_SUCCESS: 'Therapy  created successfully',
 			CREATE_FAILED: 'Therapy  creating failed',

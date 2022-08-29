@@ -139,7 +139,7 @@ const getPayment = async (req, res) => {
 		return res.status(SUCCESS).json({
 			success: true,
 			message: PAYMENT.GET_SUCCESS,
-			data: paymentData,
+			data: paymentData.data,
 		});
 	} catch (error) {
 		return res.status(FAILED).json({
