@@ -29,5 +29,6 @@ router.use('/live-event', require('./liveEventRoute'));
 router.use('/chat-room', require('./chat/roomRoutes'));
 router.use('/assessment', require('./assessmentRoute'));
 router.use('/therapy', require('./therapyRoutes'));
+router.use('/offer', require('./offersRoute'));
 
 module.exports = router;

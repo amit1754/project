@@ -306,6 +306,16 @@ export default {
 			GET_FAILED: 'Re-Schedule Appointment is not available',
 			APPOINTMENT_FAILED: 'Appointment is not schedule',
 		},
+		OFFERS: {
+			CREATE_SUCCESS: 'Offers created successfully',
+			CREATE_FAILED: 'Offers creating failed',
+			GET_SUCCESS: 'Offers get successfully',
+			GET_FAILED: 'Offers is not available',
+			UPDATE_SUCCESS: 'Offers  Update Successfully',
+			UPDATE_FAILED: 'Offers  Update failed',
+			DELETE_SUCCESS: 'Offers  Delete Successfully',
+			DELETE_FAILED: 'Offers  Delete failed',
+		},
 		THERAPY: {
 			CREATE_SUCCESS: 'Therapy  created successfully',
 			CREATE_FAILED: 'Therapy  creating failed',

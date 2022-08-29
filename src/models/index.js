@@ -27,3 +27,4 @@ export { default as chatRoomModel } from './chatModel';
 export { default as videoCallModel } from './videoModel';
 export { default as callHistoryModel } from './callHistoryModel';
 export { default as therapyModel } from './therapyModel';
+export { default as offersModel } from './offersModel';

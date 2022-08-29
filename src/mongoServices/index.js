@@ -22,3 +22,4 @@ export { default as liveEventService } from './liveEventService';
 export { default as chatRoomService } from './chatRoomService';
 export { default as assessmentService } from './assessmentService';
 export { default as therapyService } from './therapyService';
+export { default as offersService } from './offersService';

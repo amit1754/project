@@ -25,3 +25,4 @@ export { default as chatRoomController } from './chat/roomController';
 export { default as assessmentController } from './assessmentController';
 export { default as videoController } from './video/videoController';
 export { default as therapyController } from './therapyController';
+export { default as offersController } from './offersController';
