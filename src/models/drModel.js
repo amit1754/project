@@ -35,14 +35,7 @@ const drModel = new Schema(
 			max: 255,
 			default: null,
 		},
-		specialization: {
-			type: [Types.ObjectId],
-			trim: true,
-			max: 255,
-			required: true,
-			default: null,
-			ref: 'dr_speciality',
-		},
+
 		fireBaseToken: {
 			type: String,
 			default: null,
@@ -99,7 +92,6 @@ const drModel = new Schema(
 
 let autoPopulateLead = function (next) {
 	this.populate('timeSlot');
-	
 
 	next();
 };
