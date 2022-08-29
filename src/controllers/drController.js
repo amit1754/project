@@ -172,7 +172,7 @@ const updateProfile = async (req, res) => {
 				regNumber,
 				signature,
 			};
-		const updateDr = await drService.updateDr(filter, updateData);
+		const updateDr = await drService.updateOneQuery(filter, updateData);
 
 		if (updateDr) {
 			return res.status(SUCCESS).send({
