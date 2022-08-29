@@ -60,7 +60,8 @@ const findAllQuery = async (query) => {
 			.populate('patientId')
 			.populate('drId')
 			.populate('timeSlotId')
-			.populate('therapy');
+			.populate('therapy')
+			.populate({ path: 'oldScheduleId', populate: { path: 'timeSlotId' } });
 	} else {
 		data = await appointmentModel
 			.find(whereClause)

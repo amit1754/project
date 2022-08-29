@@ -20,6 +20,11 @@ const appointment = new Schema(
 			ref: 'dr_details',
 			default: null,
 		},
+		oldScheduleId: {
+			type: Types.ObjectId,
+			ref: 'scheduleAppointment',
+			default: null,
+		},
 		timeSlotId: {
 			type: Types.ObjectId,
 			ref: 'timeSlotALL',

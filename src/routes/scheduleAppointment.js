@@ -1,5 +1,6 @@
 import express from 'express';
 import { scheduleAppointmentController } from '../controllers';
+import { authMiddleware } from '../middleware';
 
 const router = express.Router();
 

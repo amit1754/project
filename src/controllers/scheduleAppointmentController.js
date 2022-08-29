@@ -4,7 +4,11 @@ import {
 	monthlyTimeService,
 	scheduleAppointmentService,
 } from '../mongoServices';
-import { monthlyTimeSlotModel, scheduleAppointmentModel } from '../models';
+import {
+	appointmentModel,
+	monthlyTimeSlotModel,
+	scheduleAppointmentModel,
+} from '../models';
 import { Types } from 'mongoose';
 import moment from 'moment';
 import { CONSTANTS } from '../constants';
@@ -144,23 +148,89 @@ const getScheduleAppointmentData = async (req, res) => {
 
 const setReScheduleAppointment = async (req, res) => {
 	try {
-		const filter = req.params.id;
-		const projection = {};
-		const payload = {
-			date: req.body.date,
-			timeSlotId: req.body.timeSlotId,
+		let drFilter = {
+			timeSlot: req.body.timeSlotId,
+			pagination: false,
 		};
-		await scheduleAppointmentService.updateOneQuery(
-			filter,
-			payload,
-			projection,
-		);
+		let { data: dr } = await drService.findAllQuery(drFilter);
 
-		return res.status(200).json({
-			message: RESCHEDULE.CREATE_SUCCESS,
-			success: true,
-			data: availableTimeSlot,
-		});
+		if (dr.length !== 0) {
+			let availableDr = [];
+			for (const element of dr) {
+				let filter = {
+					timeSlotId: req.body.timeSlotId,
+					drId: element._id,
+					date: moment(req.body.date),
+				};
+				let { data: checkSlot } = await scheduleAppointmentService.findAllQuery(
+					filter,
+				);
+
+				if (checkSlot.length === 0) {
+					availableDr = element;
+					break;
+				}
+			}
+
+			if (availableDr.length !== 0) {
+				let drAppointment = {
+					drId: availableDr._id,
+					appointmentId: req.params.id,
+					patientId: req.body.patientId,
+					date: moment(req.body.date),
+					timeSlotId: req.body.timeSlotId,
+					paymentId: req.body.paymentId,
+				};
+				let scheduleAppointmentPayload = new scheduleAppointmentModel(
+					drAppointment,
+				);
+				scheduleAppointmentPayload.save();
+				let filterA = { _id: Types.ObjectId(req.params.id) };
+				let updateAppointment = {
+					isSchedule: true,
+					drId: availableDr._id,
+					scheduleAppointmentID: scheduleAppointmentPayload._id,
+					date: moment(req.body.date),
+					timeSlotId: req.body.timeSlotId,
+					oldScheduleId: req.body.scheduleAppointmentID,
+				};
+				await appointmentService.updateOneQuery(filterA, updateAppointment);
+				return res.status(200).json({
+					message: RESCHEDULE.CREATE_SUCCESS,
+					success: true,
+					data: scheduleAppointmentPayload,
+				});
+			} else {
+				return {
+					error: 'slot is not a available',
+				};
+			}
+		} else {
+			return {
+				error: 'dr is not available',
+			};
+		}
+		// const payloadData = {
+		// 	id: req.body.id,
+		// 	date: date,
+		// 	patientId: req.body.patientId,
+		// 	timeSlotId: req.body.timeSlotId,
+		// 	type: req.body.type,
+		// 	consultModel: req.body.consultType,
+		// 	isSchedule: req.body.isSchedule,
+		// };
+		// const payloadSave = new scheduleAppointmentModel(payloadData);
+		// const savePayload = await payloadSave.save();
+		// if (savePayload) {
+		// 	// const scheduleAppointment = await scheduleAppointment(savePayload);
+		// 	return res.status(200).json({
+		// 		message: RESCHEDULE.CREATE_SUCCESS,
+		// 		success: true,
+		// 		data: savePayload,
+		// 	});
+		// } else {
+		// 	throw new Error(APPOINTMENT.CREATE_FAILED);
+		// }
 	} catch (error) {
 		return {
 			error: error.message || FAILED_RESPONSE,
