@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post('/create', validator.drCreateValidator, drController.createDr);
 router.post('/verify-otp', validator.VerifyDrValidator, drController.verifyOtp);
-router.post('/update', drController.updateProfile);
+router.post('/update/:id', drController.updateProfile);
 router.post('/delete/:id', drController.deleteDr);
 router.get('/dr/list', drController.listDr);
 
