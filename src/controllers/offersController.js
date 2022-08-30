@@ -25,11 +25,11 @@ const setOffers = async (req, res) => {
 		const offers = new offersModel(payload);
 		offers.save();
 		return res
-			.status(200)
+			.status(SUCCESS)
 			.json({ success: true, message: OFFERS.CREATE_SUCCESS, data: offers });
 	} catch (error) {
 		return res
-			.status(500)
+			.status(FAILED)
 			.json({ error: error.message || OFFERS.CREATE_FAILED, success: false });
 	}
 };
@@ -40,7 +40,7 @@ const getOffers = async (req, res) => {
 		const offer = await offersService.findAllQuery(filter);
 		if (offer)
 			return res
-				.status(200)
+				.status(SUCCESS)
 				.json({ success: true, message: OFFERS.GET_SUCCESS, data: offer.data });
 		else {
 			throw new Error(OFFERS.GET_FAILED);
@@ -99,7 +99,7 @@ const deleteOffer = async (req, res) => {
 		const offerId = req.params.id;
 		await offersService.deleteOneQuery(offerId);
 		return res
-			.status(200)
+			.status(SUCCESS)
 			.json({ success: true, message: OFFERS.DELETE_SUCCESS });
 	} catch (error) {
 		errorLogger(error.message, req.originalUrl, req.ip);
