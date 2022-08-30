@@ -334,5 +334,7 @@ export default {
 		UPDATE_FAILED: 'Image data update failed',
 		GET_SUCCESS: 'Image data get successfully',
 		GET_FAILED: 'Image data get failed',
+		DELETE_SUCCESS: 'Image data delete successfully',
+		DELETE_FAILED: 'Image data delete failed',
 	},
 };

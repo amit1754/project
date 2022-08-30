@@ -8,6 +8,8 @@ const {
 		GET_SUCCESS,
 		UPDATE_SUCCESS,
 		UPDATE_FAILED,
+		DELETE_FAILED,
+		DELETE_SUCCESS,
 	},
 	RESPONSE_MESSAGE: { FAILED_RESPONSE },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -65,9 +67,26 @@ const updateSliderImages = async (req, res) => {
 		});
 	}
 };
+const deleteSliderImages = async (req, res) => {
+	try {
+		const id = req.params.id;
+		console.log('id', id);
+		await sliderService.deleteOneQuery({ _id: id });
+		return res
+			.status(200)
+			.json({ success: true, message: DELETE_SUCCESS, data: [] });
+	} catch (error) {
+		return res.status(FAILED).send({
+			success: false,
+			msg: error.message || FAILED_RESPONSE,
+			data: [],
+		});
+	}
+};
 
 export default {
 	createSliderImages,
 	getSliderImages,
 	updateSliderImages,
+	deleteSliderImages,
 };

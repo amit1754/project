@@ -15,5 +15,10 @@ router.put(
 	authMiddleware,
 	imageFileController.updateSliderImages,
 );
+router.put(
+	'/deleteSlider/:id',
+	authMiddleware,
+	imageFileController.deleteSliderImages,
+);
 
 module.exports = router;

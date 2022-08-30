@@ -42,8 +42,14 @@ const updateOneQuery = async (filter, update, projection) => {
 	const data = await sliderModel.findOneAndUpdate(filter, update, options);
 	return data;
 };
+const deleteOneQuery = async (id) => {
+	console.log('id', id);
+	await sliderModel.findOneAndDelete(id);
+	return true;
+};
 
 export default {
 	findAllQuery,
 	updateOneQuery,
+	deleteOneQuery,
 };
