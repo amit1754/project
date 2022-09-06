@@ -4,10 +4,10 @@ import {
 	paymentService,
 	scheduleAppointmentService,
 } from '../mongoServices';
-import { paymentModel } from '../models';
+import { notificationModel, paymentModel, drModel } from '../models';
 import { rozorPayment } from '../service';
 import customerService from '../mongoServices/customerService';
-import { videoController } from '../controllers';
+const moment = require('moment');
 const {
 	RESPONSE_MESSAGE: { FAILED_RESPONSE, FAQS, PAYMENT },
 	STATUS_CODE: { SUCCESS, FAILED },
@@ -135,7 +135,7 @@ const getPayment = async (req, res) => {
 			...req.query,
 			isDeleted: true,
 		};
-		const {data,totalCount} = await paymentService.findAllQuery(payload);
+		const { data, totalCount } = await paymentService.findAllQuery(payload);
 		return res.status(SUCCESS).json({
 			success: true,
 			message: PAYMENT.GET_SUCCESS,
@@ -150,4 +150,38 @@ const getPayment = async (req, res) => {
 	}
 };
 
-export default { addPayment, failedPayment, getPayment };
+const getPaymentDetail = async (req, res) => {
+	try {
+		const { _id } = req.body;
+		if (_id) {
+			let saveResponse = await drModel.find({ _id: _id });
+			return res.status(SUCCESS).json({
+				success: true,
+				message: PAYMENT.GET_SUCCESS,
+				data: saveResponse,
+			});
+		}
+		const lastTenDayRecord = await drModel.find({
+			createdAt: {
+				$gte: moment().add(-10, 'days'),
+			},
+		});
+		const payload = {
+			...req.query,
+			isDeleted: true,
+		};
+		const paymentData = await paymentService.findAllQuery(payload);
+		return res.status(SUCCESS).json({
+			success: true,
+			message: PAYMENT.GET_SUCCESS,
+			data: paymentData,
+			lastTenDayRecord,
+		});
+	} catch (error) {
+		return res.status(FAILED).json({
+			status: false,
+			error: error.message || FAILED_RESPONSE,
+		});
+	}
+};
+export default { addPayment, failedPayment, getPayment, getPaymentDetail };
